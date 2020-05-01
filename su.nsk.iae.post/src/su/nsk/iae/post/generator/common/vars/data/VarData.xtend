@@ -7,4 +7,5 @@ class VarData {
 	String name
 	String type
 	String value
+	boolean isConst
 }
