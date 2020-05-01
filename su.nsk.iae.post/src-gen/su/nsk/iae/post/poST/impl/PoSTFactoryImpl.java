@@ -16,11 +16,13 @@ import su.nsk.iae.post.poST.AddExpression;
 import su.nsk.iae.post.poST.AddOperator;
 import su.nsk.iae.post.poST.AndExpression;
 import su.nsk.iae.post.poST.AssignmentStatement;
+import su.nsk.iae.post.poST.AssignmentType;
 import su.nsk.iae.post.poST.CaseElement;
 import su.nsk.iae.post.poST.CaseList;
 import su.nsk.iae.post.poST.CaseStatement;
 import su.nsk.iae.post.poST.CompExpression;
 import su.nsk.iae.post.poST.CompOperator;
+import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.EquExpression;
 import su.nsk.iae.post.poST.EquOperator;
@@ -32,7 +34,6 @@ import su.nsk.iae.post.poST.ForList;
 import su.nsk.iae.post.poST.ForStatement;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
 import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
-import su.nsk.iae.post.poST.Greeting;
 import su.nsk.iae.post.poST.IfStatement;
 import su.nsk.iae.post.poST.InputOutputVarDeclaration;
 import su.nsk.iae.post.poST.InputVarDeclaration;
@@ -50,19 +51,26 @@ import su.nsk.iae.post.poST.PrimaryExpression;
 import su.nsk.iae.post.poST.ProcessStatements;
 import su.nsk.iae.post.poST.ProcessStatusExpression;
 import su.nsk.iae.post.poST.Program;
+import su.nsk.iae.post.poST.ProgramConfElement;
+import su.nsk.iae.post.poST.ProgramConfElements;
+import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.SingleResource;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.State;
 import su.nsk.iae.post.poST.Statement;
 import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
+import su.nsk.iae.post.poST.Task;
+import su.nsk.iae.post.poST.TaskInitialization;
 import su.nsk.iae.post.poST.TempVarDeclaration;
 import su.nsk.iae.post.poST.TimeLiteral;
 import su.nsk.iae.post.poST.TimeoutStatement;
@@ -126,7 +134,14 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
     switch (eClass.getClassifierID())
     {
       case PoSTPackage.MODEL: return createModel();
-      case PoSTPackage.GREETING: return createGreeting();
+      case PoSTPackage.CONFIGURATION: return createConfiguration();
+      case PoSTPackage.RESOURCE: return createResource();
+      case PoSTPackage.SINGLE_RESOURCE: return createSingleResource();
+      case PoSTPackage.TASK: return createTask();
+      case PoSTPackage.TASK_INITIALIZATION: return createTaskInitialization();
+      case PoSTPackage.PROGRAM_CONFIGURATION: return createProgramConfiguration();
+      case PoSTPackage.PROGRAM_CONF_ELEMENTS: return createProgramConfElements();
+      case PoSTPackage.PROGRAM_CONF_ELEMENT: return createProgramConfElement();
       case PoSTPackage.PROGRAM: return createProgram();
       case PoSTPackage.PROCESS: return createProcess();
       case PoSTPackage.STATE: return createState();
@@ -195,6 +210,8 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case PoSTPackage.ASSIGNMENT_TYPE:
+        return createAssignmentTypeFromString(eDataType, initialValue);
       case PoSTPackage.COMP_OPERATOR:
         return createCompOperatorFromString(eDataType, initialValue);
       case PoSTPackage.EQU_OPERATOR:
@@ -218,6 +235,8 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case PoSTPackage.ASSIGNMENT_TYPE:
+        return convertAssignmentTypeToString(eDataType, instanceValue);
       case PoSTPackage.COMP_OPERATOR:
         return convertCompOperatorToString(eDataType, instanceValue);
       case PoSTPackage.EQU_OPERATOR:
@@ -249,10 +268,94 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
    * @generated
    */
   @Override
-  public Greeting createGreeting()
+  public Configuration createConfiguration()
   {
-    GreetingImpl greeting = new GreetingImpl();
-    return greeting;
+    ConfigurationImpl configuration = new ConfigurationImpl();
+    return configuration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Resource createResource()
+  {
+    ResourceImpl resource = new ResourceImpl();
+    return resource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SingleResource createSingleResource()
+  {
+    SingleResourceImpl singleResource = new SingleResourceImpl();
+    return singleResource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Task createTask()
+  {
+    TaskImpl task = new TaskImpl();
+    return task;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TaskInitialization createTaskInitialization()
+  {
+    TaskInitializationImpl taskInitialization = new TaskInitializationImpl();
+    return taskInitialization;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ProgramConfiguration createProgramConfiguration()
+  {
+    ProgramConfigurationImpl programConfiguration = new ProgramConfigurationImpl();
+    return programConfiguration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ProgramConfElements createProgramConfElements()
+  {
+    ProgramConfElementsImpl programConfElements = new ProgramConfElementsImpl();
+    return programConfElements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ProgramConfElement createProgramConfElement()
+  {
+    ProgramConfElementImpl programConfElement = new ProgramConfElementImpl();
+    return programConfElement;
   }
 
   /**
@@ -889,6 +992,28 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     RealLiteralImpl realLiteral = new RealLiteralImpl();
     return realLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AssignmentType createAssignmentTypeFromString(EDataType eDataType, String initialValue)
+  {
+    AssignmentType result = AssignmentType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertAssignmentTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

@@ -33,13 +33,76 @@ public interface PoSTFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Greeting</em>'.
+   * Returns a new object of class '<em>Configuration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Greeting</em>'.
+   * @return a new object of class '<em>Configuration</em>'.
    * @generated
    */
-  Greeting createGreeting();
+  Configuration createConfiguration();
+
+  /**
+   * Returns a new object of class '<em>Resource</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Resource</em>'.
+   * @generated
+   */
+  Resource createResource();
+
+  /**
+   * Returns a new object of class '<em>Single Resource</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Single Resource</em>'.
+   * @generated
+   */
+  SingleResource createSingleResource();
+
+  /**
+   * Returns a new object of class '<em>Task</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Task</em>'.
+   * @generated
+   */
+  Task createTask();
+
+  /**
+   * Returns a new object of class '<em>Task Initialization</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Task Initialization</em>'.
+   * @generated
+   */
+  TaskInitialization createTaskInitialization();
+
+  /**
+   * Returns a new object of class '<em>Program Configuration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Program Configuration</em>'.
+   * @generated
+   */
+  ProgramConfiguration createProgramConfiguration();
+
+  /**
+   * Returns a new object of class '<em>Program Conf Elements</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Program Conf Elements</em>'.
+   * @generated
+   */
+  ProgramConfElements createProgramConfElements();
+
+  /**
+   * Returns a new object of class '<em>Program Conf Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Program Conf Element</em>'.
+   * @generated
+   */
+  ProgramConfElement createProgramConfElement();
 
   /**
    * Returns a new object of class '<em>Program</em>'.

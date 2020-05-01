@@ -16,7 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link su.nsk.iae.post.poST.Model#getGreetings <em>Greetings</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.Model#getConf <em>Conf</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.Model#getPrograms <em>Programs</em>}</li>
  * </ul>
  *
  * @see su.nsk.iae.post.poST.PoSTPackage#getModel()
@@ -26,15 +27,37 @@ import org.eclipse.emf.ecore.EObject;
 public interface Model extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Greetings</b></em>' containment reference list.
-   * The list contents are of type {@link su.nsk.iae.post.poST.Greeting}.
+   * Returns the value of the '<em><b>Conf</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Greetings</em>' containment reference list.
-   * @see su.nsk.iae.post.poST.PoSTPackage#getModel_Greetings()
+   * @return the value of the '<em>Conf</em>' containment reference.
+   * @see #setConf(Configuration)
+   * @see su.nsk.iae.post.poST.PoSTPackage#getModel_Conf()
    * @model containment="true"
    * @generated
    */
-  EList<Greeting> getGreetings();
+  Configuration getConf();
+
+  /**
+   * Sets the value of the '{@link su.nsk.iae.post.poST.Model#getConf <em>Conf</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Conf</em>' containment reference.
+   * @see #getConf()
+   * @generated
+   */
+  void setConf(Configuration value);
+
+  /**
+   * Returns the value of the '<em><b>Programs</b></em>' containment reference list.
+   * The list contents are of type {@link su.nsk.iae.post.poST.Program}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Programs</em>' containment reference list.
+   * @see su.nsk.iae.post.poST.PoSTPackage#getModel_Programs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Program> getPrograms();
 
 } // Model

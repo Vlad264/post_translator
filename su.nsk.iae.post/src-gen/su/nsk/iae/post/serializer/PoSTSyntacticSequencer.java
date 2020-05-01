@@ -40,12 +40,20 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getBOOLEAN_LITERALToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getEXIT_STATEMENTRule())
 			return getEXIT_STATEMENTToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getINTERVAL_DECLARATIONRule())
+			return getINTERVAL_DECLARATIONToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getLoopStatementRule())
 			return getLoopStatementToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOR_OPERATORRule())
 			return getOR_OPERATORToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPLC_ARDUINI_LITERALRule())
+			return getPLC_ARDUINI_LITERALToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPOWER_OPERATORRule())
 			return getPOWER_OPERATORToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getPRIORITY_DECLARATIONRule())
+			return getPRIORITY_DECLARATIONToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getSINGLE_DECLARATIONRule())
+			return getSINGLE_DECLARATIONToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getSUBPROGRAM_CONTROL_STATEMENTRule())
 			return getSUBPROGRAM_CONTROL_STATEMENTToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getTIME_PREF_LITERALRule())
@@ -88,6 +96,16 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
+	 * terminal INTERVAL_DECLARATION:
+	 * 	'INTERVAL';
+	 */
+	protected String getINTERVAL_DECLARATIONToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "INTERVAL";
+	}
+	
+	/**
 	 * LoopStatement:
 	 * 	'LOOP';
 	 */
@@ -108,6 +126,16 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
+	 * terminal PLC_ARDUINI_LITERAL:
+	 * 	'PLC_ARDUINO';
+	 */
+	protected String getPLC_ARDUINI_LITERALToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "PLC_ARDUINO";
+	}
+	
+	/**
 	 * terminal POWER_OPERATOR:
 	 * 	'**';
 	 */
@@ -115,6 +143,26 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "**";
+	}
+	
+	/**
+	 * terminal PRIORITY_DECLARATION:
+	 * 	'PRIORITY';
+	 */
+	protected String getPRIORITY_DECLARATIONToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "PRIORITY";
+	}
+	
+	/**
+	 * terminal SINGLE_DECLARATION:
+	 * 	'SINGLE';
+	 */
+	protected String getSINGLE_DECLARATIONToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "SINGLE";
 	}
 	
 	/**

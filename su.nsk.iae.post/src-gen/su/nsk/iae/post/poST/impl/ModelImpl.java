@@ -5,6 +5,7 @@ package su.nsk.iae.post.poST.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -12,14 +13,16 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.Program;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +32,8 @@ import su.nsk.iae.post.poST.PoSTPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link su.nsk.iae.post.poST.impl.ModelImpl#getGreetings <em>Greetings</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.impl.ModelImpl#getConf <em>Conf</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.impl.ModelImpl#getPrograms <em>Programs</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +41,24 @@ import su.nsk.iae.post.poST.PoSTPackage;
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
   /**
-   * The cached value of the '{@link #getGreetings() <em>Greetings</em>}' containment reference list.
+   * The cached value of the '{@link #getConf() <em>Conf</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGreetings()
+   * @see #getConf()
    * @generated
    * @ordered
    */
-  protected EList<Greeting> greetings;
+  protected Configuration conf;
+
+  /**
+   * The cached value of the '{@link #getPrograms() <em>Programs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPrograms()
+   * @generated
+   * @ordered
+   */
+  protected EList<Program> programs;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +87,63 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    */
   @Override
-  public EList<Greeting> getGreetings()
+  public Configuration getConf()
   {
-    if (greetings == null)
+    return conf;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConf(Configuration newConf, NotificationChain msgs)
+  {
+    Configuration oldConf = conf;
+    conf = newConf;
+    if (eNotificationRequired())
     {
-      greetings = new EObjectContainmentEList<Greeting>(Greeting.class, this, PoSTPackage.MODEL__GREETINGS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PoSTPackage.MODEL__CONF, oldConf, newConf);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return greetings;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConf(Configuration newConf)
+  {
+    if (newConf != conf)
+    {
+      NotificationChain msgs = null;
+      if (conf != null)
+        msgs = ((InternalEObject)conf).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PoSTPackage.MODEL__CONF, null, msgs);
+      if (newConf != null)
+        msgs = ((InternalEObject)newConf).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PoSTPackage.MODEL__CONF, null, msgs);
+      msgs = basicSetConf(newConf, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.MODEL__CONF, newConf, newConf));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Program> getPrograms()
+  {
+    if (programs == null)
+    {
+      programs = new EObjectContainmentEList<Program>(Program.class, this, PoSTPackage.MODEL__PROGRAMS);
+    }
+    return programs;
   }
 
   /**
@@ -92,8 +156,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case PoSTPackage.MODEL__GREETINGS:
-        return ((InternalEList<?>)getGreetings()).basicRemove(otherEnd, msgs);
+      case PoSTPackage.MODEL__CONF:
+        return basicSetConf(null, msgs);
+      case PoSTPackage.MODEL__PROGRAMS:
+        return ((InternalEList<?>)getPrograms()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +174,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case PoSTPackage.MODEL__GREETINGS:
-        return getGreetings();
+      case PoSTPackage.MODEL__CONF:
+        return getConf();
+      case PoSTPackage.MODEL__PROGRAMS:
+        return getPrograms();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -125,9 +193,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case PoSTPackage.MODEL__GREETINGS:
-        getGreetings().clear();
-        getGreetings().addAll((Collection<? extends Greeting>)newValue);
+      case PoSTPackage.MODEL__CONF:
+        setConf((Configuration)newValue);
+        return;
+      case PoSTPackage.MODEL__PROGRAMS:
+        getPrograms().clear();
+        getPrograms().addAll((Collection<? extends Program>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +214,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case PoSTPackage.MODEL__GREETINGS:
-        getGreetings().clear();
+      case PoSTPackage.MODEL__CONF:
+        setConf((Configuration)null);
+        return;
+      case PoSTPackage.MODEL__PROGRAMS:
+        getPrograms().clear();
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +234,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case PoSTPackage.MODEL__GREETINGS:
-        return greetings != null && !greetings.isEmpty();
+      case PoSTPackage.MODEL__CONF:
+        return conf != null;
+      case PoSTPackage.MODEL__PROGRAMS:
+        return programs != null && !programs.isEmpty();
     }
     return super.eIsSet(featureID);
   }
