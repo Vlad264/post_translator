@@ -13,8 +13,8 @@ package su.nsk.iae.post.poST;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link su.nsk.iae.post.poST.RealLiteral#getDiv <em>Div</em>}</li>
- *   <li>{@link su.nsk.iae.post.poST.RealLiteral#getMod <em>Mod</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.RealLiteral#isRSig <em>RSig</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.RealLiteral#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see su.nsk.iae.post.poST.PoSTPackage#getRealLiteral()
@@ -24,47 +24,47 @@ package su.nsk.iae.post.poST;
 public interface RealLiteral extends NumericLiteral
 {
   /**
-   * Returns the value of the '<em><b>Div</b></em>' containment reference.
+   * Returns the value of the '<em><b>RSig</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Div</em>' containment reference.
-   * @see #setDiv(SignedInteger)
-   * @see su.nsk.iae.post.poST.PoSTPackage#getRealLiteral_Div()
-   * @model containment="true"
-   * @generated
-   */
-  SignedInteger getDiv();
-
-  /**
-   * Sets the value of the '{@link su.nsk.iae.post.poST.RealLiteral#getDiv <em>Div</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Div</em>' containment reference.
-   * @see #getDiv()
-   * @generated
-   */
-  void setDiv(SignedInteger value);
-
-  /**
-   * Returns the value of the '<em><b>Mod</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Mod</em>' attribute.
-   * @see #setMod(int)
-   * @see su.nsk.iae.post.poST.PoSTPackage#getRealLiteral_Mod()
+   * @return the value of the '<em>RSig</em>' attribute.
+   * @see #setRSig(boolean)
+   * @see su.nsk.iae.post.poST.PoSTPackage#getRealLiteral_RSig()
    * @model
    * @generated
    */
-  int getMod();
+  boolean isRSig();
 
   /**
-   * Sets the value of the '{@link su.nsk.iae.post.poST.RealLiteral#getMod <em>Mod</em>}' attribute.
+   * Sets the value of the '{@link su.nsk.iae.post.poST.RealLiteral#isRSig <em>RSig</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Mod</em>' attribute.
-   * @see #getMod()
+   * @param value the new value of the '<em>RSig</em>' attribute.
+   * @see #isRSig()
    * @generated
    */
-  void setMod(int value);
+  void setRSig(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(double)
+   * @see su.nsk.iae.post.poST.PoSTPackage#getRealLiteral_Value()
+   * @model
+   * @generated
+   */
+  double getValue();
+
+  /**
+   * Sets the value of the '{@link su.nsk.iae.post.poST.RealLiteral#getValue <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
+   * @generated
+   */
+  void setValue(double value);
 
 } // RealLiteral

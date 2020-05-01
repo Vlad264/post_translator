@@ -271,13 +271,13 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTimeLiteralAccess().getIntervalAssignment_3(), "rule__TimeLiteral__IntervalAssignment_3");
 			builder.put(grammarAccess.getSimpleSpecificationInitAccess().getTypeAssignment_1(), "rule__SimpleSpecificationInit__TypeAssignment_1");
 			builder.put(grammarAccess.getSimpleSpecificationInitAccess().getValueAssignment_2_1(), "rule__SimpleSpecificationInit__ValueAssignment_2_1");
-			builder.put(grammarAccess.getSignedIntegerAccess().getSigAssignment_0(), "rule__SignedInteger__SigAssignment_0");
+			builder.put(grammarAccess.getSignedIntegerAccess().getISigAssignment_0(), "rule__SignedInteger__ISigAssignment_0");
 			builder.put(grammarAccess.getSignedIntegerAccess().getValueAssignment_1(), "rule__SignedInteger__ValueAssignment_1");
 			builder.put(grammarAccess.getIntegerLiteralAccess().getTypeAssignment_0_0(), "rule__IntegerLiteral__TypeAssignment_0_0");
 			builder.put(grammarAccess.getIntegerLiteralAccess().getValueAssignment_1(), "rule__IntegerLiteral__ValueAssignment_1");
 			builder.put(grammarAccess.getRealLiteralAccess().getTypeAssignment_0_0(), "rule__RealLiteral__TypeAssignment_0_0");
-			builder.put(grammarAccess.getRealLiteralAccess().getDivAssignment_1(), "rule__RealLiteral__DivAssignment_1");
-			builder.put(grammarAccess.getRealLiteralAccess().getModAssignment_3(), "rule__RealLiteral__ModAssignment_3");
+			builder.put(grammarAccess.getRealLiteralAccess().getRSigAssignment_1(), "rule__RealLiteral__RSigAssignment_1");
+			builder.put(grammarAccess.getRealLiteralAccess().getValueAssignment_2(), "rule__RealLiteral__ValueAssignment_2");
 		}
 	}
 	

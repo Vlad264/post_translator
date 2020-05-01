@@ -239,7 +239,7 @@
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//Constant"/>
     <genClasses ecoreClass="PoST.ecore#//SignedInteger">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SignedInteger/sig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SignedInteger/iSig"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SignedInteger/value"/>
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//NumericLiteral">
@@ -249,8 +249,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//IntegerLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//RealLiteral">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//RealLiteral/div"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//RealLiteral/mod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//RealLiteral/rSig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//RealLiteral/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

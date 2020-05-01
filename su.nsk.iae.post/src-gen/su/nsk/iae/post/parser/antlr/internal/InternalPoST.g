@@ -4366,15 +4366,15 @@ ruleSignedInteger returns [EObject current=null]
 	(
 		(
 			(
-				lv_sig_0_0='-'
+				lv_iSig_0_0='-'
 				{
-					newLeafNode(lv_sig_0_0, grammarAccess.getSignedIntegerAccess().getSigHyphenMinusKeyword_0_0());
+					newLeafNode(lv_iSig_0_0, grammarAccess.getSignedIntegerAccess().getISigHyphenMinusKeyword_0_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getSignedIntegerRule());
 					}
-					setWithLastConsumed($current, "sig", true, "-");
+					setWithLastConsumed($current, "iSig", true, "-");
 				}
 			)
 		)?
@@ -4540,32 +4540,23 @@ ruleRealLiteral returns [EObject current=null]
 		)?
 		(
 			(
+				lv_rSig_2_0='-'
 				{
-					newCompositeNode(grammarAccess.getRealLiteralAccess().getDivSignedIntegerParserRuleCall_1_0());
+					newLeafNode(lv_rSig_2_0, grammarAccess.getRealLiteralAccess().getRSigHyphenMinusKeyword_1_0());
 				}
-				lv_div_2_0=ruleSignedInteger
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRealLiteralRule());
+						$current = createModelElement(grammarAccess.getRealLiteralRule());
 					}
-					set(
-						$current,
-						"div",
-						lv_div_2_0,
-						"su.nsk.iae.post.PoST.SignedInteger");
-					afterParserOrEnumRuleCall();
+					setWithLastConsumed($current, "rSig", true, "-");
 				}
 			)
-		)
-		otherlv_3='.'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getRealLiteralAccess().getFullStopKeyword_2());
-		}
+		)?
 		(
 			(
-				lv_mod_4_0=RULE_INTEGER
+				lv_value_3_0=RULE_REAL
 				{
-					newLeafNode(lv_mod_4_0, grammarAccess.getRealLiteralAccess().getModINTEGERTerminalRuleCall_3_0());
+					newLeafNode(lv_value_3_0, grammarAccess.getRealLiteralAccess().getValueREALTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -4573,9 +4564,9 @@ ruleRealLiteral returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"mod",
-						lv_mod_4_0,
-						"su.nsk.iae.post.PoST.INTEGER");
+						"value",
+						lv_value_3_0,
+						"su.nsk.iae.post.PoST.REAL");
 				}
 			)
 		)
@@ -4782,6 +4773,8 @@ RULE_REAL_TYPE_NAME : ('REAL'|'LREAL');
 RULE_BIT_STRING_TYPE_NAME : ('BOOL'|'BYTE'|'WORD'|'DWORD'|'LWORD');
 
 RULE_INTEGER : RULE_DIGIT+;
+
+RULE_REAL : RULE_INTEGER '.' RULE_INTEGER;
 
 RULE_BINARY_INTEGER : '2#' RULE_BIT+;
 

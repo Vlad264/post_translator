@@ -2421,13 +2421,13 @@ public interface PoSTPackage extends EPackage
   int SIGNED_INTEGER = 57;
 
   /**
-   * The feature id for the '<em><b>Sig</b></em>' attribute.
+   * The feature id for the '<em><b>ISig</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIGNED_INTEGER__SIG = 0;
+  int SIGNED_INTEGER__ISIG = 0;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2532,22 +2532,22 @@ public interface PoSTPackage extends EPackage
   int REAL_LITERAL__TYPE = NUMERIC_LITERAL__TYPE;
 
   /**
-   * The feature id for the '<em><b>Div</b></em>' containment reference.
+   * The feature id for the '<em><b>RSig</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REAL_LITERAL__DIV = NUMERIC_LITERAL_FEATURE_COUNT + 0;
+  int REAL_LITERAL__RSIG = NUMERIC_LITERAL_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Mod</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REAL_LITERAL__MOD = NUMERIC_LITERAL_FEATURE_COUNT + 1;
+  int REAL_LITERAL__VALUE = NUMERIC_LITERAL_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Real Literal</em>' class.
@@ -4323,15 +4323,15 @@ public interface PoSTPackage extends EPackage
   EClass getSignedInteger();
 
   /**
-   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SignedInteger#isSig <em>Sig</em>}'.
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SignedInteger#isISig <em>ISig</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sig</em>'.
-   * @see su.nsk.iae.post.poST.SignedInteger#isSig()
+   * @return the meta object for the attribute '<em>ISig</em>'.
+   * @see su.nsk.iae.post.poST.SignedInteger#isISig()
    * @see #getSignedInteger()
    * @generated
    */
-  EAttribute getSignedInteger_Sig();
+  EAttribute getSignedInteger_ISig();
 
   /**
    * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SignedInteger#getValue <em>Value</em>}'.
@@ -4397,26 +4397,26 @@ public interface PoSTPackage extends EPackage
   EClass getRealLiteral();
 
   /**
-   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.RealLiteral#getDiv <em>Div</em>}'.
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.RealLiteral#isRSig <em>RSig</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Div</em>'.
-   * @see su.nsk.iae.post.poST.RealLiteral#getDiv()
+   * @return the meta object for the attribute '<em>RSig</em>'.
+   * @see su.nsk.iae.post.poST.RealLiteral#isRSig()
    * @see #getRealLiteral()
    * @generated
    */
-  EReference getRealLiteral_Div();
+  EAttribute getRealLiteral_RSig();
 
   /**
-   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.RealLiteral#getMod <em>Mod</em>}'.
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.RealLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mod</em>'.
-   * @see su.nsk.iae.post.poST.RealLiteral#getMod()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see su.nsk.iae.post.poST.RealLiteral#getValue()
    * @see #getRealLiteral()
    * @generated
    */
-  EAttribute getRealLiteral_Mod();
+  EAttribute getRealLiteral_Value();
 
   /**
    * Returns the meta object for enum '{@link su.nsk.iae.post.poST.AssignmentType <em>Assignment Type</em>}'.
@@ -5896,12 +5896,12 @@ public interface PoSTPackage extends EPackage
     EClass SIGNED_INTEGER = eINSTANCE.getSignedInteger();
 
     /**
-     * The meta object literal for the '<em><b>Sig</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>ISig</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SIGNED_INTEGER__SIG = eINSTANCE.getSignedInteger_Sig();
+    EAttribute SIGNED_INTEGER__ISIG = eINSTANCE.getSignedInteger_ISig();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -5958,20 +5958,20 @@ public interface PoSTPackage extends EPackage
     EClass REAL_LITERAL = eINSTANCE.getRealLiteral();
 
     /**
-     * The meta object literal for the '<em><b>Div</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>RSig</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REAL_LITERAL__DIV = eINSTANCE.getRealLiteral_Div();
+    EAttribute REAL_LITERAL__RSIG = eINSTANCE.getRealLiteral_RSig();
 
     /**
-     * The meta object literal for the '<em><b>Mod</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REAL_LITERAL__MOD = eINSTANCE.getRealLiteral_Mod();
+    EAttribute REAL_LITERAL__VALUE = eINSTANCE.getRealLiteral_Value();
 
     /**
      * The meta object literal for the '{@link su.nsk.iae.post.poST.AssignmentType <em>Assignment Type</em>}' enum.

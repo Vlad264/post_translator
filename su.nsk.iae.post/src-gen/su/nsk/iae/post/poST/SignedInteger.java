@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link su.nsk.iae.post.poST.SignedInteger#isSig <em>Sig</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.SignedInteger#isISig <em>ISig</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.SignedInteger#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -25,26 +25,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface SignedInteger extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Sig</b></em>' attribute.
+   * Returns the value of the '<em><b>ISig</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sig</em>' attribute.
-   * @see #setSig(boolean)
-   * @see su.nsk.iae.post.poST.PoSTPackage#getSignedInteger_Sig()
+   * @return the value of the '<em>ISig</em>' attribute.
+   * @see #setISig(boolean)
+   * @see su.nsk.iae.post.poST.PoSTPackage#getSignedInteger_ISig()
    * @model
    * @generated
    */
-  boolean isSig();
+  boolean isISig();
 
   /**
-   * Sets the value of the '{@link su.nsk.iae.post.poST.SignedInteger#isSig <em>Sig</em>}' attribute.
+   * Sets the value of the '{@link su.nsk.iae.post.poST.SignedInteger#isISig <em>ISig</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sig</em>' attribute.
-   * @see #isSig()
+   * @param value the new value of the '<em>ISig</em>' attribute.
+   * @see #isISig()
    * @generated
    */
-  void setSig(boolean value);
+  void setISig(boolean value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

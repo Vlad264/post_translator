@@ -2640,23 +2640,23 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	public class SignedIntegerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SignedInteger");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cSigAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cSigHyphenMinusKeyword_0_0 = (Keyword)cSigAssignment_0.eContents().get(0);
+		private final Assignment cISigAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cISigHyphenMinusKeyword_0_0 = (Keyword)cISigAssignment_0.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueINTEGERTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//SignedInteger:
-		//	sig?='-'? value=INTEGER;
+		//	iSig?='-'? value=INTEGER;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//sig?='-'? value=INTEGER
+		//iSig?='-'? value=INTEGER
 		public Group getGroup() { return cGroup; }
 		
-		//sig?='-'?
-		public Assignment getSigAssignment_0() { return cSigAssignment_0; }
+		//iSig?='-'?
+		public Assignment getISigAssignment_0() { return cISigAssignment_0; }
 		
 		//'-'
-		public Keyword getSigHyphenMinusKeyword_0_0() { return cSigHyphenMinusKeyword_0_0; }
+		public Keyword getISigHyphenMinusKeyword_0_0() { return cISigHyphenMinusKeyword_0_0; }
 		
 		//value=INTEGER
 		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
@@ -2725,17 +2725,16 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypeAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
 		private final RuleCall cTypeREAL_TYPE_NAMETerminalRuleCall_0_0_0 = (RuleCall)cTypeAssignment_0_0.eContents().get(0);
 		private final Keyword cNumberSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Assignment cDivAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDivSignedIntegerParserRuleCall_1_0 = (RuleCall)cDivAssignment_1.eContents().get(0);
-		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cModAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cModINTEGERTerminalRuleCall_3_0 = (RuleCall)cModAssignment_3.eContents().get(0);
+		private final Assignment cRSigAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cRSigHyphenMinusKeyword_1_0 = (Keyword)cRSigAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueREALTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//RealLiteral:
-		//	(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER;
+		//	(type=REAL_TYPE_NAME '#')? rSig?='-'? value=REAL;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER
+		//(type=REAL_TYPE_NAME '#')? rSig?='-'? value=REAL
 		public Group getGroup() { return cGroup; }
 		
 		//(type=REAL_TYPE_NAME '#')?
@@ -2750,20 +2749,17 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//'#'
 		public Keyword getNumberSignKeyword_0_1() { return cNumberSignKeyword_0_1; }
 		
-		//div=SignedInteger
-		public Assignment getDivAssignment_1() { return cDivAssignment_1; }
+		//rSig?='-'?
+		public Assignment getRSigAssignment_1() { return cRSigAssignment_1; }
 		
-		//SignedInteger
-		public RuleCall getDivSignedIntegerParserRuleCall_1_0() { return cDivSignedIntegerParserRuleCall_1_0; }
+		//'-'
+		public Keyword getRSigHyphenMinusKeyword_1_0() { return cRSigHyphenMinusKeyword_1_0; }
 		
-		//'.'
-		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+		//value=REAL
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 		
-		//mod=INTEGER
-		public Assignment getModAssignment_3() { return cModAssignment_3; }
-		
-		//INTEGER
-		public RuleCall getModINTEGERTerminalRuleCall_3_0() { return cModINTEGERTerminalRuleCall_3_0; }
+		//REAL
+		public RuleCall getValueREALTerminalRuleCall_2_0() { return cValueREALTerminalRuleCall_2_0; }
 	}
 	
 	public class AssignmentTypeElements extends AbstractEnumRuleElementFinder {
@@ -3014,6 +3010,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	private final ConstantElements pConstant;
 	private final TerminalRule tINTEGER;
 	private final SignedIntegerElements pSignedInteger;
+	private final TerminalRule tREAL;
 	private final TerminalRule tBINARY_INTEGER;
 	private final TerminalRule tOCTAL_INTEGER;
 	private final TerminalRule tHEX_INTEGER;
@@ -3125,6 +3122,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		this.pConstant = new ConstantElements();
 		this.tINTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.INTEGER");
 		this.pSignedInteger = new SignedIntegerElements();
+		this.tREAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.REAL");
 		this.tBINARY_INTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.BINARY_INTEGER");
 		this.tOCTAL_INTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.OCTAL_INTEGER");
 		this.tHEX_INTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.HEX_INTEGER");
@@ -4002,13 +4000,19 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//SignedInteger:
-	//	sig?='-'? value=INTEGER;
+	//	iSig?='-'? value=INTEGER;
 	public SignedIntegerElements getSignedIntegerAccess() {
 		return pSignedInteger;
 	}
 	
 	public ParserRule getSignedIntegerRule() {
 		return getSignedIntegerAccess().getRule();
+	}
+	
+	//terminal REAL returns ecore::EDouble:
+	//	INTEGER '.' INTEGER;
+	public TerminalRule getREALRule() {
+		return tREAL;
 	}
 	
 	//terminal BINARY_INTEGER:
@@ -4050,7 +4054,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//RealLiteral:
-	//	(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER;
+	//	(type=REAL_TYPE_NAME '#')? rSig?='-'? value=REAL;
 	public RealLiteralElements getRealLiteralAccess() {
 		return pRealLiteral;
 	}

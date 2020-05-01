@@ -2389,7 +2389,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
-  public EAttribute getSignedInteger_Sig()
+  public EAttribute getSignedInteger_ISig()
   {
     return (EAttribute)signedIntegerEClass.getEStructuralFeatures().get(0);
   }
@@ -2466,9 +2466,9 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
-  public EReference getRealLiteral_Div()
+  public EAttribute getRealLiteral_RSig()
   {
-    return (EReference)realLiteralEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)realLiteralEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2477,7 +2477,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
-  public EAttribute getRealLiteral_Mod()
+  public EAttribute getRealLiteral_Value()
   {
     return (EAttribute)realLiteralEClass.getEStructuralFeatures().get(1);
   }
@@ -2786,7 +2786,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     constantEClass = createEClass(CONSTANT);
 
     signedIntegerEClass = createEClass(SIGNED_INTEGER);
-    createEAttribute(signedIntegerEClass, SIGNED_INTEGER__SIG);
+    createEAttribute(signedIntegerEClass, SIGNED_INTEGER__ISIG);
     createEAttribute(signedIntegerEClass, SIGNED_INTEGER__VALUE);
 
     numericLiteralEClass = createEClass(NUMERIC_LITERAL);
@@ -2796,8 +2796,8 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     createEReference(integerLiteralEClass, INTEGER_LITERAL__VALUE);
 
     realLiteralEClass = createEClass(REAL_LITERAL);
-    createEReference(realLiteralEClass, REAL_LITERAL__DIV);
-    createEAttribute(realLiteralEClass, REAL_LITERAL__MOD);
+    createEAttribute(realLiteralEClass, REAL_LITERAL__RSIG);
+    createEAttribute(realLiteralEClass, REAL_LITERAL__VALUE);
 
     // Create enums
     assignmentTypeEEnum = createEEnum(ASSIGNMENT_TYPE);
@@ -3081,7 +3081,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(signedIntegerEClass, SignedInteger.class, "SignedInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSignedInteger_Sig(), ecorePackage.getEBoolean(), "sig", null, 0, 1, SignedInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSignedInteger_ISig(), ecorePackage.getEBoolean(), "iSig", null, 0, 1, SignedInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSignedInteger_Value(), ecorePackage.getEInt(), "value", null, 0, 1, SignedInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(numericLiteralEClass, NumericLiteral.class, "NumericLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3091,8 +3091,8 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     initEReference(getIntegerLiteral_Value(), this.getSignedInteger(), null, "value", null, 0, 1, IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(realLiteralEClass, RealLiteral.class, "RealLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRealLiteral_Div(), this.getSignedInteger(), null, "div", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRealLiteral_Mod(), ecorePackage.getEInt(), "mod", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRealLiteral_RSig(), ecorePackage.getEBoolean(), "rSig", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRealLiteral_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(assignmentTypeEEnum, AssignmentType.class, "AssignmentType");

@@ -84,7 +84,7 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * terminal BINARY_INTEGER:
+	 * terminal BINARY_INTEGER returns ecore::EString:
 	 * 	'2#' BIT+;
 	 */
 	protected String getBINARY_INTEGERToken(EObject semanticObject, RuleCall ruleCall, INode node) {
@@ -114,7 +114,7 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * terminal HEX_INTEGER:
+	 * terminal HEX_INTEGER returns ecore::EString:
 	 * 	'16#' HEX_DIGIT+;
 	 */
 	protected String getHEX_INTEGERToken(EObject semanticObject, RuleCall ruleCall, INode node) {
@@ -144,7 +144,7 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * terminal OCTAL_INTEGER:
+	 * terminal OCTAL_INTEGER returns ecore::EString:
 	 * 	'8#' OCTAL_DIGIT+;
 	 */
 	protected String getOCTAL_INTEGERToken(EObject semanticObject, RuleCall ruleCall, INode node) {

@@ -887,7 +887,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     RealLiteral returns RealLiteral
 	 *
 	 * Constraint:
-	 *     (type=REAL_TYPE_NAME? div=SignedInteger mod=INTEGER)
+	 *     (type=REAL_TYPE_NAME? rSig?='-'? value=REAL)
 	 */
 	protected void sequence_RealLiteral(ISerializationContext context, RealLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -947,7 +947,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     SignedInteger returns SignedInteger
 	 *
 	 * Constraint:
-	 *     (sig?='-'? value=INTEGER)
+	 *     (iSig?='-'? value=INTEGER)
 	 */
 	protected void sequence_SignedInteger(ISerializationContext context, SignedInteger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -376,15 +376,18 @@ terminal INTEGER returns ecore::EInt:
 	DIGIT+;
 
 SignedInteger:
-	(sig?='-')? value=INTEGER;
+	(iSig?='-')? value=INTEGER;
+	
+terminal REAL returns ecore::EDouble:
+	INTEGER '.' INTEGER;
 
-terminal BINARY_INTEGER:
+terminal BINARY_INTEGER returns ecore::EString:
 	'2#' BIT+;
 
-terminal OCTAL_INTEGER:
+terminal OCTAL_INTEGER returns ecore::EString:
 	'8#' OCTAL_DIGIT+;
 
-terminal HEX_INTEGER:
+terminal HEX_INTEGER returns ecore::EString:
 	'16#' HEX_DIGIT+;
 	
 NumericLiteral:
@@ -394,7 +397,7 @@ IntegerLiteral:
 	(type=IntegerTypeName '#')? value=SignedInteger;
 
 RealLiteral:
-	(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER;
+	(type=REAL_TYPE_NAME '#')? (rSig?='-')? value=REAL;
 
 terminal BOOLEAN_LITERAL:
 	'TRUE' | 'FALSE';

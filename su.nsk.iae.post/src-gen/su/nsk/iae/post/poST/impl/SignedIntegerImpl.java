@@ -21,7 +21,7 @@ import su.nsk.iae.post.poST.SignedInteger;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link su.nsk.iae.post.poST.impl.SignedIntegerImpl#isSig <em>Sig</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.impl.SignedIntegerImpl#isISig <em>ISig</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.impl.SignedIntegerImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -30,24 +30,24 @@ import su.nsk.iae.post.poST.SignedInteger;
 public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements SignedInteger
 {
   /**
-   * The default value of the '{@link #isSig() <em>Sig</em>}' attribute.
+   * The default value of the '{@link #isISig() <em>ISig</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isSig()
+   * @see #isISig()
    * @generated
    * @ordered
    */
-  protected static final boolean SIG_EDEFAULT = false;
+  protected static final boolean ISIG_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isSig() <em>Sig</em>}' attribute.
+   * The cached value of the '{@link #isISig() <em>ISig</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isSig()
+   * @see #isISig()
    * @generated
    * @ordered
    */
-  protected boolean sig = SIG_EDEFAULT;
+  protected boolean iSig = ISIG_EDEFAULT;
 
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -96,9 +96,9 @@ public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements S
    * @generated
    */
   @Override
-  public boolean isSig()
+  public boolean isISig()
   {
-    return sig;
+    return iSig;
   }
 
   /**
@@ -107,12 +107,12 @@ public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements S
    * @generated
    */
   @Override
-  public void setSig(boolean newSig)
+  public void setISig(boolean newISig)
   {
-    boolean oldSig = sig;
-    sig = newSig;
+    boolean oldISig = iSig;
+    iSig = newISig;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.SIGNED_INTEGER__SIG, oldSig, sig));
+      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.SIGNED_INTEGER__ISIG, oldISig, iSig));
   }
 
   /**
@@ -150,8 +150,8 @@ public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements S
   {
     switch (featureID)
     {
-      case PoSTPackage.SIGNED_INTEGER__SIG:
-        return isSig();
+      case PoSTPackage.SIGNED_INTEGER__ISIG:
+        return isISig();
       case PoSTPackage.SIGNED_INTEGER__VALUE:
         return getValue();
     }
@@ -168,8 +168,8 @@ public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements S
   {
     switch (featureID)
     {
-      case PoSTPackage.SIGNED_INTEGER__SIG:
-        setSig((Boolean)newValue);
+      case PoSTPackage.SIGNED_INTEGER__ISIG:
+        setISig((Boolean)newValue);
         return;
       case PoSTPackage.SIGNED_INTEGER__VALUE:
         setValue((Integer)newValue);
@@ -188,8 +188,8 @@ public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements S
   {
     switch (featureID)
     {
-      case PoSTPackage.SIGNED_INTEGER__SIG:
-        setSig(SIG_EDEFAULT);
+      case PoSTPackage.SIGNED_INTEGER__ISIG:
+        setISig(ISIG_EDEFAULT);
         return;
       case PoSTPackage.SIGNED_INTEGER__VALUE:
         setValue(VALUE_EDEFAULT);
@@ -208,8 +208,8 @@ public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements S
   {
     switch (featureID)
     {
-      case PoSTPackage.SIGNED_INTEGER__SIG:
-        return sig != SIG_EDEFAULT;
+      case PoSTPackage.SIGNED_INTEGER__ISIG:
+        return iSig != ISIG_EDEFAULT;
       case PoSTPackage.SIGNED_INTEGER__VALUE:
         return value != VALUE_EDEFAULT;
     }
@@ -227,8 +227,8 @@ public class SignedIntegerImpl extends MinimalEObjectImpl.Container implements S
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (sig: ");
-    result.append(sig);
+    result.append(" (iSig: ");
+    result.append(iSig);
     result.append(", value: ");
     result.append(value);
     result.append(')');

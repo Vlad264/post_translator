@@ -4,16 +4,13 @@
 package su.nsk.iae.post.poST.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.RealLiteral;
-import su.nsk.iae.post.poST.SignedInteger;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +20,8 @@ import su.nsk.iae.post.poST.SignedInteger;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link su.nsk.iae.post.poST.impl.RealLiteralImpl#getDiv <em>Div</em>}</li>
- *   <li>{@link su.nsk.iae.post.poST.impl.RealLiteralImpl#getMod <em>Mod</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.impl.RealLiteralImpl#isRSig <em>RSig</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.impl.RealLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +29,44 @@ import su.nsk.iae.post.poST.SignedInteger;
 public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
 {
   /**
-   * The cached value of the '{@link #getDiv() <em>Div</em>}' containment reference.
+   * The default value of the '{@link #isRSig() <em>RSig</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDiv()
+   * @see #isRSig()
    * @generated
    * @ordered
    */
-  protected SignedInteger div;
+  protected static final boolean RSIG_EDEFAULT = false;
 
   /**
-   * The default value of the '{@link #getMod() <em>Mod</em>}' attribute.
+   * The cached value of the '{@link #isRSig() <em>RSig</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMod()
+   * @see #isRSig()
    * @generated
    * @ordered
    */
-  protected static final int MOD_EDEFAULT = 0;
+  protected boolean rSig = RSIG_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getMod() <em>Mod</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMod()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected int mod = MOD_EDEFAULT;
+  protected static final double VALUE_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected double value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,9 +95,9 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
    * @generated
    */
   @Override
-  public SignedInteger getDiv()
+  public boolean isRSig()
   {
-    return div;
+    return rSig;
   }
 
   /**
@@ -98,16 +105,13 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDiv(SignedInteger newDiv, NotificationChain msgs)
+  @Override
+  public void setRSig(boolean newRSig)
   {
-    SignedInteger oldDiv = div;
-    div = newDiv;
+    boolean oldRSig = rSig;
+    rSig = newRSig;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PoSTPackage.REAL_LITERAL__DIV, oldDiv, newDiv);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.REAL_LITERAL__RSIG, oldRSig, rSig));
   }
 
   /**
@@ -116,20 +120,9 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
    * @generated
    */
   @Override
-  public void setDiv(SignedInteger newDiv)
+  public double getValue()
   {
-    if (newDiv != div)
-    {
-      NotificationChain msgs = null;
-      if (div != null)
-        msgs = ((InternalEObject)div).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PoSTPackage.REAL_LITERAL__DIV, null, msgs);
-      if (newDiv != null)
-        msgs = ((InternalEObject)newDiv).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PoSTPackage.REAL_LITERAL__DIV, null, msgs);
-      msgs = basicSetDiv(newDiv, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.REAL_LITERAL__DIV, newDiv, newDiv));
+    return value;
   }
 
   /**
@@ -138,39 +131,12 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
    * @generated
    */
   @Override
-  public int getMod()
+  public void setValue(double newValue)
   {
-    return mod;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setMod(int newMod)
-  {
-    int oldMod = mod;
-    mod = newMod;
+    double oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.REAL_LITERAL__MOD, oldMod, mod));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case PoSTPackage.REAL_LITERAL__DIV:
-        return basicSetDiv(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.REAL_LITERAL__VALUE, oldValue, value));
   }
 
   /**
@@ -183,10 +149,10 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
   {
     switch (featureID)
     {
-      case PoSTPackage.REAL_LITERAL__DIV:
-        return getDiv();
-      case PoSTPackage.REAL_LITERAL__MOD:
-        return getMod();
+      case PoSTPackage.REAL_LITERAL__RSIG:
+        return isRSig();
+      case PoSTPackage.REAL_LITERAL__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,11 +167,11 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
   {
     switch (featureID)
     {
-      case PoSTPackage.REAL_LITERAL__DIV:
-        setDiv((SignedInteger)newValue);
+      case PoSTPackage.REAL_LITERAL__RSIG:
+        setRSig((Boolean)newValue);
         return;
-      case PoSTPackage.REAL_LITERAL__MOD:
-        setMod((Integer)newValue);
+      case PoSTPackage.REAL_LITERAL__VALUE:
+        setValue((Double)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,11 +187,11 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
   {
     switch (featureID)
     {
-      case PoSTPackage.REAL_LITERAL__DIV:
-        setDiv((SignedInteger)null);
+      case PoSTPackage.REAL_LITERAL__RSIG:
+        setRSig(RSIG_EDEFAULT);
         return;
-      case PoSTPackage.REAL_LITERAL__MOD:
-        setMod(MOD_EDEFAULT);
+      case PoSTPackage.REAL_LITERAL__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -241,10 +207,10 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
   {
     switch (featureID)
     {
-      case PoSTPackage.REAL_LITERAL__DIV:
-        return div != null;
-      case PoSTPackage.REAL_LITERAL__MOD:
-        return mod != MOD_EDEFAULT;
+      case PoSTPackage.REAL_LITERAL__RSIG:
+        return rSig != RSIG_EDEFAULT;
+      case PoSTPackage.REAL_LITERAL__VALUE:
+        return value != VALUE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -260,8 +226,10 @@ public class RealLiteralImpl extends NumericLiteralImpl implements RealLiteral
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (mod: ");
-    result.append(mod);
+    result.append(" (rSig: ");
+    result.append(rSig);
+    result.append(", value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }

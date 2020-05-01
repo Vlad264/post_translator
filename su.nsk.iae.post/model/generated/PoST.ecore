@@ -299,7 +299,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constant"/>
   <eClassifiers xsi:type="ecore:EClass" name="SignedInteger">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sig" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="iSig" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumericLiteral" eSuperTypes="#//Constant">
@@ -310,8 +310,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RealLiteral" eSuperTypes="#//NumericLiteral">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="div" eType="#//SignedInteger"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rSig" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
 </ecore:EPackage>
