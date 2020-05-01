@@ -114,6 +114,405 @@ public interface PoSTPackage extends EPackage
   int GREETING_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SymbolicVariableImpl <em>Symbolic Variable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.SymbolicVariableImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSymbolicVariable()
+   * @generated
+   */
+  int SYMBOLIC_VARIABLE = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOLIC_VARIABLE__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Symbolic Variable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOLIC_VARIABLE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.VarInitDeclarationImpl <em>Var Init Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.VarInitDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarInitDeclaration()
+   * @generated
+   */
+  int VAR_INIT_DECLARATION = 3;
+
+  /**
+   * The feature id for the '<em><b>Var List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_INIT_DECLARATION__VAR_LIST = 0;
+
+  /**
+   * The feature id for the '<em><b>Spec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_INIT_DECLARATION__SPEC = 1;
+
+  /**
+   * The number of structural features of the '<em>Var Init Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_INIT_DECLARATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.VarListImpl <em>Var List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.VarListImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarList()
+   * @generated
+   */
+  int VAR_LIST = 4;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_LIST__VARS = 0;
+
+  /**
+   * The number of structural features of the '<em>Var List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_LIST_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.InputVarDeclarationImpl <em>Input Var Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.InputVarDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getInputVarDeclaration()
+   * @generated
+   */
+  int INPUT_VAR_DECLARATION = 5;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_VAR_DECLARATION__VARS = 0;
+
+  /**
+   * The number of structural features of the '<em>Input Var Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_VAR_DECLARATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.OutputVarDeclarationImpl <em>Output Var Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.OutputVarDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getOutputVarDeclaration()
+   * @generated
+   */
+  int OUTPUT_VAR_DECLARATION = 6;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT_VAR_DECLARATION__VARS = 0;
+
+  /**
+   * The number of structural features of the '<em>Output Var Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT_VAR_DECLARATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.InputOutputVarDeclarationImpl <em>Input Output Var Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.InputOutputVarDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getInputOutputVarDeclaration()
+   * @generated
+   */
+  int INPUT_OUTPUT_VAR_DECLARATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_OUTPUT_VAR_DECLARATION__VARS = 0;
+
+  /**
+   * The number of structural features of the '<em>Input Output Var Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_OUTPUT_VAR_DECLARATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.VarDeclarationImpl <em>Var Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.VarDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarDeclaration()
+   * @generated
+   */
+  int VAR_DECLARATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_DECLARATION__CONST = 0;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_DECLARATION__VARS = 1;
+
+  /**
+   * The number of structural features of the '<em>Var Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VAR_DECLARATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.TempVarDeclarationImpl <em>Temp Var Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.TempVarDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getTempVarDeclaration()
+   * @generated
+   */
+  int TEMP_VAR_DECLARATION = 9;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMP_VAR_DECLARATION__VARS = 0;
+
+  /**
+   * The number of structural features of the '<em>Temp Var Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMP_VAR_DECLARATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ExternalVarDeclarationImpl <em>External Var Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.ExternalVarDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExternalVarDeclaration()
+   * @generated
+   */
+  int EXTERNAL_VAR_DECLARATION = 10;
+
+  /**
+   * The feature id for the '<em><b>Vars</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_VAR_DECLARATION__VARS = 0;
+
+  /**
+   * The number of structural features of the '<em>External Var Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_VAR_DECLARATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ExternalVarInitDeclarationImpl <em>External Var Init Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.ExternalVarInitDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExternalVarInitDeclaration()
+   * @generated
+   */
+  int EXTERNAL_VAR_INIT_DECLARATION = 11;
+
+  /**
+   * The feature id for the '<em><b>Var List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_VAR_INIT_DECLARATION__VAR_LIST = 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_VAR_INIT_DECLARATION__TYPE = 1;
+
+  /**
+   * The number of structural features of the '<em>External Var Init Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_VAR_INIT_DECLARATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.GlobalVarDeclarationImpl <em>Global Var Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.GlobalVarDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getGlobalVarDeclaration()
+   * @generated
+   */
+  int GLOBAL_VAR_DECLARATION = 12;
+
+  /**
+   * The feature id for the '<em><b>Const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_DECLARATION__CONST = 0;
+
+  /**
+   * The feature id for the '<em><b>Vars Simple</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_DECLARATION__VARS_SIMPLE = 1;
+
+  /**
+   * The feature id for the '<em><b>Vars As</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_DECLARATION__VARS_AS = 2;
+
+  /**
+   * The number of structural features of the '<em>Global Var Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_DECLARATION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.GlobalVarInitDeclarationImpl <em>Global Var Init Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.GlobalVarInitDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getGlobalVarInitDeclaration()
+   * @generated
+   */
+  int GLOBAL_VAR_INIT_DECLARATION = 13;
+
+  /**
+   * The feature id for the '<em><b>Var List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_INIT_DECLARATION__VAR_LIST = 0;
+
+  /**
+   * The feature id for the '<em><b>Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_INIT_DECLARATION__LOCATION = 1;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_INIT_DECLARATION__TYPE = 2;
+
+  /**
+   * The number of structural features of the '<em>Global Var Init Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GLOBAL_VAR_INIT_DECLARATION_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ConstantImpl <em>Constant</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,7 +520,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getConstant()
    * @generated
    */
-  int CONSTANT = 5;
+  int CONSTANT = 17;
 
   /**
    * The number of structural features of the '<em>Constant</em>' class.
@@ -140,7 +539,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getTimeLiteral()
    * @generated
    */
-  int TIME_LITERAL = 2;
+  int TIME_LITERAL = 14;
 
   /**
    * The feature id for the '<em><b>Interval</b></em>' attribute.
@@ -168,7 +567,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSingleElementTypeDeclaration()
    * @generated
    */
-  int SINGLE_ELEMENT_TYPE_DECLARATION = 3;
+  int SINGLE_ELEMENT_TYPE_DECLARATION = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -205,7 +604,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSimpleSpecificationInit()
    * @generated
    */
-  int SIMPLE_SPECIFICATION_INIT = 4;
+  int SIMPLE_SPECIFICATION_INIT = 16;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -242,7 +641,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSignedInteger()
    * @generated
    */
-  int SIGNED_INTEGER = 6;
+  int SIGNED_INTEGER = 18;
 
   /**
    * The feature id for the '<em><b>Sig</b></em>' attribute.
@@ -279,7 +678,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getNumericLiteral()
    * @generated
    */
-  int NUMERIC_LITERAL = 7;
+  int NUMERIC_LITERAL = 19;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -307,7 +706,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 8;
+  int INTEGER_LITERAL = 20;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -344,7 +743,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 9;
+  int REAL_LITERAL = 21;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -424,6 +823,335 @@ public interface PoSTPackage extends EPackage
    * @generated
    */
   EAttribute getGreeting_Name();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.SymbolicVariable <em>Symbolic Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Symbolic Variable</em>'.
+   * @see su.nsk.iae.post.poST.SymbolicVariable
+   * @generated
+   */
+  EClass getSymbolicVariable();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SymbolicVariable#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see su.nsk.iae.post.poST.SymbolicVariable#getName()
+   * @see #getSymbolicVariable()
+   * @generated
+   */
+  EAttribute getSymbolicVariable_Name();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.VarInitDeclaration <em>Var Init Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Var Init Declaration</em>'.
+   * @see su.nsk.iae.post.poST.VarInitDeclaration
+   * @generated
+   */
+  EClass getVarInitDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.VarInitDeclaration#getVarList <em>Var List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Var List</em>'.
+   * @see su.nsk.iae.post.poST.VarInitDeclaration#getVarList()
+   * @see #getVarInitDeclaration()
+   * @generated
+   */
+  EReference getVarInitDeclaration_VarList();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.VarInitDeclaration#getSpec <em>Spec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Spec</em>'.
+   * @see su.nsk.iae.post.poST.VarInitDeclaration#getSpec()
+   * @see #getVarInitDeclaration()
+   * @generated
+   */
+  EReference getVarInitDeclaration_Spec();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.VarList <em>Var List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Var List</em>'.
+   * @see su.nsk.iae.post.poST.VarList
+   * @generated
+   */
+  EClass getVarList();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.VarList#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see su.nsk.iae.post.poST.VarList#getVars()
+   * @see #getVarList()
+   * @generated
+   */
+  EReference getVarList_Vars();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.InputVarDeclaration <em>Input Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Input Var Declaration</em>'.
+   * @see su.nsk.iae.post.poST.InputVarDeclaration
+   * @generated
+   */
+  EClass getInputVarDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.InputVarDeclaration#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see su.nsk.iae.post.poST.InputVarDeclaration#getVars()
+   * @see #getInputVarDeclaration()
+   * @generated
+   */
+  EReference getInputVarDeclaration_Vars();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.OutputVarDeclaration <em>Output Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Output Var Declaration</em>'.
+   * @see su.nsk.iae.post.poST.OutputVarDeclaration
+   * @generated
+   */
+  EClass getOutputVarDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.OutputVarDeclaration#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see su.nsk.iae.post.poST.OutputVarDeclaration#getVars()
+   * @see #getOutputVarDeclaration()
+   * @generated
+   */
+  EReference getOutputVarDeclaration_Vars();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.InputOutputVarDeclaration <em>Input Output Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Input Output Var Declaration</em>'.
+   * @see su.nsk.iae.post.poST.InputOutputVarDeclaration
+   * @generated
+   */
+  EClass getInputOutputVarDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.InputOutputVarDeclaration#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see su.nsk.iae.post.poST.InputOutputVarDeclaration#getVars()
+   * @see #getInputOutputVarDeclaration()
+   * @generated
+   */
+  EReference getInputOutputVarDeclaration_Vars();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.VarDeclaration <em>Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Var Declaration</em>'.
+   * @see su.nsk.iae.post.poST.VarDeclaration
+   * @generated
+   */
+  EClass getVarDeclaration();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.VarDeclaration#isConst <em>Const</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Const</em>'.
+   * @see su.nsk.iae.post.poST.VarDeclaration#isConst()
+   * @see #getVarDeclaration()
+   * @generated
+   */
+  EAttribute getVarDeclaration_Const();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.VarDeclaration#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see su.nsk.iae.post.poST.VarDeclaration#getVars()
+   * @see #getVarDeclaration()
+   * @generated
+   */
+  EReference getVarDeclaration_Vars();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.TempVarDeclaration <em>Temp Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Temp Var Declaration</em>'.
+   * @see su.nsk.iae.post.poST.TempVarDeclaration
+   * @generated
+   */
+  EClass getTempVarDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.TempVarDeclaration#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see su.nsk.iae.post.poST.TempVarDeclaration#getVars()
+   * @see #getTempVarDeclaration()
+   * @generated
+   */
+  EReference getTempVarDeclaration_Vars();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.ExternalVarDeclaration <em>External Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>External Var Declaration</em>'.
+   * @see su.nsk.iae.post.poST.ExternalVarDeclaration
+   * @generated
+   */
+  EClass getExternalVarDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.ExternalVarDeclaration#getVars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars</em>'.
+   * @see su.nsk.iae.post.poST.ExternalVarDeclaration#getVars()
+   * @see #getExternalVarDeclaration()
+   * @generated
+   */
+  EReference getExternalVarDeclaration_Vars();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.ExternalVarInitDeclaration <em>External Var Init Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>External Var Init Declaration</em>'.
+   * @see su.nsk.iae.post.poST.ExternalVarInitDeclaration
+   * @generated
+   */
+  EClass getExternalVarInitDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.ExternalVarInitDeclaration#getVarList <em>Var List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Var List</em>'.
+   * @see su.nsk.iae.post.poST.ExternalVarInitDeclaration#getVarList()
+   * @see #getExternalVarInitDeclaration()
+   * @generated
+   */
+  EReference getExternalVarInitDeclaration_VarList();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.ExternalVarInitDeclaration#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see su.nsk.iae.post.poST.ExternalVarInitDeclaration#getType()
+   * @see #getExternalVarInitDeclaration()
+   * @generated
+   */
+  EAttribute getExternalVarInitDeclaration_Type();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.GlobalVarDeclaration <em>Global Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Global Var Declaration</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarDeclaration
+   * @generated
+   */
+  EClass getGlobalVarDeclaration();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.GlobalVarDeclaration#isConst <em>Const</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Const</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarDeclaration#isConst()
+   * @see #getGlobalVarDeclaration()
+   * @generated
+   */
+  EAttribute getGlobalVarDeclaration_Const();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.GlobalVarDeclaration#getVarsSimple <em>Vars Simple</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars Simple</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarDeclaration#getVarsSimple()
+   * @see #getGlobalVarDeclaration()
+   * @generated
+   */
+  EReference getGlobalVarDeclaration_VarsSimple();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.GlobalVarDeclaration#getVarsAs <em>Vars As</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Vars As</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarDeclaration#getVarsAs()
+   * @see #getGlobalVarDeclaration()
+   * @generated
+   */
+  EReference getGlobalVarDeclaration_VarsAs();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.GlobalVarInitDeclaration <em>Global Var Init Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Global Var Init Declaration</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarInitDeclaration
+   * @generated
+   */
+  EClass getGlobalVarInitDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.GlobalVarInitDeclaration#getVarList <em>Var List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Var List</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarInitDeclaration#getVarList()
+   * @see #getGlobalVarInitDeclaration()
+   * @generated
+   */
+  EReference getGlobalVarInitDeclaration_VarList();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.GlobalVarInitDeclaration#getLocation <em>Location</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Location</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarInitDeclaration#getLocation()
+   * @see #getGlobalVarInitDeclaration()
+   * @generated
+   */
+  EAttribute getGlobalVarInitDeclaration_Location();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.GlobalVarInitDeclaration#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see su.nsk.iae.post.poST.GlobalVarInitDeclaration#getType()
+   * @see #getGlobalVarInitDeclaration()
+   * @generated
+   */
+  EAttribute getGlobalVarInitDeclaration_Type();
 
   /**
    * Returns the meta object for class '{@link su.nsk.iae.post.poST.TimeLiteral <em>Time Literal</em>}'.
@@ -684,6 +1412,278 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EAttribute GREETING__NAME = eINSTANCE.getGreeting_Name();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SymbolicVariableImpl <em>Symbolic Variable</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.SymbolicVariableImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSymbolicVariable()
+     * @generated
+     */
+    EClass SYMBOLIC_VARIABLE = eINSTANCE.getSymbolicVariable();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYMBOLIC_VARIABLE__NAME = eINSTANCE.getSymbolicVariable_Name();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.VarInitDeclarationImpl <em>Var Init Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.VarInitDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarInitDeclaration()
+     * @generated
+     */
+    EClass VAR_INIT_DECLARATION = eINSTANCE.getVarInitDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Var List</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VAR_INIT_DECLARATION__VAR_LIST = eINSTANCE.getVarInitDeclaration_VarList();
+
+    /**
+     * The meta object literal for the '<em><b>Spec</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VAR_INIT_DECLARATION__SPEC = eINSTANCE.getVarInitDeclaration_Spec();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.VarListImpl <em>Var List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.VarListImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarList()
+     * @generated
+     */
+    EClass VAR_LIST = eINSTANCE.getVarList();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VAR_LIST__VARS = eINSTANCE.getVarList_Vars();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.InputVarDeclarationImpl <em>Input Var Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.InputVarDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getInputVarDeclaration()
+     * @generated
+     */
+    EClass INPUT_VAR_DECLARATION = eINSTANCE.getInputVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INPUT_VAR_DECLARATION__VARS = eINSTANCE.getInputVarDeclaration_Vars();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.OutputVarDeclarationImpl <em>Output Var Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.OutputVarDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getOutputVarDeclaration()
+     * @generated
+     */
+    EClass OUTPUT_VAR_DECLARATION = eINSTANCE.getOutputVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OUTPUT_VAR_DECLARATION__VARS = eINSTANCE.getOutputVarDeclaration_Vars();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.InputOutputVarDeclarationImpl <em>Input Output Var Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.InputOutputVarDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getInputOutputVarDeclaration()
+     * @generated
+     */
+    EClass INPUT_OUTPUT_VAR_DECLARATION = eINSTANCE.getInputOutputVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INPUT_OUTPUT_VAR_DECLARATION__VARS = eINSTANCE.getInputOutputVarDeclaration_Vars();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.VarDeclarationImpl <em>Var Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.VarDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarDeclaration()
+     * @generated
+     */
+    EClass VAR_DECLARATION = eINSTANCE.getVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Const</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VAR_DECLARATION__CONST = eINSTANCE.getVarDeclaration_Const();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VAR_DECLARATION__VARS = eINSTANCE.getVarDeclaration_Vars();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.TempVarDeclarationImpl <em>Temp Var Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.TempVarDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getTempVarDeclaration()
+     * @generated
+     */
+    EClass TEMP_VAR_DECLARATION = eINSTANCE.getTempVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TEMP_VAR_DECLARATION__VARS = eINSTANCE.getTempVarDeclaration_Vars();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.ExternalVarDeclarationImpl <em>External Var Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.ExternalVarDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExternalVarDeclaration()
+     * @generated
+     */
+    EClass EXTERNAL_VAR_DECLARATION = eINSTANCE.getExternalVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXTERNAL_VAR_DECLARATION__VARS = eINSTANCE.getExternalVarDeclaration_Vars();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.ExternalVarInitDeclarationImpl <em>External Var Init Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.ExternalVarInitDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExternalVarInitDeclaration()
+     * @generated
+     */
+    EClass EXTERNAL_VAR_INIT_DECLARATION = eINSTANCE.getExternalVarInitDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Var List</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXTERNAL_VAR_INIT_DECLARATION__VAR_LIST = eINSTANCE.getExternalVarInitDeclaration_VarList();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXTERNAL_VAR_INIT_DECLARATION__TYPE = eINSTANCE.getExternalVarInitDeclaration_Type();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.GlobalVarDeclarationImpl <em>Global Var Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.GlobalVarDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getGlobalVarDeclaration()
+     * @generated
+     */
+    EClass GLOBAL_VAR_DECLARATION = eINSTANCE.getGlobalVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Const</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GLOBAL_VAR_DECLARATION__CONST = eINSTANCE.getGlobalVarDeclaration_Const();
+
+    /**
+     * The meta object literal for the '<em><b>Vars Simple</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GLOBAL_VAR_DECLARATION__VARS_SIMPLE = eINSTANCE.getGlobalVarDeclaration_VarsSimple();
+
+    /**
+     * The meta object literal for the '<em><b>Vars As</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GLOBAL_VAR_DECLARATION__VARS_AS = eINSTANCE.getGlobalVarDeclaration_VarsAs();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.GlobalVarInitDeclarationImpl <em>Global Var Init Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.GlobalVarInitDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getGlobalVarInitDeclaration()
+     * @generated
+     */
+    EClass GLOBAL_VAR_INIT_DECLARATION = eINSTANCE.getGlobalVarInitDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Var List</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GLOBAL_VAR_INIT_DECLARATION__VAR_LIST = eINSTANCE.getGlobalVarInitDeclaration_VarList();
+
+    /**
+     * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GLOBAL_VAR_INIT_DECLARATION__LOCATION = eINSTANCE.getGlobalVarInitDeclaration_Location();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GLOBAL_VAR_INIT_DECLARATION__TYPE = eINSTANCE.getGlobalVarInitDeclaration_Type();
 
     /**
      * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.TimeLiteralImpl <em>Time Literal</em>}' class.

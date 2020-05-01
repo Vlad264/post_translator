@@ -12,6 +12,49 @@
     <genClasses ecoreClass="PoST.ecore#//Greeting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//Greeting/name"/>
     </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//SymbolicVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SymbolicVariable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//VarInitDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//VarInitDeclaration/varList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//VarInitDeclaration/spec"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//VarList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//VarList/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//InputVarDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//InputVarDeclaration/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//OutputVarDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//OutputVarDeclaration/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//InputOutputVarDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//InputOutputVarDeclaration/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//VarDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//VarDeclaration/const"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//VarDeclaration/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//TempVarDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//TempVarDeclaration/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//ExternalVarDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//ExternalVarDeclaration/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//ExternalVarInitDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//ExternalVarInitDeclaration/varList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//ExternalVarInitDeclaration/type"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//GlobalVarDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//GlobalVarDeclaration/const"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//GlobalVarDeclaration/varsSimple"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//GlobalVarDeclaration/varsAs"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//GlobalVarInitDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//GlobalVarInitDeclaration/varList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//GlobalVarInitDeclaration/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//GlobalVarInitDeclaration/type"/>
+    </genClasses>
     <genClasses ecoreClass="PoST.ecore#//TimeLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//TimeLiteral/interval"/>
     </genClasses>

@@ -67,6 +67,18 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
     {
       case PoSTPackage.MODEL: return createModel();
       case PoSTPackage.GREETING: return createGreeting();
+      case PoSTPackage.SYMBOLIC_VARIABLE: return createSymbolicVariable();
+      case PoSTPackage.VAR_INIT_DECLARATION: return createVarInitDeclaration();
+      case PoSTPackage.VAR_LIST: return createVarList();
+      case PoSTPackage.INPUT_VAR_DECLARATION: return createInputVarDeclaration();
+      case PoSTPackage.OUTPUT_VAR_DECLARATION: return createOutputVarDeclaration();
+      case PoSTPackage.INPUT_OUTPUT_VAR_DECLARATION: return createInputOutputVarDeclaration();
+      case PoSTPackage.VAR_DECLARATION: return createVarDeclaration();
+      case PoSTPackage.TEMP_VAR_DECLARATION: return createTempVarDeclaration();
+      case PoSTPackage.EXTERNAL_VAR_DECLARATION: return createExternalVarDeclaration();
+      case PoSTPackage.EXTERNAL_VAR_INIT_DECLARATION: return createExternalVarInitDeclaration();
+      case PoSTPackage.GLOBAL_VAR_DECLARATION: return createGlobalVarDeclaration();
+      case PoSTPackage.GLOBAL_VAR_INIT_DECLARATION: return createGlobalVarInitDeclaration();
       case PoSTPackage.TIME_LITERAL: return createTimeLiteral();
       case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION: return createSingleElementTypeDeclaration();
       case PoSTPackage.SIMPLE_SPECIFICATION_INIT: return createSimpleSpecificationInit();
@@ -102,6 +114,150 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     GreetingImpl greeting = new GreetingImpl();
     return greeting;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SymbolicVariable createSymbolicVariable()
+  {
+    SymbolicVariableImpl symbolicVariable = new SymbolicVariableImpl();
+    return symbolicVariable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VarInitDeclaration createVarInitDeclaration()
+  {
+    VarInitDeclarationImpl varInitDeclaration = new VarInitDeclarationImpl();
+    return varInitDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VarList createVarList()
+  {
+    VarListImpl varList = new VarListImpl();
+    return varList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InputVarDeclaration createInputVarDeclaration()
+  {
+    InputVarDeclarationImpl inputVarDeclaration = new InputVarDeclarationImpl();
+    return inputVarDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public OutputVarDeclaration createOutputVarDeclaration()
+  {
+    OutputVarDeclarationImpl outputVarDeclaration = new OutputVarDeclarationImpl();
+    return outputVarDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InputOutputVarDeclaration createInputOutputVarDeclaration()
+  {
+    InputOutputVarDeclarationImpl inputOutputVarDeclaration = new InputOutputVarDeclarationImpl();
+    return inputOutputVarDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VarDeclaration createVarDeclaration()
+  {
+    VarDeclarationImpl varDeclaration = new VarDeclarationImpl();
+    return varDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TempVarDeclaration createTempVarDeclaration()
+  {
+    TempVarDeclarationImpl tempVarDeclaration = new TempVarDeclarationImpl();
+    return tempVarDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExternalVarDeclaration createExternalVarDeclaration()
+  {
+    ExternalVarDeclarationImpl externalVarDeclaration = new ExternalVarDeclarationImpl();
+    return externalVarDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExternalVarInitDeclaration createExternalVarInitDeclaration()
+  {
+    ExternalVarInitDeclarationImpl externalVarInitDeclaration = new ExternalVarInitDeclarationImpl();
+    return externalVarInitDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GlobalVarDeclaration createGlobalVarDeclaration()
+  {
+    GlobalVarDeclarationImpl globalVarDeclaration = new GlobalVarDeclarationImpl();
+    return globalVarDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GlobalVarInitDeclaration createGlobalVarInitDeclaration()
+  {
+    GlobalVarInitDeclarationImpl globalVarInitDeclaration = new GlobalVarInitDeclarationImpl();
+    return globalVarInitDeclaration;
   }
 
   /**

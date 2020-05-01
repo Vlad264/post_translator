@@ -11,17 +11,29 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.ExternalVarDeclaration;
+import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
+import su.nsk.iae.post.poST.GlobalVarDeclaration;
+import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
 import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.InputOutputVarDeclaration;
+import su.nsk.iae.post.poST.InputVarDeclaration;
 import su.nsk.iae.post.poST.IntegerLiteral;
 import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.NumericLiteral;
+import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTFactory;
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.SymbolicVariable;
+import su.nsk.iae.post.poST.TempVarDeclaration;
 import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.VarDeclaration;
+import su.nsk.iae.post.poST.VarInitDeclaration;
+import su.nsk.iae.post.poST.VarList;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,6 +56,90 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   private EClass greetingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass symbolicVariableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varInitDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass inputVarDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass outputVarDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass inputOutputVarDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass varDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tempVarDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externalVarDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externalVarInitDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass globalVarDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass globalVarInitDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -206,6 +302,347 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
   public EAttribute getGreeting_Name()
   {
     return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSymbolicVariable()
+  {
+    return symbolicVariableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSymbolicVariable_Name()
+  {
+    return (EAttribute)symbolicVariableEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVarInitDeclaration()
+  {
+    return varInitDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVarInitDeclaration_VarList()
+  {
+    return (EReference)varInitDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVarInitDeclaration_Spec()
+  {
+    return (EReference)varInitDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVarList()
+  {
+    return varListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVarList_Vars()
+  {
+    return (EReference)varListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInputVarDeclaration()
+  {
+    return inputVarDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInputVarDeclaration_Vars()
+  {
+    return (EReference)inputVarDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOutputVarDeclaration()
+  {
+    return outputVarDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOutputVarDeclaration_Vars()
+  {
+    return (EReference)outputVarDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInputOutputVarDeclaration()
+  {
+    return inputOutputVarDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInputOutputVarDeclaration_Vars()
+  {
+    return (EReference)inputOutputVarDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVarDeclaration()
+  {
+    return varDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getVarDeclaration_Const()
+  {
+    return (EAttribute)varDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVarDeclaration_Vars()
+  {
+    return (EReference)varDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTempVarDeclaration()
+  {
+    return tempVarDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTempVarDeclaration_Vars()
+  {
+    return (EReference)tempVarDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternalVarDeclaration()
+  {
+    return externalVarDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalVarDeclaration_Vars()
+  {
+    return (EReference)externalVarDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternalVarInitDeclaration()
+  {
+    return externalVarInitDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalVarInitDeclaration_VarList()
+  {
+    return (EReference)externalVarInitDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExternalVarInitDeclaration_Type()
+  {
+    return (EAttribute)externalVarInitDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGlobalVarDeclaration()
+  {
+    return globalVarDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGlobalVarDeclaration_Const()
+  {
+    return (EAttribute)globalVarDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGlobalVarDeclaration_VarsSimple()
+  {
+    return (EReference)globalVarDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGlobalVarDeclaration_VarsAs()
+  {
+    return (EReference)globalVarDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGlobalVarInitDeclaration()
+  {
+    return globalVarInitDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGlobalVarInitDeclaration_VarList()
+  {
+    return (EReference)globalVarInitDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGlobalVarInitDeclaration_Location()
+  {
+    return (EAttribute)globalVarInitDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGlobalVarInitDeclaration_Type()
+  {
+    return (EAttribute)globalVarInitDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -454,6 +891,49 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     greetingEClass = createEClass(GREETING);
     createEAttribute(greetingEClass, GREETING__NAME);
 
+    symbolicVariableEClass = createEClass(SYMBOLIC_VARIABLE);
+    createEAttribute(symbolicVariableEClass, SYMBOLIC_VARIABLE__NAME);
+
+    varInitDeclarationEClass = createEClass(VAR_INIT_DECLARATION);
+    createEReference(varInitDeclarationEClass, VAR_INIT_DECLARATION__VAR_LIST);
+    createEReference(varInitDeclarationEClass, VAR_INIT_DECLARATION__SPEC);
+
+    varListEClass = createEClass(VAR_LIST);
+    createEReference(varListEClass, VAR_LIST__VARS);
+
+    inputVarDeclarationEClass = createEClass(INPUT_VAR_DECLARATION);
+    createEReference(inputVarDeclarationEClass, INPUT_VAR_DECLARATION__VARS);
+
+    outputVarDeclarationEClass = createEClass(OUTPUT_VAR_DECLARATION);
+    createEReference(outputVarDeclarationEClass, OUTPUT_VAR_DECLARATION__VARS);
+
+    inputOutputVarDeclarationEClass = createEClass(INPUT_OUTPUT_VAR_DECLARATION);
+    createEReference(inputOutputVarDeclarationEClass, INPUT_OUTPUT_VAR_DECLARATION__VARS);
+
+    varDeclarationEClass = createEClass(VAR_DECLARATION);
+    createEAttribute(varDeclarationEClass, VAR_DECLARATION__CONST);
+    createEReference(varDeclarationEClass, VAR_DECLARATION__VARS);
+
+    tempVarDeclarationEClass = createEClass(TEMP_VAR_DECLARATION);
+    createEReference(tempVarDeclarationEClass, TEMP_VAR_DECLARATION__VARS);
+
+    externalVarDeclarationEClass = createEClass(EXTERNAL_VAR_DECLARATION);
+    createEReference(externalVarDeclarationEClass, EXTERNAL_VAR_DECLARATION__VARS);
+
+    externalVarInitDeclarationEClass = createEClass(EXTERNAL_VAR_INIT_DECLARATION);
+    createEReference(externalVarInitDeclarationEClass, EXTERNAL_VAR_INIT_DECLARATION__VAR_LIST);
+    createEAttribute(externalVarInitDeclarationEClass, EXTERNAL_VAR_INIT_DECLARATION__TYPE);
+
+    globalVarDeclarationEClass = createEClass(GLOBAL_VAR_DECLARATION);
+    createEAttribute(globalVarDeclarationEClass, GLOBAL_VAR_DECLARATION__CONST);
+    createEReference(globalVarDeclarationEClass, GLOBAL_VAR_DECLARATION__VARS_SIMPLE);
+    createEReference(globalVarDeclarationEClass, GLOBAL_VAR_DECLARATION__VARS_AS);
+
+    globalVarInitDeclarationEClass = createEClass(GLOBAL_VAR_INIT_DECLARATION);
+    createEReference(globalVarInitDeclarationEClass, GLOBAL_VAR_INIT_DECLARATION__VAR_LIST);
+    createEAttribute(globalVarInitDeclarationEClass, GLOBAL_VAR_INIT_DECLARATION__LOCATION);
+    createEAttribute(globalVarInitDeclarationEClass, GLOBAL_VAR_INIT_DECLARATION__TYPE);
+
     timeLiteralEClass = createEClass(TIME_LITERAL);
     createEAttribute(timeLiteralEClass, TIME_LITERAL__INTERVAL);
 
@@ -522,6 +1002,49 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(symbolicVariableEClass, SymbolicVariable.class, "SymbolicVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSymbolicVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, SymbolicVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varInitDeclarationEClass, VarInitDeclaration.class, "VarInitDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVarInitDeclaration_VarList(), this.getVarList(), null, "varList", null, 0, 1, VarInitDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVarInitDeclaration_Spec(), this.getSimpleSpecificationInit(), null, "spec", null, 0, 1, VarInitDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varListEClass, VarList.class, "VarList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVarList_Vars(), this.getSymbolicVariable(), null, "vars", null, 0, -1, VarList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(inputVarDeclarationEClass, InputVarDeclaration.class, "InputVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInputVarDeclaration_Vars(), this.getVarInitDeclaration(), null, "vars", null, 0, -1, InputVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(outputVarDeclarationEClass, OutputVarDeclaration.class, "OutputVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOutputVarDeclaration_Vars(), this.getVarInitDeclaration(), null, "vars", null, 0, -1, OutputVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(inputOutputVarDeclarationEClass, InputOutputVarDeclaration.class, "InputOutputVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInputOutputVarDeclaration_Vars(), this.getVarInitDeclaration(), null, "vars", null, 0, -1, InputOutputVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(varDeclarationEClass, VarDeclaration.class, "VarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVarDeclaration_Const(), ecorePackage.getEBoolean(), "const", null, 0, 1, VarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVarDeclaration_Vars(), this.getVarInitDeclaration(), null, "vars", null, 0, -1, VarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tempVarDeclarationEClass, TempVarDeclaration.class, "TempVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTempVarDeclaration_Vars(), this.getVarInitDeclaration(), null, "vars", null, 0, -1, TempVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(externalVarDeclarationEClass, ExternalVarDeclaration.class, "ExternalVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExternalVarDeclaration_Vars(), this.getExternalVarInitDeclaration(), null, "vars", null, 0, -1, ExternalVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(externalVarInitDeclarationEClass, ExternalVarInitDeclaration.class, "ExternalVarInitDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExternalVarInitDeclaration_VarList(), this.getVarList(), null, "varList", null, 0, 1, ExternalVarInitDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExternalVarInitDeclaration_Type(), ecorePackage.getEString(), "type", null, 0, 1, ExternalVarInitDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(globalVarDeclarationEClass, GlobalVarDeclaration.class, "GlobalVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGlobalVarDeclaration_Const(), ecorePackage.getEBoolean(), "const", null, 0, 1, GlobalVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGlobalVarDeclaration_VarsSimple(), this.getVarInitDeclaration(), null, "varsSimple", null, 0, -1, GlobalVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGlobalVarDeclaration_VarsAs(), this.getGlobalVarInitDeclaration(), null, "varsAs", null, 0, -1, GlobalVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(globalVarInitDeclarationEClass, GlobalVarInitDeclaration.class, "GlobalVarInitDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGlobalVarInitDeclaration_VarList(), this.getVarList(), null, "varList", null, 0, 1, GlobalVarInitDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGlobalVarInitDeclaration_Location(), ecorePackage.getEString(), "location", null, 0, 1, GlobalVarInitDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGlobalVarInitDeclaration_Type(), ecorePackage.getEString(), "type", null, 0, 1, GlobalVarInitDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(timeLiteralEClass, TimeLiteral.class, "TimeLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTimeLiteral_Interval(), ecorePackage.getEString(), "interval", null, 0, 1, TimeLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

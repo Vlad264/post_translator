@@ -141,6 +141,309 @@ ruleGreeting returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleSymbolicVariable
+entryRuleSymbolicVariable returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSymbolicVariableRule()); }
+	iv_ruleSymbolicVariable=ruleSymbolicVariable
+	{ $current=$iv_ruleSymbolicVariable.current; }
+	EOF;
+
+// Rule SymbolicVariable
+ruleSymbolicVariable returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_name_0_0=RULE_ID
+			{
+				newLeafNode(lv_name_0_0, grammarAccess.getSymbolicVariableAccess().getNameIDTerminalRuleCall_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getSymbolicVariableRule());
+				}
+				setWithLastConsumed(
+					$current,
+					"name",
+					lv_name_0_0,
+					"su.nsk.iae.post.PoST.ID");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleVarInitDeclaration
+entryRuleVarInitDeclaration returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getVarInitDeclarationRule()); }
+	iv_ruleVarInitDeclaration=ruleVarInitDeclaration
+	{ $current=$iv_ruleVarInitDeclaration.current; }
+	EOF;
+
+// Rule VarInitDeclaration
+ruleVarInitDeclaration returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getVarInitDeclarationAccess().getVarListVarListParserRuleCall_0_0());
+				}
+				lv_varList_0_0=ruleVarList
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getVarInitDeclarationRule());
+					}
+					set(
+						$current,
+						"varList",
+						lv_varList_0_0,
+						"su.nsk.iae.post.PoST.VarList");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1=':'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getVarInitDeclarationAccess().getColonKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getVarInitDeclarationAccess().getSpecSimpleSpecificationInitParserRuleCall_2_0());
+				}
+				lv_spec_2_0=ruleSimpleSpecificationInit
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getVarInitDeclarationRule());
+					}
+					set(
+						$current,
+						"spec",
+						lv_spec_2_0,
+						"su.nsk.iae.post.PoST.SimpleSpecificationInit");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleVarList
+entryRuleVarList returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getVarListRule()); }
+	iv_ruleVarList=ruleVarList
+	{ $current=$iv_ruleVarList.current; }
+	EOF;
+
+// Rule VarList
+ruleVarList returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getVarListAccess().getVarsSymbolicVariableParserRuleCall_0_0());
+				}
+				lv_vars_0_0=ruleSymbolicVariable
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getVarListRule());
+					}
+					add(
+						$current,
+						"vars",
+						lv_vars_0_0,
+						"su.nsk.iae.post.PoST.SymbolicVariable");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_1=','
+			{
+				newLeafNode(otherlv_1, grammarAccess.getVarListAccess().getCommaKeyword_1_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getVarListAccess().getVarsSymbolicVariableParserRuleCall_1_1_0());
+					}
+					lv_vars_2_0=ruleSymbolicVariable
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getVarListRule());
+						}
+						add(
+							$current,
+							"vars",
+							lv_vars_2_0,
+							"su.nsk.iae.post.PoST.SymbolicVariable");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleExternalVarInitDeclaration
+entryRuleExternalVarInitDeclaration returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExternalVarInitDeclarationRule()); }
+	iv_ruleExternalVarInitDeclaration=ruleExternalVarInitDeclaration
+	{ $current=$iv_ruleExternalVarInitDeclaration.current; }
+	EOF;
+
+// Rule ExternalVarInitDeclaration
+ruleExternalVarInitDeclaration returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getExternalVarInitDeclarationAccess().getVarListVarListParserRuleCall_0_0());
+				}
+				lv_varList_0_0=ruleVarList
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getExternalVarInitDeclarationRule());
+					}
+					set(
+						$current,
+						"varList",
+						lv_varList_0_0,
+						"su.nsk.iae.post.PoST.VarList");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1=':'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getExternalVarInitDeclarationAccess().getColonKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getExternalVarInitDeclarationAccess().getTypeDataTypeNameParserRuleCall_2_0());
+				}
+				lv_type_2_0=ruleDataTypeName
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getExternalVarInitDeclarationRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_2_0,
+						"su.nsk.iae.post.PoST.DataTypeName");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleGlobalVarInitDeclaration
+entryRuleGlobalVarInitDeclaration returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getGlobalVarInitDeclarationRule()); }
+	iv_ruleGlobalVarInitDeclaration=ruleGlobalVarInitDeclaration
+	{ $current=$iv_ruleGlobalVarInitDeclaration.current; }
+	EOF;
+
+// Rule GlobalVarInitDeclaration
+ruleGlobalVarInitDeclaration returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getGlobalVarInitDeclarationAccess().getVarListVarListParserRuleCall_0_0());
+				}
+				lv_varList_0_0=ruleVarList
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getGlobalVarInitDeclarationRule());
+					}
+					set(
+						$current,
+						"varList",
+						lv_varList_0_0,
+						"su.nsk.iae.post.PoST.VarList");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1='AT'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getGlobalVarInitDeclarationAccess().getATKeyword_1());
+		}
+		(
+			(
+				lv_location_2_0=RULE_DIRECT_VARIABLE
+				{
+					newLeafNode(lv_location_2_0, grammarAccess.getGlobalVarInitDeclarationAccess().getLocationDIRECT_VARIABLETerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGlobalVarInitDeclarationRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"location",
+						lv_location_2_0,
+						"su.nsk.iae.post.PoST.DIRECT_VARIABLE");
+				}
+			)
+		)
+		otherlv_3=':'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getGlobalVarInitDeclarationAccess().getColonKeyword_3());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getGlobalVarInitDeclarationAccess().getTypeDataTypeNameParserRuleCall_4_0());
+				}
+				lv_type_4_0=ruleDataTypeName
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getGlobalVarInitDeclarationRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_4_0,
+						"su.nsk.iae.post.PoST.DataTypeName");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
 // Entry rule entryRuleTimeLiteral
 entryRuleTimeLiteral returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getTimeLiteralRule()); }
@@ -665,6 +968,12 @@ ruleRealLiteral returns [EObject current=null]
 		)
 	)
 ;
+
+RULE_DIRECT_VARIABLE : '%' RULE_DIRECT_TYPE_PREFIX RULE_DIRECT_SIZE_PREFIX RULE_INTEGER ('.' RULE_INTEGER)*;
+
+fragment RULE_DIRECT_TYPE_PREFIX : ('I'|'Q'|'M');
+
+fragment RULE_DIRECT_SIZE_PREFIX : ('X'|'B'|'W'|'D'|'L');
 
 RULE_TIME_PREF_LITERAL : ('T'|'TIME');
 

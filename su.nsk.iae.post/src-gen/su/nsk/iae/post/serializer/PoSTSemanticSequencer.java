@@ -15,15 +15,27 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.ExternalVarDeclaration;
+import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
+import su.nsk.iae.post.poST.GlobalVarDeclaration;
+import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
 import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.InputOutputVarDeclaration;
+import su.nsk.iae.post.poST.InputVarDeclaration;
 import su.nsk.iae.post.poST.IntegerLiteral;
 import su.nsk.iae.post.poST.Model;
+import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.SymbolicVariable;
+import su.nsk.iae.post.poST.TempVarDeclaration;
 import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.VarDeclaration;
+import su.nsk.iae.post.poST.VarInitDeclaration;
+import su.nsk.iae.post.poST.VarList;
 import su.nsk.iae.post.services.PoSTGrammarAccess;
 
 @SuppressWarnings("all")
@@ -43,14 +55,35 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.CONSTANT:
 				sequence_Constant(context, (Constant) semanticObject); 
 				return; 
+			case PoSTPackage.EXTERNAL_VAR_DECLARATION:
+				sequence_ExternalVarDeclaration(context, (ExternalVarDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.EXTERNAL_VAR_INIT_DECLARATION:
+				sequence_ExternalVarInitDeclaration(context, (ExternalVarInitDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.GLOBAL_VAR_DECLARATION:
+				sequence_GlobalVarDeclaration(context, (GlobalVarDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.GLOBAL_VAR_INIT_DECLARATION:
+				sequence_GlobalVarInitDeclaration(context, (GlobalVarInitDeclaration) semanticObject); 
+				return; 
 			case PoSTPackage.GREETING:
 				sequence_Greeting(context, (Greeting) semanticObject); 
+				return; 
+			case PoSTPackage.INPUT_OUTPUT_VAR_DECLARATION:
+				sequence_InputOutputVarDeclaration(context, (InputOutputVarDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.INPUT_VAR_DECLARATION:
+				sequence_InputVarDeclaration(context, (InputVarDeclaration) semanticObject); 
 				return; 
 			case PoSTPackage.INTEGER_LITERAL:
 				sequence_IntegerLiteral(context, (IntegerLiteral) semanticObject); 
 				return; 
 			case PoSTPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
+				return; 
+			case PoSTPackage.OUTPUT_VAR_DECLARATION:
+				sequence_OutputVarDeclaration(context, (OutputVarDeclaration) semanticObject); 
 				return; 
 			case PoSTPackage.REAL_LITERAL:
 				sequence_RealLiteral(context, (RealLiteral) semanticObject); 
@@ -64,8 +97,23 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
 				sequence_SingleElementTypeDeclaration(context, (SingleElementTypeDeclaration) semanticObject); 
 				return; 
+			case PoSTPackage.SYMBOLIC_VARIABLE:
+				sequence_SymbolicVariable(context, (SymbolicVariable) semanticObject); 
+				return; 
+			case PoSTPackage.TEMP_VAR_DECLARATION:
+				sequence_TempVarDeclaration(context, (TempVarDeclaration) semanticObject); 
+				return; 
 			case PoSTPackage.TIME_LITERAL:
 				sequence_TimeLiteral(context, (TimeLiteral) semanticObject); 
+				return; 
+			case PoSTPackage.VAR_DECLARATION:
+				sequence_VarDeclaration(context, (VarDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.VAR_INIT_DECLARATION:
+				sequence_VarInitDeclaration(context, (VarInitDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.VAR_LIST:
+				sequence_VarList(context, (VarList) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -86,6 +134,75 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ExternalVarDeclaration returns ExternalVarDeclaration
+	 *
+	 * Constraint:
+	 *     vars+=ExternalVarInitDeclaration+
+	 */
+	protected void sequence_ExternalVarDeclaration(ISerializationContext context, ExternalVarDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ExternalVarInitDeclaration returns ExternalVarInitDeclaration
+	 *
+	 * Constraint:
+	 *     (varList=VarList type=DataTypeName)
+	 */
+	protected void sequence_ExternalVarInitDeclaration(ISerializationContext context, ExternalVarInitDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXTERNAL_VAR_INIT_DECLARATION__VAR_LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXTERNAL_VAR_INIT_DECLARATION__VAR_LIST));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXTERNAL_VAR_INIT_DECLARATION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXTERNAL_VAR_INIT_DECLARATION__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExternalVarInitDeclarationAccess().getVarListVarListParserRuleCall_0_0(), semanticObject.getVarList());
+		feeder.accept(grammarAccess.getExternalVarInitDeclarationAccess().getTypeDataTypeNameParserRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GlobalVarDeclaration returns GlobalVarDeclaration
+	 *
+	 * Constraint:
+	 *     (const?='CONST'? (varsSimple+=VarInitDeclaration | varsAs+=GlobalVarInitDeclaration)+)
+	 */
+	protected void sequence_GlobalVarDeclaration(ISerializationContext context, GlobalVarDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GlobalVarInitDeclaration returns GlobalVarInitDeclaration
+	 *
+	 * Constraint:
+	 *     (varList=VarList location=DIRECT_VARIABLE type=DataTypeName)
+	 */
+	protected void sequence_GlobalVarInitDeclaration(ISerializationContext context, GlobalVarInitDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.GLOBAL_VAR_INIT_DECLARATION__VAR_LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.GLOBAL_VAR_INIT_DECLARATION__VAR_LIST));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.GLOBAL_VAR_INIT_DECLARATION__LOCATION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.GLOBAL_VAR_INIT_DECLARATION__LOCATION));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.GLOBAL_VAR_INIT_DECLARATION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.GLOBAL_VAR_INIT_DECLARATION__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGlobalVarInitDeclarationAccess().getVarListVarListParserRuleCall_0_0(), semanticObject.getVarList());
+		feeder.accept(grammarAccess.getGlobalVarInitDeclarationAccess().getLocationDIRECT_VARIABLETerminalRuleCall_2_0(), semanticObject.getLocation());
+		feeder.accept(grammarAccess.getGlobalVarInitDeclarationAccess().getTypeDataTypeNameParserRuleCall_4_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Greeting returns Greeting
 	 *
 	 * Constraint:
@@ -99,6 +216,30 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getGreetingAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InputOutputVarDeclaration returns InputOutputVarDeclaration
+	 *
+	 * Constraint:
+	 *     vars+=VarInitDeclaration+
+	 */
+	protected void sequence_InputOutputVarDeclaration(ISerializationContext context, InputOutputVarDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InputVarDeclaration returns InputVarDeclaration
+	 *
+	 * Constraint:
+	 *     vars+=VarInitDeclaration+
+	 */
+	protected void sequence_InputVarDeclaration(ISerializationContext context, InputVarDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -124,6 +265,18 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     greetings+=Greeting+
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     OutputVarDeclaration returns OutputVarDeclaration
+	 *
+	 * Constraint:
+	 *     vars+=VarInitDeclaration+
+	 */
+	protected void sequence_OutputVarDeclaration(ISerializationContext context, OutputVarDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -189,6 +342,36 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     SymbolicVariable returns SymbolicVariable
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_SymbolicVariable(ISerializationContext context, SymbolicVariable semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.SYMBOLIC_VARIABLE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.SYMBOLIC_VARIABLE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSymbolicVariableAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TempVarDeclaration returns TempVarDeclaration
+	 *
+	 * Constraint:
+	 *     vars+=VarInitDeclaration+
+	 */
+	protected void sequence_TempVarDeclaration(ISerializationContext context, TempVarDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     TimeLiteral returns TimeLiteral
 	 *     Constant returns TimeLiteral
 	 *
@@ -203,6 +386,51 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTimeLiteralAccess().getIntervalINTERVALTerminalRuleCall_3_0(), semanticObject.getInterval());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     VarDeclaration returns VarDeclaration
+	 *
+	 * Constraint:
+	 *     (const?='CONST'? vars+=VarInitDeclaration+)
+	 */
+	protected void sequence_VarDeclaration(ISerializationContext context, VarDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     VarInitDeclaration returns VarInitDeclaration
+	 *
+	 * Constraint:
+	 *     (varList=VarList spec=SimpleSpecificationInit)
+	 */
+	protected void sequence_VarInitDeclaration(ISerializationContext context, VarInitDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.VAR_INIT_DECLARATION__VAR_LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.VAR_INIT_DECLARATION__VAR_LIST));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.VAR_INIT_DECLARATION__SPEC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.VAR_INIT_DECLARATION__SPEC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVarInitDeclarationAccess().getVarListVarListParserRuleCall_0_0(), semanticObject.getVarList());
+		feeder.accept(grammarAccess.getVarInitDeclarationAccess().getSpecSimpleSpecificationInitParserRuleCall_2_0(), semanticObject.getSpec());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     VarList returns VarList
+	 *
+	 * Constraint:
+	 *     (vars+=SymbolicVariable vars+=SymbolicVariable*)
+	 */
+	protected void sequence_VarList(ISerializationContext context, VarList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

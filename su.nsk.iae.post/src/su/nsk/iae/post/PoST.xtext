@@ -10,6 +10,72 @@ Model:
 Greeting:
 	'Hello' name=ID '!';
 	
+/* ======================= START Variables ======================= */
+
+SymbolicVariable:
+	name=ID;
+
+terminal DIRECT_VARIABLE returns ecore::EString:
+	'%' DIRECT_TYPE_PREFIX DIRECT_SIZE_PREFIX INTEGER ('.' INTEGER)*;
+
+terminal fragment DIRECT_TYPE_PREFIX:
+	'I' | 'Q' | 'M';
+
+terminal fragment DIRECT_SIZE_PREFIX:
+	'X' | 'B' | 'W' | 'D' | 'L';
+
+VarInitDeclaration:
+	varList=VarList ':' spec=SimpleSpecificationInit;
+
+VarList:
+	vars+=SymbolicVariable (',' vars+=SymbolicVariable)*;
+
+InputVarDeclaration:
+	'VAR_INPUT'
+		(vars+=VarInitDeclaration ';')+
+	'END_VAR';
+
+OutputVarDeclaration:
+	'VAR_OUTPUT'
+		(vars+=VarInitDeclaration ';')+
+	'END_VAR';
+
+InputOutputVarDeclaration:
+	'VAR_IN_OUT'
+		(vars+=VarInitDeclaration ';')+
+	'END_VAR';
+
+VarDeclaration:
+	'VAR' (const?='CONST')?
+		(vars+=VarInitDeclaration ';')+
+	'END_VAR';
+
+TempVarDeclaration:
+	'VAR_TEMP'
+		(vars+=VarInitDeclaration ';')+
+	'END_VAR';
+
+ExternalVarDeclaration:
+	'VAR_EXTERNAL'
+		(vars+=ExternalVarInitDeclaration ';')+
+	'END_VAR';
+
+ExternalVarInitDeclaration:
+	varList=VarList ':' type=DataTypeName;
+
+GlobalVarDeclaration:
+	'VAR_GLOBAL' (const?='CONST')?
+		(
+			(varsSimple+=VarInitDeclaration ';') | 
+			(varsAs+=GlobalVarInitDeclaration ';')
+		)+
+	'END_VAR';
+
+GlobalVarInitDeclaration:
+	varList=VarList 'AT' location=DIRECT_VARIABLE ':' type=DataTypeName;
+
+/* ======================= END Variables ======================= */
+	
 /* ======================= START Time Literals ======================= */
 
 TimeLiteral:

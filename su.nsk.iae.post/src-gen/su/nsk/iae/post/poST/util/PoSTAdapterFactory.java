@@ -86,6 +86,66 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
         return createGreetingAdapter();
       }
       @Override
+      public Adapter caseSymbolicVariable(SymbolicVariable object)
+      {
+        return createSymbolicVariableAdapter();
+      }
+      @Override
+      public Adapter caseVarInitDeclaration(VarInitDeclaration object)
+      {
+        return createVarInitDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseVarList(VarList object)
+      {
+        return createVarListAdapter();
+      }
+      @Override
+      public Adapter caseInputVarDeclaration(InputVarDeclaration object)
+      {
+        return createInputVarDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseOutputVarDeclaration(OutputVarDeclaration object)
+      {
+        return createOutputVarDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseInputOutputVarDeclaration(InputOutputVarDeclaration object)
+      {
+        return createInputOutputVarDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseVarDeclaration(VarDeclaration object)
+      {
+        return createVarDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseTempVarDeclaration(TempVarDeclaration object)
+      {
+        return createTempVarDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseExternalVarDeclaration(ExternalVarDeclaration object)
+      {
+        return createExternalVarDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseExternalVarInitDeclaration(ExternalVarInitDeclaration object)
+      {
+        return createExternalVarInitDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseGlobalVarDeclaration(GlobalVarDeclaration object)
+      {
+        return createGlobalVarDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseGlobalVarInitDeclaration(GlobalVarInitDeclaration object)
+      {
+        return createGlobalVarInitDeclarationAdapter();
+      }
+      @Override
       public Adapter caseTimeLiteral(TimeLiteral object)
       {
         return createTimeLiteralAdapter();
@@ -173,6 +233,186 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGreetingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SymbolicVariable <em>Symbolic Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.SymbolicVariable
+   * @generated
+   */
+  public Adapter createSymbolicVariableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.VarInitDeclaration <em>Var Init Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.VarInitDeclaration
+   * @generated
+   */
+  public Adapter createVarInitDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.VarList <em>Var List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.VarList
+   * @generated
+   */
+  public Adapter createVarListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.InputVarDeclaration <em>Input Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.InputVarDeclaration
+   * @generated
+   */
+  public Adapter createInputVarDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.OutputVarDeclaration <em>Output Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.OutputVarDeclaration
+   * @generated
+   */
+  public Adapter createOutputVarDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.InputOutputVarDeclaration <em>Input Output Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.InputOutputVarDeclaration
+   * @generated
+   */
+  public Adapter createInputOutputVarDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.VarDeclaration <em>Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.VarDeclaration
+   * @generated
+   */
+  public Adapter createVarDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.TempVarDeclaration <em>Temp Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.TempVarDeclaration
+   * @generated
+   */
+  public Adapter createTempVarDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ExternalVarDeclaration <em>External Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ExternalVarDeclaration
+   * @generated
+   */
+  public Adapter createExternalVarDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ExternalVarInitDeclaration <em>External Var Init Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ExternalVarInitDeclaration
+   * @generated
+   */
+  public Adapter createExternalVarInitDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.GlobalVarDeclaration <em>Global Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.GlobalVarDeclaration
+   * @generated
+   */
+  public Adapter createGlobalVarDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.GlobalVarInitDeclaration <em>Global Var Init Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.GlobalVarInitDeclaration
+   * @generated
+   */
+  public Adapter createGlobalVarInitDeclarationAdapter()
   {
     return null;
   }

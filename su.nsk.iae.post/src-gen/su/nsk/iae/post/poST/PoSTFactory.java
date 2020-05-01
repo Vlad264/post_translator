@@ -42,6 +42,114 @@ public interface PoSTFactory extends EFactory
   Greeting createGreeting();
 
   /**
+   * Returns a new object of class '<em>Symbolic Variable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Symbolic Variable</em>'.
+   * @generated
+   */
+  SymbolicVariable createSymbolicVariable();
+
+  /**
+   * Returns a new object of class '<em>Var Init Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var Init Declaration</em>'.
+   * @generated
+   */
+  VarInitDeclaration createVarInitDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Var List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var List</em>'.
+   * @generated
+   */
+  VarList createVarList();
+
+  /**
+   * Returns a new object of class '<em>Input Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Input Var Declaration</em>'.
+   * @generated
+   */
+  InputVarDeclaration createInputVarDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Output Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Output Var Declaration</em>'.
+   * @generated
+   */
+  OutputVarDeclaration createOutputVarDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Input Output Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Input Output Var Declaration</em>'.
+   * @generated
+   */
+  InputOutputVarDeclaration createInputOutputVarDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var Declaration</em>'.
+   * @generated
+   */
+  VarDeclaration createVarDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Temp Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Temp Var Declaration</em>'.
+   * @generated
+   */
+  TempVarDeclaration createTempVarDeclaration();
+
+  /**
+   * Returns a new object of class '<em>External Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>External Var Declaration</em>'.
+   * @generated
+   */
+  ExternalVarDeclaration createExternalVarDeclaration();
+
+  /**
+   * Returns a new object of class '<em>External Var Init Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>External Var Init Declaration</em>'.
+   * @generated
+   */
+  ExternalVarInitDeclaration createExternalVarInitDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Global Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Global Var Declaration</em>'.
+   * @generated
+   */
+  GlobalVarDeclaration createGlobalVarDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Global Var Init Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Global Var Init Declaration</em>'.
+   * @generated
+   */
+  GlobalVarInitDeclaration createGlobalVarInitDeclaration();
+
+  /**
    * Returns a new object of class '<em>Time Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
