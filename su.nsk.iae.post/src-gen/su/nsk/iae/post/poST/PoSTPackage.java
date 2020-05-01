@@ -1393,22 +1393,13 @@ public interface PoSTPackage extends EPackage
   int UNARY_EXPRESSION__MUL_OP = POWER_EXPRESSION__MUL_OP;
 
   /**
-   * The feature id for the '<em><b>Un Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int UNARY_EXPRESSION__UN_OP = POWER_EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>Unary Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int UNARY_EXPRESSION_FEATURE_COUNT = POWER_EXPRESSION_FEATURE_COUNT + 1;
+  int UNARY_EXPRESSION_FEATURE_COUNT = POWER_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.PrimaryExpressionImpl <em>Primary Expression</em>}' class.
@@ -1421,13 +1412,67 @@ public interface PoSTPackage extends EPackage
   int PRIMARY_EXPRESSION = 28;
 
   /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__LEFT = UNARY_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__RIGHT = UNARY_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comp Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__COMP_OP = UNARY_EXPRESSION__COMP_OP;
+
+  /**
+   * The feature id for the '<em><b>Equ Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__EQU_OP = UNARY_EXPRESSION__EQU_OP;
+
+  /**
+   * The feature id for the '<em><b>Add Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__ADD_OP = UNARY_EXPRESSION__ADD_OP;
+
+  /**
+   * The feature id for the '<em><b>Mul Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__MUL_OP = UNARY_EXPRESSION__MUL_OP;
+
+  /**
    * The feature id for the '<em><b>Const</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRIMARY_EXPRESSION__CONST = 0;
+  int PRIMARY_EXPRESSION__CONST = UNARY_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' reference.
@@ -1436,7 +1481,7 @@ public interface PoSTPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_EXPRESSION__VARIABLE = 1;
+  int PRIMARY_EXPRESSION__VARIABLE = UNARY_EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Proc Status</b></em>' containment reference.
@@ -1445,7 +1490,7 @@ public interface PoSTPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_EXPRESSION__PROC_STATUS = 2;
+  int PRIMARY_EXPRESSION__PROC_STATUS = UNARY_EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Nest Expr</b></em>' containment reference.
@@ -1454,7 +1499,7 @@ public interface PoSTPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_EXPRESSION__NEST_EXPR = 3;
+  int PRIMARY_EXPRESSION__NEST_EXPR = UNARY_EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Primary Expression</em>' class.
@@ -1463,7 +1508,7 @@ public interface PoSTPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMARY_EXPRESSION_FEATURE_COUNT = 4;
+  int PRIMARY_EXPRESSION_FEATURE_COUNT = UNARY_EXPRESSION_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.StatementListImpl <em>Statement List</em>}' class.
@@ -3495,17 +3540,6 @@ public interface PoSTPackage extends EPackage
   EClass getUnaryExpression();
 
   /**
-   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.UnaryExpression#isUnOp <em>Un Op</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Un Op</em>'.
-   * @see su.nsk.iae.post.poST.UnaryExpression#isUnOp()
-   * @see #getUnaryExpression()
-   * @generated
-   */
-  EAttribute getUnaryExpression_UnOp();
-
-  /**
    * Returns the meta object for class '{@link su.nsk.iae.post.poST.PrimaryExpression <em>Primary Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5210,14 +5244,6 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EClass UNARY_EXPRESSION = eINSTANCE.getUnaryExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Un Op</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute UNARY_EXPRESSION__UN_OP = eINSTANCE.getUnaryExpression_UnOp();
 
     /**
      * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.PrimaryExpressionImpl <em>Primary Expression</em>}' class.

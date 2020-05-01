@@ -1617,8 +1617,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_PLC_ARDUINI_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4735:26: ( 'PLC_ARDUINO' )
-            // InternalPoST.g:4735:28: 'PLC_ARDUINO'
+            // InternalPoST.g:4732:26: ( 'PLC_ARDUINO' )
+            // InternalPoST.g:4732:28: 'PLC_ARDUINO'
             {
             match("PLC_ARDUINO"); 
 
@@ -1638,8 +1638,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_SINGLE_DECLARATION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4737:25: ( 'SINGLE' )
-            // InternalPoST.g:4737:27: 'SINGLE'
+            // InternalPoST.g:4734:25: ( 'SINGLE' )
+            // InternalPoST.g:4734:27: 'SINGLE'
             {
             match("SINGLE"); 
 
@@ -1659,8 +1659,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_INTERVAL_DECLARATION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4739:27: ( 'INTERVAL' )
-            // InternalPoST.g:4739:29: 'INTERVAL'
+            // InternalPoST.g:4736:27: ( 'INTERVAL' )
+            // InternalPoST.g:4736:29: 'INTERVAL'
             {
             match("INTERVAL"); 
 
@@ -1680,8 +1680,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_PRIORITY_DECLARATION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4741:27: ( 'PRIORITY' )
-            // InternalPoST.g:4741:29: 'PRIORITY'
+            // InternalPoST.g:4738:27: ( 'PRIORITY' )
+            // InternalPoST.g:4738:29: 'PRIORITY'
             {
             match("PRIORITY"); 
 
@@ -1701,8 +1701,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_OR_OPERATOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4743:18: ( 'OR' )
-            // InternalPoST.g:4743:20: 'OR'
+            // InternalPoST.g:4740:18: ( 'OR' )
+            // InternalPoST.g:4740:20: 'OR'
             {
             match("OR"); 
 
@@ -1722,8 +1722,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_XOR_OPERATOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4745:19: ( 'XOR' )
-            // InternalPoST.g:4745:21: 'XOR'
+            // InternalPoST.g:4742:19: ( 'XOR' )
+            // InternalPoST.g:4742:21: 'XOR'
             {
             match("XOR"); 
 
@@ -1743,10 +1743,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_AND_OPERATOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4747:19: ( ( '&' | 'AND' ) )
-            // InternalPoST.g:4747:21: ( '&' | 'AND' )
+            // InternalPoST.g:4744:19: ( ( '&' | 'AND' ) )
+            // InternalPoST.g:4744:21: ( '&' | 'AND' )
             {
-            // InternalPoST.g:4747:21: ( '&' | 'AND' )
+            // InternalPoST.g:4744:21: ( '&' | 'AND' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1764,14 +1764,14 @@ public class InternalPoSTLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalPoST.g:4747:22: '&'
+                    // InternalPoST.g:4744:22: '&'
                     {
                     match('&'); 
 
                     }
                     break;
                 case 2 :
-                    // InternalPoST.g:4747:26: 'AND'
+                    // InternalPoST.g:4744:26: 'AND'
                     {
                     match("AND"); 
 
@@ -1797,8 +1797,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_POWER_OPERATOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4749:21: ( '**' )
-            // InternalPoST.g:4749:23: '**'
+            // InternalPoST.g:4746:21: ( '**' )
+            // InternalPoST.g:4746:23: '**'
             {
             match("**"); 
 
@@ -1818,8 +1818,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_UNARY_OPERATOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4751:21: ( 'NOT' )
-            // InternalPoST.g:4751:23: 'NOT'
+            // InternalPoST.g:4748:21: ( 'NOT' )
+            // InternalPoST.g:4748:23: 'NOT'
             {
             match("NOT"); 
 
@@ -1839,8 +1839,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_SUBPROGRAM_CONTROL_STATEMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4753:35: ( 'RETURN' )
-            // InternalPoST.g:4753:37: 'RETURN'
+            // InternalPoST.g:4750:35: ( 'RETURN' )
+            // InternalPoST.g:4750:37: 'RETURN'
             {
             match("RETURN"); 
 
@@ -1860,8 +1860,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_EXIT_STATEMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4755:21: ( 'EXIT' )
-            // InternalPoST.g:4755:23: 'EXIT'
+            // InternalPoST.g:4752:21: ( 'EXIT' )
+            // InternalPoST.g:4752:23: 'EXIT'
             {
             match("EXIT"); 
 
@@ -1881,14 +1881,14 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_DIRECT_VARIABLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4757:22: ( '%' RULE_DIRECT_TYPE_PREFIX RULE_DIRECT_SIZE_PREFIX RULE_INTEGER ( '.' RULE_INTEGER )* )
-            // InternalPoST.g:4757:24: '%' RULE_DIRECT_TYPE_PREFIX RULE_DIRECT_SIZE_PREFIX RULE_INTEGER ( '.' RULE_INTEGER )*
+            // InternalPoST.g:4754:22: ( '%' RULE_DIRECT_TYPE_PREFIX RULE_DIRECT_SIZE_PREFIX RULE_INTEGER ( '.' RULE_INTEGER )* )
+            // InternalPoST.g:4754:24: '%' RULE_DIRECT_TYPE_PREFIX RULE_DIRECT_SIZE_PREFIX RULE_INTEGER ( '.' RULE_INTEGER )*
             {
             match('%'); 
             mRULE_DIRECT_TYPE_PREFIX(); 
             mRULE_DIRECT_SIZE_PREFIX(); 
             mRULE_INTEGER(); 
-            // InternalPoST.g:4757:89: ( '.' RULE_INTEGER )*
+            // InternalPoST.g:4754:89: ( '.' RULE_INTEGER )*
             loop2:
             do {
                 int alt2=2;
@@ -1901,7 +1901,7 @@ public class InternalPoSTLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalPoST.g:4757:90: '.' RULE_INTEGER
+            	    // InternalPoST.g:4754:90: '.' RULE_INTEGER
             	    {
             	    match('.'); 
             	    mRULE_INTEGER(); 
@@ -1928,8 +1928,8 @@ public class InternalPoSTLexer extends Lexer {
     // $ANTLR start "RULE_DIRECT_TYPE_PREFIX"
     public final void mRULE_DIRECT_TYPE_PREFIX() throws RecognitionException {
         try {
-            // InternalPoST.g:4759:34: ( ( 'I' | 'Q' | 'M' ) )
-            // InternalPoST.g:4759:36: ( 'I' | 'Q' | 'M' )
+            // InternalPoST.g:4756:34: ( ( 'I' | 'Q' | 'M' ) )
+            // InternalPoST.g:4756:36: ( 'I' | 'Q' | 'M' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='M'||input.LA(1)=='Q' ) {
                 input.consume();
@@ -1952,8 +1952,8 @@ public class InternalPoSTLexer extends Lexer {
     // $ANTLR start "RULE_DIRECT_SIZE_PREFIX"
     public final void mRULE_DIRECT_SIZE_PREFIX() throws RecognitionException {
         try {
-            // InternalPoST.g:4761:34: ( ( 'X' | 'B' | 'W' | 'D' | 'L' ) )
-            // InternalPoST.g:4761:36: ( 'X' | 'B' | 'W' | 'D' | 'L' )
+            // InternalPoST.g:4758:34: ( ( 'X' | 'B' | 'W' | 'D' | 'L' ) )
+            // InternalPoST.g:4758:36: ( 'X' | 'B' | 'W' | 'D' | 'L' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='D'||input.LA(1)=='L'||(input.LA(1)>='W' && input.LA(1)<='X') ) {
                 input.consume();
@@ -1978,10 +1978,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_TIME_PREF_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4763:24: ( ( 'T' | 'TIME' ) )
-            // InternalPoST.g:4763:26: ( 'T' | 'TIME' )
+            // InternalPoST.g:4760:24: ( ( 'T' | 'TIME' ) )
+            // InternalPoST.g:4760:26: ( 'T' | 'TIME' )
             {
-            // InternalPoST.g:4763:26: ( 'T' | 'TIME' )
+            // InternalPoST.g:4760:26: ( 'T' | 'TIME' )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -2002,14 +2002,14 @@ public class InternalPoSTLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalPoST.g:4763:27: 'T'
+                    // InternalPoST.g:4760:27: 'T'
                     {
                     match('T'); 
 
                     }
                     break;
                 case 2 :
-                    // InternalPoST.g:4763:31: 'TIME'
+                    // InternalPoST.g:4760:31: 'TIME'
                     {
                     match("TIME"); 
 
@@ -2035,15 +2035,15 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_INTERVAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4765:15: ( ( RULE_INTEGER 'd' )? ( RULE_INTEGER 'h' )? ( RULE_INTEGER 'm' )? ( RULE_INTEGER 's' )? ( RULE_INTEGER 'ms' )? )
-            // InternalPoST.g:4765:17: ( RULE_INTEGER 'd' )? ( RULE_INTEGER 'h' )? ( RULE_INTEGER 'm' )? ( RULE_INTEGER 's' )? ( RULE_INTEGER 'ms' )?
+            // InternalPoST.g:4762:15: ( ( RULE_INTEGER 'd' )? ( RULE_INTEGER 'h' )? ( RULE_INTEGER 'm' )? ( RULE_INTEGER 's' )? ( RULE_INTEGER 'ms' )? )
+            // InternalPoST.g:4762:17: ( RULE_INTEGER 'd' )? ( RULE_INTEGER 'h' )? ( RULE_INTEGER 'm' )? ( RULE_INTEGER 's' )? ( RULE_INTEGER 'ms' )?
             {
-            // InternalPoST.g:4765:17: ( RULE_INTEGER 'd' )?
+            // InternalPoST.g:4762:17: ( RULE_INTEGER 'd' )?
             int alt4=2;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // InternalPoST.g:4765:18: RULE_INTEGER 'd'
+                    // InternalPoST.g:4762:18: RULE_INTEGER 'd'
                     {
                     mRULE_INTEGER(); 
                     match('d'); 
@@ -2053,12 +2053,12 @@ public class InternalPoSTLexer extends Lexer {
 
             }
 
-            // InternalPoST.g:4765:37: ( RULE_INTEGER 'h' )?
+            // InternalPoST.g:4762:37: ( RULE_INTEGER 'h' )?
             int alt5=2;
             alt5 = dfa5.predict(input);
             switch (alt5) {
                 case 1 :
-                    // InternalPoST.g:4765:38: RULE_INTEGER 'h'
+                    // InternalPoST.g:4762:38: RULE_INTEGER 'h'
                     {
                     mRULE_INTEGER(); 
                     match('h'); 
@@ -2068,12 +2068,12 @@ public class InternalPoSTLexer extends Lexer {
 
             }
 
-            // InternalPoST.g:4765:57: ( RULE_INTEGER 'm' )?
+            // InternalPoST.g:4762:57: ( RULE_INTEGER 'm' )?
             int alt6=2;
             alt6 = dfa6.predict(input);
             switch (alt6) {
                 case 1 :
-                    // InternalPoST.g:4765:58: RULE_INTEGER 'm'
+                    // InternalPoST.g:4762:58: RULE_INTEGER 'm'
                     {
                     mRULE_INTEGER(); 
                     match('m'); 
@@ -2083,12 +2083,12 @@ public class InternalPoSTLexer extends Lexer {
 
             }
 
-            // InternalPoST.g:4765:77: ( RULE_INTEGER 's' )?
+            // InternalPoST.g:4762:77: ( RULE_INTEGER 's' )?
             int alt7=2;
             alt7 = dfa7.predict(input);
             switch (alt7) {
                 case 1 :
-                    // InternalPoST.g:4765:78: RULE_INTEGER 's'
+                    // InternalPoST.g:4762:78: RULE_INTEGER 's'
                     {
                     mRULE_INTEGER(); 
                     match('s'); 
@@ -2098,7 +2098,7 @@ public class InternalPoSTLexer extends Lexer {
 
             }
 
-            // InternalPoST.g:4765:97: ( RULE_INTEGER 'ms' )?
+            // InternalPoST.g:4762:97: ( RULE_INTEGER 'ms' )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -2107,7 +2107,7 @@ public class InternalPoSTLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalPoST.g:4765:98: RULE_INTEGER 'ms'
+                    // InternalPoST.g:4762:98: RULE_INTEGER 'ms'
                     {
                     mRULE_INTEGER(); 
                     match("ms"); 
@@ -2134,10 +2134,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_SIGNED_INTEGER_TYPE_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4767:31: ( ( 'SINT' | 'INT' | 'DINT' | 'LINT' ) )
-            // InternalPoST.g:4767:33: ( 'SINT' | 'INT' | 'DINT' | 'LINT' )
+            // InternalPoST.g:4764:31: ( ( 'SINT' | 'INT' | 'DINT' | 'LINT' ) )
+            // InternalPoST.g:4764:33: ( 'SINT' | 'INT' | 'DINT' | 'LINT' )
             {
-            // InternalPoST.g:4767:33: ( 'SINT' | 'INT' | 'DINT' | 'LINT' )
+            // InternalPoST.g:4764:33: ( 'SINT' | 'INT' | 'DINT' | 'LINT' )
             int alt9=4;
             switch ( input.LA(1) ) {
             case 'S':
@@ -2169,7 +2169,7 @@ public class InternalPoSTLexer extends Lexer {
 
             switch (alt9) {
                 case 1 :
-                    // InternalPoST.g:4767:34: 'SINT'
+                    // InternalPoST.g:4764:34: 'SINT'
                     {
                     match("SINT"); 
 
@@ -2177,7 +2177,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalPoST.g:4767:41: 'INT'
+                    // InternalPoST.g:4764:41: 'INT'
                     {
                     match("INT"); 
 
@@ -2185,7 +2185,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // InternalPoST.g:4767:47: 'DINT'
+                    // InternalPoST.g:4764:47: 'DINT'
                     {
                     match("DINT"); 
 
@@ -2193,7 +2193,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // InternalPoST.g:4767:54: 'LINT'
+                    // InternalPoST.g:4764:54: 'LINT'
                     {
                     match("LINT"); 
 
@@ -2219,10 +2219,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_UNSIGNED_INTEGER_TYPE_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4769:33: ( ( 'USINT' | 'UINT' | 'UDINT' | 'ULINT' ) )
-            // InternalPoST.g:4769:35: ( 'USINT' | 'UINT' | 'UDINT' | 'ULINT' )
+            // InternalPoST.g:4766:33: ( ( 'USINT' | 'UINT' | 'UDINT' | 'ULINT' ) )
+            // InternalPoST.g:4766:35: ( 'USINT' | 'UINT' | 'UDINT' | 'ULINT' )
             {
-            // InternalPoST.g:4769:35: ( 'USINT' | 'UINT' | 'UDINT' | 'ULINT' )
+            // InternalPoST.g:4766:35: ( 'USINT' | 'UINT' | 'UDINT' | 'ULINT' )
             int alt10=4;
             int LA10_0 = input.LA(1);
 
@@ -2264,7 +2264,7 @@ public class InternalPoSTLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalPoST.g:4769:36: 'USINT'
+                    // InternalPoST.g:4766:36: 'USINT'
                     {
                     match("USINT"); 
 
@@ -2272,7 +2272,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalPoST.g:4769:44: 'UINT'
+                    // InternalPoST.g:4766:44: 'UINT'
                     {
                     match("UINT"); 
 
@@ -2280,7 +2280,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // InternalPoST.g:4769:51: 'UDINT'
+                    // InternalPoST.g:4766:51: 'UDINT'
                     {
                     match("UDINT"); 
 
@@ -2288,7 +2288,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // InternalPoST.g:4769:59: 'ULINT'
+                    // InternalPoST.g:4766:59: 'ULINT'
                     {
                     match("ULINT"); 
 
@@ -2314,10 +2314,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_REAL_TYPE_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4771:21: ( ( 'REAL' | 'LREAL' ) )
-            // InternalPoST.g:4771:23: ( 'REAL' | 'LREAL' )
+            // InternalPoST.g:4768:21: ( ( 'REAL' | 'LREAL' ) )
+            // InternalPoST.g:4768:23: ( 'REAL' | 'LREAL' )
             {
-            // InternalPoST.g:4771:23: ( 'REAL' | 'LREAL' )
+            // InternalPoST.g:4768:23: ( 'REAL' | 'LREAL' )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -2335,7 +2335,7 @@ public class InternalPoSTLexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // InternalPoST.g:4771:24: 'REAL'
+                    // InternalPoST.g:4768:24: 'REAL'
                     {
                     match("REAL"); 
 
@@ -2343,7 +2343,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalPoST.g:4771:31: 'LREAL'
+                    // InternalPoST.g:4768:31: 'LREAL'
                     {
                     match("LREAL"); 
 
@@ -2369,10 +2369,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_BIT_STRING_TYPE_NAME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4773:27: ( ( 'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD' ) )
-            // InternalPoST.g:4773:29: ( 'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD' )
+            // InternalPoST.g:4770:27: ( ( 'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD' ) )
+            // InternalPoST.g:4770:29: ( 'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD' )
             {
-            // InternalPoST.g:4773:29: ( 'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD' )
+            // InternalPoST.g:4770:29: ( 'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD' )
             int alt12=5;
             switch ( input.LA(1) ) {
             case 'B':
@@ -2417,7 +2417,7 @@ public class InternalPoSTLexer extends Lexer {
 
             switch (alt12) {
                 case 1 :
-                    // InternalPoST.g:4773:30: 'BOOL'
+                    // InternalPoST.g:4770:30: 'BOOL'
                     {
                     match("BOOL"); 
 
@@ -2425,7 +2425,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalPoST.g:4773:37: 'BYTE'
+                    // InternalPoST.g:4770:37: 'BYTE'
                     {
                     match("BYTE"); 
 
@@ -2433,7 +2433,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // InternalPoST.g:4773:44: 'WORD'
+                    // InternalPoST.g:4770:44: 'WORD'
                     {
                     match("WORD"); 
 
@@ -2441,7 +2441,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // InternalPoST.g:4773:51: 'DWORD'
+                    // InternalPoST.g:4770:51: 'DWORD'
                     {
                     match("DWORD"); 
 
@@ -2449,7 +2449,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // InternalPoST.g:4773:59: 'LWORD'
+                    // InternalPoST.g:4770:59: 'LWORD'
                     {
                     match("LWORD"); 
 
@@ -2475,10 +2475,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4775:14: ( ( RULE_DIGIT )+ )
-            // InternalPoST.g:4775:16: ( RULE_DIGIT )+
+            // InternalPoST.g:4772:14: ( ( RULE_DIGIT )+ )
+            // InternalPoST.g:4772:16: ( RULE_DIGIT )+
             {
-            // InternalPoST.g:4775:16: ( RULE_DIGIT )+
+            // InternalPoST.g:4772:16: ( RULE_DIGIT )+
             int cnt13=0;
             loop13:
             do {
@@ -2492,7 +2492,7 @@ public class InternalPoSTLexer extends Lexer {
 
                 switch (alt13) {
             	case 1 :
-            	    // InternalPoST.g:4775:16: RULE_DIGIT
+            	    // InternalPoST.g:4772:16: RULE_DIGIT
             	    {
             	    mRULE_DIGIT(); 
 
@@ -2524,8 +2524,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_REAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4777:11: ( RULE_INTEGER '.' RULE_INTEGER )
-            // InternalPoST.g:4777:13: RULE_INTEGER '.' RULE_INTEGER
+            // InternalPoST.g:4774:11: ( RULE_INTEGER '.' RULE_INTEGER )
+            // InternalPoST.g:4774:13: RULE_INTEGER '.' RULE_INTEGER
             {
             mRULE_INTEGER(); 
             match('.'); 
@@ -2546,12 +2546,12 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_BINARY_INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4779:21: ( '2#' ( RULE_BIT )+ )
-            // InternalPoST.g:4779:23: '2#' ( RULE_BIT )+
+            // InternalPoST.g:4776:21: ( '2#' ( RULE_BIT )+ )
+            // InternalPoST.g:4776:23: '2#' ( RULE_BIT )+
             {
             match("2#"); 
 
-            // InternalPoST.g:4779:28: ( RULE_BIT )+
+            // InternalPoST.g:4776:28: ( RULE_BIT )+
             int cnt14=0;
             loop14:
             do {
@@ -2565,7 +2565,7 @@ public class InternalPoSTLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // InternalPoST.g:4779:28: RULE_BIT
+            	    // InternalPoST.g:4776:28: RULE_BIT
             	    {
             	    mRULE_BIT(); 
 
@@ -2597,12 +2597,12 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_OCTAL_INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4781:20: ( '8#' ( RULE_OCTAL_DIGIT )+ )
-            // InternalPoST.g:4781:22: '8#' ( RULE_OCTAL_DIGIT )+
+            // InternalPoST.g:4778:20: ( '8#' ( RULE_OCTAL_DIGIT )+ )
+            // InternalPoST.g:4778:22: '8#' ( RULE_OCTAL_DIGIT )+
             {
             match("8#"); 
 
-            // InternalPoST.g:4781:27: ( RULE_OCTAL_DIGIT )+
+            // InternalPoST.g:4778:27: ( RULE_OCTAL_DIGIT )+
             int cnt15=0;
             loop15:
             do {
@@ -2616,7 +2616,7 @@ public class InternalPoSTLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalPoST.g:4781:27: RULE_OCTAL_DIGIT
+            	    // InternalPoST.g:4778:27: RULE_OCTAL_DIGIT
             	    {
             	    mRULE_OCTAL_DIGIT(); 
 
@@ -2648,12 +2648,12 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_HEX_INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4783:18: ( '16#' ( RULE_HEX_DIGIT )+ )
-            // InternalPoST.g:4783:20: '16#' ( RULE_HEX_DIGIT )+
+            // InternalPoST.g:4780:18: ( '16#' ( RULE_HEX_DIGIT )+ )
+            // InternalPoST.g:4780:20: '16#' ( RULE_HEX_DIGIT )+
             {
             match("16#"); 
 
-            // InternalPoST.g:4783:26: ( RULE_HEX_DIGIT )+
+            // InternalPoST.g:4780:26: ( RULE_HEX_DIGIT )+
             int cnt16=0;
             loop16:
             do {
@@ -2667,7 +2667,7 @@ public class InternalPoSTLexer extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // InternalPoST.g:4783:26: RULE_HEX_DIGIT
+            	    // InternalPoST.g:4780:26: RULE_HEX_DIGIT
             	    {
             	    mRULE_HEX_DIGIT(); 
 
@@ -2699,10 +2699,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4785:22: ( ( 'TRUE' | 'FALSE' ) )
-            // InternalPoST.g:4785:24: ( 'TRUE' | 'FALSE' )
+            // InternalPoST.g:4782:22: ( ( 'TRUE' | 'FALSE' ) )
+            // InternalPoST.g:4782:24: ( 'TRUE' | 'FALSE' )
             {
-            // InternalPoST.g:4785:24: ( 'TRUE' | 'FALSE' )
+            // InternalPoST.g:4782:24: ( 'TRUE' | 'FALSE' )
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2720,7 +2720,7 @@ public class InternalPoSTLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // InternalPoST.g:4785:25: 'TRUE'
+                    // InternalPoST.g:4782:25: 'TRUE'
                     {
                     match("TRUE"); 
 
@@ -2728,7 +2728,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalPoST.g:4785:32: 'FALSE'
+                    // InternalPoST.g:4782:32: 'FALSE'
                     {
                     match("FALSE"); 
 
@@ -2752,8 +2752,8 @@ public class InternalPoSTLexer extends Lexer {
     // $ANTLR start "RULE_LETTER"
     public final void mRULE_LETTER() throws RecognitionException {
         try {
-            // InternalPoST.g:4787:22: ( ( 'A' .. 'Z' | 'a' .. 'z' | '_' ) )
-            // InternalPoST.g:4787:24: ( 'A' .. 'Z' | 'a' .. 'z' | '_' )
+            // InternalPoST.g:4784:22: ( ( 'A' .. 'Z' | 'a' .. 'z' | '_' ) )
+            // InternalPoST.g:4784:24: ( 'A' .. 'Z' | 'a' .. 'z' | '_' )
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -2776,8 +2776,8 @@ public class InternalPoSTLexer extends Lexer {
     // $ANTLR start "RULE_BIT"
     public final void mRULE_BIT() throws RecognitionException {
         try {
-            // InternalPoST.g:4789:19: ( ( '0' | '1' ) )
-            // InternalPoST.g:4789:21: ( '0' | '1' )
+            // InternalPoST.g:4786:19: ( ( '0' | '1' ) )
+            // InternalPoST.g:4786:21: ( '0' | '1' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='1') ) {
                 input.consume();
@@ -2800,8 +2800,8 @@ public class InternalPoSTLexer extends Lexer {
     // $ANTLR start "RULE_OCTAL_DIGIT"
     public final void mRULE_OCTAL_DIGIT() throws RecognitionException {
         try {
-            // InternalPoST.g:4791:27: ( '0' .. '7' )
-            // InternalPoST.g:4791:29: '0' .. '7'
+            // InternalPoST.g:4788:27: ( '0' .. '7' )
+            // InternalPoST.g:4788:29: '0' .. '7'
             {
             matchRange('0','7'); 
 
@@ -2816,8 +2816,8 @@ public class InternalPoSTLexer extends Lexer {
     // $ANTLR start "RULE_DIGIT"
     public final void mRULE_DIGIT() throws RecognitionException {
         try {
-            // InternalPoST.g:4793:21: ( '0' .. '9' )
-            // InternalPoST.g:4793:23: '0' .. '9'
+            // InternalPoST.g:4790:21: ( '0' .. '9' )
+            // InternalPoST.g:4790:23: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -2832,8 +2832,8 @@ public class InternalPoSTLexer extends Lexer {
     // $ANTLR start "RULE_HEX_DIGIT"
     public final void mRULE_HEX_DIGIT() throws RecognitionException {
         try {
-            // InternalPoST.g:4795:25: ( ( RULE_DIGIT | 'A' .. 'F' ) )
-            // InternalPoST.g:4795:27: ( RULE_DIGIT | 'A' .. 'F' )
+            // InternalPoST.g:4792:25: ( ( RULE_DIGIT | 'A' .. 'F' ) )
+            // InternalPoST.g:4792:27: ( RULE_DIGIT | 'A' .. 'F' )
             {
             if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F') ) {
                 input.consume();
@@ -2858,11 +2858,11 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4797:9: ( RULE_LETTER ( RULE_LETTER | RULE_DIGIT )* )
-            // InternalPoST.g:4797:11: RULE_LETTER ( RULE_LETTER | RULE_DIGIT )*
+            // InternalPoST.g:4794:9: ( RULE_LETTER ( RULE_LETTER | RULE_DIGIT )* )
+            // InternalPoST.g:4794:11: RULE_LETTER ( RULE_LETTER | RULE_DIGIT )*
             {
             mRULE_LETTER(); 
-            // InternalPoST.g:4797:23: ( RULE_LETTER | RULE_DIGIT )*
+            // InternalPoST.g:4794:23: ( RULE_LETTER | RULE_DIGIT )*
             loop18:
             do {
                 int alt18=2;
@@ -2911,12 +2911,12 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4799:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalPoST.g:4799:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalPoST.g:4796:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalPoST.g:4796:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalPoST.g:4799:24: ( options {greedy=false; } : . )*
+            // InternalPoST.g:4796:24: ( options {greedy=false; } : . )*
             loop19:
             do {
                 int alt19=2;
@@ -2941,7 +2941,7 @@ public class InternalPoSTLexer extends Lexer {
 
                 switch (alt19) {
             	case 1 :
-            	    // InternalPoST.g:4799:52: .
+            	    // InternalPoST.g:4796:52: .
             	    {
             	    matchAny(); 
 
@@ -2971,12 +2971,12 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4801:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalPoST.g:4801:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalPoST.g:4798:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalPoST.g:4798:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalPoST.g:4801:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalPoST.g:4798:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop20:
             do {
                 int alt20=2;
@@ -2989,7 +2989,7 @@ public class InternalPoSTLexer extends Lexer {
 
                 switch (alt20) {
             	case 1 :
-            	    // InternalPoST.g:4801:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalPoST.g:4798:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3009,7 +3009,7 @@ public class InternalPoSTLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalPoST.g:4801:40: ( ( '\\r' )? '\\n' )?
+            // InternalPoST.g:4798:40: ( ( '\\r' )? '\\n' )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -3018,9 +3018,9 @@ public class InternalPoSTLexer extends Lexer {
             }
             switch (alt22) {
                 case 1 :
-                    // InternalPoST.g:4801:41: ( '\\r' )? '\\n'
+                    // InternalPoST.g:4798:41: ( '\\r' )? '\\n'
                     {
-                    // InternalPoST.g:4801:41: ( '\\r' )?
+                    // InternalPoST.g:4798:41: ( '\\r' )?
                     int alt21=2;
                     int LA21_0 = input.LA(1);
 
@@ -3029,7 +3029,7 @@ public class InternalPoSTLexer extends Lexer {
                     }
                     switch (alt21) {
                         case 1 :
-                            // InternalPoST.g:4801:41: '\\r'
+                            // InternalPoST.g:4798:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3061,10 +3061,10 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4803:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalPoST.g:4803:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalPoST.g:4800:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalPoST.g:4800:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalPoST.g:4803:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalPoST.g:4800:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt23=0;
             loop23:
             do {
@@ -3118,8 +3118,8 @@ public class InternalPoSTLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalPoST.g:4805:16: ( . )
-            // InternalPoST.g:4805:18: .
+            // InternalPoST.g:4802:16: ( . )
+            // InternalPoST.g:4802:18: .
             {
             matchAny(); 
 
@@ -3898,7 +3898,7 @@ public class InternalPoSTLexer extends Lexer {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "4765:17: ( RULE_INTEGER 'd' )?";
+            return "4762:17: ( RULE_INTEGER 'd' )?";
         }
     }
     static final String DFA5_eotS =
@@ -3950,7 +3950,7 @@ public class InternalPoSTLexer extends Lexer {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "4765:37: ( RULE_INTEGER 'h' )?";
+            return "4762:37: ( RULE_INTEGER 'h' )?";
         }
     }
     static final String DFA6_eotS =
@@ -4003,7 +4003,7 @@ public class InternalPoSTLexer extends Lexer {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "4765:57: ( RULE_INTEGER 'm' )?";
+            return "4762:57: ( RULE_INTEGER 'm' )?";
         }
     }
     static final String DFA7_eotS =
@@ -4055,7 +4055,7 @@ public class InternalPoSTLexer extends Lexer {
             this.transition = DFA7_transition;
         }
         public String getDescription() {
-            return "4765:77: ( RULE_INTEGER 's' )?";
+            return "4762:77: ( RULE_INTEGER 's' )?";
         }
     }
     static final String DFA24_eotS =

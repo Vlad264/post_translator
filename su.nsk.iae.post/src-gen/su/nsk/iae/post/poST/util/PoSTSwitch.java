@@ -377,6 +377,15 @@ public class PoSTSwitch<T> extends Switch<T>
       {
         PrimaryExpression primaryExpression = (PrimaryExpression)theEObject;
         T result = casePrimaryExpression(primaryExpression);
+        if (result == null) result = caseUnaryExpression(primaryExpression);
+        if (result == null) result = casePowerExpression(primaryExpression);
+        if (result == null) result = caseMulExpression(primaryExpression);
+        if (result == null) result = caseAddExpression(primaryExpression);
+        if (result == null) result = caseEquExpression(primaryExpression);
+        if (result == null) result = caseCompExpression(primaryExpression);
+        if (result == null) result = caseAndExpression(primaryExpression);
+        if (result == null) result = caseXorExpression(primaryExpression);
+        if (result == null) result = caseExpression(primaryExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

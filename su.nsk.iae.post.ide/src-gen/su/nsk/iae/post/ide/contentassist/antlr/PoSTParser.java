@@ -38,6 +38,7 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getProcessStatementsAccess().getAlternatives(), "rule__ProcessStatements__Alternatives");
 			builder.put(grammarAccess.getProcessStatusExpressionAccess().getAlternatives_4(), "rule__ProcessStatusExpression__Alternatives_4");
 			builder.put(grammarAccess.getTimeoutStatementAccess().getAlternatives_1(), "rule__TimeoutStatement__Alternatives_1");
+			builder.put(grammarAccess.getUnaryExpressionAccess().getAlternatives(), "rule__UnaryExpression__Alternatives");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getAlternatives(), "rule__PrimaryExpression__Alternatives");
 			builder.put(grammarAccess.getStatementAccess().getAlternatives(), "rule__Statement__Alternatives");
 			builder.put(grammarAccess.getSelectionStatementAccess().getAlternatives(), "rule__SelectionStatement__Alternatives");
@@ -95,7 +96,7 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMulExpressionAccess().getGroup_1(), "rule__MulExpression__Group_1__0");
 			builder.put(grammarAccess.getPowerExpressionAccess().getGroup(), "rule__PowerExpression__Group__0");
 			builder.put(grammarAccess.getPowerExpressionAccess().getGroup_1(), "rule__PowerExpression__Group_1__0");
-			builder.put(grammarAccess.getUnaryExpressionAccess().getGroup(), "rule__UnaryExpression__Group__0");
+			builder.put(grammarAccess.getUnaryExpressionAccess().getGroup_1(), "rule__UnaryExpression__Group_1__0");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getGroup_3(), "rule__PrimaryExpression__Group_3__0");
 			builder.put(grammarAccess.getStatementListAccess().getGroup(), "rule__StatementList__Group__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup_0(), "rule__Statement__Group_0__0");
@@ -217,8 +218,7 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMulExpressionAccess().getMulOpAssignment_1_1(), "rule__MulExpression__MulOpAssignment_1_1");
 			builder.put(grammarAccess.getMulExpressionAccess().getRightAssignment_1_2(), "rule__MulExpression__RightAssignment_1_2");
 			builder.put(grammarAccess.getPowerExpressionAccess().getRightAssignment_1_2(), "rule__PowerExpression__RightAssignment_1_2");
-			builder.put(grammarAccess.getUnaryExpressionAccess().getUnOpAssignment_0(), "rule__UnaryExpression__UnOpAssignment_0");
-			builder.put(grammarAccess.getUnaryExpressionAccess().getRightAssignment_1(), "rule__UnaryExpression__RightAssignment_1");
+			builder.put(grammarAccess.getUnaryExpressionAccess().getRightAssignment_1_1(), "rule__UnaryExpression__RightAssignment_1_1");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getConstAssignment_0(), "rule__PrimaryExpression__ConstAssignment_0");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getVariableAssignment_1(), "rule__PrimaryExpression__VariableAssignment_1");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getProcStatusAssignment_2(), "rule__PrimaryExpression__ProcStatusAssignment_2");

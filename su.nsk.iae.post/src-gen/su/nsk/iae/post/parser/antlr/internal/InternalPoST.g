@@ -2155,41 +2155,38 @@ ruleUnaryExpression returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		{
+			newCompositeNode(grammarAccess.getUnaryExpressionAccess().getPrimaryExpressionParserRuleCall_0());
+		}
+		this_PrimaryExpression_0=rulePrimaryExpression
+		{
+			$current = $this_PrimaryExpression_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
 		(
+			this_UNARY_OPERATOR_1=RULE_UNARY_OPERATOR
+			{
+				newLeafNode(this_UNARY_OPERATOR_1, grammarAccess.getUnaryExpressionAccess().getUNARY_OPERATORTerminalRuleCall_1_0());
+			}
 			(
-				lv_unOp_0_0=RULE_UNARY_OPERATOR
-				{
-					newLeafNode(lv_unOp_0_0, grammarAccess.getUnaryExpressionAccess().getUnOpUNARY_OPERATORTerminalRuleCall_0_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getUnaryExpressionRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getUnaryExpressionAccess().getRightPrimaryExpressionParserRuleCall_1_1_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"unOp",
-						true,
-						"su.nsk.iae.post.PoST.UNARY_OPERATOR");
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getUnaryExpressionAccess().getRightPrimaryExpressionParserRuleCall_1_0());
-				}
-				lv_right_1_0=rulePrimaryExpression
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getUnaryExpressionRule());
+					lv_right_2_0=rulePrimaryExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getUnaryExpressionRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_2_0,
+							"su.nsk.iae.post.PoST.PrimaryExpression");
+						afterParserOrEnumRuleCall();
 					}
-					set(
-						$current,
-						"right",
-						lv_right_1_0,
-						"su.nsk.iae.post.PoST.PrimaryExpression");
-					afterParserOrEnumRuleCall();
-				}
+				)
 			)
 		)
 	)

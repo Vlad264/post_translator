@@ -3,11 +3,7 @@
  */
 package su.nsk.iae.post.poST.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.UnaryExpression;
@@ -16,37 +12,11 @@ import su.nsk.iae.post.poST.UnaryExpression;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Unary Expression</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link su.nsk.iae.post.poST.impl.UnaryExpressionImpl#isUnOp <em>Un Op</em>}</li>
- * </ul>
  *
  * @generated
  */
 public class UnaryExpressionImpl extends PowerExpressionImpl implements UnaryExpression
 {
-  /**
-   * The default value of the '{@link #isUnOp() <em>Un Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isUnOp()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean UN_OP_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isUnOp() <em>Un Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isUnOp()
-   * @generated
-   * @ordered
-   */
-  protected boolean unOp = UN_OP_EDEFAULT;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -66,114 +36,6 @@ public class UnaryExpressionImpl extends PowerExpressionImpl implements UnaryExp
   protected EClass eStaticClass()
   {
     return PoSTPackage.Literals.UNARY_EXPRESSION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean isUnOp()
-  {
-    return unOp;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setUnOp(boolean newUnOp)
-  {
-    boolean oldUnOp = unOp;
-    unOp = newUnOp;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.UNARY_EXPRESSION__UN_OP, oldUnOp, unOp));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case PoSTPackage.UNARY_EXPRESSION__UN_OP:
-        return isUnOp();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case PoSTPackage.UNARY_EXPRESSION__UN_OP:
-        setUnOp((Boolean)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case PoSTPackage.UNARY_EXPRESSION__UN_OP:
-        setUnOp(UN_OP_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case PoSTPackage.UNARY_EXPRESSION__UN_OP:
-        return unOp != UN_OP_EDEFAULT;
-    }
-    return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (unOp: ");
-    result.append(unOp);
-    result.append(')');
-    return result.toString();
   }
 
 } //UnaryExpressionImpl

@@ -51,12 +51,12 @@ public interface Expression extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(EObject)
+   * @see #setRight(XorExpression)
    * @see su.nsk.iae.post.poST.PoSTPackage#getExpression_Right()
    * @model containment="true"
    * @generated
    */
-  EObject getRight();
+  XorExpression getRight();
 
   /**
    * Sets the value of the '{@link su.nsk.iae.post.poST.Expression#getRight <em>Right</em>}' containment reference.
@@ -66,6 +66,6 @@ public interface Expression extends EObject
    * @see #getRight()
    * @generated
    */
-  void setRight(EObject value);
+  void setRight(XorExpression value);
 
 } // Expression

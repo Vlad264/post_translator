@@ -1531,17 +1531,6 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
-  public EAttribute getUnaryExpression_UnOp()
-  {
-    return (EAttribute)unaryExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getPrimaryExpression()
   {
     return primaryExpressionEClass;
@@ -2678,7 +2667,6 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     powerExpressionEClass = createEClass(POWER_EXPRESSION);
 
     unaryExpressionEClass = createEClass(UNARY_EXPRESSION);
-    createEAttribute(unaryExpressionEClass, UNARY_EXPRESSION__UN_OP);
 
     primaryExpressionEClass = createEClass(PRIMARY_EXPRESSION);
     createEReference(primaryExpressionEClass, PRIMARY_EXPRESSION__CONST);
@@ -2849,6 +2837,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     mulExpressionEClass.getESuperTypes().add(this.getAddExpression());
     powerExpressionEClass.getESuperTypes().add(this.getMulExpression());
     unaryExpressionEClass.getESuperTypes().add(this.getPowerExpression());
+    primaryExpressionEClass.getESuperTypes().add(this.getUnaryExpression());
     assignmentStatementEClass.getESuperTypes().add(this.getStatement());
     selectionStatementEClass.getESuperTypes().add(this.getStatement());
     ifStatementEClass.getESuperTypes().add(this.getSelectionStatement());
@@ -2952,7 +2941,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpression_Left(), this.getExpression(), null, "left", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Right(), ecorePackage.getEObject(), null, "right", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Right(), this.getXorExpression(), null, "right", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(xorExpressionEClass, XorExpression.class, "XorExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2973,7 +2962,6 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     initEClass(powerExpressionEClass, PowerExpression.class, "PowerExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(unaryExpressionEClass, UnaryExpression.class, "UnaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getUnaryExpression_UnOp(), ecorePackage.getEBoolean(), "unOp", null, 0, 1, UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(primaryExpressionEClass, PrimaryExpression.class, "PrimaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPrimaryExpression_Const(), this.getConstant(), null, "const", null, 0, 1, PrimaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

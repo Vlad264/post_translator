@@ -765,9 +765,9 @@ ruleUnaryExpression
 	}
 	:
 	(
-		{ before(grammarAccess.getUnaryExpressionAccess().getGroup()); }
-		(rule__UnaryExpression__Group__0)
-		{ after(grammarAccess.getUnaryExpressionAccess().getGroup()); }
+		{ before(grammarAccess.getUnaryExpressionAccess().getAlternatives()); }
+		(rule__UnaryExpression__Alternatives)
+		{ after(grammarAccess.getUnaryExpressionAccess().getAlternatives()); }
 	)
 ;
 finally {
@@ -1931,6 +1931,27 @@ rule__TimeoutStatement__Alternatives_1
 		{ before(grammarAccess.getTimeoutStatementAccess().getVariableAssignment_1_1()); }
 		(rule__TimeoutStatement__VariableAssignment_1_1)
 		{ after(grammarAccess.getTimeoutStatementAccess().getVariableAssignment_1_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__UnaryExpression__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getUnaryExpressionAccess().getPrimaryExpressionParserRuleCall_0()); }
+		rulePrimaryExpression
+		{ after(grammarAccess.getUnaryExpressionAccess().getPrimaryExpressionParserRuleCall_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getUnaryExpressionAccess().getGroup_1()); }
+		(rule__UnaryExpression__Group_1__0)
+		{ after(grammarAccess.getUnaryExpressionAccess().getGroup_1()); }
 	)
 ;
 finally {
@@ -6032,53 +6053,53 @@ finally {
 }
 
 
-rule__UnaryExpression__Group__0
+rule__UnaryExpression__Group_1__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__UnaryExpression__Group__0__Impl
-	rule__UnaryExpression__Group__1
+	rule__UnaryExpression__Group_1__0__Impl
+	rule__UnaryExpression__Group_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__UnaryExpression__Group__0__Impl
+rule__UnaryExpression__Group_1__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getUnaryExpressionAccess().getUnOpAssignment_0()); }
-	(rule__UnaryExpression__UnOpAssignment_0)?
-	{ after(grammarAccess.getUnaryExpressionAccess().getUnOpAssignment_0()); }
+	{ before(grammarAccess.getUnaryExpressionAccess().getUNARY_OPERATORTerminalRuleCall_1_0()); }
+	RULE_UNARY_OPERATOR
+	{ after(grammarAccess.getUnaryExpressionAccess().getUNARY_OPERATORTerminalRuleCall_1_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__UnaryExpression__Group__1
+rule__UnaryExpression__Group_1__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__UnaryExpression__Group__1__Impl
+	rule__UnaryExpression__Group_1__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__UnaryExpression__Group__1__Impl
+rule__UnaryExpression__Group_1__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getUnaryExpressionAccess().getRightAssignment_1()); }
-	(rule__UnaryExpression__RightAssignment_1)
-	{ after(grammarAccess.getUnaryExpressionAccess().getRightAssignment_1()); }
+	{ before(grammarAccess.getUnaryExpressionAccess().getRightAssignment_1_1()); }
+	(rule__UnaryExpression__RightAssignment_1_1)
+	{ after(grammarAccess.getUnaryExpressionAccess().getRightAssignment_1_1()); }
 )
 ;
 finally {
@@ -11451,30 +11472,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__UnaryExpression__UnOpAssignment_0
+rule__UnaryExpression__RightAssignment_1_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getUnaryExpressionAccess().getUnOpUNARY_OPERATORTerminalRuleCall_0_0()); }
-		RULE_UNARY_OPERATOR
-		{ after(grammarAccess.getUnaryExpressionAccess().getUnOpUNARY_OPERATORTerminalRuleCall_0_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__UnaryExpression__RightAssignment_1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getUnaryExpressionAccess().getRightPrimaryExpressionParserRuleCall_1_0()); }
+		{ before(grammarAccess.getUnaryExpressionAccess().getRightPrimaryExpressionParserRuleCall_1_1_0()); }
 		rulePrimaryExpression
-		{ after(grammarAccess.getUnaryExpressionAccess().getRightPrimaryExpressionParserRuleCall_1_0()); }
+		{ after(grammarAccess.getUnaryExpressionAccess().getRightPrimaryExpressionParserRuleCall_1_1_0()); }
 	)
 ;
 finally {

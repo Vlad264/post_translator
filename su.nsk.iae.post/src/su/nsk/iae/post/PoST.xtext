@@ -173,7 +173,7 @@ terminal POWER_OPERATOR:
 	'**';
 
 UnaryExpression:
-	(unOp?=UNARY_OPERATOR)? right=PrimaryExpression;
+	PrimaryExpression | (UNARY_OPERATOR right=PrimaryExpression);
 
 terminal UNARY_OPERATOR:
 	'NOT';

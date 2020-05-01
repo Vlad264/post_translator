@@ -1287,30 +1287,34 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class UnaryExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.UnaryExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cUnOpAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cUnOpUNARY_OPERATORTerminalRuleCall_0_0 = (RuleCall)cUnOpAssignment_0.eContents().get(0);
-		private final Assignment cRightAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRightPrimaryExpressionParserRuleCall_1_0 = (RuleCall)cRightAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cPrimaryExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final RuleCall cUNARY_OPERATORTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cRightPrimaryExpressionParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
 		
 		//UnaryExpression:
-		//	unOp?=UNARY_OPERATOR? right=PrimaryExpression;
+		//	PrimaryExpression | UNARY_OPERATOR right=PrimaryExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//unOp?=UNARY_OPERATOR? right=PrimaryExpression
-		public Group getGroup() { return cGroup; }
-		
-		//unOp?=UNARY_OPERATOR?
-		public Assignment getUnOpAssignment_0() { return cUnOpAssignment_0; }
-		
-		//UNARY_OPERATOR
-		public RuleCall getUnOpUNARY_OPERATORTerminalRuleCall_0_0() { return cUnOpUNARY_OPERATORTerminalRuleCall_0_0; }
-		
-		//right=PrimaryExpression
-		public Assignment getRightAssignment_1() { return cRightAssignment_1; }
+		//PrimaryExpression | UNARY_OPERATOR right=PrimaryExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//PrimaryExpression
-		public RuleCall getRightPrimaryExpressionParserRuleCall_1_0() { return cRightPrimaryExpressionParserRuleCall_1_0; }
+		public RuleCall getPrimaryExpressionParserRuleCall_0() { return cPrimaryExpressionParserRuleCall_0; }
+		
+		//UNARY_OPERATOR right=PrimaryExpression
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//UNARY_OPERATOR
+		public RuleCall getUNARY_OPERATORTerminalRuleCall_1_0() { return cUNARY_OPERATORTerminalRuleCall_1_0; }
+		
+		//right=PrimaryExpression
+		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
+		
+		//PrimaryExpression
+		public RuleCall getRightPrimaryExpressionParserRuleCall_1_1_0() { return cRightPrimaryExpressionParserRuleCall_1_1_0; }
 	}
 	public class PrimaryExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.PrimaryExpression");
@@ -3566,7 +3570,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//UnaryExpression:
-	//	unOp?=UNARY_OPERATOR? right=PrimaryExpression;
+	//	PrimaryExpression | UNARY_OPERATOR right=PrimaryExpression;
 	public UnaryExpressionElements getUnaryExpressionAccess() {
 		return pUnaryExpression;
 	}

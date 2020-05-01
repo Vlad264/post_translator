@@ -775,6 +775,23 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Expression returns PrimaryExpression
+	 *     Expression.Expression_1_0 returns PrimaryExpression
+	 *     XorExpression returns PrimaryExpression
+	 *     XorExpression.XorExpression_1_0 returns PrimaryExpression
+	 *     AndExpression returns PrimaryExpression
+	 *     AndExpression.AndExpression_1_0 returns PrimaryExpression
+	 *     CompExpression returns PrimaryExpression
+	 *     CompExpression.CompExpression_1_0 returns PrimaryExpression
+	 *     EquExpression returns PrimaryExpression
+	 *     EquExpression.EquExpression_1_0 returns PrimaryExpression
+	 *     AddExpression returns PrimaryExpression
+	 *     AddExpression.AddExpression_1_0 returns PrimaryExpression
+	 *     MulExpression returns PrimaryExpression
+	 *     MulExpression.MulExpression_1_0 returns PrimaryExpression
+	 *     PowerExpression returns PrimaryExpression
+	 *     PowerExpression.PowerExpression_1_0 returns PrimaryExpression
+	 *     UnaryExpression returns PrimaryExpression
 	 *     PrimaryExpression returns PrimaryExpression
 	 *
 	 * Constraint:
@@ -1163,10 +1180,16 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     UnaryExpression returns UnaryExpression
 	 *
 	 * Constraint:
-	 *     (unOp?=UNARY_OPERATOR? right=PrimaryExpression)
+	 *     right=PrimaryExpression
 	 */
 	protected void sequence_UnaryExpression(ISerializationContext context, UnaryExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUnaryExpressionAccess().getRightPrimaryExpressionParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	

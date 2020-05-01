@@ -3,7 +3,6 @@
  */
 package su.nsk.iae.post.poST;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface PrimaryExpression extends EObject
+public interface PrimaryExpression extends UnaryExpression
 {
   /**
    * Returns the value of the '<em><b>Const</b></em>' containment reference.

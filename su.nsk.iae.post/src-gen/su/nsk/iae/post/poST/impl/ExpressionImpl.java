@@ -7,7 +7,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -15,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.XorExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +50,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    * @ordered
    */
-  protected EObject right;
+  protected XorExpression right;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,7 +129,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    */
   @Override
-  public EObject getRight()
+  public XorExpression getRight()
   {
     return right;
   }
@@ -139,9 +139,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(EObject newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(XorExpression newRight, NotificationChain msgs)
   {
-    EObject oldRight = right;
+    XorExpression oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
@@ -157,7 +157,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * @generated
    */
   @Override
-  public void setRight(EObject newRight)
+  public void setRight(XorExpression newRight)
   {
     if (newRight != right)
     {
@@ -223,7 +223,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setLeft((Expression)newValue);
         return;
       case PoSTPackage.EXPRESSION__RIGHT:
-        setRight((EObject)newValue);
+        setRight((XorExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -243,7 +243,7 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
         setLeft((Expression)null);
         return;
       case PoSTPackage.EXPRESSION__RIGHT:
-        setRight((EObject)null);
+        setRight((XorExpression)null);
         return;
     }
     super.eUnset(featureID);

@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.Expression;
@@ -35,7 +34,7 @@ import su.nsk.iae.post.poST.SymbolicVariable;
  *
  * @generated
  */
-public class PrimaryExpressionImpl extends MinimalEObjectImpl.Container implements PrimaryExpression
+public class PrimaryExpressionImpl extends UnaryExpressionImpl implements PrimaryExpression
 {
   /**
    * The cached value of the '{@link #getConst() <em>Const</em>}' containment reference.

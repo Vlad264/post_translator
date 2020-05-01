@@ -9,12 +9,6 @@ package su.nsk.iae.post.poST;
  * A representation of the model object '<em><b>Unary Expression</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link su.nsk.iae.post.poST.UnaryExpression#isUnOp <em>Un Op</em>}</li>
- * </ul>
  *
  * @see su.nsk.iae.post.poST.PoSTPackage#getUnaryExpression()
  * @model
@@ -22,26 +16,4 @@ package su.nsk.iae.post.poST;
  */
 public interface UnaryExpression extends PowerExpression
 {
-  /**
-   * Returns the value of the '<em><b>Un Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Un Op</em>' attribute.
-   * @see #setUnOp(boolean)
-   * @see su.nsk.iae.post.poST.PoSTPackage#getUnaryExpression_UnOp()
-   * @model
-   * @generated
-   */
-  boolean isUnOp();
-
-  /**
-   * Sets the value of the '{@link su.nsk.iae.post.poST.UnaryExpression#isUnOp <em>Un Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Un Op</em>' attribute.
-   * @see #isUnOp()
-   * @generated
-   */
-  void setUnOp(boolean value);
-
 } // UnaryExpression
