@@ -86,6 +86,11 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
         return createGreetingAdapter();
       }
       @Override
+      public Adapter caseTimeLiteral(TimeLiteral object)
+      {
+        return createTimeLiteralAdapter();
+      }
+      @Override
       public Adapter caseSingleElementTypeDeclaration(SingleElementTypeDeclaration object)
       {
         return createSingleElementTypeDeclarationAdapter();
@@ -168,6 +173,21 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGreetingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.TimeLiteral <em>Time Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.TimeLiteral
+   * @generated
+   */
+  public Adapter createTimeLiteralAdapter()
   {
     return null;
   }

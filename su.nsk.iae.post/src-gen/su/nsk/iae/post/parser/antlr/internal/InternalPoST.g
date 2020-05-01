@@ -141,6 +141,57 @@ ruleGreeting returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleTimeLiteral
+entryRuleTimeLiteral returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTimeLiteralRule()); }
+	iv_ruleTimeLiteral=ruleTimeLiteral
+	{ $current=$iv_ruleTimeLiteral.current; }
+	EOF;
+
+// Rule TimeLiteral
+ruleTimeLiteral returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_TIME_PREF_LITERAL_0=RULE_TIME_PREF_LITERAL
+		{
+			newLeafNode(this_TIME_PREF_LITERAL_0, grammarAccess.getTimeLiteralAccess().getTIME_PREF_LITERALTerminalRuleCall_0());
+		}
+		otherlv_1='#'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getTimeLiteralAccess().getNumberSignKeyword_1());
+		}
+		(
+			otherlv_2='-'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getTimeLiteralAccess().getHyphenMinusKeyword_2());
+			}
+		)?
+		(
+			(
+				lv_interval_3_0=RULE_INTERVAL
+				{
+					newLeafNode(lv_interval_3_0, grammarAccess.getTimeLiteralAccess().getIntervalINTERVALTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTimeLiteralRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"interval",
+						lv_interval_3_0,
+						"su.nsk.iae.post.PoST.INTERVAL");
+				}
+			)
+		)
+	)
+;
+
 // Entry rule entryRuleDataTypeName
 entryRuleDataTypeName returns [String current=null]:
 	{ newCompositeNode(grammarAccess.getDataTypeNameRule()); }
@@ -356,17 +407,26 @@ ruleConstant returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			newCompositeNode(grammarAccess.getConstantAccess().getTimeLiteralParserRuleCall_1());
+		}
+		this_TimeLiteral_1=ruleTimeLiteral
+		{
+			$current = $this_TimeLiteral_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
 		(
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getConstantAccess().getConstantAction_1_0(),
+						grammarAccess.getConstantAccess().getConstantAction_2_0(),
 						$current);
 				}
 			)
-			this_BOOLEAN_LITERAL_2=RULE_BOOLEAN_LITERAL
+			this_BOOLEAN_LITERAL_3=RULE_BOOLEAN_LITERAL
 			{
-				newLeafNode(this_BOOLEAN_LITERAL_2, grammarAccess.getConstantAccess().getBOOLEAN_LITERALTerminalRuleCall_1_1());
+				newLeafNode(this_BOOLEAN_LITERAL_3, grammarAccess.getConstantAccess().getBOOLEAN_LITERALTerminalRuleCall_2_1());
 			}
 		)
 	)
@@ -605,6 +665,10 @@ ruleRealLiteral returns [EObject current=null]
 		)
 	)
 ;
+
+RULE_TIME_PREF_LITERAL : ('T'|'TIME');
+
+RULE_INTERVAL : (RULE_INTEGER 'd')? (RULE_INTEGER 'h')? (RULE_INTEGER 'm')? (RULE_INTEGER 's')? (RULE_INTEGER 'ms')?;
 
 RULE_SIGNED_INTEGER_TYPE_NAME : ('SINT'|'INT'|'DINT'|'LINT');
 

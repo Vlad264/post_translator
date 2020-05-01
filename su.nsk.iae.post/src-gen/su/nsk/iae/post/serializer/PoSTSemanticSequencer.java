@@ -23,6 +23,7 @@ import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.TimeLiteral;
 import su.nsk.iae.post.services.PoSTGrammarAccess;
 
 @SuppressWarnings("all")
@@ -62,6 +63,9 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
 				sequence_SingleElementTypeDeclaration(context, (SingleElementTypeDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.TIME_LITERAL:
+				sequence_TimeLiteral(context, (TimeLiteral) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -179,6 +183,25 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getTypeSimpleSpecificationInitParserRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TimeLiteral returns TimeLiteral
+	 *     Constant returns TimeLiteral
+	 *
+	 * Constraint:
+	 *     interval=INTERVAL
+	 */
+	protected void sequence_TimeLiteral(ISerializationContext context, TimeLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.TIME_LITERAL__INTERVAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.TIME_LITERAL__INTERVAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTimeLiteralAccess().getIntervalINTERVALTerminalRuleCall_3_0(), semanticObject.getInterval());
 		feeder.finish();
 	}
 	

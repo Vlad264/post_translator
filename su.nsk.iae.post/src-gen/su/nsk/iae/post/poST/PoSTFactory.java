@@ -42,6 +42,15 @@ public interface PoSTFactory extends EFactory
   Greeting createGreeting();
 
   /**
+   * Returns a new object of class '<em>Time Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Time Literal</em>'.
+   * @generated
+   */
+  TimeLiteral createTimeLiteral();
+
+  /**
    * Returns a new object of class '<em>Single Element Type Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

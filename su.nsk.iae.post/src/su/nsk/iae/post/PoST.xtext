@@ -10,6 +10,20 @@ Model:
 Greeting:
 	'Hello' name=ID '!';
 	
+/* ======================= START Time Literals ======================= */
+
+TimeLiteral:
+	 TIME_PREF_LITERAL '#' '-'? interval=INTERVAL
+;
+
+terminal TIME_PREF_LITERAL:
+	('T' | 'TIME');
+
+terminal INTERVAL returns ecore::EString:
+	(INTEGER 'd')? (INTEGER 'h')? (INTEGER 'm')? (INTEGER 's')? (INTEGER 'ms')?;
+
+/* ======================= END Time Literals ======================= */
+	
 /* ======================= START Elementary data types ======================= */
 
 DataTypeName returns ecore::EString:
@@ -44,7 +58,7 @@ SimpleSpecificationInit:
 /* ======================= START Numeric Literals ======================= */
 
 Constant:
-	NumericLiteral | {Constant} BOOLEAN_LITERAL;
+	NumericLiteral | TimeLiteral | {Constant} BOOLEAN_LITERAL;
 
 terminal INTEGER returns ecore::EInt:
 	DIGIT+;

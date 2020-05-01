@@ -114,6 +114,53 @@ public interface PoSTPackage extends EPackage
   int GREETING_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ConstantImpl <em>Constant</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.ConstantImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getConstant()
+   * @generated
+   */
+  int CONSTANT = 5;
+
+  /**
+   * The number of structural features of the '<em>Constant</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANT_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.TimeLiteralImpl <em>Time Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.TimeLiteralImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getTimeLiteral()
+   * @generated
+   */
+  int TIME_LITERAL = 2;
+
+  /**
+   * The feature id for the '<em><b>Interval</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIME_LITERAL__INTERVAL = CONSTANT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Time Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TIME_LITERAL_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl <em>Single Element Type Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,7 +168,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSingleElementTypeDeclaration()
    * @generated
    */
-  int SINGLE_ELEMENT_TYPE_DECLARATION = 2;
+  int SINGLE_ELEMENT_TYPE_DECLARATION = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -158,7 +205,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSimpleSpecificationInit()
    * @generated
    */
-  int SIMPLE_SPECIFICATION_INIT = 3;
+  int SIMPLE_SPECIFICATION_INIT = 4;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -188,25 +235,6 @@ public interface PoSTPackage extends EPackage
   int SIMPLE_SPECIFICATION_INIT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ConstantImpl <em>Constant</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see su.nsk.iae.post.poST.impl.ConstantImpl
-   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getConstant()
-   * @generated
-   */
-  int CONSTANT = 4;
-
-  /**
-   * The number of structural features of the '<em>Constant</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTANT_FEATURE_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SignedIntegerImpl <em>Signed Integer</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -214,7 +242,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSignedInteger()
    * @generated
    */
-  int SIGNED_INTEGER = 5;
+  int SIGNED_INTEGER = 6;
 
   /**
    * The feature id for the '<em><b>Sig</b></em>' attribute.
@@ -251,7 +279,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getNumericLiteral()
    * @generated
    */
-  int NUMERIC_LITERAL = 6;
+  int NUMERIC_LITERAL = 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -279,7 +307,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 7;
+  int INTEGER_LITERAL = 8;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -316,7 +344,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 8;
+  int REAL_LITERAL = 9;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -396,6 +424,27 @@ public interface PoSTPackage extends EPackage
    * @generated
    */
   EAttribute getGreeting_Name();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.TimeLiteral <em>Time Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Time Literal</em>'.
+   * @see su.nsk.iae.post.poST.TimeLiteral
+   * @generated
+   */
+  EClass getTimeLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.TimeLiteral#getInterval <em>Interval</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Interval</em>'.
+   * @see su.nsk.iae.post.poST.TimeLiteral#getInterval()
+   * @see #getTimeLiteral()
+   * @generated
+   */
+  EAttribute getTimeLiteral_Interval();
 
   /**
    * Returns the meta object for class '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration <em>Single Element Type Declaration</em>}'.
@@ -635,6 +684,24 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EAttribute GREETING__NAME = eINSTANCE.getGreeting_Name();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.TimeLiteralImpl <em>Time Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.TimeLiteralImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getTimeLiteral()
+     * @generated
+     */
+    EClass TIME_LITERAL = eINSTANCE.getTimeLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Interval</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TIME_LITERAL__INTERVAL = eINSTANCE.getTimeLiteral_Interval();
 
     /**
      * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl <em>Single Element Type Declaration</em>}' class.

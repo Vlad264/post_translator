@@ -21,6 +21,7 @@ import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.TimeLiteral;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,6 +44,13 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   private EClass greetingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass timeLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -198,6 +206,28 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
   public EAttribute getGreeting_Name()
   {
     return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTimeLiteral()
+  {
+    return timeLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTimeLiteral_Interval()
+  {
+    return (EAttribute)timeLiteralEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -424,6 +454,9 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     greetingEClass = createEClass(GREETING);
     createEAttribute(greetingEClass, GREETING__NAME);
 
+    timeLiteralEClass = createEClass(TIME_LITERAL);
+    createEAttribute(timeLiteralEClass, TIME_LITERAL__INTERVAL);
+
     singleElementTypeDeclarationEClass = createEClass(SINGLE_ELEMENT_TYPE_DECLARATION);
     createEAttribute(singleElementTypeDeclarationEClass, SINGLE_ELEMENT_TYPE_DECLARATION__NAME);
     createEReference(singleElementTypeDeclarationEClass, SINGLE_ELEMENT_TYPE_DECLARATION__TYPE);
@@ -478,6 +511,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    timeLiteralEClass.getESuperTypes().add(this.getConstant());
     numericLiteralEClass.getESuperTypes().add(this.getConstant());
     integerLiteralEClass.getESuperTypes().add(this.getNumericLiteral());
     realLiteralEClass.getESuperTypes().add(this.getNumericLiteral());
@@ -488,6 +522,9 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(timeLiteralEClass, TimeLiteral.class, "TimeLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTimeLiteral_Interval(), ecorePackage.getEString(), "interval", null, 0, 1, TimeLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(singleElementTypeDeclarationEClass, SingleElementTypeDeclaration.class, "SingleElementTypeDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSingleElementTypeDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, SingleElementTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -67,6 +67,7 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
     {
       case PoSTPackage.MODEL: return createModel();
       case PoSTPackage.GREETING: return createGreeting();
+      case PoSTPackage.TIME_LITERAL: return createTimeLiteral();
       case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION: return createSingleElementTypeDeclaration();
       case PoSTPackage.SIMPLE_SPECIFICATION_INIT: return createSimpleSpecificationInit();
       case PoSTPackage.CONSTANT: return createConstant();
@@ -101,6 +102,18 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     GreetingImpl greeting = new GreetingImpl();
     return greeting;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TimeLiteral createTimeLiteral()
+  {
+    TimeLiteralImpl timeLiteral = new TimeLiteralImpl();
+    return timeLiteral;
   }
 
   /**
