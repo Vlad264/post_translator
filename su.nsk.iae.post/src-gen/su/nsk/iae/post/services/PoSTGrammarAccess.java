@@ -68,6 +68,514 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//'!'
 		public Keyword getExclamationMarkKeyword_2() { return cExclamationMarkKeyword_2; }
 	}
+	public class ProgramElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.Program");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPROGRAMKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cProgInVarsAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cProgInVarsInputVarDeclarationParserRuleCall_2_0_0 = (RuleCall)cProgInVarsAssignment_2_0.eContents().get(0);
+		private final Assignment cProgOutVarsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cProgOutVarsOutputVarDeclarationParserRuleCall_2_1_0 = (RuleCall)cProgOutVarsAssignment_2_1.eContents().get(0);
+		private final Assignment cProgInOutVarsAssignment_2_2 = (Assignment)cAlternatives_2.eContents().get(2);
+		private final RuleCall cProgInOutVarsInputOutputVarDeclarationParserRuleCall_2_2_0 = (RuleCall)cProgInOutVarsAssignment_2_2.eContents().get(0);
+		private final Assignment cProgVarsAssignment_2_3 = (Assignment)cAlternatives_2.eContents().get(3);
+		private final RuleCall cProgVarsVarDeclarationParserRuleCall_2_3_0 = (RuleCall)cProgVarsAssignment_2_3.eContents().get(0);
+		private final Assignment cProgTempVarsAssignment_2_4 = (Assignment)cAlternatives_2.eContents().get(4);
+		private final RuleCall cProgTempVarsTempVarDeclarationParserRuleCall_2_4_0 = (RuleCall)cProgTempVarsAssignment_2_4.eContents().get(0);
+		private final Assignment cProgExternVarsAssignment_2_5 = (Assignment)cAlternatives_2.eContents().get(5);
+		private final RuleCall cProgExternVarsExternalVarDeclarationParserRuleCall_2_5_0 = (RuleCall)cProgExternVarsAssignment_2_5.eContents().get(0);
+		private final Assignment cProcessesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cProcessesProcessParserRuleCall_3_0 = (RuleCall)cProcessesAssignment_3.eContents().get(0);
+		private final Keyword cEND_PROGRAMKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		///* ======================= START Program ======================= */ Program:
+		//	'PROGRAM' name=ID (progInVars+=InputVarDeclaration | progOutVars+=OutputVarDeclaration |
+		//	progInOutVars+=InputOutputVarDeclaration | progVars+=VarDeclaration | progTempVars+=TempVarDeclaration |
+		//	progExternVars+=ExternalVarDeclaration)*
+		//	processes+=Process*
+		//	'END_PROGRAM';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'PROGRAM' name=ID (progInVars+=InputVarDeclaration | progOutVars+=OutputVarDeclaration |
+		//progInOutVars+=InputOutputVarDeclaration | progVars+=VarDeclaration | progTempVars+=TempVarDeclaration |
+		//progExternVars+=ExternalVarDeclaration)* processes+=Process* 'END_PROGRAM'
+		public Group getGroup() { return cGroup; }
+		
+		//'PROGRAM'
+		public Keyword getPROGRAMKeyword_0() { return cPROGRAMKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//(progInVars+=InputVarDeclaration | progOutVars+=OutputVarDeclaration | progInOutVars+=InputOutputVarDeclaration |
+		//progVars+=VarDeclaration | progTempVars+=TempVarDeclaration | progExternVars+=ExternalVarDeclaration)*
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//progInVars+=InputVarDeclaration
+		public Assignment getProgInVarsAssignment_2_0() { return cProgInVarsAssignment_2_0; }
+		
+		//InputVarDeclaration
+		public RuleCall getProgInVarsInputVarDeclarationParserRuleCall_2_0_0() { return cProgInVarsInputVarDeclarationParserRuleCall_2_0_0; }
+		
+		//progOutVars+=OutputVarDeclaration
+		public Assignment getProgOutVarsAssignment_2_1() { return cProgOutVarsAssignment_2_1; }
+		
+		//OutputVarDeclaration
+		public RuleCall getProgOutVarsOutputVarDeclarationParserRuleCall_2_1_0() { return cProgOutVarsOutputVarDeclarationParserRuleCall_2_1_0; }
+		
+		//progInOutVars+=InputOutputVarDeclaration
+		public Assignment getProgInOutVarsAssignment_2_2() { return cProgInOutVarsAssignment_2_2; }
+		
+		//InputOutputVarDeclaration
+		public RuleCall getProgInOutVarsInputOutputVarDeclarationParserRuleCall_2_2_0() { return cProgInOutVarsInputOutputVarDeclarationParserRuleCall_2_2_0; }
+		
+		//progVars+=VarDeclaration
+		public Assignment getProgVarsAssignment_2_3() { return cProgVarsAssignment_2_3; }
+		
+		//VarDeclaration
+		public RuleCall getProgVarsVarDeclarationParserRuleCall_2_3_0() { return cProgVarsVarDeclarationParserRuleCall_2_3_0; }
+		
+		//progTempVars+=TempVarDeclaration
+		public Assignment getProgTempVarsAssignment_2_4() { return cProgTempVarsAssignment_2_4; }
+		
+		//TempVarDeclaration
+		public RuleCall getProgTempVarsTempVarDeclarationParserRuleCall_2_4_0() { return cProgTempVarsTempVarDeclarationParserRuleCall_2_4_0; }
+		
+		//progExternVars+=ExternalVarDeclaration
+		public Assignment getProgExternVarsAssignment_2_5() { return cProgExternVarsAssignment_2_5; }
+		
+		//ExternalVarDeclaration
+		public RuleCall getProgExternVarsExternalVarDeclarationParserRuleCall_2_5_0() { return cProgExternVarsExternalVarDeclarationParserRuleCall_2_5_0; }
+		
+		//processes+=Process*
+		public Assignment getProcessesAssignment_3() { return cProcessesAssignment_3; }
+		
+		//Process
+		public RuleCall getProcessesProcessParserRuleCall_3_0() { return cProcessesProcessParserRuleCall_3_0; }
+		
+		//'END_PROGRAM'
+		public Keyword getEND_PROGRAMKeyword_4() { return cEND_PROGRAMKeyword_4; }
+	}
+	public class ProcessElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.Process");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPROCESSKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cProcVarsAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cProcVarsVarDeclarationParserRuleCall_2_0_0 = (RuleCall)cProcVarsAssignment_2_0.eContents().get(0);
+		private final Assignment cProcTempVarsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cProcTempVarsTempVarDeclarationParserRuleCall_2_1_0 = (RuleCall)cProcTempVarsAssignment_2_1.eContents().get(0);
+		private final Assignment cStatesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStatesStateParserRuleCall_3_0 = (RuleCall)cStatesAssignment_3.eContents().get(0);
+		private final Keyword cEND_PROCESSKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		///* ======================= END Program ======================= */
+		///* ======================= START poST Expression ======================= */ Process:
+		//	'PROCESS' name=ID (procVars+=VarDeclaration | procTempVars+=TempVarDeclaration)*
+		//	states+=State*
+		//	'END_PROCESS';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'PROCESS' name=ID (procVars+=VarDeclaration | procTempVars+=TempVarDeclaration)* states+=State* 'END_PROCESS'
+		public Group getGroup() { return cGroup; }
+		
+		//'PROCESS'
+		public Keyword getPROCESSKeyword_0() { return cPROCESSKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//(procVars+=VarDeclaration | procTempVars+=TempVarDeclaration)*
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//procVars+=VarDeclaration
+		public Assignment getProcVarsAssignment_2_0() { return cProcVarsAssignment_2_0; }
+		
+		//VarDeclaration
+		public RuleCall getProcVarsVarDeclarationParserRuleCall_2_0_0() { return cProcVarsVarDeclarationParserRuleCall_2_0_0; }
+		
+		//procTempVars+=TempVarDeclaration
+		public Assignment getProcTempVarsAssignment_2_1() { return cProcTempVarsAssignment_2_1; }
+		
+		//TempVarDeclaration
+		public RuleCall getProcTempVarsTempVarDeclarationParserRuleCall_2_1_0() { return cProcTempVarsTempVarDeclarationParserRuleCall_2_1_0; }
+		
+		//states+=State*
+		public Assignment getStatesAssignment_3() { return cStatesAssignment_3; }
+		
+		//State
+		public RuleCall getStatesStateParserRuleCall_3_0() { return cStatesStateParserRuleCall_3_0; }
+		
+		//'END_PROCESS'
+		public Keyword getEND_PROCESSKeyword_4() { return cEND_PROCESSKeyword_4; }
+	}
+	public class StateElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.State");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSTATEKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cStatementAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatementStatementListParserRuleCall_2_0 = (RuleCall)cStatementAssignment_2.eContents().get(0);
+		private final Assignment cTimeoutAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTimeoutTimeoutStatementParserRuleCall_3_0 = (RuleCall)cTimeoutAssignment_3.eContents().get(0);
+		private final Keyword cEND_STATEKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//State:
+		//	'STATE' name=ID
+		//	statement=StatementList
+		//	timeout=TimeoutStatement?
+		//	'END_STATE';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'STATE' name=ID statement=StatementList timeout=TimeoutStatement? 'END_STATE'
+		public Group getGroup() { return cGroup; }
+		
+		//'STATE'
+		public Keyword getSTATEKeyword_0() { return cSTATEKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//statement=StatementList
+		public Assignment getStatementAssignment_2() { return cStatementAssignment_2; }
+		
+		//StatementList
+		public RuleCall getStatementStatementListParserRuleCall_2_0() { return cStatementStatementListParserRuleCall_2_0; }
+		
+		//timeout=TimeoutStatement?
+		public Assignment getTimeoutAssignment_3() { return cTimeoutAssignment_3; }
+		
+		//TimeoutStatement
+		public RuleCall getTimeoutTimeoutStatementParserRuleCall_3_0() { return cTimeoutTimeoutStatementParserRuleCall_3_0; }
+		
+		//'END_STATE'
+		public Keyword getEND_STATEKeyword_4() { return cEND_STATEKeyword_4; }
+	}
+	public class SetStateStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SetStateStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSetStateStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSETKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Keyword cSTATEKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Assignment cStateAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final CrossReference cStateStateCrossReference_2_0_1_0 = (CrossReference)cStateAssignment_2_0_1.eContents().get(0);
+		private final RuleCall cStateStateIDTerminalRuleCall_2_0_1_0_1 = (RuleCall)cStateStateCrossReference_2_0_1_0.eContents().get(1);
+		private final Assignment cNextAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final Keyword cNextNEXTKeyword_2_1_0 = (Keyword)cNextAssignment_2_1.eContents().get(0);
+		
+		//SetStateStatement:
+		//	{SetStateStatement} 'SET' ('STATE' state=[State] | next?='NEXT');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{SetStateStatement} 'SET' ('STATE' state=[State] | next?='NEXT')
+		public Group getGroup() { return cGroup; }
+		
+		//{SetStateStatement}
+		public Action getSetStateStatementAction_0() { return cSetStateStatementAction_0; }
+		
+		//'SET'
+		public Keyword getSETKeyword_1() { return cSETKeyword_1; }
+		
+		//('STATE' state=[State] | next?='NEXT')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//'STATE' state=[State]
+		public Group getGroup_2_0() { return cGroup_2_0; }
+		
+		//'STATE'
+		public Keyword getSTATEKeyword_2_0_0() { return cSTATEKeyword_2_0_0; }
+		
+		//state=[State]
+		public Assignment getStateAssignment_2_0_1() { return cStateAssignment_2_0_1; }
+		
+		//[State]
+		public CrossReference getStateStateCrossReference_2_0_1_0() { return cStateStateCrossReference_2_0_1_0; }
+		
+		//ID
+		public RuleCall getStateStateIDTerminalRuleCall_2_0_1_0_1() { return cStateStateIDTerminalRuleCall_2_0_1_0_1; }
+		
+		//next?='NEXT'
+		public Assignment getNextAssignment_2_1() { return cNextAssignment_2_1; }
+		
+		//'NEXT'
+		public Keyword getNextNEXTKeyword_2_1_0() { return cNextNEXTKeyword_2_1_0; }
+	}
+	public class ProcessStatementsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ProcessStatements");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cStartProcessStatementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cStopProcessStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cErrorProcessStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//ProcessStatements:
+		//	StartProcessStatement | StopProcessStatement | ErrorProcessStatement;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//StartProcessStatement | StopProcessStatement | ErrorProcessStatement
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//StartProcessStatement
+		public RuleCall getStartProcessStatementParserRuleCall_0() { return cStartProcessStatementParserRuleCall_0; }
+		
+		//StopProcessStatement
+		public RuleCall getStopProcessStatementParserRuleCall_1() { return cStopProcessStatementParserRuleCall_1; }
+		
+		//ErrorProcessStatement
+		public RuleCall getErrorProcessStatementParserRuleCall_2() { return cErrorProcessStatementParserRuleCall_2; }
+	}
+	public class ProcessStatusExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ProcessStatusExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPROCESSKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cProcessAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cProcessProcessCrossReference_1_0 = (CrossReference)cProcessAssignment_1.eContents().get(0);
+		private final RuleCall cProcessProcessIDTerminalRuleCall_1_0_1 = (RuleCall)cProcessProcessCrossReference_1_0.eContents().get(1);
+		private final Keyword cINKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cSTATEKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Assignment cStateNameAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
+		private final CrossReference cStateNameStateCrossReference_4_0_0 = (CrossReference)cStateNameAssignment_4_0.eContents().get(0);
+		private final RuleCall cStateNameStateIDTerminalRuleCall_4_0_0_1 = (RuleCall)cStateNameStateCrossReference_4_0_0.eContents().get(1);
+		private final Assignment cStopAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
+		private final Keyword cStopSTOPKeyword_4_1_0 = (Keyword)cStopAssignment_4_1.eContents().get(0);
+		private final Assignment cErrorAssignment_4_2 = (Assignment)cAlternatives_4.eContents().get(2);
+		private final Keyword cErrorERRORKeyword_4_2_0 = (Keyword)cErrorAssignment_4_2.eContents().get(0);
+		
+		//ProcessStatusExpression:
+		//	'PROCESS' process=[Process] 'IN' 'STATE' (stateName=[State] | stop?='STOP' | error?='ERROR');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'PROCESS' process=[Process] 'IN' 'STATE' (stateName=[State] | stop?='STOP' | error?='ERROR')
+		public Group getGroup() { return cGroup; }
+		
+		//'PROCESS'
+		public Keyword getPROCESSKeyword_0() { return cPROCESSKeyword_0; }
+		
+		//process=[Process]
+		public Assignment getProcessAssignment_1() { return cProcessAssignment_1; }
+		
+		//[Process]
+		public CrossReference getProcessProcessCrossReference_1_0() { return cProcessProcessCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getProcessProcessIDTerminalRuleCall_1_0_1() { return cProcessProcessIDTerminalRuleCall_1_0_1; }
+		
+		//'IN'
+		public Keyword getINKeyword_2() { return cINKeyword_2; }
+		
+		//'STATE'
+		public Keyword getSTATEKeyword_3() { return cSTATEKeyword_3; }
+		
+		//(stateName=[State] | stop?='STOP' | error?='ERROR')
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+		
+		//stateName=[State]
+		public Assignment getStateNameAssignment_4_0() { return cStateNameAssignment_4_0; }
+		
+		//[State]
+		public CrossReference getStateNameStateCrossReference_4_0_0() { return cStateNameStateCrossReference_4_0_0; }
+		
+		//ID
+		public RuleCall getStateNameStateIDTerminalRuleCall_4_0_0_1() { return cStateNameStateIDTerminalRuleCall_4_0_0_1; }
+		
+		//stop?='STOP'
+		public Assignment getStopAssignment_4_1() { return cStopAssignment_4_1; }
+		
+		//'STOP'
+		public Keyword getStopSTOPKeyword_4_1_0() { return cStopSTOPKeyword_4_1_0; }
+		
+		//error?='ERROR'
+		public Assignment getErrorAssignment_4_2() { return cErrorAssignment_4_2; }
+		
+		//'ERROR'
+		public Keyword getErrorERRORKeyword_4_2_0() { return cErrorERRORKeyword_4_2_0; }
+	}
+	public class StartProcessStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.StartProcessStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSTARTKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cPROCESSKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cProcessAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cProcessProcessCrossReference_2_0 = (CrossReference)cProcessAssignment_2.eContents().get(0);
+		private final RuleCall cProcessProcessIDTerminalRuleCall_2_0_1 = (RuleCall)cProcessProcessCrossReference_2_0.eContents().get(1);
+		
+		//StartProcessStatement:
+		//	'START' 'PROCESS' process=[Process];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'START' 'PROCESS' process=[Process]
+		public Group getGroup() { return cGroup; }
+		
+		//'START'
+		public Keyword getSTARTKeyword_0() { return cSTARTKeyword_0; }
+		
+		//'PROCESS'
+		public Keyword getPROCESSKeyword_1() { return cPROCESSKeyword_1; }
+		
+		//process=[Process]
+		public Assignment getProcessAssignment_2() { return cProcessAssignment_2; }
+		
+		//[Process]
+		public CrossReference getProcessProcessCrossReference_2_0() { return cProcessProcessCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getProcessProcessIDTerminalRuleCall_2_0_1() { return cProcessProcessIDTerminalRuleCall_2_0_1; }
+	}
+	public class StopProcessStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.StopProcessStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cStopProcessStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSTOPKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPROCESSKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cProcessAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cProcessProcessCrossReference_3_0 = (CrossReference)cProcessAssignment_3.eContents().get(0);
+		private final RuleCall cProcessProcessIDTerminalRuleCall_3_0_1 = (RuleCall)cProcessProcessCrossReference_3_0.eContents().get(1);
+		
+		//StopProcessStatement:
+		//	{StopProcessStatement} 'STOP' 'PROCESS' process=[Process]?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{StopProcessStatement} 'STOP' 'PROCESS' process=[Process]?
+		public Group getGroup() { return cGroup; }
+		
+		//{StopProcessStatement}
+		public Action getStopProcessStatementAction_0() { return cStopProcessStatementAction_0; }
+		
+		//'STOP'
+		public Keyword getSTOPKeyword_1() { return cSTOPKeyword_1; }
+		
+		//'PROCESS'
+		public Keyword getPROCESSKeyword_2() { return cPROCESSKeyword_2; }
+		
+		//process=[Process]?
+		public Assignment getProcessAssignment_3() { return cProcessAssignment_3; }
+		
+		//[Process]
+		public CrossReference getProcessProcessCrossReference_3_0() { return cProcessProcessCrossReference_3_0; }
+		
+		//ID
+		public RuleCall getProcessProcessIDTerminalRuleCall_3_0_1() { return cProcessProcessIDTerminalRuleCall_3_0_1; }
+	}
+	public class ErrorProcessStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ErrorProcessStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cErrorProcessStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cERRORKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPROCESSKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cProcessAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cProcessProcessCrossReference_3_0 = (CrossReference)cProcessAssignment_3.eContents().get(0);
+		private final RuleCall cProcessProcessIDTerminalRuleCall_3_0_1 = (RuleCall)cProcessProcessCrossReference_3_0.eContents().get(1);
+		
+		//ErrorProcessStatement:
+		//	{ErrorProcessStatement} 'ERROR' 'PROCESS' process=[Process]?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ErrorProcessStatement} 'ERROR' 'PROCESS' process=[Process]?
+		public Group getGroup() { return cGroup; }
+		
+		//{ErrorProcessStatement}
+		public Action getErrorProcessStatementAction_0() { return cErrorProcessStatementAction_0; }
+		
+		//'ERROR'
+		public Keyword getERRORKeyword_1() { return cERRORKeyword_1; }
+		
+		//'PROCESS'
+		public Keyword getPROCESSKeyword_2() { return cPROCESSKeyword_2; }
+		
+		//process=[Process]?
+		public Assignment getProcessAssignment_3() { return cProcessAssignment_3; }
+		
+		//[Process]
+		public CrossReference getProcessProcessCrossReference_3_0() { return cProcessProcessCrossReference_3_0; }
+		
+		//ID
+		public RuleCall getProcessProcessIDTerminalRuleCall_3_0_1() { return cProcessProcessIDTerminalRuleCall_3_0_1; }
+	}
+	public class TimeoutStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.TimeoutStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTIMEOUTKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cConstAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cConstConstantParserRuleCall_1_0_0 = (RuleCall)cConstAssignment_1_0.eContents().get(0);
+		private final Assignment cVariableAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final CrossReference cVariableSymbolicVariableCrossReference_1_1_0 = (CrossReference)cVariableAssignment_1_1.eContents().get(0);
+		private final RuleCall cVariableSymbolicVariableIDTerminalRuleCall_1_1_0_1 = (RuleCall)cVariableSymbolicVariableCrossReference_1_1_0.eContents().get(1);
+		private final Keyword cTHENKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cStatementAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStatementStatementListParserRuleCall_3_0 = (RuleCall)cStatementAssignment_3.eContents().get(0);
+		private final Keyword cEND_TIMEOUTKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//TimeoutStatement:
+		//	'TIMEOUT' (const=Constant | variable=[SymbolicVariable]) 'THEN'
+		//	statement=StatementList
+		//	'END_TIMEOUT';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'TIMEOUT' (const=Constant | variable=[SymbolicVariable]) 'THEN' statement=StatementList 'END_TIMEOUT'
+		public Group getGroup() { return cGroup; }
+		
+		//'TIMEOUT'
+		public Keyword getTIMEOUTKeyword_0() { return cTIMEOUTKeyword_0; }
+		
+		//(const=Constant | variable=[SymbolicVariable])
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//const=Constant
+		public Assignment getConstAssignment_1_0() { return cConstAssignment_1_0; }
+		
+		//Constant
+		public RuleCall getConstConstantParserRuleCall_1_0_0() { return cConstConstantParserRuleCall_1_0_0; }
+		
+		//variable=[SymbolicVariable]
+		public Assignment getVariableAssignment_1_1() { return cVariableAssignment_1_1; }
+		
+		//[SymbolicVariable]
+		public CrossReference getVariableSymbolicVariableCrossReference_1_1_0() { return cVariableSymbolicVariableCrossReference_1_1_0; }
+		
+		//ID
+		public RuleCall getVariableSymbolicVariableIDTerminalRuleCall_1_1_0_1() { return cVariableSymbolicVariableIDTerminalRuleCall_1_1_0_1; }
+		
+		//'THEN'
+		public Keyword getTHENKeyword_2() { return cTHENKeyword_2; }
+		
+		//statement=StatementList
+		public Assignment getStatementAssignment_3() { return cStatementAssignment_3; }
+		
+		//StatementList
+		public RuleCall getStatementStatementListParserRuleCall_3_0() { return cStatementStatementListParserRuleCall_3_0; }
+		
+		//'END_TIMEOUT'
+		public Keyword getEND_TIMEOUTKeyword_4() { return cEND_TIMEOUTKeyword_4; }
+	}
+	public class LoopStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.LoopStatement");
+		private final Keyword cLOOPKeyword = (Keyword)rule.eContents().get(1);
+		
+		//LoopStatement:
+		//	'LOOP';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'LOOP'
+		public Keyword getLOOPKeyword() { return cLOOPKeyword; }
+	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.Expression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -78,6 +586,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightXorExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
+		///* ======================= END poST Expression ======================= */
 		///* ======================= START ST Expression ======================= */ Expression:
 		//	XorExpression ({Expression.left=current} OR_OPERATOR right=XorExpression)*;
 		@Override public ParserRule getRule() { return rule; }
@@ -399,17 +908,19 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cVariableAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final CrossReference cVariableSymbolicVariableCrossReference_1_0 = (CrossReference)cVariableAssignment_1.eContents().get(0);
 		private final RuleCall cVariableSymbolicVariableIDTerminalRuleCall_1_0_1 = (RuleCall)cVariableSymbolicVariableCrossReference_1_0.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cNestExprAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cNestExprExpressionParserRuleCall_2_1_0 = (RuleCall)cNestExprAssignment_2_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cProcStatusAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cProcStatusProcessStatusExpressionParserRuleCall_2_0 = (RuleCall)cProcStatusAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cNestExprAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cNestExprExpressionParserRuleCall_3_1_0 = (RuleCall)cNestExprAssignment_3_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
 		//PrimaryExpression:
-		//	const=Constant | variable=[SymbolicVariable] | '(' nestExpr=Expression ')';
+		//	const=Constant | variable=[SymbolicVariable] | procStatus=ProcessStatusExpression | '(' nestExpr=Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//const=Constant | variable=[SymbolicVariable] | '(' nestExpr=Expression ')'
+		//const=Constant | variable=[SymbolicVariable] | procStatus=ProcessStatusExpression | '(' nestExpr=Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//const=Constant
@@ -427,20 +938,26 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getVariableSymbolicVariableIDTerminalRuleCall_1_0_1() { return cVariableSymbolicVariableIDTerminalRuleCall_1_0_1; }
 		
+		//procStatus=ProcessStatusExpression
+		public Assignment getProcStatusAssignment_2() { return cProcStatusAssignment_2; }
+		
+		//ProcessStatusExpression
+		public RuleCall getProcStatusProcessStatusExpressionParserRuleCall_2_0() { return cProcStatusProcessStatusExpressionParserRuleCall_2_0; }
+		
 		//'(' nestExpr=Expression ')'
-		public Group getGroup_2() { return cGroup_2; }
+		public Group getGroup_3() { return cGroup_3; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
 		
 		//nestExpr=Expression
-		public Assignment getNestExprAssignment_2_1() { return cNestExprAssignment_2_1; }
+		public Assignment getNestExprAssignment_3_1() { return cNestExprAssignment_3_1; }
 		
 		//Expression
-		public RuleCall getNestExprExpressionParserRuleCall_2_1_0() { return cNestExprExpressionParserRuleCall_2_1_0; }
+		public RuleCall getNestExprExpressionParserRuleCall_3_1_0() { return cNestExprExpressionParserRuleCall_3_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
+		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
 	}
 	public class StatementListElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.StatementList");
@@ -483,14 +1000,25 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
 		private final RuleCall cEXIT_STATEMENTTerminalRuleCall_4_1_0 = (RuleCall)cGroup_4_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_4_1_1 = (Keyword)cGroup_4_1.eContents().get(1);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final RuleCall cProcessStatementsParserRuleCall_5_0 = (RuleCall)cGroup_5.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
+		private final RuleCall cSetStateStatementParserRuleCall_6_0 = (RuleCall)cGroup_6.eContents().get(0);
+		private final Keyword cSemicolonKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
+		private final Action cStatementAction_7_0 = (Action)cGroup_7.eContents().get(0);
+		private final Group cGroup_7_1 = (Group)cGroup_7.eContents().get(1);
+		private final RuleCall cLoopStatementParserRuleCall_7_1_0 = (RuleCall)cGroup_7_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_7_1_1 = (Keyword)cGroup_7_1.eContents().get(1);
 		
 		//Statement:
 		//	AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-		//	{Statement} (EXIT_STATEMENT ';');
+		//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (LoopStatement ';');
 		@Override public ParserRule getRule() { return rule; }
 		
 		//AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-		//{Statement} (EXIT_STATEMENT ';')
+		//{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (LoopStatement ';')
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//AssignmentStatement ';'
@@ -537,6 +1065,39 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//';'
 		public Keyword getSemicolonKeyword_4_1_1() { return cSemicolonKeyword_4_1_1; }
+		
+		//ProcessStatements ';'
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//ProcessStatements
+		public RuleCall getProcessStatementsParserRuleCall_5_0() { return cProcessStatementsParserRuleCall_5_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_5_1() { return cSemicolonKeyword_5_1; }
+		
+		//SetStateStatement ';'
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//SetStateStatement
+		public RuleCall getSetStateStatementParserRuleCall_6_0() { return cSetStateStatementParserRuleCall_6_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_6_1() { return cSemicolonKeyword_6_1; }
+		
+		//{Statement} (LoopStatement ';')
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//{Statement}
+		public Action getStatementAction_7_0() { return cStatementAction_7_0; }
+		
+		//(LoopStatement ';')
+		public Group getGroup_7_1() { return cGroup_7_1; }
+		
+		//LoopStatement
+		public RuleCall getLoopStatementParserRuleCall_7_1_0() { return cLoopStatementParserRuleCall_7_1_0; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_7_1_1() { return cSemicolonKeyword_7_1_1; }
 	}
 	public class AssignmentStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.AssignmentStatement");
@@ -1921,6 +2482,17 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final ModelElements pModel;
 	private final GreetingElements pGreeting;
+	private final ProgramElements pProgram;
+	private final ProcessElements pProcess;
+	private final StateElements pState;
+	private final SetStateStatementElements pSetStateStatement;
+	private final ProcessStatementsElements pProcessStatements;
+	private final ProcessStatusExpressionElements pProcessStatusExpression;
+	private final StartProcessStatementElements pStartProcessStatement;
+	private final StopProcessStatementElements pStopProcessStatement;
+	private final ErrorProcessStatementElements pErrorProcessStatement;
+	private final TimeoutStatementElements pTimeoutStatement;
+	private final LoopStatementElements pLoopStatement;
 	private final ExpressionElements pExpression;
 	private final TerminalRule tOR_OPERATOR;
 	private final XorExpressionElements pXorExpression;
@@ -2010,6 +2582,17 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.pModel = new ModelElements();
 		this.pGreeting = new GreetingElements();
+		this.pProgram = new ProgramElements();
+		this.pProcess = new ProcessElements();
+		this.pState = new StateElements();
+		this.pSetStateStatement = new SetStateStatementElements();
+		this.pProcessStatements = new ProcessStatementsElements();
+		this.pProcessStatusExpression = new ProcessStatusExpressionElements();
+		this.pStartProcessStatement = new StartProcessStatementElements();
+		this.pStopProcessStatement = new StopProcessStatementElements();
+		this.pErrorProcessStatement = new ErrorProcessStatementElements();
+		this.pTimeoutStatement = new TimeoutStatementElements();
+		this.pLoopStatement = new LoopStatementElements();
 		this.pExpression = new ExpressionElements();
 		this.tOR_OPERATOR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.OR_OPERATOR");
 		this.pXorExpression = new XorExpressionElements();
@@ -2136,6 +2719,129 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		return getGreetingAccess().getRule();
 	}
 	
+	///* ======================= START Program ======================= */ Program:
+	//	'PROGRAM' name=ID (progInVars+=InputVarDeclaration | progOutVars+=OutputVarDeclaration |
+	//	progInOutVars+=InputOutputVarDeclaration | progVars+=VarDeclaration | progTempVars+=TempVarDeclaration |
+	//	progExternVars+=ExternalVarDeclaration)*
+	//	processes+=Process*
+	//	'END_PROGRAM';
+	public ProgramElements getProgramAccess() {
+		return pProgram;
+	}
+	
+	public ParserRule getProgramRule() {
+		return getProgramAccess().getRule();
+	}
+	
+	///* ======================= END Program ======================= */
+	///* ======================= START poST Expression ======================= */ Process:
+	//	'PROCESS' name=ID (procVars+=VarDeclaration | procTempVars+=TempVarDeclaration)*
+	//	states+=State*
+	//	'END_PROCESS';
+	public ProcessElements getProcessAccess() {
+		return pProcess;
+	}
+	
+	public ParserRule getProcessRule() {
+		return getProcessAccess().getRule();
+	}
+	
+	//State:
+	//	'STATE' name=ID
+	//	statement=StatementList
+	//	timeout=TimeoutStatement?
+	//	'END_STATE';
+	public StateElements getStateAccess() {
+		return pState;
+	}
+	
+	public ParserRule getStateRule() {
+		return getStateAccess().getRule();
+	}
+	
+	//SetStateStatement:
+	//	{SetStateStatement} 'SET' ('STATE' state=[State] | next?='NEXT');
+	public SetStateStatementElements getSetStateStatementAccess() {
+		return pSetStateStatement;
+	}
+	
+	public ParserRule getSetStateStatementRule() {
+		return getSetStateStatementAccess().getRule();
+	}
+	
+	//ProcessStatements:
+	//	StartProcessStatement | StopProcessStatement | ErrorProcessStatement;
+	public ProcessStatementsElements getProcessStatementsAccess() {
+		return pProcessStatements;
+	}
+	
+	public ParserRule getProcessStatementsRule() {
+		return getProcessStatementsAccess().getRule();
+	}
+	
+	//ProcessStatusExpression:
+	//	'PROCESS' process=[Process] 'IN' 'STATE' (stateName=[State] | stop?='STOP' | error?='ERROR');
+	public ProcessStatusExpressionElements getProcessStatusExpressionAccess() {
+		return pProcessStatusExpression;
+	}
+	
+	public ParserRule getProcessStatusExpressionRule() {
+		return getProcessStatusExpressionAccess().getRule();
+	}
+	
+	//StartProcessStatement:
+	//	'START' 'PROCESS' process=[Process];
+	public StartProcessStatementElements getStartProcessStatementAccess() {
+		return pStartProcessStatement;
+	}
+	
+	public ParserRule getStartProcessStatementRule() {
+		return getStartProcessStatementAccess().getRule();
+	}
+	
+	//StopProcessStatement:
+	//	{StopProcessStatement} 'STOP' 'PROCESS' process=[Process]?;
+	public StopProcessStatementElements getStopProcessStatementAccess() {
+		return pStopProcessStatement;
+	}
+	
+	public ParserRule getStopProcessStatementRule() {
+		return getStopProcessStatementAccess().getRule();
+	}
+	
+	//ErrorProcessStatement:
+	//	{ErrorProcessStatement} 'ERROR' 'PROCESS' process=[Process]?;
+	public ErrorProcessStatementElements getErrorProcessStatementAccess() {
+		return pErrorProcessStatement;
+	}
+	
+	public ParserRule getErrorProcessStatementRule() {
+		return getErrorProcessStatementAccess().getRule();
+	}
+	
+	//TimeoutStatement:
+	//	'TIMEOUT' (const=Constant | variable=[SymbolicVariable]) 'THEN'
+	//	statement=StatementList
+	//	'END_TIMEOUT';
+	public TimeoutStatementElements getTimeoutStatementAccess() {
+		return pTimeoutStatement;
+	}
+	
+	public ParserRule getTimeoutStatementRule() {
+		return getTimeoutStatementAccess().getRule();
+	}
+	
+	//LoopStatement:
+	//	'LOOP';
+	public LoopStatementElements getLoopStatementAccess() {
+		return pLoopStatement;
+	}
+	
+	public ParserRule getLoopStatementRule() {
+		return getLoopStatementAccess().getRule();
+	}
+	
+	///* ======================= END poST Expression ======================= */
 	///* ======================= START ST Expression ======================= */ Expression:
 	//	XorExpression ({Expression.left=current} OR_OPERATOR right=XorExpression)*;
 	public ExpressionElements getExpressionAccess() {
@@ -2297,7 +3003,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//PrimaryExpression:
-	//	const=Constant | variable=[SymbolicVariable] | '(' nestExpr=Expression ')';
+	//	const=Constant | variable=[SymbolicVariable] | procStatus=ProcessStatusExpression | '(' nestExpr=Expression ')';
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return pPrimaryExpression;
 	}
@@ -2318,7 +3024,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Statement:
 	//	AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-	//	{Statement} (EXIT_STATEMENT ';');
+	//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (LoopStatement ';');
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}

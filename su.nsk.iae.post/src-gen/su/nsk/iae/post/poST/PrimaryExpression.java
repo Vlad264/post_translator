@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link su.nsk.iae.post.poST.PrimaryExpression#getConst <em>Const</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.PrimaryExpression#getVariable <em>Variable</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.PrimaryExpression#getProcStatus <em>Proc Status</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.PrimaryExpression#getNestExpr <em>Nest Expr</em>}</li>
  * </ul>
  *
@@ -68,6 +69,28 @@ public interface PrimaryExpression extends EObject
    * @generated
    */
   void setVariable(SymbolicVariable value);
+
+  /**
+   * Returns the value of the '<em><b>Proc Status</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Proc Status</em>' containment reference.
+   * @see #setProcStatus(ProcessStatusExpression)
+   * @see su.nsk.iae.post.poST.PoSTPackage#getPrimaryExpression_ProcStatus()
+   * @model containment="true"
+   * @generated
+   */
+  ProcessStatusExpression getProcStatus();
+
+  /**
+   * Sets the value of the '{@link su.nsk.iae.post.poST.PrimaryExpression#getProcStatus <em>Proc Status</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Proc Status</em>' containment reference.
+   * @see #getProcStatus()
+   * @generated
+   */
+  void setProcStatus(ProcessStatusExpression value);
 
   /**
    * Returns the value of the '<em><b>Nest Expr</b></em>' containment reference.

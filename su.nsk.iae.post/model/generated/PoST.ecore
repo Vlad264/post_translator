@@ -8,6 +8,62 @@
   <eClassifiers xsi:type="ecore:EClass" name="Greeting">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Program">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="progInVars" upperBound="-1"
+        eType="#//InputVarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="progOutVars" upperBound="-1"
+        eType="#//OutputVarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="progInOutVars" upperBound="-1"
+        eType="#//InputOutputVarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="progVars" upperBound="-1"
+        eType="#//VarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="progTempVars" upperBound="-1"
+        eType="#//TempVarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="progExternVars" upperBound="-1"
+        eType="#//ExternalVarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processes" upperBound="-1"
+        eType="#//Process" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Process">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="procVars" upperBound="-1"
+        eType="#//VarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="procTempVars" upperBound="-1"
+        eType="#//TempVarDeclaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//State" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statement" eType="#//StatementList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeout" eType="#//TimeoutStatement"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetStateStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="next" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessStatements" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="process" eType="#//Process"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessStatusExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="process" eType="#//Process"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stateName" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="error" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StartProcessStatement" eSuperTypes="#//ProcessStatements"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StopProcessStatement" eSuperTypes="#//ProcessStatements"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ErrorProcessStatement" eSuperTypes="#//ProcessStatements"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeoutStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="const" eType="#//Constant"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//SymbolicVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statement" eType="#//StatementList"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
         containment="true"/>
@@ -55,6 +111,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="const" eType="#//Constant"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//SymbolicVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="procStatus" eType="#//ProcessStatusExpression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestExpr" eType="#//Expression"
         containment="true"/>
   </eClassifiers>

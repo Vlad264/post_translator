@@ -8,7 +8,61 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import su.nsk.iae.post.poST.*;
+import su.nsk.iae.post.poST.AddExpression;
+import su.nsk.iae.post.poST.AndExpression;
+import su.nsk.iae.post.poST.AssignmentStatement;
+import su.nsk.iae.post.poST.CaseElement;
+import su.nsk.iae.post.poST.CaseList;
+import su.nsk.iae.post.poST.CaseStatement;
+import su.nsk.iae.post.poST.CompExpression;
+import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.EquExpression;
+import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.Expression;
+import su.nsk.iae.post.poST.ExternalVarDeclaration;
+import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
+import su.nsk.iae.post.poST.ForList;
+import su.nsk.iae.post.poST.ForStatement;
+import su.nsk.iae.post.poST.GlobalVarDeclaration;
+import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
+import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.IfStatement;
+import su.nsk.iae.post.poST.InputOutputVarDeclaration;
+import su.nsk.iae.post.poST.InputVarDeclaration;
+import su.nsk.iae.post.poST.IntegerLiteral;
+import su.nsk.iae.post.poST.IterationStatement;
+import su.nsk.iae.post.poST.Model;
+import su.nsk.iae.post.poST.MulExpression;
+import su.nsk.iae.post.poST.NumericLiteral;
+import su.nsk.iae.post.poST.OutputVarDeclaration;
+import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.PowerExpression;
+import su.nsk.iae.post.poST.PrimaryExpression;
+import su.nsk.iae.post.poST.ProcessStatements;
+import su.nsk.iae.post.poST.ProcessStatusExpression;
+import su.nsk.iae.post.poST.Program;
+import su.nsk.iae.post.poST.RealLiteral;
+import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.SelectionStatement;
+import su.nsk.iae.post.poST.SetStateStatement;
+import su.nsk.iae.post.poST.SignedInteger;
+import su.nsk.iae.post.poST.SimpleSpecificationInit;
+import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.StartProcessStatement;
+import su.nsk.iae.post.poST.State;
+import su.nsk.iae.post.poST.Statement;
+import su.nsk.iae.post.poST.StatementList;
+import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SymbolicVariable;
+import su.nsk.iae.post.poST.TempVarDeclaration;
+import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.TimeoutStatement;
+import su.nsk.iae.post.poST.UnaryExpression;
+import su.nsk.iae.post.poST.VarDeclaration;
+import su.nsk.iae.post.poST.VarInitDeclaration;
+import su.nsk.iae.post.poST.VarList;
+import su.nsk.iae.post.poST.WhileStatement;
+import su.nsk.iae.post.poST.XorExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,6 +138,84 @@ public class PoSTSwitch<T> extends Switch<T>
       {
         Greeting greeting = (Greeting)theEObject;
         T result = caseGreeting(greeting);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.PROGRAM:
+      {
+        Program program = (Program)theEObject;
+        T result = caseProgram(program);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.PROCESS:
+      {
+        su.nsk.iae.post.poST.Process process = (su.nsk.iae.post.poST.Process)theEObject;
+        T result = caseProcess(process);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.STATE:
+      {
+        State state = (State)theEObject;
+        T result = caseState(state);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.SET_STATE_STATEMENT:
+      {
+        SetStateStatement setStateStatement = (SetStateStatement)theEObject;
+        T result = caseSetStateStatement(setStateStatement);
+        if (result == null) result = caseStatement(setStateStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.PROCESS_STATEMENTS:
+      {
+        ProcessStatements processStatements = (ProcessStatements)theEObject;
+        T result = caseProcessStatements(processStatements);
+        if (result == null) result = caseStatement(processStatements);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.PROCESS_STATUS_EXPRESSION:
+      {
+        ProcessStatusExpression processStatusExpression = (ProcessStatusExpression)theEObject;
+        T result = caseProcessStatusExpression(processStatusExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.START_PROCESS_STATEMENT:
+      {
+        StartProcessStatement startProcessStatement = (StartProcessStatement)theEObject;
+        T result = caseStartProcessStatement(startProcessStatement);
+        if (result == null) result = caseProcessStatements(startProcessStatement);
+        if (result == null) result = caseStatement(startProcessStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.STOP_PROCESS_STATEMENT:
+      {
+        StopProcessStatement stopProcessStatement = (StopProcessStatement)theEObject;
+        T result = caseStopProcessStatement(stopProcessStatement);
+        if (result == null) result = caseProcessStatements(stopProcessStatement);
+        if (result == null) result = caseStatement(stopProcessStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.ERROR_PROCESS_STATEMENT:
+      {
+        ErrorProcessStatement errorProcessStatement = (ErrorProcessStatement)theEObject;
+        T result = caseErrorProcessStatement(errorProcessStatement);
+        if (result == null) result = caseProcessStatements(errorProcessStatement);
+        if (result == null) result = caseStatement(errorProcessStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.TIMEOUT_STATEMENT:
+      {
+        TimeoutStatement timeoutStatement = (TimeoutStatement)theEObject;
+        T result = caseTimeoutStatement(timeoutStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -475,6 +607,166 @@ public class PoSTSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGreeting(Greeting object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Program</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Program</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProgram(Program object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcess(su.nsk.iae.post.poST.Process object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>State</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>State</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseState(State object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Set State Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Set State Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSetStateStatement(SetStateStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Statements</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Statements</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessStatements(ProcessStatements object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Status Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Status Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessStatusExpression(ProcessStatusExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Start Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Start Process Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStartProcessStatement(StartProcessStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Stop Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Stop Process Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStopProcessStatement(StopProcessStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Error Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Error Process Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseErrorProcessStatement(ErrorProcessStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Timeout Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Timeout Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTimeoutStatement(TimeoutStatement object)
   {
     return null;
   }

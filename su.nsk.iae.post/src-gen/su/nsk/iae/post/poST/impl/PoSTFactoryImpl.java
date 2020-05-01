@@ -12,7 +12,66 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import su.nsk.iae.post.poST.*;
+import su.nsk.iae.post.poST.AddExpression;
+import su.nsk.iae.post.poST.AddOperator;
+import su.nsk.iae.post.poST.AndExpression;
+import su.nsk.iae.post.poST.AssignmentStatement;
+import su.nsk.iae.post.poST.CaseElement;
+import su.nsk.iae.post.poST.CaseList;
+import su.nsk.iae.post.poST.CaseStatement;
+import su.nsk.iae.post.poST.CompExpression;
+import su.nsk.iae.post.poST.CompOperator;
+import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.EquExpression;
+import su.nsk.iae.post.poST.EquOperator;
+import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.Expression;
+import su.nsk.iae.post.poST.ExternalVarDeclaration;
+import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
+import su.nsk.iae.post.poST.ForList;
+import su.nsk.iae.post.poST.ForStatement;
+import su.nsk.iae.post.poST.GlobalVarDeclaration;
+import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
+import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.IfStatement;
+import su.nsk.iae.post.poST.InputOutputVarDeclaration;
+import su.nsk.iae.post.poST.InputVarDeclaration;
+import su.nsk.iae.post.poST.IntegerLiteral;
+import su.nsk.iae.post.poST.IterationStatement;
+import su.nsk.iae.post.poST.Model;
+import su.nsk.iae.post.poST.MulExpression;
+import su.nsk.iae.post.poST.MulOperator;
+import su.nsk.iae.post.poST.NumericLiteral;
+import su.nsk.iae.post.poST.OutputVarDeclaration;
+import su.nsk.iae.post.poST.PoSTFactory;
+import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.PowerExpression;
+import su.nsk.iae.post.poST.PrimaryExpression;
+import su.nsk.iae.post.poST.ProcessStatements;
+import su.nsk.iae.post.poST.ProcessStatusExpression;
+import su.nsk.iae.post.poST.Program;
+import su.nsk.iae.post.poST.RealLiteral;
+import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.SelectionStatement;
+import su.nsk.iae.post.poST.SetStateStatement;
+import su.nsk.iae.post.poST.SignedInteger;
+import su.nsk.iae.post.poST.SimpleSpecificationInit;
+import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.StartProcessStatement;
+import su.nsk.iae.post.poST.State;
+import su.nsk.iae.post.poST.Statement;
+import su.nsk.iae.post.poST.StatementList;
+import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SymbolicVariable;
+import su.nsk.iae.post.poST.TempVarDeclaration;
+import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.TimeoutStatement;
+import su.nsk.iae.post.poST.UnaryExpression;
+import su.nsk.iae.post.poST.VarDeclaration;
+import su.nsk.iae.post.poST.VarInitDeclaration;
+import su.nsk.iae.post.poST.VarList;
+import su.nsk.iae.post.poST.WhileStatement;
+import su.nsk.iae.post.poST.XorExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,6 +127,16 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
     {
       case PoSTPackage.MODEL: return createModel();
       case PoSTPackage.GREETING: return createGreeting();
+      case PoSTPackage.PROGRAM: return createProgram();
+      case PoSTPackage.PROCESS: return createProcess();
+      case PoSTPackage.STATE: return createState();
+      case PoSTPackage.SET_STATE_STATEMENT: return createSetStateStatement();
+      case PoSTPackage.PROCESS_STATEMENTS: return createProcessStatements();
+      case PoSTPackage.PROCESS_STATUS_EXPRESSION: return createProcessStatusExpression();
+      case PoSTPackage.START_PROCESS_STATEMENT: return createStartProcessStatement();
+      case PoSTPackage.STOP_PROCESS_STATEMENT: return createStopProcessStatement();
+      case PoSTPackage.ERROR_PROCESS_STATEMENT: return createErrorProcessStatement();
+      case PoSTPackage.TIMEOUT_STATEMENT: return createTimeoutStatement();
       case PoSTPackage.EXPRESSION: return createExpression();
       case PoSTPackage.XOR_EXPRESSION: return createXorExpression();
       case PoSTPackage.AND_EXPRESSION: return createAndExpression();
@@ -184,6 +253,126 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     GreetingImpl greeting = new GreetingImpl();
     return greeting;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Program createProgram()
+  {
+    ProgramImpl program = new ProgramImpl();
+    return program;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public su.nsk.iae.post.poST.Process createProcess()
+  {
+    ProcessImpl process = new ProcessImpl();
+    return process;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public State createState()
+  {
+    StateImpl state = new StateImpl();
+    return state;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SetStateStatement createSetStateStatement()
+  {
+    SetStateStatementImpl setStateStatement = new SetStateStatementImpl();
+    return setStateStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ProcessStatements createProcessStatements()
+  {
+    ProcessStatementsImpl processStatements = new ProcessStatementsImpl();
+    return processStatements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ProcessStatusExpression createProcessStatusExpression()
+  {
+    ProcessStatusExpressionImpl processStatusExpression = new ProcessStatusExpressionImpl();
+    return processStatusExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StartProcessStatement createStartProcessStatement()
+  {
+    StartProcessStatementImpl startProcessStatement = new StartProcessStatementImpl();
+    return startProcessStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StopProcessStatement createStopProcessStatement()
+  {
+    StopProcessStatementImpl stopProcessStatement = new StopProcessStatementImpl();
+    return stopProcessStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ErrorProcessStatement createErrorProcessStatement()
+  {
+    ErrorProcessStatementImpl errorProcessStatement = new ErrorProcessStatementImpl();
+    return errorProcessStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TimeoutStatement createTimeoutStatement()
+  {
+    TimeoutStatementImpl timeoutStatement = new TimeoutStatementImpl();
+    return timeoutStatement;
   }
 
   /**

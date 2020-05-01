@@ -23,6 +23,7 @@ import su.nsk.iae.post.poST.CaseStatement;
 import su.nsk.iae.post.poST.CompExpression;
 import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.EquExpression;
+import su.nsk.iae.post.poST.ErrorProcessStatement;
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -41,16 +42,23 @@ import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.PowerExpression;
 import su.nsk.iae.post.poST.PrimaryExpression;
+import su.nsk.iae.post.poST.ProcessStatusExpression;
+import su.nsk.iae.post.poST.Program;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.StartProcessStatement;
+import su.nsk.iae.post.poST.State;
 import su.nsk.iae.post.poST.Statement;
 import su.nsk.iae.post.poST.StatementList;
+import su.nsk.iae.post.poST.StopProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.TempVarDeclaration;
 import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.TimeoutStatement;
 import su.nsk.iae.post.poST.UnaryExpression;
 import su.nsk.iae.post.poST.VarDeclaration;
 import su.nsk.iae.post.poST.VarInitDeclaration;
@@ -99,6 +107,9 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case PoSTPackage.EQU_EXPRESSION:
 				sequence_EquExpression(context, (EquExpression) semanticObject); 
+				return; 
+			case PoSTPackage.ERROR_PROCESS_STATEMENT:
+				sequence_ErrorProcessStatement(context, (ErrorProcessStatement) semanticObject); 
 				return; 
 			case PoSTPackage.EXPRESSION:
 				sequence_Expression(context, (Expression) semanticObject); 
@@ -151,11 +162,23 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.PRIMARY_EXPRESSION:
 				sequence_PrimaryExpression(context, (PrimaryExpression) semanticObject); 
 				return; 
+			case PoSTPackage.PROCESS:
+				sequence_Process(context, (su.nsk.iae.post.poST.Process) semanticObject); 
+				return; 
+			case PoSTPackage.PROCESS_STATUS_EXPRESSION:
+				sequence_ProcessStatusExpression(context, (ProcessStatusExpression) semanticObject); 
+				return; 
+			case PoSTPackage.PROGRAM:
+				sequence_Program(context, (Program) semanticObject); 
+				return; 
 			case PoSTPackage.REAL_LITERAL:
 				sequence_RealLiteral(context, (RealLiteral) semanticObject); 
 				return; 
 			case PoSTPackage.REPEAT_STATEMENT:
 				sequence_RepeatStatement(context, (RepeatStatement) semanticObject); 
+				return; 
+			case PoSTPackage.SET_STATE_STATEMENT:
+				sequence_SetStateStatement(context, (SetStateStatement) semanticObject); 
 				return; 
 			case PoSTPackage.SIGNED_INTEGER:
 				sequence_SignedInteger(context, (SignedInteger) semanticObject); 
@@ -166,11 +189,20 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
 				sequence_SingleElementTypeDeclaration(context, (SingleElementTypeDeclaration) semanticObject); 
 				return; 
+			case PoSTPackage.START_PROCESS_STATEMENT:
+				sequence_StartProcessStatement(context, (StartProcessStatement) semanticObject); 
+				return; 
+			case PoSTPackage.STATE:
+				sequence_State(context, (State) semanticObject); 
+				return; 
 			case PoSTPackage.STATEMENT:
 				sequence_Statement(context, (Statement) semanticObject); 
 				return; 
 			case PoSTPackage.STATEMENT_LIST:
 				sequence_StatementList(context, (StatementList) semanticObject); 
+				return; 
+			case PoSTPackage.STOP_PROCESS_STATEMENT:
+				sequence_StopProcessStatement(context, (StopProcessStatement) semanticObject); 
 				return; 
 			case PoSTPackage.SYMBOLIC_VARIABLE:
 				sequence_SymbolicVariable(context, (SymbolicVariable) semanticObject); 
@@ -180,6 +212,9 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case PoSTPackage.TIME_LITERAL:
 				sequence_TimeLiteral(context, (TimeLiteral) semanticObject); 
+				return; 
+			case PoSTPackage.TIMEOUT_STATEMENT:
+				sequence_TimeoutStatement(context, (TimeoutStatement) semanticObject); 
 				return; 
 			case PoSTPackage.UNARY_EXPRESSION:
 				sequence_UnaryExpression(context, (UnaryExpression) semanticObject); 
@@ -407,6 +442,20 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getEquExpressionAccess().getEquOpEquOperatorEnumRuleCall_1_1_0(), semanticObject.getEquOp());
 		feeder.accept(grammarAccess.getEquExpressionAccess().getRightAddExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatements returns ErrorProcessStatement
+	 *     ErrorProcessStatement returns ErrorProcessStatement
+	 *     Statement returns ErrorProcessStatement
+	 *
+	 * Constraint:
+	 *     process=[Process|ID]?
+	 */
+	protected void sequence_ErrorProcessStatement(ISerializationContext context, ErrorProcessStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -711,9 +760,56 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PrimaryExpression returns PrimaryExpression
 	 *
 	 * Constraint:
-	 *     (const=Constant | variable=[SymbolicVariable|ID] | nestExpr=Expression)
+	 *     (const=Constant | variable=[SymbolicVariable|ID] | procStatus=ProcessStatusExpression | nestExpr=Expression)
 	 */
 	protected void sequence_PrimaryExpression(ISerializationContext context, PrimaryExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatusExpression returns ProcessStatusExpression
+	 *
+	 * Constraint:
+	 *     (process=[Process|ID] (stateName=[State|ID] | stop?='STOP' | error?='ERROR'))
+	 */
+	protected void sequence_ProcessStatusExpression(ISerializationContext context, ProcessStatusExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Process returns Process
+	 *
+	 * Constraint:
+	 *     (name=ID (procVars+=VarDeclaration | procTempVars+=TempVarDeclaration)* states+=State*)
+	 */
+	protected void sequence_Process(ISerializationContext context, su.nsk.iae.post.poST.Process semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Program returns Program
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         (
+	 *             progInVars+=InputVarDeclaration | 
+	 *             progOutVars+=OutputVarDeclaration | 
+	 *             progInOutVars+=InputOutputVarDeclaration | 
+	 *             progVars+=VarDeclaration | 
+	 *             progTempVars+=TempVarDeclaration | 
+	 *             progExternVars+=ExternalVarDeclaration
+	 *         )* 
+	 *         processes+=Process*
+	 *     )
+	 */
+	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -752,6 +848,19 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getRepeatStatementAccess().getStatementStatementListParserRuleCall_1_0(), semanticObject.getStatement());
 		feeder.accept(grammarAccess.getRepeatStatementAccess().getCondExpressionParserRuleCall_3_0(), semanticObject.getCond());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SetStateStatement returns SetStateStatement
+	 *     Statement returns SetStateStatement
+	 *
+	 * Constraint:
+	 *     (state=[State|ID] | next?='NEXT')
+	 */
+	protected void sequence_SetStateStatement(ISerializationContext context, SetStateStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -802,6 +911,38 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ProcessStatements returns StartProcessStatement
+	 *     StartProcessStatement returns StartProcessStatement
+	 *     Statement returns StartProcessStatement
+	 *
+	 * Constraint:
+	 *     process=[Process|ID]
+	 */
+	protected void sequence_StartProcessStatement(ISerializationContext context, StartProcessStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.PROCESS_STATEMENTS__PROCESS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.PROCESS_STATEMENTS__PROCESS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStartProcessStatementAccess().getProcessProcessIDTerminalRuleCall_2_0_1(), semanticObject.eGet(PoSTPackage.Literals.PROCESS_STATEMENTS__PROCESS, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     State returns State
+	 *
+	 * Constraint:
+	 *     (name=ID statement=StatementList timeout=TimeoutStatement?)
+	 */
+	protected void sequence_State(ISerializationContext context, State semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     StatementList returns StatementList
 	 *
 	 * Constraint:
@@ -820,6 +961,20 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     {Statement}
 	 */
 	protected void sequence_Statement(ISerializationContext context, Statement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatements returns StopProcessStatement
+	 *     StopProcessStatement returns StopProcessStatement
+	 *     Statement returns StopProcessStatement
+	 *
+	 * Constraint:
+	 *     process=[Process|ID]?
+	 */
+	protected void sequence_StopProcessStatement(ISerializationContext context, StopProcessStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -870,6 +1025,18 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTimeLiteralAccess().getIntervalINTERVALTerminalRuleCall_3_0(), semanticObject.getInterval());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TimeoutStatement returns TimeoutStatement
+	 *
+	 * Constraint:
+	 *     ((const=Constant | variable=[SymbolicVariable|ID]) statement=StatementList)
+	 */
+	protected void sequence_TimeoutStatement(ISerializationContext context, TimeoutStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

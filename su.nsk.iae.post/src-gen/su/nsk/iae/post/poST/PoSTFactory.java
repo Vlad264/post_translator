@@ -42,6 +42,96 @@ public interface PoSTFactory extends EFactory
   Greeting createGreeting();
 
   /**
+   * Returns a new object of class '<em>Program</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Program</em>'.
+   * @generated
+   */
+  Program createProgram();
+
+  /**
+   * Returns a new object of class '<em>Process</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process</em>'.
+   * @generated
+   */
+  Process createProcess();
+
+  /**
+   * Returns a new object of class '<em>State</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>State</em>'.
+   * @generated
+   */
+  State createState();
+
+  /**
+   * Returns a new object of class '<em>Set State Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Set State Statement</em>'.
+   * @generated
+   */
+  SetStateStatement createSetStateStatement();
+
+  /**
+   * Returns a new object of class '<em>Process Statements</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Statements</em>'.
+   * @generated
+   */
+  ProcessStatements createProcessStatements();
+
+  /**
+   * Returns a new object of class '<em>Process Status Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Status Expression</em>'.
+   * @generated
+   */
+  ProcessStatusExpression createProcessStatusExpression();
+
+  /**
+   * Returns a new object of class '<em>Start Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Start Process Statement</em>'.
+   * @generated
+   */
+  StartProcessStatement createStartProcessStatement();
+
+  /**
+   * Returns a new object of class '<em>Stop Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Stop Process Statement</em>'.
+   * @generated
+   */
+  StopProcessStatement createStopProcessStatement();
+
+  /**
+   * Returns a new object of class '<em>Error Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Error Process Statement</em>'.
+   * @generated
+   */
+  ErrorProcessStatement createErrorProcessStatement();
+
+  /**
+   * Returns a new object of class '<em>Timeout Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Timeout Statement</em>'.
+   * @generated
+   */
+  TimeoutStatement createTimeoutStatement();
+
+  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

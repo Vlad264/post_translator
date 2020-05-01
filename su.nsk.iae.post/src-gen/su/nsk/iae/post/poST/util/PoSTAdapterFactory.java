@@ -10,7 +10,61 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import su.nsk.iae.post.poST.*;
+import su.nsk.iae.post.poST.AddExpression;
+import su.nsk.iae.post.poST.AndExpression;
+import su.nsk.iae.post.poST.AssignmentStatement;
+import su.nsk.iae.post.poST.CaseElement;
+import su.nsk.iae.post.poST.CaseList;
+import su.nsk.iae.post.poST.CaseStatement;
+import su.nsk.iae.post.poST.CompExpression;
+import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.EquExpression;
+import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.Expression;
+import su.nsk.iae.post.poST.ExternalVarDeclaration;
+import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
+import su.nsk.iae.post.poST.ForList;
+import su.nsk.iae.post.poST.ForStatement;
+import su.nsk.iae.post.poST.GlobalVarDeclaration;
+import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
+import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.IfStatement;
+import su.nsk.iae.post.poST.InputOutputVarDeclaration;
+import su.nsk.iae.post.poST.InputVarDeclaration;
+import su.nsk.iae.post.poST.IntegerLiteral;
+import su.nsk.iae.post.poST.IterationStatement;
+import su.nsk.iae.post.poST.Model;
+import su.nsk.iae.post.poST.MulExpression;
+import su.nsk.iae.post.poST.NumericLiteral;
+import su.nsk.iae.post.poST.OutputVarDeclaration;
+import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.PowerExpression;
+import su.nsk.iae.post.poST.PrimaryExpression;
+import su.nsk.iae.post.poST.ProcessStatements;
+import su.nsk.iae.post.poST.ProcessStatusExpression;
+import su.nsk.iae.post.poST.Program;
+import su.nsk.iae.post.poST.RealLiteral;
+import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.SelectionStatement;
+import su.nsk.iae.post.poST.SetStateStatement;
+import su.nsk.iae.post.poST.SignedInteger;
+import su.nsk.iae.post.poST.SimpleSpecificationInit;
+import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.StartProcessStatement;
+import su.nsk.iae.post.poST.State;
+import su.nsk.iae.post.poST.Statement;
+import su.nsk.iae.post.poST.StatementList;
+import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SymbolicVariable;
+import su.nsk.iae.post.poST.TempVarDeclaration;
+import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.TimeoutStatement;
+import su.nsk.iae.post.poST.UnaryExpression;
+import su.nsk.iae.post.poST.VarDeclaration;
+import su.nsk.iae.post.poST.VarInitDeclaration;
+import su.nsk.iae.post.poST.VarList;
+import su.nsk.iae.post.poST.WhileStatement;
+import su.nsk.iae.post.poST.XorExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,6 +138,56 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
       public Adapter caseGreeting(Greeting object)
       {
         return createGreetingAdapter();
+      }
+      @Override
+      public Adapter caseProgram(Program object)
+      {
+        return createProgramAdapter();
+      }
+      @Override
+      public Adapter caseProcess(su.nsk.iae.post.poST.Process object)
+      {
+        return createProcessAdapter();
+      }
+      @Override
+      public Adapter caseState(State object)
+      {
+        return createStateAdapter();
+      }
+      @Override
+      public Adapter caseSetStateStatement(SetStateStatement object)
+      {
+        return createSetStateStatementAdapter();
+      }
+      @Override
+      public Adapter caseProcessStatements(ProcessStatements object)
+      {
+        return createProcessStatementsAdapter();
+      }
+      @Override
+      public Adapter caseProcessStatusExpression(ProcessStatusExpression object)
+      {
+        return createProcessStatusExpressionAdapter();
+      }
+      @Override
+      public Adapter caseStartProcessStatement(StartProcessStatement object)
+      {
+        return createStartProcessStatementAdapter();
+      }
+      @Override
+      public Adapter caseStopProcessStatement(StopProcessStatement object)
+      {
+        return createStopProcessStatementAdapter();
+      }
+      @Override
+      public Adapter caseErrorProcessStatement(ErrorProcessStatement object)
+      {
+        return createErrorProcessStatementAdapter();
+      }
+      @Override
+      public Adapter caseTimeoutStatement(TimeoutStatement object)
+      {
+        return createTimeoutStatementAdapter();
       }
       @Override
       public Adapter caseExpression(Expression object)
@@ -348,6 +452,156 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGreetingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.Program <em>Program</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.Program
+   * @generated
+   */
+  public Adapter createProgramAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.Process <em>Process</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.Process
+   * @generated
+   */
+  public Adapter createProcessAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.State <em>State</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.State
+   * @generated
+   */
+  public Adapter createStateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SetStateStatement <em>Set State Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.SetStateStatement
+   * @generated
+   */
+  public Adapter createSetStateStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ProcessStatements <em>Process Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ProcessStatements
+   * @generated
+   */
+  public Adapter createProcessStatementsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ProcessStatusExpression <em>Process Status Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ProcessStatusExpression
+   * @generated
+   */
+  public Adapter createProcessStatusExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.StartProcessStatement <em>Start Process Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.StartProcessStatement
+   * @generated
+   */
+  public Adapter createStartProcessStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.StopProcessStatement <em>Stop Process Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.StopProcessStatement
+   * @generated
+   */
+  public Adapter createStopProcessStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ErrorProcessStatement <em>Error Process Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ErrorProcessStatement
+   * @generated
+   */
+  public Adapter createErrorProcessStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.TimeoutStatement <em>Timeout Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.TimeoutStatement
+   * @generated
+   */
+  public Adapter createTimeoutStatementAdapter()
   {
     return null;
   }
