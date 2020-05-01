@@ -113,6 +113,247 @@ public interface PoSTPackage extends EPackage
    */
   int GREETING_FEATURE_COUNT = 1;
 
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl <em>Single Element Type Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSingleElementTypeDeclaration()
+   * @generated
+   */
+  int SINGLE_ELEMENT_TYPE_DECLARATION = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SINGLE_ELEMENT_TYPE_DECLARATION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SINGLE_ELEMENT_TYPE_DECLARATION__TYPE = 1;
+
+  /**
+   * The number of structural features of the '<em>Single Element Type Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SINGLE_ELEMENT_TYPE_DECLARATION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SimpleSpecificationInitImpl <em>Simple Specification Init</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.SimpleSpecificationInitImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSimpleSpecificationInit()
+   * @generated
+   */
+  int SIMPLE_SPECIFICATION_INIT = 3;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SPECIFICATION_INIT__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SPECIFICATION_INIT__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Simple Specification Init</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_SPECIFICATION_INIT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ConstantImpl <em>Constant</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.ConstantImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getConstant()
+   * @generated
+   */
+  int CONSTANT = 4;
+
+  /**
+   * The number of structural features of the '<em>Constant</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANT_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SignedIntegerImpl <em>Signed Integer</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.SignedIntegerImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSignedInteger()
+   * @generated
+   */
+  int SIGNED_INTEGER = 5;
+
+  /**
+   * The feature id for the '<em><b>Sig</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIGNED_INTEGER__SIG = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIGNED_INTEGER__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Signed Integer</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIGNED_INTEGER_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.NumericLiteralImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getNumericLiteral()
+   * @generated
+   */
+  int NUMERIC_LITERAL = 6;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMERIC_LITERAL__TYPE = CONSTANT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Numeric Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMERIC_LITERAL_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.IntegerLiteralImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIntegerLiteral()
+   * @generated
+   */
+  int INTEGER_LITERAL = 7;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__TYPE = NUMERIC_LITERAL__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__VALUE = NUMERIC_LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Integer Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL_FEATURE_COUNT = NUMERIC_LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.RealLiteralImpl <em>Real Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.RealLiteralImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRealLiteral()
+   * @generated
+   */
+  int REAL_LITERAL = 8;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REAL_LITERAL__TYPE = NUMERIC_LITERAL__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Div</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REAL_LITERAL__DIV = NUMERIC_LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Mod</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REAL_LITERAL__MOD = NUMERIC_LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Real Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REAL_LITERAL_FEATURE_COUNT = NUMERIC_LITERAL_FEATURE_COUNT + 2;
+
 
   /**
    * Returns the meta object for class '{@link su.nsk.iae.post.poST.Model <em>Model</em>}'.
@@ -155,6 +396,186 @@ public interface PoSTPackage extends EPackage
    * @generated
    */
   EAttribute getGreeting_Name();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration <em>Single Element Type Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Single Element Type Declaration</em>'.
+   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration
+   * @generated
+   */
+  EClass getSingleElementTypeDeclaration();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration#getName()
+   * @see #getSingleElementTypeDeclaration()
+   * @generated
+   */
+  EAttribute getSingleElementTypeDeclaration_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration#getType()
+   * @see #getSingleElementTypeDeclaration()
+   * @generated
+   */
+  EReference getSingleElementTypeDeclaration_Type();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.SimpleSpecificationInit <em>Simple Specification Init</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Simple Specification Init</em>'.
+   * @see su.nsk.iae.post.poST.SimpleSpecificationInit
+   * @generated
+   */
+  EClass getSimpleSpecificationInit();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SimpleSpecificationInit#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see su.nsk.iae.post.poST.SimpleSpecificationInit#getType()
+   * @see #getSimpleSpecificationInit()
+   * @generated
+   */
+  EAttribute getSimpleSpecificationInit_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.SimpleSpecificationInit#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see su.nsk.iae.post.poST.SimpleSpecificationInit#getValue()
+   * @see #getSimpleSpecificationInit()
+   * @generated
+   */
+  EReference getSimpleSpecificationInit_Value();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.Constant <em>Constant</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constant</em>'.
+   * @see su.nsk.iae.post.poST.Constant
+   * @generated
+   */
+  EClass getConstant();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.SignedInteger <em>Signed Integer</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Signed Integer</em>'.
+   * @see su.nsk.iae.post.poST.SignedInteger
+   * @generated
+   */
+  EClass getSignedInteger();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SignedInteger#isSig <em>Sig</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Sig</em>'.
+   * @see su.nsk.iae.post.poST.SignedInteger#isSig()
+   * @see #getSignedInteger()
+   * @generated
+   */
+  EAttribute getSignedInteger_Sig();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SignedInteger#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see su.nsk.iae.post.poST.SignedInteger#getValue()
+   * @see #getSignedInteger()
+   * @generated
+   */
+  EAttribute getSignedInteger_Value();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.NumericLiteral <em>Numeric Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Numeric Literal</em>'.
+   * @see su.nsk.iae.post.poST.NumericLiteral
+   * @generated
+   */
+  EClass getNumericLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.NumericLiteral#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see su.nsk.iae.post.poST.NumericLiteral#getType()
+   * @see #getNumericLiteral()
+   * @generated
+   */
+  EAttribute getNumericLiteral_Type();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.IntegerLiteral <em>Integer Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Integer Literal</em>'.
+   * @see su.nsk.iae.post.poST.IntegerLiteral
+   * @generated
+   */
+  EClass getIntegerLiteral();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.IntegerLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see su.nsk.iae.post.poST.IntegerLiteral#getValue()
+   * @see #getIntegerLiteral()
+   * @generated
+   */
+  EReference getIntegerLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.RealLiteral <em>Real Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Real Literal</em>'.
+   * @see su.nsk.iae.post.poST.RealLiteral
+   * @generated
+   */
+  EClass getRealLiteral();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.RealLiteral#getDiv <em>Div</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Div</em>'.
+   * @see su.nsk.iae.post.poST.RealLiteral#getDiv()
+   * @see #getRealLiteral()
+   * @generated
+   */
+  EReference getRealLiteral_Div();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.RealLiteral#getMod <em>Mod</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mod</em>'.
+   * @see su.nsk.iae.post.poST.RealLiteral#getMod()
+   * @see #getRealLiteral()
+   * @generated
+   */
+  EAttribute getRealLiteral_Mod();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -214,6 +635,156 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EAttribute GREETING__NAME = eINSTANCE.getGreeting_Name();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl <em>Single Element Type Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSingleElementTypeDeclaration()
+     * @generated
+     */
+    EClass SINGLE_ELEMENT_TYPE_DECLARATION = eINSTANCE.getSingleElementTypeDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SINGLE_ELEMENT_TYPE_DECLARATION__NAME = eINSTANCE.getSingleElementTypeDeclaration_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SINGLE_ELEMENT_TYPE_DECLARATION__TYPE = eINSTANCE.getSingleElementTypeDeclaration_Type();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SimpleSpecificationInitImpl <em>Simple Specification Init</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.SimpleSpecificationInitImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSimpleSpecificationInit()
+     * @generated
+     */
+    EClass SIMPLE_SPECIFICATION_INIT = eINSTANCE.getSimpleSpecificationInit();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIMPLE_SPECIFICATION_INIT__TYPE = eINSTANCE.getSimpleSpecificationInit_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIMPLE_SPECIFICATION_INIT__VALUE = eINSTANCE.getSimpleSpecificationInit_Value();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.ConstantImpl <em>Constant</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.ConstantImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getConstant()
+     * @generated
+     */
+    EClass CONSTANT = eINSTANCE.getConstant();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SignedIntegerImpl <em>Signed Integer</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.SignedIntegerImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSignedInteger()
+     * @generated
+     */
+    EClass SIGNED_INTEGER = eINSTANCE.getSignedInteger();
+
+    /**
+     * The meta object literal for the '<em><b>Sig</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIGNED_INTEGER__SIG = eINSTANCE.getSignedInteger_Sig();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIGNED_INTEGER__VALUE = eINSTANCE.getSignedInteger_Value();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.NumericLiteralImpl <em>Numeric Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.NumericLiteralImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getNumericLiteral()
+     * @generated
+     */
+    EClass NUMERIC_LITERAL = eINSTANCE.getNumericLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NUMERIC_LITERAL__TYPE = eINSTANCE.getNumericLiteral_Type();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.IntegerLiteralImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIntegerLiteral()
+     * @generated
+     */
+    EClass INTEGER_LITERAL = eINSTANCE.getIntegerLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.RealLiteralImpl <em>Real Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.RealLiteralImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRealLiteral()
+     * @generated
+     */
+    EClass REAL_LITERAL = eINSTANCE.getRealLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Div</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REAL_LITERAL__DIV = eINSTANCE.getRealLiteral_Div();
+
+    /**
+     * The meta object literal for the '<em><b>Mod</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REAL_LITERAL__MOD = eINSTANCE.getRealLiteral_Mod();
 
   }
 

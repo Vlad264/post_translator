@@ -10,19 +10,84 @@ Model:
 Greeting:
 	'Hello' name=ID '!';
 	
+/* ======================= START Elementary data types ======================= */
+
+DataTypeName returns ecore::EString:
+	NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING';
+
+NumericTypeName returns ecore::EString:
+	IntegerTypeName | REAL_TYPE_NAME;
+
+IntegerTypeName returns ecore::EString:
+	SIGNED_INTEGER_TYPE_NAME | UNSIGNED_INTEGER_TYPE_NAME;
+
+terminal SIGNED_INTEGER_TYPE_NAME returns ecore::EString:
+	'SINT' | 'INT' | 'DINT' | 'LINT';
+
+terminal UNSIGNED_INTEGER_TYPE_NAME  returns ecore::EString:
+	'USINT' | 'UINT' | 'UDINT' | 'ULINT';
+
+terminal REAL_TYPE_NAME returns ecore::EString:
+	'REAL' | 'LREAL';
+
+terminal BIT_STRING_TYPE_NAME returns ecore::EString:
+	'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD';
+
+SingleElementTypeDeclaration:
+	name=ID ':' type=SimpleSpecificationInit;
+
+SimpleSpecificationInit:
+	{SimpleSpecificationInit} type=DataTypeName (':=' value=Constant)?;
+
+/* ======================= END Elementary data types ======================= */
+	
+/* ======================= START Numeric Literals ======================= */
+
+Constant:
+	NumericLiteral | {Constant} BOOLEAN_LITERAL;
+
+terminal INTEGER returns ecore::EInt:
+	DIGIT+;
+
+SignedInteger:
+	(sig?='-')? value=INTEGER;
+
+terminal BINARY_INTEGER:
+	'2#' BIT+;
+
+terminal OCTAL_INTEGER:
+	'8#' OCTAL_DIGIT+;
+
+terminal HEX_INTEGER:
+	'16#' HEX_DIGIT+;
+	
+NumericLiteral:
+	IntegerLiteral | RealLiteral;
+
+IntegerLiteral:
+	(type=IntegerTypeName '#')? value=SignedInteger;
+
+RealLiteral:
+	(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER;
+
+terminal BOOLEAN_LITERAL:
+	'TRUE' | 'FALSE';
+
+/* ======================= END Numeric Literals ======================= */
+	
 /* ======================= START Identifiers ======================= */
 
 terminal fragment LETTER:
 	'A'..'Z' | 'a'..'z' | '_';
 
-terminal fragment DIGIT:
-	'0'..'9';
-
+terminal fragment BIT:
+	'0' | '1';
+	
 terminal fragment OCTAL_DIGIT:
 	'0'..'7';
 
-terminal fragment BIT:
-	'0' | '1';
+terminal fragment DIGIT:
+	'0'..'9';
 
 terminal fragment HEX_DIGIT:
 	DIGIT | 'A'..'F';

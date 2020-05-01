@@ -14,9 +14,15 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.IntegerLiteral;
 import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.RealLiteral;
+import su.nsk.iae.post.poST.SignedInteger;
+import su.nsk.iae.post.poST.SimpleSpecificationInit;
+import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
 import su.nsk.iae.post.services.PoSTGrammarAccess;
 
 @SuppressWarnings("all")
@@ -33,16 +39,46 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == PoSTPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case PoSTPackage.CONSTANT:
+				sequence_Constant(context, (Constant) semanticObject); 
+				return; 
 			case PoSTPackage.GREETING:
 				sequence_Greeting(context, (Greeting) semanticObject); 
 				return; 
+			case PoSTPackage.INTEGER_LITERAL:
+				sequence_IntegerLiteral(context, (IntegerLiteral) semanticObject); 
+				return; 
 			case PoSTPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
+				return; 
+			case PoSTPackage.REAL_LITERAL:
+				sequence_RealLiteral(context, (RealLiteral) semanticObject); 
+				return; 
+			case PoSTPackage.SIGNED_INTEGER:
+				sequence_SignedInteger(context, (SignedInteger) semanticObject); 
+				return; 
+			case PoSTPackage.SIMPLE_SPECIFICATION_INIT:
+				sequence_SimpleSpecificationInit(context, (SimpleSpecificationInit) semanticObject); 
+				return; 
+			case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
+				sequence_SingleElementTypeDeclaration(context, (SingleElementTypeDeclaration) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     Constant returns Constant
+	 *
+	 * Constraint:
+	 *     {Constant}
+	 */
+	protected void sequence_Constant(ISerializationContext context, Constant semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -64,6 +100,20 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Constant returns IntegerLiteral
+	 *     NumericLiteral returns IntegerLiteral
+	 *     IntegerLiteral returns IntegerLiteral
+	 *
+	 * Constraint:
+	 *     (type=IntegerTypeName? value=SignedInteger)
+	 */
+	protected void sequence_IntegerLiteral(ISerializationContext context, IntegerLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Model returns Model
 	 *
 	 * Constraint:
@@ -71,6 +121,65 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Constant returns RealLiteral
+	 *     NumericLiteral returns RealLiteral
+	 *     RealLiteral returns RealLiteral
+	 *
+	 * Constraint:
+	 *     (type=REAL_TYPE_NAME? div=SignedInteger mod=INTEGER)
+	 */
+	protected void sequence_RealLiteral(ISerializationContext context, RealLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SignedInteger returns SignedInteger
+	 *
+	 * Constraint:
+	 *     (sig?='-'? value=INTEGER)
+	 */
+	protected void sequence_SignedInteger(ISerializationContext context, SignedInteger semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SimpleSpecificationInit returns SimpleSpecificationInit
+	 *
+	 * Constraint:
+	 *     (type=DataTypeName value=Constant?)
+	 */
+	protected void sequence_SimpleSpecificationInit(ISerializationContext context, SimpleSpecificationInit semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SingleElementTypeDeclaration returns SingleElementTypeDeclaration
+	 *
+	 * Constraint:
+	 *     (name=ID type=SimpleSpecificationInit)
+	 */
+	protected void sequence_SingleElementTypeDeclaration(ISerializationContext context, SingleElementTypeDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__NAME));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getTypeSimpleSpecificationInitParserRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
 	}
 	
 	

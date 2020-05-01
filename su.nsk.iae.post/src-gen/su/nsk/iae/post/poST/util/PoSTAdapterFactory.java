@@ -86,6 +86,41 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
         return createGreetingAdapter();
       }
       @Override
+      public Adapter caseSingleElementTypeDeclaration(SingleElementTypeDeclaration object)
+      {
+        return createSingleElementTypeDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseSimpleSpecificationInit(SimpleSpecificationInit object)
+      {
+        return createSimpleSpecificationInitAdapter();
+      }
+      @Override
+      public Adapter caseConstant(Constant object)
+      {
+        return createConstantAdapter();
+      }
+      @Override
+      public Adapter caseSignedInteger(SignedInteger object)
+      {
+        return createSignedIntegerAdapter();
+      }
+      @Override
+      public Adapter caseNumericLiteral(NumericLiteral object)
+      {
+        return createNumericLiteralAdapter();
+      }
+      @Override
+      public Adapter caseIntegerLiteral(IntegerLiteral object)
+      {
+        return createIntegerLiteralAdapter();
+      }
+      @Override
+      public Adapter caseRealLiteral(RealLiteral object)
+      {
+        return createRealLiteralAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -133,6 +168,111 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGreetingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration <em>Single Element Type Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration
+   * @generated
+   */
+  public Adapter createSingleElementTypeDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SimpleSpecificationInit <em>Simple Specification Init</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.SimpleSpecificationInit
+   * @generated
+   */
+  public Adapter createSimpleSpecificationInitAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.Constant <em>Constant</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.Constant
+   * @generated
+   */
+  public Adapter createConstantAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SignedInteger <em>Signed Integer</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.SignedInteger
+   * @generated
+   */
+  public Adapter createSignedIntegerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.NumericLiteral <em>Numeric Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.NumericLiteral
+   * @generated
+   */
+  public Adapter createNumericLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.IntegerLiteral <em>Integer Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.IntegerLiteral
+   * @generated
+   */
+  public Adapter createIntegerLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.RealLiteral <em>Real Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.RealLiteral
+   * @generated
+   */
+  public Adapter createRealLiteralAdapter()
   {
     return null;
   }

@@ -87,6 +87,60 @@ public class PoSTSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
+      {
+        SingleElementTypeDeclaration singleElementTypeDeclaration = (SingleElementTypeDeclaration)theEObject;
+        T result = caseSingleElementTypeDeclaration(singleElementTypeDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.SIMPLE_SPECIFICATION_INIT:
+      {
+        SimpleSpecificationInit simpleSpecificationInit = (SimpleSpecificationInit)theEObject;
+        T result = caseSimpleSpecificationInit(simpleSpecificationInit);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.CONSTANT:
+      {
+        Constant constant = (Constant)theEObject;
+        T result = caseConstant(constant);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.SIGNED_INTEGER:
+      {
+        SignedInteger signedInteger = (SignedInteger)theEObject;
+        T result = caseSignedInteger(signedInteger);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.NUMERIC_LITERAL:
+      {
+        NumericLiteral numericLiteral = (NumericLiteral)theEObject;
+        T result = caseNumericLiteral(numericLiteral);
+        if (result == null) result = caseConstant(numericLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.INTEGER_LITERAL:
+      {
+        IntegerLiteral integerLiteral = (IntegerLiteral)theEObject;
+        T result = caseIntegerLiteral(integerLiteral);
+        if (result == null) result = caseNumericLiteral(integerLiteral);
+        if (result == null) result = caseConstant(integerLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.REAL_LITERAL:
+      {
+        RealLiteral realLiteral = (RealLiteral)theEObject;
+        T result = caseRealLiteral(realLiteral);
+        if (result == null) result = caseNumericLiteral(realLiteral);
+        if (result == null) result = caseConstant(realLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -119,6 +173,118 @@ public class PoSTSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGreeting(Greeting object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Single Element Type Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Single Element Type Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSingleElementTypeDeclaration(SingleElementTypeDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Simple Specification Init</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Simple Specification Init</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSimpleSpecificationInit(SimpleSpecificationInit object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constant</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constant</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstant(Constant object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Signed Integer</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Signed Integer</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSignedInteger(SignedInteger object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Numeric Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Numeric Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumericLiteral(NumericLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntegerLiteral(IntegerLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Real Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Real Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRealLiteral(RealLiteral object)
   {
     return null;
   }

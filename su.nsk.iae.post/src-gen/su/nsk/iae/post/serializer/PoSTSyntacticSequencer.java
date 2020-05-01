@@ -26,9 +26,20 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (ruleCall.getRule() == grammarAccess.getBOOLEAN_LITERALRule())
+			return getBOOLEAN_LITERALToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * terminal BOOLEAN_LITERAL:
+	 * 	'TRUE' | 'FALSE';
+	 */
+	protected String getBOOLEAN_LITERALToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "TRUE";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

@@ -67,6 +67,13 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
     {
       case PoSTPackage.MODEL: return createModel();
       case PoSTPackage.GREETING: return createGreeting();
+      case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION: return createSingleElementTypeDeclaration();
+      case PoSTPackage.SIMPLE_SPECIFICATION_INIT: return createSimpleSpecificationInit();
+      case PoSTPackage.CONSTANT: return createConstant();
+      case PoSTPackage.SIGNED_INTEGER: return createSignedInteger();
+      case PoSTPackage.NUMERIC_LITERAL: return createNumericLiteral();
+      case PoSTPackage.INTEGER_LITERAL: return createIntegerLiteral();
+      case PoSTPackage.REAL_LITERAL: return createRealLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -94,6 +101,90 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     GreetingImpl greeting = new GreetingImpl();
     return greeting;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SingleElementTypeDeclaration createSingleElementTypeDeclaration()
+  {
+    SingleElementTypeDeclarationImpl singleElementTypeDeclaration = new SingleElementTypeDeclarationImpl();
+    return singleElementTypeDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SimpleSpecificationInit createSimpleSpecificationInit()
+  {
+    SimpleSpecificationInitImpl simpleSpecificationInit = new SimpleSpecificationInitImpl();
+    return simpleSpecificationInit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Constant createConstant()
+  {
+    ConstantImpl constant = new ConstantImpl();
+    return constant;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SignedInteger createSignedInteger()
+  {
+    SignedIntegerImpl signedInteger = new SignedIntegerImpl();
+    return signedInteger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NumericLiteral createNumericLiteral()
+  {
+    NumericLiteralImpl numericLiteral = new NumericLiteralImpl();
+    return numericLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral createIntegerLiteral()
+  {
+    IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
+    return integerLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public RealLiteral createRealLiteral()
+  {
+    RealLiteralImpl realLiteral = new RealLiteralImpl();
+    return realLiteral;
   }
 
   /**

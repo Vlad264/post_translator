@@ -6,6 +6,8 @@ package su.nsk.iae.post.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -62,14 +64,324 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//'!'
 		public Keyword getExclamationMarkKeyword_2() { return cExclamationMarkKeyword_2; }
 	}
+	public class DataTypeNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.DataTypeName");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cNumericTypeNameParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cBIT_STRING_TYPE_NAMETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Keyword cSTRINGKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cWSTRINGKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		
+		///* ======================= START Elementary data types ======================= */ DataTypeName:
+		//	NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//NumericTypeName
+		public RuleCall getNumericTypeNameParserRuleCall_0() { return cNumericTypeNameParserRuleCall_0; }
+		
+		//BIT_STRING_TYPE_NAME
+		public RuleCall getBIT_STRING_TYPE_NAMETerminalRuleCall_1() { return cBIT_STRING_TYPE_NAMETerminalRuleCall_1; }
+		
+		//'STRING'
+		public Keyword getSTRINGKeyword_2() { return cSTRINGKeyword_2; }
+		
+		//'WSTRING'
+		public Keyword getWSTRINGKeyword_3() { return cWSTRINGKeyword_3; }
+	}
+	public class NumericTypeNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.NumericTypeName");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIntegerTypeNameParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cREAL_TYPE_NAMETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//NumericTypeName:
+		//	IntegerTypeName | REAL_TYPE_NAME;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//IntegerTypeName | REAL_TYPE_NAME
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//IntegerTypeName
+		public RuleCall getIntegerTypeNameParserRuleCall_0() { return cIntegerTypeNameParserRuleCall_0; }
+		
+		//REAL_TYPE_NAME
+		public RuleCall getREAL_TYPE_NAMETerminalRuleCall_1() { return cREAL_TYPE_NAMETerminalRuleCall_1; }
+	}
+	public class IntegerTypeNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.IntegerTypeName");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cUNSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//IntegerTypeName:
+		//	SIGNED_INTEGER_TYPE_NAME | UNSIGNED_INTEGER_TYPE_NAME;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//SIGNED_INTEGER_TYPE_NAME | UNSIGNED_INTEGER_TYPE_NAME
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//SIGNED_INTEGER_TYPE_NAME
+		public RuleCall getSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_0() { return cSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_0; }
+		
+		//UNSIGNED_INTEGER_TYPE_NAME
+		public RuleCall getUNSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_1() { return cUNSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_1; }
+	}
+	public class SingleElementTypeDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SingleElementTypeDeclaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeSimpleSpecificationInitParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		
+		//SingleElementTypeDeclaration:
+		//	name=ID ':' type=SimpleSpecificationInit;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID ':' type=SimpleSpecificationInit
+		public Group getGroup() { return cGroup; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		
+		//type=SimpleSpecificationInit
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		
+		//SimpleSpecificationInit
+		public RuleCall getTypeSimpleSpecificationInitParserRuleCall_2_0() { return cTypeSimpleSpecificationInitParserRuleCall_2_0; }
+	}
+	public class SimpleSpecificationInitElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SimpleSpecificationInit");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSimpleSpecificationInitAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeDataTypeNameParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cColonEqualsSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cValueConstantParserRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
+		
+		//SimpleSpecificationInit:
+		//	{SimpleSpecificationInit} type=DataTypeName (':=' value=Constant)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{SimpleSpecificationInit} type=DataTypeName (':=' value=Constant)?
+		public Group getGroup() { return cGroup; }
+		
+		//{SimpleSpecificationInit}
+		public Action getSimpleSpecificationInitAction_0() { return cSimpleSpecificationInitAction_0; }
+		
+		//type=DataTypeName
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		
+		//DataTypeName
+		public RuleCall getTypeDataTypeNameParserRuleCall_1_0() { return cTypeDataTypeNameParserRuleCall_1_0; }
+		
+		//(':=' value=Constant)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//':='
+		public Keyword getColonEqualsSignKeyword_2_0() { return cColonEqualsSignKeyword_2_0; }
+		
+		//value=Constant
+		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
+		
+		//Constant
+		public RuleCall getValueConstantParserRuleCall_2_1_0() { return cValueConstantParserRuleCall_2_1_0; }
+	}
+	public class ConstantElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.Constant");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cNumericLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cConstantAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final RuleCall cBOOLEAN_LITERALTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		///* ======================= END Elementary data types ======================= */
+		///* ======================= START Numeric Literals ======================= */ Constant:
+		//	NumericLiteral | {Constant} BOOLEAN_LITERAL;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//NumericLiteral | {Constant} BOOLEAN_LITERAL
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//NumericLiteral
+		public RuleCall getNumericLiteralParserRuleCall_0() { return cNumericLiteralParserRuleCall_0; }
+		
+		//{Constant} BOOLEAN_LITERAL
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Constant}
+		public Action getConstantAction_1_0() { return cConstantAction_1_0; }
+		
+		//BOOLEAN_LITERAL
+		public RuleCall getBOOLEAN_LITERALTerminalRuleCall_1_1() { return cBOOLEAN_LITERALTerminalRuleCall_1_1; }
+	}
+	public class SignedIntegerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SignedInteger");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cSigAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cSigHyphenMinusKeyword_0_0 = (Keyword)cSigAssignment_0.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueINTEGERTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//SignedInteger:
+		//	sig?='-'? value=INTEGER;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//sig?='-'? value=INTEGER
+		public Group getGroup() { return cGroup; }
+		
+		//sig?='-'?
+		public Assignment getSigAssignment_0() { return cSigAssignment_0; }
+		
+		//'-'
+		public Keyword getSigHyphenMinusKeyword_0_0() { return cSigHyphenMinusKeyword_0_0; }
+		
+		//value=INTEGER
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//INTEGER
+		public RuleCall getValueINTEGERTerminalRuleCall_1_0() { return cValueINTEGERTerminalRuleCall_1_0; }
+	}
+	public class NumericLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.NumericLiteral");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIntegerLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cRealLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//NumericLiteral:
+		//	IntegerLiteral | RealLiteral;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//IntegerLiteral | RealLiteral
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//IntegerLiteral
+		public RuleCall getIntegerLiteralParserRuleCall_0() { return cIntegerLiteralParserRuleCall_0; }
+		
+		//RealLiteral
+		public RuleCall getRealLiteralParserRuleCall_1() { return cRealLiteralParserRuleCall_1; }
+	}
+	public class IntegerLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.IntegerLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cTypeIntegerTypeNameParserRuleCall_0_0_0 = (RuleCall)cTypeAssignment_0_0.eContents().get(0);
+		private final Keyword cNumberSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueSignedIntegerParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//IntegerLiteral:
+		//	(type=IntegerTypeName '#')? value=SignedInteger;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(type=IntegerTypeName '#')? value=SignedInteger
+		public Group getGroup() { return cGroup; }
+		
+		//(type=IntegerTypeName '#')?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//type=IntegerTypeName
+		public Assignment getTypeAssignment_0_0() { return cTypeAssignment_0_0; }
+		
+		//IntegerTypeName
+		public RuleCall getTypeIntegerTypeNameParserRuleCall_0_0_0() { return cTypeIntegerTypeNameParserRuleCall_0_0_0; }
+		
+		//'#'
+		public Keyword getNumberSignKeyword_0_1() { return cNumberSignKeyword_0_1; }
+		
+		//value=SignedInteger
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//SignedInteger
+		public RuleCall getValueSignedIntegerParserRuleCall_1_0() { return cValueSignedIntegerParserRuleCall_1_0; }
+	}
+	public class RealLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.RealLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cTypeREAL_TYPE_NAMETerminalRuleCall_0_0_0 = (RuleCall)cTypeAssignment_0_0.eContents().get(0);
+		private final Keyword cNumberSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cDivAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cDivSignedIntegerParserRuleCall_1_0 = (RuleCall)cDivAssignment_1.eContents().get(0);
+		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cModAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cModINTEGERTerminalRuleCall_3_0 = (RuleCall)cModAssignment_3.eContents().get(0);
+		
+		//RealLiteral:
+		//	(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER
+		public Group getGroup() { return cGroup; }
+		
+		//(type=REAL_TYPE_NAME '#')?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//type=REAL_TYPE_NAME
+		public Assignment getTypeAssignment_0_0() { return cTypeAssignment_0_0; }
+		
+		//REAL_TYPE_NAME
+		public RuleCall getTypeREAL_TYPE_NAMETerminalRuleCall_0_0_0() { return cTypeREAL_TYPE_NAMETerminalRuleCall_0_0_0; }
+		
+		//'#'
+		public Keyword getNumberSignKeyword_0_1() { return cNumberSignKeyword_0_1; }
+		
+		//div=SignedInteger
+		public Assignment getDivAssignment_1() { return cDivAssignment_1; }
+		
+		//SignedInteger
+		public RuleCall getDivSignedIntegerParserRuleCall_1_0() { return cDivSignedIntegerParserRuleCall_1_0; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+		
+		//mod=INTEGER
+		public Assignment getModAssignment_3() { return cModAssignment_3; }
+		
+		//INTEGER
+		public RuleCall getModINTEGERTerminalRuleCall_3_0() { return cModINTEGERTerminalRuleCall_3_0; }
+	}
 	
 	
 	private final ModelElements pModel;
 	private final GreetingElements pGreeting;
+	private final DataTypeNameElements pDataTypeName;
+	private final NumericTypeNameElements pNumericTypeName;
+	private final IntegerTypeNameElements pIntegerTypeName;
+	private final TerminalRule tSIGNED_INTEGER_TYPE_NAME;
+	private final TerminalRule tUNSIGNED_INTEGER_TYPE_NAME;
+	private final TerminalRule tREAL_TYPE_NAME;
+	private final TerminalRule tBIT_STRING_TYPE_NAME;
+	private final SingleElementTypeDeclarationElements pSingleElementTypeDeclaration;
+	private final SimpleSpecificationInitElements pSimpleSpecificationInit;
+	private final ConstantElements pConstant;
+	private final TerminalRule tINTEGER;
+	private final SignedIntegerElements pSignedInteger;
+	private final TerminalRule tBINARY_INTEGER;
+	private final TerminalRule tOCTAL_INTEGER;
+	private final TerminalRule tHEX_INTEGER;
+	private final NumericLiteralElements pNumericLiteral;
+	private final IntegerLiteralElements pIntegerLiteral;
+	private final RealLiteralElements pRealLiteral;
+	private final TerminalRule tBOOLEAN_LITERAL;
 	private final TerminalRule tLETTER;
-	private final TerminalRule tDIGIT;
-	private final TerminalRule tOCTAL_DIGIT;
 	private final TerminalRule tBIT;
+	private final TerminalRule tOCTAL_DIGIT;
+	private final TerminalRule tDIGIT;
 	private final TerminalRule tHEX_DIGIT;
 	private final TerminalRule tID;
 	private final TerminalRule tML_COMMENT;
@@ -84,10 +396,29 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.pModel = new ModelElements();
 		this.pGreeting = new GreetingElements();
+		this.pDataTypeName = new DataTypeNameElements();
+		this.pNumericTypeName = new NumericTypeNameElements();
+		this.pIntegerTypeName = new IntegerTypeNameElements();
+		this.tSIGNED_INTEGER_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SIGNED_INTEGER_TYPE_NAME");
+		this.tUNSIGNED_INTEGER_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.UNSIGNED_INTEGER_TYPE_NAME");
+		this.tREAL_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.REAL_TYPE_NAME");
+		this.tBIT_STRING_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.BIT_STRING_TYPE_NAME");
+		this.pSingleElementTypeDeclaration = new SingleElementTypeDeclarationElements();
+		this.pSimpleSpecificationInit = new SimpleSpecificationInitElements();
+		this.pConstant = new ConstantElements();
+		this.tINTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.INTEGER");
+		this.pSignedInteger = new SignedIntegerElements();
+		this.tBINARY_INTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.BINARY_INTEGER");
+		this.tOCTAL_INTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.OCTAL_INTEGER");
+		this.tHEX_INTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.HEX_INTEGER");
+		this.pNumericLiteral = new NumericLiteralElements();
+		this.pIntegerLiteral = new IntegerLiteralElements();
+		this.pRealLiteral = new RealLiteralElements();
+		this.tBOOLEAN_LITERAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.BOOLEAN_LITERAL");
 		this.tLETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.LETTER");
-		this.tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.DIGIT");
-		this.tOCTAL_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.OCTAL_DIGIT");
 		this.tBIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.BIT");
+		this.tOCTAL_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.OCTAL_DIGIT");
+		this.tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.DIGIT");
 		this.tHEX_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.HEX_DIGIT");
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ID");
 		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ML_COMMENT");
@@ -139,16 +470,171 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		return getGreetingAccess().getRule();
 	}
 	
+	///* ======================= START Elementary data types ======================= */ DataTypeName:
+	//	NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING';
+	public DataTypeNameElements getDataTypeNameAccess() {
+		return pDataTypeName;
+	}
+	
+	public ParserRule getDataTypeNameRule() {
+		return getDataTypeNameAccess().getRule();
+	}
+	
+	//NumericTypeName:
+	//	IntegerTypeName | REAL_TYPE_NAME;
+	public NumericTypeNameElements getNumericTypeNameAccess() {
+		return pNumericTypeName;
+	}
+	
+	public ParserRule getNumericTypeNameRule() {
+		return getNumericTypeNameAccess().getRule();
+	}
+	
+	//IntegerTypeName:
+	//	SIGNED_INTEGER_TYPE_NAME | UNSIGNED_INTEGER_TYPE_NAME;
+	public IntegerTypeNameElements getIntegerTypeNameAccess() {
+		return pIntegerTypeName;
+	}
+	
+	public ParserRule getIntegerTypeNameRule() {
+		return getIntegerTypeNameAccess().getRule();
+	}
+	
+	//terminal SIGNED_INTEGER_TYPE_NAME:
+	//	'SINT' | 'INT' | 'DINT' | 'LINT';
+	public TerminalRule getSIGNED_INTEGER_TYPE_NAMERule() {
+		return tSIGNED_INTEGER_TYPE_NAME;
+	}
+	
+	//terminal UNSIGNED_INTEGER_TYPE_NAME:
+	//	'USINT' | 'UINT' | 'UDINT' | 'ULINT';
+	public TerminalRule getUNSIGNED_INTEGER_TYPE_NAMERule() {
+		return tUNSIGNED_INTEGER_TYPE_NAME;
+	}
+	
+	//terminal REAL_TYPE_NAME:
+	//	'REAL' | 'LREAL';
+	public TerminalRule getREAL_TYPE_NAMERule() {
+		return tREAL_TYPE_NAME;
+	}
+	
+	//terminal BIT_STRING_TYPE_NAME:
+	//	'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD';
+	public TerminalRule getBIT_STRING_TYPE_NAMERule() {
+		return tBIT_STRING_TYPE_NAME;
+	}
+	
+	//SingleElementTypeDeclaration:
+	//	name=ID ':' type=SimpleSpecificationInit;
+	public SingleElementTypeDeclarationElements getSingleElementTypeDeclarationAccess() {
+		return pSingleElementTypeDeclaration;
+	}
+	
+	public ParserRule getSingleElementTypeDeclarationRule() {
+		return getSingleElementTypeDeclarationAccess().getRule();
+	}
+	
+	//SimpleSpecificationInit:
+	//	{SimpleSpecificationInit} type=DataTypeName (':=' value=Constant)?;
+	public SimpleSpecificationInitElements getSimpleSpecificationInitAccess() {
+		return pSimpleSpecificationInit;
+	}
+	
+	public ParserRule getSimpleSpecificationInitRule() {
+		return getSimpleSpecificationInitAccess().getRule();
+	}
+	
+	///* ======================= END Elementary data types ======================= */
+	///* ======================= START Numeric Literals ======================= */ Constant:
+	//	NumericLiteral | {Constant} BOOLEAN_LITERAL;
+	public ConstantElements getConstantAccess() {
+		return pConstant;
+	}
+	
+	public ParserRule getConstantRule() {
+		return getConstantAccess().getRule();
+	}
+	
+	//terminal INTEGER returns ecore::EInt:
+	//	DIGIT+;
+	public TerminalRule getINTEGERRule() {
+		return tINTEGER;
+	}
+	
+	//SignedInteger:
+	//	sig?='-'? value=INTEGER;
+	public SignedIntegerElements getSignedIntegerAccess() {
+		return pSignedInteger;
+	}
+	
+	public ParserRule getSignedIntegerRule() {
+		return getSignedIntegerAccess().getRule();
+	}
+	
+	//terminal BINARY_INTEGER:
+	//	'2#' BIT+;
+	public TerminalRule getBINARY_INTEGERRule() {
+		return tBINARY_INTEGER;
+	}
+	
+	//terminal OCTAL_INTEGER:
+	//	'8#' OCTAL_DIGIT+;
+	public TerminalRule getOCTAL_INTEGERRule() {
+		return tOCTAL_INTEGER;
+	}
+	
+	//terminal HEX_INTEGER:
+	//	'16#' HEX_DIGIT+;
+	public TerminalRule getHEX_INTEGERRule() {
+		return tHEX_INTEGER;
+	}
+	
+	//NumericLiteral:
+	//	IntegerLiteral | RealLiteral;
+	public NumericLiteralElements getNumericLiteralAccess() {
+		return pNumericLiteral;
+	}
+	
+	public ParserRule getNumericLiteralRule() {
+		return getNumericLiteralAccess().getRule();
+	}
+	
+	//IntegerLiteral:
+	//	(type=IntegerTypeName '#')? value=SignedInteger;
+	public IntegerLiteralElements getIntegerLiteralAccess() {
+		return pIntegerLiteral;
+	}
+	
+	public ParserRule getIntegerLiteralRule() {
+		return getIntegerLiteralAccess().getRule();
+	}
+	
+	//RealLiteral:
+	//	(type=REAL_TYPE_NAME '#')? div=SignedInteger '.' mod=INTEGER;
+	public RealLiteralElements getRealLiteralAccess() {
+		return pRealLiteral;
+	}
+	
+	public ParserRule getRealLiteralRule() {
+		return getRealLiteralAccess().getRule();
+	}
+	
+	//terminal BOOLEAN_LITERAL:
+	//	'TRUE' | 'FALSE';
+	public TerminalRule getBOOLEAN_LITERALRule() {
+		return tBOOLEAN_LITERAL;
+	}
+	
 	//terminal fragment LETTER:
 	//	'A'..'Z' | 'a'..'z' | '_';
 	public TerminalRule getLETTERRule() {
 		return tLETTER;
 	}
 	
-	//terminal fragment DIGIT:
-	//	'0'..'9';
-	public TerminalRule getDIGITRule() {
-		return tDIGIT;
+	//terminal fragment BIT:
+	//	'0' | '1';
+	public TerminalRule getBITRule() {
+		return tBIT;
 	}
 	
 	//terminal fragment OCTAL_DIGIT:
@@ -157,10 +643,10 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		return tOCTAL_DIGIT;
 	}
 	
-	//terminal fragment BIT:
-	//	'0' | '1';
-	public TerminalRule getBITRule() {
-		return tBIT;
+	//terminal fragment DIGIT:
+	//	'0'..'9';
+	public TerminalRule getDIGITRule() {
+		return tDIGIT;
 	}
 	
 	//terminal fragment HEX_DIGIT:

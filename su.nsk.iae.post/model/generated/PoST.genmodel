@@ -12,5 +12,28 @@
     <genClasses ecoreClass="PoST.ecore#//Greeting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//Greeting/name"/>
     </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//SingleElementTypeDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SingleElementTypeDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//SingleElementTypeDeclaration/type"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//SimpleSpecificationInit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SimpleSpecificationInit/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//SimpleSpecificationInit/value"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//Constant"/>
+    <genClasses ecoreClass="PoST.ecore#//SignedInteger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SignedInteger/sig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SignedInteger/value"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//NumericLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//NumericLiteral/type"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//IntegerLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//IntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//RealLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//RealLiteral/div"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//RealLiteral/mod"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

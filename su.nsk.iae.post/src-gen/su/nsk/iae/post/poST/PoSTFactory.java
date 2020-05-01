@@ -42,6 +42,69 @@ public interface PoSTFactory extends EFactory
   Greeting createGreeting();
 
   /**
+   * Returns a new object of class '<em>Single Element Type Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Single Element Type Declaration</em>'.
+   * @generated
+   */
+  SingleElementTypeDeclaration createSingleElementTypeDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Simple Specification Init</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Specification Init</em>'.
+   * @generated
+   */
+  SimpleSpecificationInit createSimpleSpecificationInit();
+
+  /**
+   * Returns a new object of class '<em>Constant</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constant</em>'.
+   * @generated
+   */
+  Constant createConstant();
+
+  /**
+   * Returns a new object of class '<em>Signed Integer</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Signed Integer</em>'.
+   * @generated
+   */
+  SignedInteger createSignedInteger();
+
+  /**
+   * Returns a new object of class '<em>Numeric Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Numeric Literal</em>'.
+   * @generated
+   */
+  NumericLiteral createNumericLiteral();
+
+  /**
+   * Returns a new object of class '<em>Integer Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Integer Literal</em>'.
+   * @generated
+   */
+  IntegerLiteral createIntegerLiteral();
+
+  /**
+   * Returns a new object of class '<em>Real Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Real Literal</em>'.
+   * @generated
+   */
+  RealLiteral createRealLiteral();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

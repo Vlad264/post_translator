@@ -10,10 +10,17 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.IntegerLiteral;
 import su.nsk.iae.post.poST.Model;
+import su.nsk.iae.post.poST.NumericLiteral;
 import su.nsk.iae.post.poST.PoSTFactory;
 import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.RealLiteral;
+import su.nsk.iae.post.poST.SignedInteger;
+import su.nsk.iae.post.poST.SimpleSpecificationInit;
+import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +43,55 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   private EClass greetingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass singleElementTypeDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass simpleSpecificationInitEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constantEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass signedIntegerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numericLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass integerLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass realLiteralEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -150,6 +206,193 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
+  public EClass getSingleElementTypeDeclaration()
+  {
+    return singleElementTypeDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSingleElementTypeDeclaration_Name()
+  {
+    return (EAttribute)singleElementTypeDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSingleElementTypeDeclaration_Type()
+  {
+    return (EReference)singleElementTypeDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSimpleSpecificationInit()
+  {
+    return simpleSpecificationInitEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSimpleSpecificationInit_Type()
+  {
+    return (EAttribute)simpleSpecificationInitEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSimpleSpecificationInit_Value()
+  {
+    return (EReference)simpleSpecificationInitEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConstant()
+  {
+    return constantEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSignedInteger()
+  {
+    return signedIntegerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSignedInteger_Sig()
+  {
+    return (EAttribute)signedIntegerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSignedInteger_Value()
+  {
+    return (EAttribute)signedIntegerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNumericLiteral()
+  {
+    return numericLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNumericLiteral_Type()
+  {
+    return (EAttribute)numericLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIntegerLiteral()
+  {
+    return integerLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIntegerLiteral_Value()
+  {
+    return (EReference)integerLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRealLiteral()
+  {
+    return realLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRealLiteral_Div()
+  {
+    return (EReference)realLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRealLiteral_Mod()
+  {
+    return (EAttribute)realLiteralEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public PoSTFactory getPoSTFactory()
   {
     return (PoSTFactory)getEFactoryInstance();
@@ -180,6 +423,30 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     greetingEClass = createEClass(GREETING);
     createEAttribute(greetingEClass, GREETING__NAME);
+
+    singleElementTypeDeclarationEClass = createEClass(SINGLE_ELEMENT_TYPE_DECLARATION);
+    createEAttribute(singleElementTypeDeclarationEClass, SINGLE_ELEMENT_TYPE_DECLARATION__NAME);
+    createEReference(singleElementTypeDeclarationEClass, SINGLE_ELEMENT_TYPE_DECLARATION__TYPE);
+
+    simpleSpecificationInitEClass = createEClass(SIMPLE_SPECIFICATION_INIT);
+    createEAttribute(simpleSpecificationInitEClass, SIMPLE_SPECIFICATION_INIT__TYPE);
+    createEReference(simpleSpecificationInitEClass, SIMPLE_SPECIFICATION_INIT__VALUE);
+
+    constantEClass = createEClass(CONSTANT);
+
+    signedIntegerEClass = createEClass(SIGNED_INTEGER);
+    createEAttribute(signedIntegerEClass, SIGNED_INTEGER__SIG);
+    createEAttribute(signedIntegerEClass, SIGNED_INTEGER__VALUE);
+
+    numericLiteralEClass = createEClass(NUMERIC_LITERAL);
+    createEAttribute(numericLiteralEClass, NUMERIC_LITERAL__TYPE);
+
+    integerLiteralEClass = createEClass(INTEGER_LITERAL);
+    createEReference(integerLiteralEClass, INTEGER_LITERAL__VALUE);
+
+    realLiteralEClass = createEClass(REAL_LITERAL);
+    createEReference(realLiteralEClass, REAL_LITERAL__DIV);
+    createEAttribute(realLiteralEClass, REAL_LITERAL__MOD);
   }
 
   /**
@@ -211,6 +478,9 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    numericLiteralEClass.getESuperTypes().add(this.getConstant());
+    integerLiteralEClass.getESuperTypes().add(this.getNumericLiteral());
+    realLiteralEClass.getESuperTypes().add(this.getNumericLiteral());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -218,6 +488,30 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(singleElementTypeDeclarationEClass, SingleElementTypeDeclaration.class, "SingleElementTypeDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSingleElementTypeDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, SingleElementTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSingleElementTypeDeclaration_Type(), this.getSimpleSpecificationInit(), null, "type", null, 0, 1, SingleElementTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(simpleSpecificationInitEClass, SimpleSpecificationInit.class, "SimpleSpecificationInit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSimpleSpecificationInit_Type(), ecorePackage.getEString(), "type", null, 0, 1, SimpleSpecificationInit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSimpleSpecificationInit_Value(), this.getConstant(), null, "value", null, 0, 1, SimpleSpecificationInit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(signedIntegerEClass, SignedInteger.class, "SignedInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSignedInteger_Sig(), ecorePackage.getEBoolean(), "sig", null, 0, 1, SignedInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSignedInteger_Value(), ecorePackage.getEInt(), "value", null, 0, 1, SignedInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numericLiteralEClass, NumericLiteral.class, "NumericLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumericLiteral_Type(), ecorePackage.getEString(), "type", null, 0, 1, NumericLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(integerLiteralEClass, IntegerLiteral.class, "IntegerLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIntegerLiteral_Value(), this.getSignedInteger(), null, "value", null, 0, 1, IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(realLiteralEClass, RealLiteral.class, "RealLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRealLiteral_Div(), this.getSignedInteger(), null, "div", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRealLiteral_Mod(), ecorePackage.getEInt(), "mod", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
