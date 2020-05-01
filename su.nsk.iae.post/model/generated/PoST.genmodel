@@ -233,10 +233,6 @@
     <genClasses ecoreClass="PoST.ecore#//TimeLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//TimeLiteral/interval"/>
     </genClasses>
-    <genClasses ecoreClass="PoST.ecore#//SingleElementTypeDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SingleElementTypeDeclaration/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//SingleElementTypeDeclaration/type"/>
-    </genClasses>
     <genClasses ecoreClass="PoST.ecore#//SimpleSpecificationInit">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SimpleSpecificationInit/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//SimpleSpecificationInit/value"/>

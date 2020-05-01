@@ -53,7 +53,6 @@ import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
-import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
 import su.nsk.iae.post.poST.SingleResource;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.State;
@@ -410,11 +409,6 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTimeLiteral(TimeLiteral object)
       {
         return createTimeLiteralAdapter();
-      }
-      @Override
-      public Adapter caseSingleElementTypeDeclaration(SingleElementTypeDeclaration object)
-      {
-        return createSingleElementTypeDeclarationAdapter();
       }
       @Override
       public Adapter caseSimpleSpecificationInit(SimpleSpecificationInit object)
@@ -1289,21 +1283,6 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTimeLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration <em>Single Element Type Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration
-   * @generated
-   */
-  public Adapter createSingleElementTypeDeclarationAdapter()
   {
     return null;
   }

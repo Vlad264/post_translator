@@ -2334,7 +2334,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getConstant()
    * @generated
    */
-  int CONSTANT = 57;
+  int CONSTANT = 56;
 
   /**
    * The number of structural features of the '<em>Constant</em>' class.
@@ -2374,43 +2374,6 @@ public interface PoSTPackage extends EPackage
   int TIME_LITERAL_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl <em>Single Element Type Declaration</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl
-   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSingleElementTypeDeclaration()
-   * @generated
-   */
-  int SINGLE_ELEMENT_TYPE_DECLARATION = 55;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SINGLE_ELEMENT_TYPE_DECLARATION__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SINGLE_ELEMENT_TYPE_DECLARATION__TYPE = 1;
-
-  /**
-   * The number of structural features of the '<em>Single Element Type Declaration</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SINGLE_ELEMENT_TYPE_DECLARATION_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SimpleSpecificationInitImpl <em>Simple Specification Init</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2418,7 +2381,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSimpleSpecificationInit()
    * @generated
    */
-  int SIMPLE_SPECIFICATION_INIT = 56;
+  int SIMPLE_SPECIFICATION_INIT = 55;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -2455,7 +2418,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSignedInteger()
    * @generated
    */
-  int SIGNED_INTEGER = 58;
+  int SIGNED_INTEGER = 57;
 
   /**
    * The feature id for the '<em><b>Sig</b></em>' attribute.
@@ -2492,7 +2455,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getNumericLiteral()
    * @generated
    */
-  int NUMERIC_LITERAL = 59;
+  int NUMERIC_LITERAL = 58;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -2520,7 +2483,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 60;
+  int INTEGER_LITERAL = 59;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -2557,7 +2520,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 61;
+  int REAL_LITERAL = 60;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -2603,7 +2566,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAssignmentType()
    * @generated
    */
-  int ASSIGNMENT_TYPE = 62;
+  int ASSIGNMENT_TYPE = 61;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.CompOperator <em>Comp Operator</em>}' enum.
@@ -2613,7 +2576,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCompOperator()
    * @generated
    */
-  int COMP_OPERATOR = 63;
+  int COMP_OPERATOR = 62;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.EquOperator <em>Equ Operator</em>}' enum.
@@ -2623,7 +2586,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getEquOperator()
    * @generated
    */
-  int EQU_OPERATOR = 64;
+  int EQU_OPERATOR = 63;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.AddOperator <em>Add Operator</em>}' enum.
@@ -2633,7 +2596,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAddOperator()
    * @generated
    */
-  int ADD_OPERATOR = 65;
+  int ADD_OPERATOR = 64;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.MulOperator <em>Mul Operator</em>}' enum.
@@ -2643,7 +2606,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getMulOperator()
    * @generated
    */
-  int MUL_OPERATOR = 66;
+  int MUL_OPERATOR = 65;
 
 
   /**
@@ -4308,38 +4271,6 @@ public interface PoSTPackage extends EPackage
   EAttribute getTimeLiteral_Interval();
 
   /**
-   * Returns the meta object for class '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration <em>Single Element Type Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Single Element Type Declaration</em>'.
-   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration
-   * @generated
-   */
-  EClass getSingleElementTypeDeclaration();
-
-  /**
-   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration#getName()
-   * @see #getSingleElementTypeDeclaration()
-   * @generated
-   */
-  EAttribute getSingleElementTypeDeclaration_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.SingleElementTypeDeclaration#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see su.nsk.iae.post.poST.SingleElementTypeDeclaration#getType()
-   * @see #getSingleElementTypeDeclaration()
-   * @generated
-   */
-  EReference getSingleElementTypeDeclaration_Type();
-
-  /**
    * Returns the meta object for class '{@link su.nsk.iae.post.poST.SimpleSpecificationInit <em>Simple Specification Init</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5917,32 +5848,6 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EAttribute TIME_LITERAL__INTERVAL = eINSTANCE.getTimeLiteral_Interval();
-
-    /**
-     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl <em>Single Element Type Declaration</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see su.nsk.iae.post.poST.impl.SingleElementTypeDeclarationImpl
-     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSingleElementTypeDeclaration()
-     * @generated
-     */
-    EClass SINGLE_ELEMENT_TYPE_DECLARATION = eINSTANCE.getSingleElementTypeDeclaration();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SINGLE_ELEMENT_TYPE_DECLARATION__NAME = eINSTANCE.getSingleElementTypeDeclaration_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SINGLE_ELEMENT_TYPE_DECLARATION__TYPE = eINSTANCE.getSingleElementTypeDeclaration_Type();
 
     /**
      * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SimpleSpecificationInitImpl <em>Simple Specification Init</em>}' class.

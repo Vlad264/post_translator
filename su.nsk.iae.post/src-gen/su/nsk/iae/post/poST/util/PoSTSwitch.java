@@ -51,7 +51,6 @@ import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
-import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
 import su.nsk.iae.post.poST.SingleResource;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.State;
@@ -574,13 +573,6 @@ public class PoSTSwitch<T> extends Switch<T>
         TimeLiteral timeLiteral = (TimeLiteral)theEObject;
         T result = caseTimeLiteral(timeLiteral);
         if (result == null) result = caseConstant(timeLiteral);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
-      {
-        SingleElementTypeDeclaration singleElementTypeDeclaration = (SingleElementTypeDeclaration)theEObject;
-        T result = caseSingleElementTypeDeclaration(singleElementTypeDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1511,22 +1503,6 @@ public class PoSTSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTimeLiteral(TimeLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Single Element Type Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Single Element Type Declaration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSingleElementTypeDeclaration(SingleElementTypeDeclaration object)
   {
     return null;
   }

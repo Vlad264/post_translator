@@ -53,7 +53,6 @@ import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
-import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
 import su.nsk.iae.post.poST.SingleResource;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.State;
@@ -204,9 +203,6 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case PoSTPackage.SIMPLE_SPECIFICATION_INIT:
 				sequence_SimpleSpecificationInit(context, (SimpleSpecificationInit) semanticObject); 
-				return; 
-			case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
-				sequence_SingleElementTypeDeclaration(context, (SingleElementTypeDeclaration) semanticObject); 
 				return; 
 			case PoSTPackage.SINGLE_RESOURCE:
 				sequence_SingleResource(context, (SingleResource) semanticObject); 
@@ -967,27 +963,6 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_SimpleSpecificationInit(ISerializationContext context, SimpleSpecificationInit semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     SingleElementTypeDeclaration returns SingleElementTypeDeclaration
-	 *
-	 * Constraint:
-	 *     (name=ID type=SimpleSpecificationInit)
-	 */
-	protected void sequence_SingleElementTypeDeclaration(ISerializationContext context, SingleElementTypeDeclaration semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__NAME));
-			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.SINGLE_ELEMENT_TYPE_DECLARATION__TYPE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getTypeSimpleSpecificationInitParserRuleCall_2_0(), semanticObject.getType());
-		feeder.finish();
 	}
 	
 	

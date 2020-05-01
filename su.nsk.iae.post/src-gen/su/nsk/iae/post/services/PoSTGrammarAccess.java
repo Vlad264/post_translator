@@ -2528,37 +2528,6 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//UNSIGNED_INTEGER_TYPE_NAME
 		public RuleCall getUNSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_1() { return cUNSIGNED_INTEGER_TYPE_NAMETerminalRuleCall_1; }
 	}
-	public class SingleElementTypeDeclarationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SingleElementTypeDeclaration");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypeSimpleSpecificationInitParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
-		
-		//SingleElementTypeDeclaration:
-		//	name=ID ':' type=SimpleSpecificationInit;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//name=ID ':' type=SimpleSpecificationInit
-		public Group getGroup() { return cGroup; }
-		
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
-		
-		//':'
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
-		
-		//type=SimpleSpecificationInit
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
-		
-		//SimpleSpecificationInit
-		public RuleCall getTypeSimpleSpecificationInitParserRuleCall_2_0() { return cTypeSimpleSpecificationInitParserRuleCall_2_0; }
-	}
 	public class SimpleSpecificationInitElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SimpleSpecificationInit");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -2605,14 +2574,25 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTimeLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cConstantAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final RuleCall cBOOLEAN_LITERALTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final RuleCall cBINARY_INTEGERTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cConstantAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final RuleCall cOCTAL_INTEGERTerminalRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cConstantAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final RuleCall cHEX_INTEGERTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Action cConstantAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final RuleCall cBOOLEAN_LITERALTerminalRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
 		
 		///* ======================= END Elementary data types ======================= */
 		///* ======================= START Numeric Literals ======================= */ Constant:
-		//	NumericLiteral | TimeLiteral | {Constant} BOOLEAN_LITERAL;
+		//	NumericLiteral | TimeLiteral | {Constant} BINARY_INTEGER | {Constant} OCTAL_INTEGER | {Constant} HEX_INTEGER |
+		//	{Constant} BOOLEAN_LITERAL;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//NumericLiteral | TimeLiteral | {Constant} BOOLEAN_LITERAL
+		//NumericLiteral | TimeLiteral | {Constant} BINARY_INTEGER | {Constant} OCTAL_INTEGER | {Constant} HEX_INTEGER |
+		//{Constant} BOOLEAN_LITERAL
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//NumericLiteral
@@ -2621,14 +2601,41 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//TimeLiteral
 		public RuleCall getTimeLiteralParserRuleCall_1() { return cTimeLiteralParserRuleCall_1; }
 		
-		//{Constant} BOOLEAN_LITERAL
+		//{Constant} BINARY_INTEGER
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//{Constant}
 		public Action getConstantAction_2_0() { return cConstantAction_2_0; }
 		
+		//BINARY_INTEGER
+		public RuleCall getBINARY_INTEGERTerminalRuleCall_2_1() { return cBINARY_INTEGERTerminalRuleCall_2_1; }
+		
+		//{Constant} OCTAL_INTEGER
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//{Constant}
+		public Action getConstantAction_3_0() { return cConstantAction_3_0; }
+		
+		//OCTAL_INTEGER
+		public RuleCall getOCTAL_INTEGERTerminalRuleCall_3_1() { return cOCTAL_INTEGERTerminalRuleCall_3_1; }
+		
+		//{Constant} HEX_INTEGER
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//{Constant}
+		public Action getConstantAction_4_0() { return cConstantAction_4_0; }
+		
+		//HEX_INTEGER
+		public RuleCall getHEX_INTEGERTerminalRuleCall_4_1() { return cHEX_INTEGERTerminalRuleCall_4_1; }
+		
+		//{Constant} BOOLEAN_LITERAL
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//{Constant}
+		public Action getConstantAction_5_0() { return cConstantAction_5_0; }
+		
 		//BOOLEAN_LITERAL
-		public RuleCall getBOOLEAN_LITERALTerminalRuleCall_2_1() { return cBOOLEAN_LITERALTerminalRuleCall_2_1; }
+		public RuleCall getBOOLEAN_LITERALTerminalRuleCall_5_1() { return cBOOLEAN_LITERALTerminalRuleCall_5_1; }
 	}
 	public class SignedIntegerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SignedInteger");
@@ -3003,7 +3010,6 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tUNSIGNED_INTEGER_TYPE_NAME;
 	private final TerminalRule tREAL_TYPE_NAME;
 	private final TerminalRule tBIT_STRING_TYPE_NAME;
-	private final SingleElementTypeDeclarationElements pSingleElementTypeDeclaration;
 	private final SimpleSpecificationInitElements pSimpleSpecificationInit;
 	private final ConstantElements pConstant;
 	private final TerminalRule tINTEGER;
@@ -3115,7 +3121,6 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		this.tUNSIGNED_INTEGER_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.UNSIGNED_INTEGER_TYPE_NAME");
 		this.tREAL_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.REAL_TYPE_NAME");
 		this.tBIT_STRING_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.BIT_STRING_TYPE_NAME");
-		this.pSingleElementTypeDeclaration = new SingleElementTypeDeclarationElements();
 		this.pSimpleSpecificationInit = new SimpleSpecificationInitElements();
 		this.pConstant = new ConstantElements();
 		this.tINTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.INTEGER");
@@ -3968,16 +3973,6 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		return tBIT_STRING_TYPE_NAME;
 	}
 	
-	//SingleElementTypeDeclaration:
-	//	name=ID ':' type=SimpleSpecificationInit;
-	public SingleElementTypeDeclarationElements getSingleElementTypeDeclarationAccess() {
-		return pSingleElementTypeDeclaration;
-	}
-	
-	public ParserRule getSingleElementTypeDeclarationRule() {
-		return getSingleElementTypeDeclarationAccess().getRule();
-	}
-	
 	//SimpleSpecificationInit:
 	//	{SimpleSpecificationInit} type=DataTypeName (':=' value=Constant)?;
 	public SimpleSpecificationInitElements getSimpleSpecificationInitAccess() {
@@ -3990,7 +3985,8 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	
 	///* ======================= END Elementary data types ======================= */
 	///* ======================= START Numeric Literals ======================= */ Constant:
-	//	NumericLiteral | TimeLiteral | {Constant} BOOLEAN_LITERAL;
+	//	NumericLiteral | TimeLiteral | {Constant} BINARY_INTEGER | {Constant} OCTAL_INTEGER | {Constant} HEX_INTEGER |
+	//	{Constant} BOOLEAN_LITERAL;
 	public ConstantElements getConstantAccess() {
 		return pConstant;
 	}

@@ -142,10 +142,12 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getGlobalVarDeclarationAccess().getGroup_2_1(), "rule__GlobalVarDeclaration__Group_2_1__0");
 			builder.put(grammarAccess.getGlobalVarInitDeclarationAccess().getGroup(), "rule__GlobalVarInitDeclaration__Group__0");
 			builder.put(grammarAccess.getTimeLiteralAccess().getGroup(), "rule__TimeLiteral__Group__0");
-			builder.put(grammarAccess.getSingleElementTypeDeclarationAccess().getGroup(), "rule__SingleElementTypeDeclaration__Group__0");
 			builder.put(grammarAccess.getSimpleSpecificationInitAccess().getGroup(), "rule__SimpleSpecificationInit__Group__0");
 			builder.put(grammarAccess.getSimpleSpecificationInitAccess().getGroup_2(), "rule__SimpleSpecificationInit__Group_2__0");
 			builder.put(grammarAccess.getConstantAccess().getGroup_2(), "rule__Constant__Group_2__0");
+			builder.put(grammarAccess.getConstantAccess().getGroup_3(), "rule__Constant__Group_3__0");
+			builder.put(grammarAccess.getConstantAccess().getGroup_4(), "rule__Constant__Group_4__0");
+			builder.put(grammarAccess.getConstantAccess().getGroup_5(), "rule__Constant__Group_5__0");
 			builder.put(grammarAccess.getSignedIntegerAccess().getGroup(), "rule__SignedInteger__Group__0");
 			builder.put(grammarAccess.getIntegerLiteralAccess().getGroup(), "rule__IntegerLiteral__Group__0");
 			builder.put(grammarAccess.getIntegerLiteralAccess().getGroup_0(), "rule__IntegerLiteral__Group_0__0");
@@ -267,8 +269,6 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getGlobalVarInitDeclarationAccess().getLocationAssignment_2(), "rule__GlobalVarInitDeclaration__LocationAssignment_2");
 			builder.put(grammarAccess.getGlobalVarInitDeclarationAccess().getTypeAssignment_4(), "rule__GlobalVarInitDeclaration__TypeAssignment_4");
 			builder.put(grammarAccess.getTimeLiteralAccess().getIntervalAssignment_3(), "rule__TimeLiteral__IntervalAssignment_3");
-			builder.put(grammarAccess.getSingleElementTypeDeclarationAccess().getNameAssignment_0(), "rule__SingleElementTypeDeclaration__NameAssignment_0");
-			builder.put(grammarAccess.getSingleElementTypeDeclarationAccess().getTypeAssignment_2(), "rule__SingleElementTypeDeclaration__TypeAssignment_2");
 			builder.put(grammarAccess.getSimpleSpecificationInitAccess().getTypeAssignment_1(), "rule__SimpleSpecificationInit__TypeAssignment_1");
 			builder.put(grammarAccess.getSimpleSpecificationInitAccess().getValueAssignment_2_1(), "rule__SimpleSpecificationInit__ValueAssignment_2_1");
 			builder.put(grammarAccess.getSignedIntegerAccess().getSigAssignment_0(), "rule__SignedInteger__SigAssignment_0");

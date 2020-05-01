@@ -519,15 +519,6 @@ public interface PoSTFactory extends EFactory
   TimeLiteral createTimeLiteral();
 
   /**
-   * Returns a new object of class '<em>Single Element Type Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Single Element Type Declaration</em>'.
-   * @generated
-   */
-  SingleElementTypeDeclaration createSingleElementTypeDeclaration();
-
-  /**
    * Returns a new object of class '<em>Simple Specification Init</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

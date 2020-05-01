@@ -61,7 +61,6 @@ import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
-import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
 import su.nsk.iae.post.poST.SingleResource;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.State;
@@ -188,7 +187,6 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
       case PoSTPackage.GLOBAL_VAR_DECLARATION: return createGlobalVarDeclaration();
       case PoSTPackage.GLOBAL_VAR_INIT_DECLARATION: return createGlobalVarInitDeclaration();
       case PoSTPackage.TIME_LITERAL: return createTimeLiteral();
-      case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION: return createSingleElementTypeDeclaration();
       case PoSTPackage.SIMPLE_SPECIFICATION_INIT: return createSimpleSpecificationInit();
       case PoSTPackage.CONSTANT: return createConstant();
       case PoSTPackage.SIGNED_INTEGER: return createSignedInteger();
@@ -908,18 +906,6 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     TimeLiteralImpl timeLiteral = new TimeLiteralImpl();
     return timeLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public SingleElementTypeDeclaration createSingleElementTypeDeclaration()
-  {
-    SingleElementTypeDeclarationImpl singleElementTypeDeclaration = new SingleElementTypeDeclarationImpl();
-    return singleElementTypeDeclaration;
   }
 
   /**

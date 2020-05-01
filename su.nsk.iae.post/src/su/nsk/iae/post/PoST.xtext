@@ -357,9 +357,6 @@ terminal REAL_TYPE_NAME returns ecore::EString:
 terminal BIT_STRING_TYPE_NAME returns ecore::EString:
 	'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD';
 
-SingleElementTypeDeclaration:
-	name=ID ':' type=SimpleSpecificationInit;
-
 SimpleSpecificationInit:
 	{SimpleSpecificationInit} type=DataTypeName (':=' value=Constant)?;
 
@@ -368,7 +365,12 @@ SimpleSpecificationInit:
 /* ======================= START Numeric Literals ======================= */
 
 Constant:
-	NumericLiteral | TimeLiteral | {Constant} BOOLEAN_LITERAL;
+	NumericLiteral | 
+	TimeLiteral | 
+	{Constant} BINARY_INTEGER | 
+	{Constant} OCTAL_INTEGER | 
+	{Constant} HEX_INTEGER | 
+	{Constant} BOOLEAN_LITERAL;
 
 terminal INTEGER returns ecore::EInt:
 	DIGIT+;

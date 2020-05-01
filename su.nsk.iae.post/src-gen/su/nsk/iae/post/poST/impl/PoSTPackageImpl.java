@@ -60,7 +60,6 @@ import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
-import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
 import su.nsk.iae.post.poST.SingleResource;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.State;
@@ -472,13 +471,6 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   private EClass timeLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass singleElementTypeDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2342,39 +2334,6 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
-  public EClass getSingleElementTypeDeclaration()
-  {
-    return singleElementTypeDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getSingleElementTypeDeclaration_Name()
-  {
-    return (EAttribute)singleElementTypeDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getSingleElementTypeDeclaration_Type()
-  {
-    return (EReference)singleElementTypeDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getSimpleSpecificationInit()
   {
     return simpleSpecificationInitEClass;
@@ -2820,10 +2779,6 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     timeLiteralEClass = createEClass(TIME_LITERAL);
     createEAttribute(timeLiteralEClass, TIME_LITERAL__INTERVAL);
 
-    singleElementTypeDeclarationEClass = createEClass(SINGLE_ELEMENT_TYPE_DECLARATION);
-    createEAttribute(singleElementTypeDeclarationEClass, SINGLE_ELEMENT_TYPE_DECLARATION__NAME);
-    createEReference(singleElementTypeDeclarationEClass, SINGLE_ELEMENT_TYPE_DECLARATION__TYPE);
-
     simpleSpecificationInitEClass = createEClass(SIMPLE_SPECIFICATION_INIT);
     createEAttribute(simpleSpecificationInitEClass, SIMPLE_SPECIFICATION_INIT__TYPE);
     createEReference(simpleSpecificationInitEClass, SIMPLE_SPECIFICATION_INIT__VALUE);
@@ -3118,10 +3073,6 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     initEClass(timeLiteralEClass, TimeLiteral.class, "TimeLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTimeLiteral_Interval(), ecorePackage.getEString(), "interval", null, 0, 1, TimeLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(singleElementTypeDeclarationEClass, SingleElementTypeDeclaration.class, "SingleElementTypeDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSingleElementTypeDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, SingleElementTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSingleElementTypeDeclaration_Type(), this.getSimpleSpecificationInit(), null, "type", null, 0, 1, SingleElementTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simpleSpecificationInitEClass, SimpleSpecificationInit.class, "SimpleSpecificationInit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSimpleSpecificationInit_Type(), ecorePackage.getEString(), "type", null, 0, 1, SimpleSpecificationInit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

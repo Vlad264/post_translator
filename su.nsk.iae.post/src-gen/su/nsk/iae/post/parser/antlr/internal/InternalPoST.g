@@ -4298,9 +4298,51 @@ ruleConstant returns [EObject current=null]
 						$current);
 				}
 			)
-			this_BOOLEAN_LITERAL_3=RULE_BOOLEAN_LITERAL
+			this_BINARY_INTEGER_3=RULE_BINARY_INTEGER
 			{
-				newLeafNode(this_BOOLEAN_LITERAL_3, grammarAccess.getConstantAccess().getBOOLEAN_LITERALTerminalRuleCall_2_1());
+				newLeafNode(this_BINARY_INTEGER_3, grammarAccess.getConstantAccess().getBINARY_INTEGERTerminalRuleCall_2_1());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getConstantAccess().getConstantAction_3_0(),
+						$current);
+				}
+			)
+			this_OCTAL_INTEGER_5=RULE_OCTAL_INTEGER
+			{
+				newLeafNode(this_OCTAL_INTEGER_5, grammarAccess.getConstantAccess().getOCTAL_INTEGERTerminalRuleCall_3_1());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getConstantAccess().getConstantAction_4_0(),
+						$current);
+				}
+			)
+			this_HEX_INTEGER_7=RULE_HEX_INTEGER
+			{
+				newLeafNode(this_HEX_INTEGER_7, grammarAccess.getConstantAccess().getHEX_INTEGERTerminalRuleCall_4_1());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getConstantAccess().getConstantAction_5_0(),
+						$current);
+				}
+			)
+			this_BOOLEAN_LITERAL_9=RULE_BOOLEAN_LITERAL
+			{
+				newLeafNode(this_BOOLEAN_LITERAL_9, grammarAccess.getConstantAccess().getBOOLEAN_LITERALTerminalRuleCall_5_1());
 			}
 		)
 	)
