@@ -1,0 +1,45 @@
+grammar su.nsk.iae.post.PoST hidden(WS, ML_COMMENT, SL_COMMENT)
+
+generate poST "http://www.nsk.su/iae/post/PoST"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
+	
+/* ======================= START Identifiers ======================= */
+
+terminal fragment LETTER:
+	'A'..'Z' | 'a'..'z' | '_';
+
+terminal fragment DIGIT:
+	'0'..'9';
+
+terminal fragment OCTAL_DIGIT:
+	'0'..'7';
+
+terminal fragment BIT:
+	'0' | '1';
+
+terminal fragment HEX_DIGIT:
+	DIGIT | 'A'..'F';
+
+terminal ID returns ecore::EString:
+	LETTER (LETTER | DIGIT)*;
+
+terminal ML_COMMENT:
+    '/*' -> '*/';
+ 
+terminal SL_COMMENT:
+    '//' !('\n'|'\r')* ('\r'? '\n')?;
+ 
+terminal WS:
+    (' '|'\t'|'\r'|'\n')+;
+ 
+terminal ANY_OTHER:
+    .;
+
+/* ======================= END Identifiers ======================= */

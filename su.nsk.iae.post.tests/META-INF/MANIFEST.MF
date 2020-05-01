@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: su.nsk.iae.post.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: su.nsk.iae.post.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: su.nsk.iae.post.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: su.nsk.iae.post,
+ org.junit.jupiter.api;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: su.nsk.iae.post.tests;x-internal=true
