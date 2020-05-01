@@ -5,6 +5,7 @@ package su.nsk.iae.post.poST;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -114,6 +115,1037 @@ public interface PoSTPackage extends EPackage
   int GREETING_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.ExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 2;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__LEFT = 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__RIGHT = 1;
+
+  /**
+   * The number of structural features of the '<em>Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.XorExpressionImpl <em>Xor Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.XorExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getXorExpression()
+   * @generated
+   */
+  int XOR_EXPRESSION = 3;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XOR_EXPRESSION__LEFT = EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XOR_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+
+  /**
+   * The number of structural features of the '<em>Xor Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.AndExpressionImpl <em>And Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.AndExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAndExpression()
+   * @generated
+   */
+  int AND_EXPRESSION = 4;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__LEFT = XOR_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION__RIGHT = XOR_EXPRESSION__RIGHT;
+
+  /**
+   * The number of structural features of the '<em>And Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION_FEATURE_COUNT = XOR_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.CompExpressionImpl <em>Comp Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.CompExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCompExpression()
+   * @generated
+   */
+  int COMP_EXPRESSION = 5;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMP_EXPRESSION__LEFT = AND_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMP_EXPRESSION__RIGHT = AND_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comp Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMP_EXPRESSION__COMP_OP = AND_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Comp Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMP_EXPRESSION_FEATURE_COUNT = AND_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.EquExpressionImpl <em>Equ Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.EquExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getEquExpression()
+   * @generated
+   */
+  int EQU_EXPRESSION = 6;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQU_EXPRESSION__LEFT = COMP_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQU_EXPRESSION__RIGHT = COMP_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comp Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQU_EXPRESSION__COMP_OP = COMP_EXPRESSION__COMP_OP;
+
+  /**
+   * The feature id for the '<em><b>Equ Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQU_EXPRESSION__EQU_OP = COMP_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Equ Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQU_EXPRESSION_FEATURE_COUNT = COMP_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.AddExpressionImpl <em>Add Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.AddExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAddExpression()
+   * @generated
+   */
+  int ADD_EXPRESSION = 7;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_EXPRESSION__LEFT = EQU_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_EXPRESSION__RIGHT = EQU_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comp Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_EXPRESSION__COMP_OP = EQU_EXPRESSION__COMP_OP;
+
+  /**
+   * The feature id for the '<em><b>Equ Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_EXPRESSION__EQU_OP = EQU_EXPRESSION__EQU_OP;
+
+  /**
+   * The feature id for the '<em><b>Add Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_EXPRESSION__ADD_OP = EQU_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Add Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_EXPRESSION_FEATURE_COUNT = EQU_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.MulExpressionImpl <em>Mul Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.MulExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getMulExpression()
+   * @generated
+   */
+  int MUL_EXPRESSION = 8;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_EXPRESSION__LEFT = ADD_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_EXPRESSION__RIGHT = ADD_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comp Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_EXPRESSION__COMP_OP = ADD_EXPRESSION__COMP_OP;
+
+  /**
+   * The feature id for the '<em><b>Equ Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_EXPRESSION__EQU_OP = ADD_EXPRESSION__EQU_OP;
+
+  /**
+   * The feature id for the '<em><b>Add Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_EXPRESSION__ADD_OP = ADD_EXPRESSION__ADD_OP;
+
+  /**
+   * The feature id for the '<em><b>Mul Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_EXPRESSION__MUL_OP = ADD_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Mul Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_EXPRESSION_FEATURE_COUNT = ADD_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.PowerExpressionImpl <em>Power Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.PowerExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getPowerExpression()
+   * @generated
+   */
+  int POWER_EXPRESSION = 9;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POWER_EXPRESSION__LEFT = MUL_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POWER_EXPRESSION__RIGHT = MUL_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comp Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POWER_EXPRESSION__COMP_OP = MUL_EXPRESSION__COMP_OP;
+
+  /**
+   * The feature id for the '<em><b>Equ Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POWER_EXPRESSION__EQU_OP = MUL_EXPRESSION__EQU_OP;
+
+  /**
+   * The feature id for the '<em><b>Add Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POWER_EXPRESSION__ADD_OP = MUL_EXPRESSION__ADD_OP;
+
+  /**
+   * The feature id for the '<em><b>Mul Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POWER_EXPRESSION__MUL_OP = MUL_EXPRESSION__MUL_OP;
+
+  /**
+   * The number of structural features of the '<em>Power Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POWER_EXPRESSION_FEATURE_COUNT = MUL_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.UnaryExpressionImpl <em>Unary Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.UnaryExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getUnaryExpression()
+   * @generated
+   */
+  int UNARY_EXPRESSION = 10;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION__LEFT = POWER_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION__RIGHT = POWER_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comp Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION__COMP_OP = POWER_EXPRESSION__COMP_OP;
+
+  /**
+   * The feature id for the '<em><b>Equ Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION__EQU_OP = POWER_EXPRESSION__EQU_OP;
+
+  /**
+   * The feature id for the '<em><b>Add Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION__ADD_OP = POWER_EXPRESSION__ADD_OP;
+
+  /**
+   * The feature id for the '<em><b>Mul Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION__MUL_OP = POWER_EXPRESSION__MUL_OP;
+
+  /**
+   * The feature id for the '<em><b>Un Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION__UN_OP = POWER_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Unary Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNARY_EXPRESSION_FEATURE_COUNT = POWER_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.PrimaryExpressionImpl <em>Primary Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.PrimaryExpressionImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getPrimaryExpression()
+   * @generated
+   */
+  int PRIMARY_EXPRESSION = 11;
+
+  /**
+   * The feature id for the '<em><b>Const</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__CONST = 0;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__VARIABLE = 1;
+
+  /**
+   * The feature id for the '<em><b>Nest Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION__NEST_EXPR = 2;
+
+  /**
+   * The number of structural features of the '<em>Primary Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_EXPRESSION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.StatementListImpl <em>Statement List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.StatementListImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getStatementList()
+   * @generated
+   */
+  int STATEMENT_LIST = 12;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_LIST__STATEMENTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Statement List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_LIST_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.StatementImpl <em>Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.StatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getStatement()
+   * @generated
+   */
+  int STATEMENT = 13;
+
+  /**
+   * The number of structural features of the '<em>Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.AssignmentStatementImpl <em>Assignment Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.AssignmentStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAssignmentStatement()
+   * @generated
+   */
+  int ASSIGNMENT_STATEMENT = 14;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT_STATEMENT__VARIABLE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT_STATEMENT__VALUE = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Assignment Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SelectionStatementImpl <em>Selection Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.SelectionStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSelectionStatement()
+   * @generated
+   */
+  int SELECTION_STATEMENT = 15;
+
+  /**
+   * The feature id for the '<em><b>Else Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECTION_STATEMENT__ELSE_STATEMENT = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Selection Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECTION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.IfStatementImpl <em>If Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.IfStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIfStatement()
+   * @generated
+   */
+  int IF_STATEMENT = 16;
+
+  /**
+   * The feature id for the '<em><b>Else Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__ELSE_STATEMENT = SELECTION_STATEMENT__ELSE_STATEMENT;
+
+  /**
+   * The feature id for the '<em><b>Main Cond</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__MAIN_COND = SELECTION_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Main Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__MAIN_STATEMENT = SELECTION_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Else If Cond</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__ELSE_IF_COND = SELECTION_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Else If Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__ELSE_IF_STATEMENTS = SELECTION_STATEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>If Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT_FEATURE_COUNT = SELECTION_STATEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.CaseStatementImpl <em>Case Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.CaseStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCaseStatement()
+   * @generated
+   */
+  int CASE_STATEMENT = 17;
+
+  /**
+   * The feature id for the '<em><b>Else Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_STATEMENT__ELSE_STATEMENT = SELECTION_STATEMENT__ELSE_STATEMENT;
+
+  /**
+   * The feature id for the '<em><b>Cond</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_STATEMENT__COND = SELECTION_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Case Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_STATEMENT__CASE_ELEMENTS = SELECTION_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Case Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_STATEMENT_FEATURE_COUNT = SELECTION_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.CaseElementImpl <em>Case Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.CaseElementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCaseElement()
+   * @generated
+   */
+  int CASE_ELEMENT = 18;
+
+  /**
+   * The feature id for the '<em><b>Case List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_ELEMENT__CASE_LIST = 0;
+
+  /**
+   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_ELEMENT__STATEMENT = 1;
+
+  /**
+   * The number of structural features of the '<em>Case Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_ELEMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.CaseListImpl <em>Case List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.CaseListImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCaseList()
+   * @generated
+   */
+  int CASE_LIST = 19;
+
+  /**
+   * The feature id for the '<em><b>Case List Element</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_LIST__CASE_LIST_ELEMENT = 0;
+
+  /**
+   * The number of structural features of the '<em>Case List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CASE_LIST_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.IterationStatementImpl <em>Iteration Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.IterationStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIterationStatement()
+   * @generated
+   */
+  int ITERATION_STATEMENT = 20;
+
+  /**
+   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ITERATION_STATEMENT__STATEMENT = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Iteration Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ITERATION_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ForStatementImpl <em>For Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.ForStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getForStatement()
+   * @generated
+   */
+  int FOR_STATEMENT = 21;
+
+  /**
+   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_STATEMENT__STATEMENT = ITERATION_STATEMENT__STATEMENT;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_STATEMENT__VARIABLE = ITERATION_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>For List</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_STATEMENT__FOR_LIST = ITERATION_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>For Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_STATEMENT_FEATURE_COUNT = ITERATION_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ForListImpl <em>For List</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.ForListImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getForList()
+   * @generated
+   */
+  int FOR_LIST = 22;
+
+  /**
+   * The feature id for the '<em><b>Start</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_LIST__START = 0;
+
+  /**
+   * The feature id for the '<em><b>End</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_LIST__END = 1;
+
+  /**
+   * The feature id for the '<em><b>Step</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_LIST__STEP = 2;
+
+  /**
+   * The number of structural features of the '<em>For List</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_LIST_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.WhileStatementImpl <em>While Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.WhileStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getWhileStatement()
+   * @generated
+   */
+  int WHILE_STATEMENT = 23;
+
+  /**
+   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_STATEMENT__STATEMENT = ITERATION_STATEMENT__STATEMENT;
+
+  /**
+   * The feature id for the '<em><b>Cond</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_STATEMENT__COND = ITERATION_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>While Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_STATEMENT_FEATURE_COUNT = ITERATION_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.impl.RepeatStatementImpl <em>Repeat Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.impl.RepeatStatementImpl
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRepeatStatement()
+   * @generated
+   */
+  int REPEAT_STATEMENT = 24;
+
+  /**
+   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPEAT_STATEMENT__STATEMENT = ITERATION_STATEMENT__STATEMENT;
+
+  /**
+   * The feature id for the '<em><b>Cond</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPEAT_STATEMENT__COND = ITERATION_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Repeat Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPEAT_STATEMENT_FEATURE_COUNT = ITERATION_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.SymbolicVariableImpl <em>Symbolic Variable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,7 +1153,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSymbolicVariable()
    * @generated
    */
-  int SYMBOLIC_VARIABLE = 2;
+  int SYMBOLIC_VARIABLE = 25;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -149,7 +1181,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarInitDeclaration()
    * @generated
    */
-  int VAR_INIT_DECLARATION = 3;
+  int VAR_INIT_DECLARATION = 26;
 
   /**
    * The feature id for the '<em><b>Var List</b></em>' containment reference.
@@ -186,7 +1218,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarList()
    * @generated
    */
-  int VAR_LIST = 4;
+  int VAR_LIST = 27;
 
   /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
@@ -214,7 +1246,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getInputVarDeclaration()
    * @generated
    */
-  int INPUT_VAR_DECLARATION = 5;
+  int INPUT_VAR_DECLARATION = 28;
 
   /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
@@ -242,7 +1274,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getOutputVarDeclaration()
    * @generated
    */
-  int OUTPUT_VAR_DECLARATION = 6;
+  int OUTPUT_VAR_DECLARATION = 29;
 
   /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
@@ -270,7 +1302,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getInputOutputVarDeclaration()
    * @generated
    */
-  int INPUT_OUTPUT_VAR_DECLARATION = 7;
+  int INPUT_OUTPUT_VAR_DECLARATION = 30;
 
   /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
@@ -298,7 +1330,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getVarDeclaration()
    * @generated
    */
-  int VAR_DECLARATION = 8;
+  int VAR_DECLARATION = 31;
 
   /**
    * The feature id for the '<em><b>Const</b></em>' attribute.
@@ -335,7 +1367,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getTempVarDeclaration()
    * @generated
    */
-  int TEMP_VAR_DECLARATION = 9;
+  int TEMP_VAR_DECLARATION = 32;
 
   /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
@@ -363,7 +1395,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExternalVarDeclaration()
    * @generated
    */
-  int EXTERNAL_VAR_DECLARATION = 10;
+  int EXTERNAL_VAR_DECLARATION = 33;
 
   /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
@@ -391,7 +1423,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExternalVarInitDeclaration()
    * @generated
    */
-  int EXTERNAL_VAR_INIT_DECLARATION = 11;
+  int EXTERNAL_VAR_INIT_DECLARATION = 34;
 
   /**
    * The feature id for the '<em><b>Var List</b></em>' containment reference.
@@ -428,7 +1460,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getGlobalVarDeclaration()
    * @generated
    */
-  int GLOBAL_VAR_DECLARATION = 12;
+  int GLOBAL_VAR_DECLARATION = 35;
 
   /**
    * The feature id for the '<em><b>Const</b></em>' attribute.
@@ -474,7 +1506,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getGlobalVarInitDeclaration()
    * @generated
    */
-  int GLOBAL_VAR_INIT_DECLARATION = 13;
+  int GLOBAL_VAR_INIT_DECLARATION = 36;
 
   /**
    * The feature id for the '<em><b>Var List</b></em>' containment reference.
@@ -520,7 +1552,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getConstant()
    * @generated
    */
-  int CONSTANT = 17;
+  int CONSTANT = 40;
 
   /**
    * The number of structural features of the '<em>Constant</em>' class.
@@ -539,7 +1571,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getTimeLiteral()
    * @generated
    */
-  int TIME_LITERAL = 14;
+  int TIME_LITERAL = 37;
 
   /**
    * The feature id for the '<em><b>Interval</b></em>' attribute.
@@ -567,7 +1599,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSingleElementTypeDeclaration()
    * @generated
    */
-  int SINGLE_ELEMENT_TYPE_DECLARATION = 15;
+  int SINGLE_ELEMENT_TYPE_DECLARATION = 38;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -604,7 +1636,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSimpleSpecificationInit()
    * @generated
    */
-  int SIMPLE_SPECIFICATION_INIT = 16;
+  int SIMPLE_SPECIFICATION_INIT = 39;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -641,7 +1673,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSignedInteger()
    * @generated
    */
-  int SIGNED_INTEGER = 18;
+  int SIGNED_INTEGER = 41;
 
   /**
    * The feature id for the '<em><b>Sig</b></em>' attribute.
@@ -678,7 +1710,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getNumericLiteral()
    * @generated
    */
-  int NUMERIC_LITERAL = 19;
+  int NUMERIC_LITERAL = 42;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -706,7 +1738,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 20;
+  int INTEGER_LITERAL = 43;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -743,7 +1775,7 @@ public interface PoSTPackage extends EPackage
    * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 21;
+  int REAL_LITERAL = 44;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -780,6 +1812,46 @@ public interface PoSTPackage extends EPackage
    * @ordered
    */
   int REAL_LITERAL_FEATURE_COUNT = NUMERIC_LITERAL_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.CompOperator <em>Comp Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.CompOperator
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCompOperator()
+   * @generated
+   */
+  int COMP_OPERATOR = 45;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.EquOperator <em>Equ Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.EquOperator
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getEquOperator()
+   * @generated
+   */
+  int EQU_OPERATOR = 46;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.AddOperator <em>Add Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.AddOperator
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAddOperator()
+   * @generated
+   */
+  int ADD_OPERATOR = 47;
+
+  /**
+   * The meta object id for the '{@link su.nsk.iae.post.poST.MulOperator <em>Mul Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see su.nsk.iae.post.poST.MulOperator
+   * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getMulOperator()
+   * @generated
+   */
+  int MUL_OPERATOR = 48;
 
 
   /**
@@ -823,6 +1895,577 @@ public interface PoSTPackage extends EPackage
    * @generated
    */
   EAttribute getGreeting_Name();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see su.nsk.iae.post.poST.Expression
+   * @generated
+   */
+  EClass getExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.Expression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see su.nsk.iae.post.poST.Expression#getLeft()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.Expression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see su.nsk.iae.post.poST.Expression#getRight()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_Right();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.XorExpression <em>Xor Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Xor Expression</em>'.
+   * @see su.nsk.iae.post.poST.XorExpression
+   * @generated
+   */
+  EClass getXorExpression();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.AndExpression <em>And Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>And Expression</em>'.
+   * @see su.nsk.iae.post.poST.AndExpression
+   * @generated
+   */
+  EClass getAndExpression();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.CompExpression <em>Comp Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Comp Expression</em>'.
+   * @see su.nsk.iae.post.poST.CompExpression
+   * @generated
+   */
+  EClass getCompExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.CompExpression#getCompOp <em>Comp Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Comp Op</em>'.
+   * @see su.nsk.iae.post.poST.CompExpression#getCompOp()
+   * @see #getCompExpression()
+   * @generated
+   */
+  EAttribute getCompExpression_CompOp();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.EquExpression <em>Equ Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Equ Expression</em>'.
+   * @see su.nsk.iae.post.poST.EquExpression
+   * @generated
+   */
+  EClass getEquExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.EquExpression#getEquOp <em>Equ Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Equ Op</em>'.
+   * @see su.nsk.iae.post.poST.EquExpression#getEquOp()
+   * @see #getEquExpression()
+   * @generated
+   */
+  EAttribute getEquExpression_EquOp();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.AddExpression <em>Add Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Add Expression</em>'.
+   * @see su.nsk.iae.post.poST.AddExpression
+   * @generated
+   */
+  EClass getAddExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.AddExpression#getAddOp <em>Add Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Add Op</em>'.
+   * @see su.nsk.iae.post.poST.AddExpression#getAddOp()
+   * @see #getAddExpression()
+   * @generated
+   */
+  EAttribute getAddExpression_AddOp();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.MulExpression <em>Mul Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Mul Expression</em>'.
+   * @see su.nsk.iae.post.poST.MulExpression
+   * @generated
+   */
+  EClass getMulExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.MulExpression#getMulOp <em>Mul Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mul Op</em>'.
+   * @see su.nsk.iae.post.poST.MulExpression#getMulOp()
+   * @see #getMulExpression()
+   * @generated
+   */
+  EAttribute getMulExpression_MulOp();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.PowerExpression <em>Power Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Power Expression</em>'.
+   * @see su.nsk.iae.post.poST.PowerExpression
+   * @generated
+   */
+  EClass getPowerExpression();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.UnaryExpression <em>Unary Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Unary Expression</em>'.
+   * @see su.nsk.iae.post.poST.UnaryExpression
+   * @generated
+   */
+  EClass getUnaryExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.UnaryExpression#isUnOp <em>Un Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Un Op</em>'.
+   * @see su.nsk.iae.post.poST.UnaryExpression#isUnOp()
+   * @see #getUnaryExpression()
+   * @generated
+   */
+  EAttribute getUnaryExpression_UnOp();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.PrimaryExpression <em>Primary Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Primary Expression</em>'.
+   * @see su.nsk.iae.post.poST.PrimaryExpression
+   * @generated
+   */
+  EClass getPrimaryExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.PrimaryExpression#getConst <em>Const</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Const</em>'.
+   * @see su.nsk.iae.post.poST.PrimaryExpression#getConst()
+   * @see #getPrimaryExpression()
+   * @generated
+   */
+  EReference getPrimaryExpression_Const();
+
+  /**
+   * Returns the meta object for the reference '{@link su.nsk.iae.post.poST.PrimaryExpression#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Variable</em>'.
+   * @see su.nsk.iae.post.poST.PrimaryExpression#getVariable()
+   * @see #getPrimaryExpression()
+   * @generated
+   */
+  EReference getPrimaryExpression_Variable();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.PrimaryExpression#getNestExpr <em>Nest Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Nest Expr</em>'.
+   * @see su.nsk.iae.post.poST.PrimaryExpression#getNestExpr()
+   * @see #getPrimaryExpression()
+   * @generated
+   */
+  EReference getPrimaryExpression_NestExpr();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.StatementList <em>Statement List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Statement List</em>'.
+   * @see su.nsk.iae.post.poST.StatementList
+   * @generated
+   */
+  EClass getStatementList();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.StatementList#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see su.nsk.iae.post.poST.StatementList#getStatements()
+   * @see #getStatementList()
+   * @generated
+   */
+  EReference getStatementList_Statements();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Statement</em>'.
+   * @see su.nsk.iae.post.poST.Statement
+   * @generated
+   */
+  EClass getStatement();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.AssignmentStatement <em>Assignment Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Assignment Statement</em>'.
+   * @see su.nsk.iae.post.poST.AssignmentStatement
+   * @generated
+   */
+  EClass getAssignmentStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link su.nsk.iae.post.poST.AssignmentStatement#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Variable</em>'.
+   * @see su.nsk.iae.post.poST.AssignmentStatement#getVariable()
+   * @see #getAssignmentStatement()
+   * @generated
+   */
+  EReference getAssignmentStatement_Variable();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.AssignmentStatement#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see su.nsk.iae.post.poST.AssignmentStatement#getValue()
+   * @see #getAssignmentStatement()
+   * @generated
+   */
+  EReference getAssignmentStatement_Value();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.SelectionStatement <em>Selection Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Selection Statement</em>'.
+   * @see su.nsk.iae.post.poST.SelectionStatement
+   * @generated
+   */
+  EClass getSelectionStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.SelectionStatement#getElseStatement <em>Else Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Else Statement</em>'.
+   * @see su.nsk.iae.post.poST.SelectionStatement#getElseStatement()
+   * @see #getSelectionStatement()
+   * @generated
+   */
+  EReference getSelectionStatement_ElseStatement();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.IfStatement <em>If Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>If Statement</em>'.
+   * @see su.nsk.iae.post.poST.IfStatement
+   * @generated
+   */
+  EClass getIfStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.IfStatement#getMainCond <em>Main Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Main Cond</em>'.
+   * @see su.nsk.iae.post.poST.IfStatement#getMainCond()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_MainCond();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.IfStatement#getMainStatement <em>Main Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Main Statement</em>'.
+   * @see su.nsk.iae.post.poST.IfStatement#getMainStatement()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_MainStatement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.IfStatement#getElseIfCond <em>Else If Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Else If Cond</em>'.
+   * @see su.nsk.iae.post.poST.IfStatement#getElseIfCond()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_ElseIfCond();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.IfStatement#getElseIfStatements <em>Else If Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Else If Statements</em>'.
+   * @see su.nsk.iae.post.poST.IfStatement#getElseIfStatements()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_ElseIfStatements();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.CaseStatement <em>Case Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Case Statement</em>'.
+   * @see su.nsk.iae.post.poST.CaseStatement
+   * @generated
+   */
+  EClass getCaseStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.CaseStatement#getCond <em>Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cond</em>'.
+   * @see su.nsk.iae.post.poST.CaseStatement#getCond()
+   * @see #getCaseStatement()
+   * @generated
+   */
+  EReference getCaseStatement_Cond();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.CaseStatement#getCaseElements <em>Case Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Case Elements</em>'.
+   * @see su.nsk.iae.post.poST.CaseStatement#getCaseElements()
+   * @see #getCaseStatement()
+   * @generated
+   */
+  EReference getCaseStatement_CaseElements();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.CaseElement <em>Case Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Case Element</em>'.
+   * @see su.nsk.iae.post.poST.CaseElement
+   * @generated
+   */
+  EClass getCaseElement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.CaseElement#getCaseList <em>Case List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Case List</em>'.
+   * @see su.nsk.iae.post.poST.CaseElement#getCaseList()
+   * @see #getCaseElement()
+   * @generated
+   */
+  EReference getCaseElement_CaseList();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.CaseElement#getStatement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Statement</em>'.
+   * @see su.nsk.iae.post.poST.CaseElement#getStatement()
+   * @see #getCaseElement()
+   * @generated
+   */
+  EReference getCaseElement_Statement();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.CaseList <em>Case List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Case List</em>'.
+   * @see su.nsk.iae.post.poST.CaseList
+   * @generated
+   */
+  EClass getCaseList();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.CaseList#getCaseListElement <em>Case List Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Case List Element</em>'.
+   * @see su.nsk.iae.post.poST.CaseList#getCaseListElement()
+   * @see #getCaseList()
+   * @generated
+   */
+  EReference getCaseList_CaseListElement();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.IterationStatement <em>Iteration Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Iteration Statement</em>'.
+   * @see su.nsk.iae.post.poST.IterationStatement
+   * @generated
+   */
+  EClass getIterationStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.IterationStatement#getStatement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Statement</em>'.
+   * @see su.nsk.iae.post.poST.IterationStatement#getStatement()
+   * @see #getIterationStatement()
+   * @generated
+   */
+  EReference getIterationStatement_Statement();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.ForStatement <em>For Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>For Statement</em>'.
+   * @see su.nsk.iae.post.poST.ForStatement
+   * @generated
+   */
+  EClass getForStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link su.nsk.iae.post.poST.ForStatement#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Variable</em>'.
+   * @see su.nsk.iae.post.poST.ForStatement#getVariable()
+   * @see #getForStatement()
+   * @generated
+   */
+  EReference getForStatement_Variable();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.ForStatement#getForList <em>For List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>For List</em>'.
+   * @see su.nsk.iae.post.poST.ForStatement#getForList()
+   * @see #getForStatement()
+   * @generated
+   */
+  EReference getForStatement_ForList();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.ForList <em>For List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>For List</em>'.
+   * @see su.nsk.iae.post.poST.ForList
+   * @generated
+   */
+  EClass getForList();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.ForList#getStart <em>Start</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Start</em>'.
+   * @see su.nsk.iae.post.poST.ForList#getStart()
+   * @see #getForList()
+   * @generated
+   */
+  EReference getForList_Start();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.ForList#getEnd <em>End</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>End</em>'.
+   * @see su.nsk.iae.post.poST.ForList#getEnd()
+   * @see #getForList()
+   * @generated
+   */
+  EReference getForList_End();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.ForList#getStep <em>Step</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Step</em>'.
+   * @see su.nsk.iae.post.poST.ForList#getStep()
+   * @see #getForList()
+   * @generated
+   */
+  EReference getForList_Step();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.WhileStatement <em>While Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>While Statement</em>'.
+   * @see su.nsk.iae.post.poST.WhileStatement
+   * @generated
+   */
+  EClass getWhileStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.WhileStatement#getCond <em>Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cond</em>'.
+   * @see su.nsk.iae.post.poST.WhileStatement#getCond()
+   * @see #getWhileStatement()
+   * @generated
+   */
+  EReference getWhileStatement_Cond();
+
+  /**
+   * Returns the meta object for class '{@link su.nsk.iae.post.poST.RepeatStatement <em>Repeat Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Repeat Statement</em>'.
+   * @see su.nsk.iae.post.poST.RepeatStatement
+   * @generated
+   */
+  EClass getRepeatStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.RepeatStatement#getCond <em>Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cond</em>'.
+   * @see su.nsk.iae.post.poST.RepeatStatement#getCond()
+   * @see #getRepeatStatement()
+   * @generated
+   */
+  EReference getRepeatStatement_Cond();
 
   /**
    * Returns the meta object for class '{@link su.nsk.iae.post.poST.SymbolicVariable <em>Symbolic Variable</em>}'.
@@ -1355,6 +2998,46 @@ public interface PoSTPackage extends EPackage
   EAttribute getRealLiteral_Mod();
 
   /**
+   * Returns the meta object for enum '{@link su.nsk.iae.post.poST.CompOperator <em>Comp Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Comp Operator</em>'.
+   * @see su.nsk.iae.post.poST.CompOperator
+   * @generated
+   */
+  EEnum getCompOperator();
+
+  /**
+   * Returns the meta object for enum '{@link su.nsk.iae.post.poST.EquOperator <em>Equ Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Equ Operator</em>'.
+   * @see su.nsk.iae.post.poST.EquOperator
+   * @generated
+   */
+  EEnum getEquOperator();
+
+  /**
+   * Returns the meta object for enum '{@link su.nsk.iae.post.poST.AddOperator <em>Add Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Add Operator</em>'.
+   * @see su.nsk.iae.post.poST.AddOperator
+   * @generated
+   */
+  EEnum getAddOperator();
+
+  /**
+   * Returns the meta object for enum '{@link su.nsk.iae.post.poST.MulOperator <em>Mul Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Mul Operator</em>'.
+   * @see su.nsk.iae.post.poST.MulOperator
+   * @generated
+   */
+  EEnum getMulOperator();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1412,6 +3095,484 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EAttribute GREETING__NAME = eINSTANCE.getGreeting_Name();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.ExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__LEFT = eINSTANCE.getExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__RIGHT = eINSTANCE.getExpression_Right();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.XorExpressionImpl <em>Xor Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.XorExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getXorExpression()
+     * @generated
+     */
+    EClass XOR_EXPRESSION = eINSTANCE.getXorExpression();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.AndExpressionImpl <em>And Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.AndExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAndExpression()
+     * @generated
+     */
+    EClass AND_EXPRESSION = eINSTANCE.getAndExpression();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.CompExpressionImpl <em>Comp Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.CompExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCompExpression()
+     * @generated
+     */
+    EClass COMP_EXPRESSION = eINSTANCE.getCompExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Comp Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMP_EXPRESSION__COMP_OP = eINSTANCE.getCompExpression_CompOp();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.EquExpressionImpl <em>Equ Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.EquExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getEquExpression()
+     * @generated
+     */
+    EClass EQU_EXPRESSION = eINSTANCE.getEquExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Equ Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EQU_EXPRESSION__EQU_OP = eINSTANCE.getEquExpression_EquOp();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.AddExpressionImpl <em>Add Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.AddExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAddExpression()
+     * @generated
+     */
+    EClass ADD_EXPRESSION = eINSTANCE.getAddExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Add Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADD_EXPRESSION__ADD_OP = eINSTANCE.getAddExpression_AddOp();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.MulExpressionImpl <em>Mul Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.MulExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getMulExpression()
+     * @generated
+     */
+    EClass MUL_EXPRESSION = eINSTANCE.getMulExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Mul Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MUL_EXPRESSION__MUL_OP = eINSTANCE.getMulExpression_MulOp();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.PowerExpressionImpl <em>Power Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.PowerExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getPowerExpression()
+     * @generated
+     */
+    EClass POWER_EXPRESSION = eINSTANCE.getPowerExpression();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.UnaryExpressionImpl <em>Unary Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.UnaryExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getUnaryExpression()
+     * @generated
+     */
+    EClass UNARY_EXPRESSION = eINSTANCE.getUnaryExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Un Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UNARY_EXPRESSION__UN_OP = eINSTANCE.getUnaryExpression_UnOp();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.PrimaryExpressionImpl <em>Primary Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.PrimaryExpressionImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getPrimaryExpression()
+     * @generated
+     */
+    EClass PRIMARY_EXPRESSION = eINSTANCE.getPrimaryExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Const</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMARY_EXPRESSION__CONST = eINSTANCE.getPrimaryExpression_Const();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMARY_EXPRESSION__VARIABLE = eINSTANCE.getPrimaryExpression_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>Nest Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PRIMARY_EXPRESSION__NEST_EXPR = eINSTANCE.getPrimaryExpression_NestExpr();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.StatementListImpl <em>Statement List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.StatementListImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getStatementList()
+     * @generated
+     */
+    EClass STATEMENT_LIST = eINSTANCE.getStatementList();
+
+    /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATEMENT_LIST__STATEMENTS = eINSTANCE.getStatementList_Statements();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.StatementImpl <em>Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.StatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getStatement()
+     * @generated
+     */
+    EClass STATEMENT = eINSTANCE.getStatement();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.AssignmentStatementImpl <em>Assignment Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.AssignmentStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAssignmentStatement()
+     * @generated
+     */
+    EClass ASSIGNMENT_STATEMENT = eINSTANCE.getAssignmentStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNMENT_STATEMENT__VARIABLE = eINSTANCE.getAssignmentStatement_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNMENT_STATEMENT__VALUE = eINSTANCE.getAssignmentStatement_Value();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SelectionStatementImpl <em>Selection Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.SelectionStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getSelectionStatement()
+     * @generated
+     */
+    EClass SELECTION_STATEMENT = eINSTANCE.getSelectionStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Else Statement</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECTION_STATEMENT__ELSE_STATEMENT = eINSTANCE.getSelectionStatement_ElseStatement();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.IfStatementImpl <em>If Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.IfStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIfStatement()
+     * @generated
+     */
+    EClass IF_STATEMENT = eINSTANCE.getIfStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Main Cond</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__MAIN_COND = eINSTANCE.getIfStatement_MainCond();
+
+    /**
+     * The meta object literal for the '<em><b>Main Statement</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__MAIN_STATEMENT = eINSTANCE.getIfStatement_MainStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Else If Cond</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__ELSE_IF_COND = eINSTANCE.getIfStatement_ElseIfCond();
+
+    /**
+     * The meta object literal for the '<em><b>Else If Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__ELSE_IF_STATEMENTS = eINSTANCE.getIfStatement_ElseIfStatements();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.CaseStatementImpl <em>Case Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.CaseStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCaseStatement()
+     * @generated
+     */
+    EClass CASE_STATEMENT = eINSTANCE.getCaseStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Cond</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CASE_STATEMENT__COND = eINSTANCE.getCaseStatement_Cond();
+
+    /**
+     * The meta object literal for the '<em><b>Case Elements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CASE_STATEMENT__CASE_ELEMENTS = eINSTANCE.getCaseStatement_CaseElements();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.CaseElementImpl <em>Case Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.CaseElementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCaseElement()
+     * @generated
+     */
+    EClass CASE_ELEMENT = eINSTANCE.getCaseElement();
+
+    /**
+     * The meta object literal for the '<em><b>Case List</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CASE_ELEMENT__CASE_LIST = eINSTANCE.getCaseElement_CaseList();
+
+    /**
+     * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CASE_ELEMENT__STATEMENT = eINSTANCE.getCaseElement_Statement();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.CaseListImpl <em>Case List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.CaseListImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCaseList()
+     * @generated
+     */
+    EClass CASE_LIST = eINSTANCE.getCaseList();
+
+    /**
+     * The meta object literal for the '<em><b>Case List Element</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CASE_LIST__CASE_LIST_ELEMENT = eINSTANCE.getCaseList_CaseListElement();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.IterationStatementImpl <em>Iteration Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.IterationStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getIterationStatement()
+     * @generated
+     */
+    EClass ITERATION_STATEMENT = eINSTANCE.getIterationStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ITERATION_STATEMENT__STATEMENT = eINSTANCE.getIterationStatement_Statement();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.ForStatementImpl <em>For Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.ForStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getForStatement()
+     * @generated
+     */
+    EClass FOR_STATEMENT = eINSTANCE.getForStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOR_STATEMENT__VARIABLE = eINSTANCE.getForStatement_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>For List</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOR_STATEMENT__FOR_LIST = eINSTANCE.getForStatement_ForList();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.ForListImpl <em>For List</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.ForListImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getForList()
+     * @generated
+     */
+    EClass FOR_LIST = eINSTANCE.getForList();
+
+    /**
+     * The meta object literal for the '<em><b>Start</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOR_LIST__START = eINSTANCE.getForList_Start();
+
+    /**
+     * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOR_LIST__END = eINSTANCE.getForList_End();
+
+    /**
+     * The meta object literal for the '<em><b>Step</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOR_LIST__STEP = eINSTANCE.getForList_Step();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.WhileStatementImpl <em>While Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.WhileStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getWhileStatement()
+     * @generated
+     */
+    EClass WHILE_STATEMENT = eINSTANCE.getWhileStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Cond</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHILE_STATEMENT__COND = eINSTANCE.getWhileStatement_Cond();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.RepeatStatementImpl <em>Repeat Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.impl.RepeatStatementImpl
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getRepeatStatement()
+     * @generated
+     */
+    EClass REPEAT_STATEMENT = eINSTANCE.getRepeatStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Cond</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REPEAT_STATEMENT__COND = eINSTANCE.getRepeatStatement_Cond();
 
     /**
      * The meta object literal for the '{@link su.nsk.iae.post.poST.impl.SymbolicVariableImpl <em>Symbolic Variable</em>}' class.
@@ -1852,6 +4013,46 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EAttribute REAL_LITERAL__MOD = eINSTANCE.getRealLiteral_Mod();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.CompOperator <em>Comp Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.CompOperator
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getCompOperator()
+     * @generated
+     */
+    EEnum COMP_OPERATOR = eINSTANCE.getCompOperator();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.EquOperator <em>Equ Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.EquOperator
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getEquOperator()
+     * @generated
+     */
+    EEnum EQU_OPERATOR = eINSTANCE.getEquOperator();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.AddOperator <em>Add Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.AddOperator
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getAddOperator()
+     * @generated
+     */
+    EEnum ADD_OPERATOR = eINSTANCE.getAddOperator();
+
+    /**
+     * The meta object literal for the '{@link su.nsk.iae.post.poST.MulOperator <em>Mul Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see su.nsk.iae.post.poST.MulOperator
+     * @see su.nsk.iae.post.poST.impl.PoSTPackageImpl#getMulOperator()
+     * @generated
+     */
+    EEnum MUL_OPERATOR = eINSTANCE.getMulOperator();
 
   }
 

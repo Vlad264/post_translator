@@ -14,28 +14,49 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import su.nsk.iae.post.poST.AddExpression;
+import su.nsk.iae.post.poST.AndExpression;
+import su.nsk.iae.post.poST.AssignmentStatement;
+import su.nsk.iae.post.poST.CaseElement;
+import su.nsk.iae.post.poST.CaseList;
+import su.nsk.iae.post.poST.CaseStatement;
+import su.nsk.iae.post.poST.CompExpression;
 import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.EquExpression;
+import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
+import su.nsk.iae.post.poST.ForList;
+import su.nsk.iae.post.poST.ForStatement;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
 import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
 import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.IfStatement;
 import su.nsk.iae.post.poST.InputOutputVarDeclaration;
 import su.nsk.iae.post.poST.InputVarDeclaration;
 import su.nsk.iae.post.poST.IntegerLiteral;
 import su.nsk.iae.post.poST.Model;
+import su.nsk.iae.post.poST.MulExpression;
 import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.PowerExpression;
+import su.nsk.iae.post.poST.PrimaryExpression;
 import su.nsk.iae.post.poST.RealLiteral;
+import su.nsk.iae.post.poST.RepeatStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.Statement;
+import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.TempVarDeclaration;
 import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.UnaryExpression;
 import su.nsk.iae.post.poST.VarDeclaration;
 import su.nsk.iae.post.poST.VarInitDeclaration;
 import su.nsk.iae.post.poST.VarList;
+import su.nsk.iae.post.poST.WhileStatement;
+import su.nsk.iae.post.poST.XorExpression;
 import su.nsk.iae.post.services.PoSTGrammarAccess;
 
 @SuppressWarnings("all")
@@ -52,14 +73,47 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == PoSTPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case PoSTPackage.ADD_EXPRESSION:
+				sequence_AddExpression(context, (AddExpression) semanticObject); 
+				return; 
+			case PoSTPackage.AND_EXPRESSION:
+				sequence_AndExpression(context, (AndExpression) semanticObject); 
+				return; 
+			case PoSTPackage.ASSIGNMENT_STATEMENT:
+				sequence_AssignmentStatement(context, (AssignmentStatement) semanticObject); 
+				return; 
+			case PoSTPackage.CASE_ELEMENT:
+				sequence_CaseElement(context, (CaseElement) semanticObject); 
+				return; 
+			case PoSTPackage.CASE_LIST:
+				sequence_CaseList(context, (CaseList) semanticObject); 
+				return; 
+			case PoSTPackage.CASE_STATEMENT:
+				sequence_CaseStatement(context, (CaseStatement) semanticObject); 
+				return; 
+			case PoSTPackage.COMP_EXPRESSION:
+				sequence_CompExpression(context, (CompExpression) semanticObject); 
+				return; 
 			case PoSTPackage.CONSTANT:
 				sequence_Constant(context, (Constant) semanticObject); 
+				return; 
+			case PoSTPackage.EQU_EXPRESSION:
+				sequence_EquExpression(context, (EquExpression) semanticObject); 
+				return; 
+			case PoSTPackage.EXPRESSION:
+				sequence_Expression(context, (Expression) semanticObject); 
 				return; 
 			case PoSTPackage.EXTERNAL_VAR_DECLARATION:
 				sequence_ExternalVarDeclaration(context, (ExternalVarDeclaration) semanticObject); 
 				return; 
 			case PoSTPackage.EXTERNAL_VAR_INIT_DECLARATION:
 				sequence_ExternalVarInitDeclaration(context, (ExternalVarInitDeclaration) semanticObject); 
+				return; 
+			case PoSTPackage.FOR_LIST:
+				sequence_ForList(context, (ForList) semanticObject); 
+				return; 
+			case PoSTPackage.FOR_STATEMENT:
+				sequence_ForStatement(context, (ForStatement) semanticObject); 
 				return; 
 			case PoSTPackage.GLOBAL_VAR_DECLARATION:
 				sequence_GlobalVarDeclaration(context, (GlobalVarDeclaration) semanticObject); 
@@ -69,6 +123,9 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case PoSTPackage.GREETING:
 				sequence_Greeting(context, (Greeting) semanticObject); 
+				return; 
+			case PoSTPackage.IF_STATEMENT:
+				sequence_IfStatement(context, (IfStatement) semanticObject); 
 				return; 
 			case PoSTPackage.INPUT_OUTPUT_VAR_DECLARATION:
 				sequence_InputOutputVarDeclaration(context, (InputOutputVarDeclaration) semanticObject); 
@@ -82,11 +139,23 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
+			case PoSTPackage.MUL_EXPRESSION:
+				sequence_MulExpression(context, (MulExpression) semanticObject); 
+				return; 
 			case PoSTPackage.OUTPUT_VAR_DECLARATION:
 				sequence_OutputVarDeclaration(context, (OutputVarDeclaration) semanticObject); 
 				return; 
+			case PoSTPackage.POWER_EXPRESSION:
+				sequence_PowerExpression(context, (PowerExpression) semanticObject); 
+				return; 
+			case PoSTPackage.PRIMARY_EXPRESSION:
+				sequence_PrimaryExpression(context, (PrimaryExpression) semanticObject); 
+				return; 
 			case PoSTPackage.REAL_LITERAL:
 				sequence_RealLiteral(context, (RealLiteral) semanticObject); 
+				return; 
+			case PoSTPackage.REPEAT_STATEMENT:
+				sequence_RepeatStatement(context, (RepeatStatement) semanticObject); 
 				return; 
 			case PoSTPackage.SIGNED_INTEGER:
 				sequence_SignedInteger(context, (SignedInteger) semanticObject); 
@@ -97,6 +166,12 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.SINGLE_ELEMENT_TYPE_DECLARATION:
 				sequence_SingleElementTypeDeclaration(context, (SingleElementTypeDeclaration) semanticObject); 
 				return; 
+			case PoSTPackage.STATEMENT:
+				sequence_Statement(context, (Statement) semanticObject); 
+				return; 
+			case PoSTPackage.STATEMENT_LIST:
+				sequence_StatementList(context, (StatementList) semanticObject); 
+				return; 
 			case PoSTPackage.SYMBOLIC_VARIABLE:
 				sequence_SymbolicVariable(context, (SymbolicVariable) semanticObject); 
 				return; 
@@ -105,6 +180,9 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case PoSTPackage.TIME_LITERAL:
 				sequence_TimeLiteral(context, (TimeLiteral) semanticObject); 
+				return; 
+			case PoSTPackage.UNARY_EXPRESSION:
+				sequence_UnaryExpression(context, (UnaryExpression) semanticObject); 
 				return; 
 			case PoSTPackage.VAR_DECLARATION:
 				sequence_VarDeclaration(context, (VarDeclaration) semanticObject); 
@@ -115,10 +193,177 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.VAR_LIST:
 				sequence_VarList(context, (VarList) semanticObject); 
 				return; 
+			case PoSTPackage.WHILE_STATEMENT:
+				sequence_WhileStatement(context, (WhileStatement) semanticObject); 
+				return; 
+			case PoSTPackage.XOR_EXPRESSION:
+				sequence_XorExpression(context, (XorExpression) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     Expression returns AddExpression
+	 *     Expression.Expression_1_0 returns AddExpression
+	 *     XorExpression returns AddExpression
+	 *     XorExpression.XorExpression_1_0 returns AddExpression
+	 *     AndExpression returns AddExpression
+	 *     AndExpression.AndExpression_1_0 returns AddExpression
+	 *     CompExpression returns AddExpression
+	 *     CompExpression.CompExpression_1_0 returns AddExpression
+	 *     EquExpression returns AddExpression
+	 *     EquExpression.EquExpression_1_0 returns AddExpression
+	 *     AddExpression returns AddExpression
+	 *     AddExpression.AddExpression_1_0 returns AddExpression
+	 *
+	 * Constraint:
+	 *     (left=AddExpression_AddExpression_1_0 addOp=AddOperator right=MulExpression)
+	 */
+	protected void sequence_AddExpression(ISerializationContext context, AddExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.ADD_EXPRESSION__ADD_OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.ADD_EXPRESSION__ADD_OP));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAddExpressionAccess().getAddExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAddExpressionAccess().getAddOpAddOperatorEnumRuleCall_1_1_0(), semanticObject.getAddOp());
+		feeder.accept(grammarAccess.getAddExpressionAccess().getRightMulExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns AndExpression
+	 *     Expression.Expression_1_0 returns AndExpression
+	 *     XorExpression returns AndExpression
+	 *     XorExpression.XorExpression_1_0 returns AndExpression
+	 *     AndExpression returns AndExpression
+	 *     AndExpression.AndExpression_1_0 returns AndExpression
+	 *
+	 * Constraint:
+	 *     (left=AndExpression_AndExpression_1_0 right=CompExpression)
+	 */
+	protected void sequence_AndExpression(ISerializationContext context, AndExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAndExpressionAccess().getAndExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAndExpressionAccess().getRightCompExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns AssignmentStatement
+	 *     AssignmentStatement returns AssignmentStatement
+	 *
+	 * Constraint:
+	 *     (variable=[SymbolicVariable|ID] value=Expression)
+	 */
+	protected void sequence_AssignmentStatement(ISerializationContext context, AssignmentStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.ASSIGNMENT_STATEMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.ASSIGNMENT_STATEMENT__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAssignmentStatementAccess().getVariableSymbolicVariableIDTerminalRuleCall_0_0_1(), semanticObject.eGet(PoSTPackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE, false));
+		feeder.accept(grammarAccess.getAssignmentStatementAccess().getValueExpressionParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     CaseElement returns CaseElement
+	 *
+	 * Constraint:
+	 *     (caseList=CaseList statement=StatementList)
+	 */
+	protected void sequence_CaseElement(ISerializationContext context, CaseElement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.CASE_ELEMENT__CASE_LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.CASE_ELEMENT__CASE_LIST));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.CASE_ELEMENT__STATEMENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.CASE_ELEMENT__STATEMENT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCaseElementAccess().getCaseListCaseListParserRuleCall_0_0(), semanticObject.getCaseList());
+		feeder.accept(grammarAccess.getCaseElementAccess().getStatementStatementListParserRuleCall_2_0(), semanticObject.getStatement());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     CaseList returns CaseList
+	 *
+	 * Constraint:
+	 *     (caseListElement+=SignedInteger caseListElement+=SignedInteger*)
+	 */
+	protected void sequence_CaseList(ISerializationContext context, CaseList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns CaseStatement
+	 *     SelectionStatement returns CaseStatement
+	 *     CaseStatement returns CaseStatement
+	 *
+	 * Constraint:
+	 *     (cond=Expression caseElements+=CaseElement+ elseStatement=StatementList?)
+	 */
+	protected void sequence_CaseStatement(ISerializationContext context, CaseStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns CompExpression
+	 *     Expression.Expression_1_0 returns CompExpression
+	 *     XorExpression returns CompExpression
+	 *     XorExpression.XorExpression_1_0 returns CompExpression
+	 *     AndExpression returns CompExpression
+	 *     AndExpression.AndExpression_1_0 returns CompExpression
+	 *     CompExpression returns CompExpression
+	 *     CompExpression.CompExpression_1_0 returns CompExpression
+	 *
+	 * Constraint:
+	 *     (left=CompExpression_CompExpression_1_0 compOp=CompOperator right=EquExpression)
+	 */
+	protected void sequence_CompExpression(ISerializationContext context, CompExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.COMP_EXPRESSION__COMP_OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.COMP_EXPRESSION__COMP_OP));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCompExpressionAccess().getCompExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getCompExpressionAccess().getCompOpCompOperatorEnumRuleCall_1_1_0(), semanticObject.getCompOp());
+		feeder.accept(grammarAccess.getCompExpressionAccess().getRightEquExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -129,6 +374,61 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Constant(ISerializationContext context, Constant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns EquExpression
+	 *     Expression.Expression_1_0 returns EquExpression
+	 *     XorExpression returns EquExpression
+	 *     XorExpression.XorExpression_1_0 returns EquExpression
+	 *     AndExpression returns EquExpression
+	 *     AndExpression.AndExpression_1_0 returns EquExpression
+	 *     CompExpression returns EquExpression
+	 *     CompExpression.CompExpression_1_0 returns EquExpression
+	 *     EquExpression returns EquExpression
+	 *     EquExpression.EquExpression_1_0 returns EquExpression
+	 *
+	 * Constraint:
+	 *     (left=EquExpression_EquExpression_1_0 equOp=EquOperator right=AddExpression)
+	 */
+	protected void sequence_EquExpression(ISerializationContext context, EquExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EQU_EXPRESSION__EQU_OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EQU_EXPRESSION__EQU_OP));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEquExpressionAccess().getEquExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getEquExpressionAccess().getEquOpEquOperatorEnumRuleCall_1_1_0(), semanticObject.getEquOp());
+		feeder.accept(grammarAccess.getEquExpressionAccess().getRightAddExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns Expression
+	 *     Expression.Expression_1_0 returns Expression
+	 *
+	 * Constraint:
+	 *     (left=Expression_Expression_1_0 right=XorExpression)
+	 */
+	protected void sequence_Expression(ISerializationContext context, Expression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpressionAccess().getExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExpressionAccess().getRightXorExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
@@ -161,6 +461,44 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getExternalVarInitDeclarationAccess().getVarListVarListParserRuleCall_0_0(), semanticObject.getVarList());
 		feeder.accept(grammarAccess.getExternalVarInitDeclarationAccess().getTypeDataTypeNameParserRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ForList returns ForList
+	 *
+	 * Constraint:
+	 *     (start=Expression end=Expression step=Expression?)
+	 */
+	protected void sequence_ForList(ISerializationContext context, ForList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns ForStatement
+	 *     IterationStatement returns ForStatement
+	 *     ForStatement returns ForStatement
+	 *
+	 * Constraint:
+	 *     (variable=[SymbolicVariable|ID] forList=ForList statement=StatementList)
+	 */
+	protected void sequence_ForStatement(ISerializationContext context, ForStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.FOR_STATEMENT__VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.FOR_STATEMENT__VARIABLE));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.FOR_STATEMENT__FOR_LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.FOR_STATEMENT__FOR_LIST));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.ITERATION_STATEMENT__STATEMENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.ITERATION_STATEMENT__STATEMENT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getForStatementAccess().getVariableSymbolicVariableIDTerminalRuleCall_1_0_1(), semanticObject.eGet(PoSTPackage.Literals.FOR_STATEMENT__VARIABLE, false));
+		feeder.accept(grammarAccess.getForStatementAccess().getForListForListParserRuleCall_3_0(), semanticObject.getForList());
+		feeder.accept(grammarAccess.getForStatementAccess().getStatementStatementListParserRuleCall_5_0(), semanticObject.getStatement());
 		feeder.finish();
 	}
 	
@@ -221,6 +559,20 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Statement returns IfStatement
+	 *     SelectionStatement returns IfStatement
+	 *     IfStatement returns IfStatement
+	 *
+	 * Constraint:
+	 *     (mainCond=Expression mainStatement=StatementList (elseIfCond+=Expression elseIfStatements+=StatementList)* elseStatement=StatementList?)
+	 */
+	protected void sequence_IfStatement(ISerializationContext context, IfStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     InputOutputVarDeclaration returns InputOutputVarDeclaration
 	 *
 	 * Constraint:
@@ -271,12 +623,97 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Expression returns MulExpression
+	 *     Expression.Expression_1_0 returns MulExpression
+	 *     XorExpression returns MulExpression
+	 *     XorExpression.XorExpression_1_0 returns MulExpression
+	 *     AndExpression returns MulExpression
+	 *     AndExpression.AndExpression_1_0 returns MulExpression
+	 *     CompExpression returns MulExpression
+	 *     CompExpression.CompExpression_1_0 returns MulExpression
+	 *     EquExpression returns MulExpression
+	 *     EquExpression.EquExpression_1_0 returns MulExpression
+	 *     AddExpression returns MulExpression
+	 *     AddExpression.AddExpression_1_0 returns MulExpression
+	 *     MulExpression returns MulExpression
+	 *     MulExpression.MulExpression_1_0 returns MulExpression
+	 *
+	 * Constraint:
+	 *     (left=MulExpression_MulExpression_1_0 mulOp=MulOperator right=PowerExpression)
+	 */
+	protected void sequence_MulExpression(ISerializationContext context, MulExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.MUL_EXPRESSION__MUL_OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.MUL_EXPRESSION__MUL_OP));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMulExpressionAccess().getMulExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getMulExpressionAccess().getMulOpMulOperatorEnumRuleCall_1_1_0(), semanticObject.getMulOp());
+		feeder.accept(grammarAccess.getMulExpressionAccess().getRightPowerExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     OutputVarDeclaration returns OutputVarDeclaration
 	 *
 	 * Constraint:
 	 *     vars+=VarInitDeclaration+
 	 */
 	protected void sequence_OutputVarDeclaration(ISerializationContext context, OutputVarDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns PowerExpression
+	 *     Expression.Expression_1_0 returns PowerExpression
+	 *     XorExpression returns PowerExpression
+	 *     XorExpression.XorExpression_1_0 returns PowerExpression
+	 *     AndExpression returns PowerExpression
+	 *     AndExpression.AndExpression_1_0 returns PowerExpression
+	 *     CompExpression returns PowerExpression
+	 *     CompExpression.CompExpression_1_0 returns PowerExpression
+	 *     EquExpression returns PowerExpression
+	 *     EquExpression.EquExpression_1_0 returns PowerExpression
+	 *     AddExpression returns PowerExpression
+	 *     AddExpression.AddExpression_1_0 returns PowerExpression
+	 *     MulExpression returns PowerExpression
+	 *     MulExpression.MulExpression_1_0 returns PowerExpression
+	 *     PowerExpression returns PowerExpression
+	 *     PowerExpression.PowerExpression_1_0 returns PowerExpression
+	 *
+	 * Constraint:
+	 *     (left=PowerExpression_PowerExpression_1_0 right=UnaryExpression)
+	 */
+	protected void sequence_PowerExpression(ISerializationContext context, PowerExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPowerExpressionAccess().getPowerExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getPowerExpressionAccess().getRightUnaryExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PrimaryExpression returns PrimaryExpression
+	 *
+	 * Constraint:
+	 *     (const=Constant | variable=[SymbolicVariable|ID] | nestExpr=Expression)
+	 */
+	protected void sequence_PrimaryExpression(ISerializationContext context, PrimaryExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -292,6 +729,29 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_RealLiteral(ISerializationContext context, RealLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns RepeatStatement
+	 *     IterationStatement returns RepeatStatement
+	 *     RepeatStatement returns RepeatStatement
+	 *
+	 * Constraint:
+	 *     (statement=StatementList cond=Expression)
+	 */
+	protected void sequence_RepeatStatement(ISerializationContext context, RepeatStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.ITERATION_STATEMENT__STATEMENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.ITERATION_STATEMENT__STATEMENT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.REPEAT_STATEMENT__COND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.REPEAT_STATEMENT__COND));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRepeatStatementAccess().getStatementStatementListParserRuleCall_1_0(), semanticObject.getStatement());
+		feeder.accept(grammarAccess.getRepeatStatementAccess().getCondExpressionParserRuleCall_3_0(), semanticObject.getCond());
+		feeder.finish();
 	}
 	
 	
@@ -337,6 +797,30 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getSingleElementTypeDeclarationAccess().getTypeSimpleSpecificationInitParserRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     StatementList returns StatementList
+	 *
+	 * Constraint:
+	 *     statements+=Statement*
+	 */
+	protected void sequence_StatementList(ISerializationContext context, StatementList semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns Statement
+	 *
+	 * Constraint:
+	 *     {Statement}
+	 */
+	protected void sequence_Statement(ISerializationContext context, Statement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -391,6 +875,34 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Expression returns UnaryExpression
+	 *     Expression.Expression_1_0 returns UnaryExpression
+	 *     XorExpression returns UnaryExpression
+	 *     XorExpression.XorExpression_1_0 returns UnaryExpression
+	 *     AndExpression returns UnaryExpression
+	 *     AndExpression.AndExpression_1_0 returns UnaryExpression
+	 *     CompExpression returns UnaryExpression
+	 *     CompExpression.CompExpression_1_0 returns UnaryExpression
+	 *     EquExpression returns UnaryExpression
+	 *     EquExpression.EquExpression_1_0 returns UnaryExpression
+	 *     AddExpression returns UnaryExpression
+	 *     AddExpression.AddExpression_1_0 returns UnaryExpression
+	 *     MulExpression returns UnaryExpression
+	 *     MulExpression.MulExpression_1_0 returns UnaryExpression
+	 *     PowerExpression returns UnaryExpression
+	 *     PowerExpression.PowerExpression_1_0 returns UnaryExpression
+	 *     UnaryExpression returns UnaryExpression
+	 *
+	 * Constraint:
+	 *     (unOp?=UNARY_OPERATOR? right=PrimaryExpression)
+	 */
+	protected void sequence_UnaryExpression(ISerializationContext context, UnaryExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     VarDeclaration returns VarDeclaration
 	 *
 	 * Constraint:
@@ -431,6 +943,53 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_VarList(ISerializationContext context, VarList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns WhileStatement
+	 *     IterationStatement returns WhileStatement
+	 *     WhileStatement returns WhileStatement
+	 *
+	 * Constraint:
+	 *     (cond=Expression statement=StatementList)
+	 */
+	protected void sequence_WhileStatement(ISerializationContext context, WhileStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.WHILE_STATEMENT__COND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.WHILE_STATEMENT__COND));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.ITERATION_STATEMENT__STATEMENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.ITERATION_STATEMENT__STATEMENT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getWhileStatementAccess().getCondExpressionParserRuleCall_1_0(), semanticObject.getCond());
+		feeder.accept(grammarAccess.getWhileStatementAccess().getStatementStatementListParserRuleCall_3_0(), semanticObject.getStatement());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns XorExpression
+	 *     Expression.Expression_1_0 returns XorExpression
+	 *     XorExpression returns XorExpression
+	 *     XorExpression.XorExpression_1_0 returns XorExpression
+	 *
+	 * Constraint:
+	 *     (left=XorExpression_XorExpression_1_0 right=AndExpression)
+	 */
+	protected void sequence_XorExpression(ISerializationContext context, XorExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getXorExpressionAccess().getXorExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getXorExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	

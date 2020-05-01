@@ -10,6 +10,135 @@ Model:
 Greeting:
 	'Hello' name=ID '!';
 	
+/* ======================= START ST Expression ======================= */
+
+Expression:
+	XorExpression ({Expression.left=current} OR_OPERATOR right=XorExpression)*;
+
+terminal OR_OPERATOR:
+	'OR';
+
+XorExpression:
+	AndExpression ({XorExpression.left=current} XOR_OPERATOR right=AndExpression)*;
+
+terminal XOR_OPERATOR:
+	'XOR';
+
+AndExpression:
+	CompExpression ({AndExpression.left=current} AND_OPERATOR right=CompExpression)*;
+
+terminal AND_OPERATOR:
+	'&' | 'AND';
+
+CompExpression:
+	EquExpression ({CompExpression.left=current} compOp=CompOperator right=EquExpression)*;
+
+enum CompOperator:
+	EQUAL='=' | NOT_EQUAL='<>';
+
+EquExpression:
+	AddExpression ({EquExpression.left=current} equOp=EquOperator right=AddExpression)*;
+
+enum EquOperator:
+	LESS='<' | GREATER='>' | LESS_EQU='<=' | GREATER_EQU='>=';
+
+AddExpression:
+	MulExpression ({AddExpression.left=current} addOp=AddOperator right=MulExpression)*;
+
+enum AddOperator:
+	PLUS='+' | MINUS='-';
+
+MulExpression:
+	PowerExpression ({MulExpression.left=current} mulOp=MulOperator right=PowerExpression)*;
+
+enum MulOperator:
+	MUL='*' | DIV='/' | MOD='MOD';
+
+PowerExpression:
+	UnaryExpression ({PowerExpression.left=current} POWER_OPERATOR right=UnaryExpression)*;
+
+terminal POWER_OPERATOR:
+	'**';
+
+UnaryExpression:
+	(unOp?=UNARY_OPERATOR)? right=PrimaryExpression;
+
+terminal UNARY_OPERATOR:
+	'NOT';
+
+PrimaryExpression:
+	const=Constant | variable=[SymbolicVariable] | '(' nestExpr=Expression ')';
+
+StatementList:
+	{StatementList} (statements+=Statement)*;
+
+Statement:
+	(AssignmentStatement ';') | 
+	SelectionStatement | 
+	IterationStatement | 
+	{Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') | 
+	{Statement} (EXIT_STATEMENT ';');
+
+AssignmentStatement:
+	variable=[SymbolicVariable] ':=' value=Expression;
+
+SelectionStatement:
+	IfStatement | CaseStatement;
+
+IfStatement:
+	'IF' mainCond=Expression 'THEN'
+		mainStatement=StatementList
+	('ELSEIF' elseIfCond+=Expression 'THEN'
+		elseIfStatements+=StatementList
+	)*
+	('ELSE'
+		elseStatement=StatementList
+	)?
+	'END_IF';
+
+CaseStatement:
+	'CASE' cond=Expression 'OF'
+		(caseElements+=CaseElement)+
+	('ELSE'
+		elseStatement=StatementList
+	)?
+	'END_CASE';
+
+CaseElement:
+	caseList=CaseList ':' statement=StatementList;
+
+CaseList:
+	caseListElement+=SignedInteger (',' caseListElement+=SignedInteger)*;
+
+IterationStatement:
+	ForStatement | WhileStatement | RepeatStatement;
+
+ForStatement:
+	'FOR' variable=[SymbolicVariable] ':=' forList=ForList 'DO'
+		statement=StatementList
+	'END_FOR';
+
+ForList:
+	start=Expression 'TO' end=Expression ('BY' step=Expression)?;
+
+WhileStatement:
+	'WHILE' cond=Expression 'DO'
+		statement=StatementList
+	'END_WHILE';
+
+RepeatStatement:
+	'REPEAT'
+		statement=StatementList
+	'UNTIL' cond=Expression 'END_REPEAT';
+
+terminal SUBPROGRAM_CONTROL_STATEMENT:
+	'RETURN';
+
+terminal EXIT_STATEMENT:
+	'EXIT';
+
+/* ======================= END ST Expression ======================= */
+	
 /* ======================= START Variables ======================= */
 
 SymbolicVariable:

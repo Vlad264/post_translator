@@ -6,11 +6,103 @@
     copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="PoST" basePackage="su.nsk.iae.post" disposableProviderFactory="true"
       fileExtensions="post" ecorePackage="PoST.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="PoST.ecore#//CompOperator">
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//CompOperator/EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//CompOperator/NOT_EQUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="PoST.ecore#//EquOperator">
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//EquOperator/LESS"/>
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//EquOperator/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//EquOperator/LESS_EQU"/>
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//EquOperator/GREATER_EQU"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="PoST.ecore#//AddOperator">
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//AddOperator/PLUS"/>
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//AddOperator/MINUS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="PoST.ecore#//MulOperator">
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//MulOperator/MUL"/>
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//MulOperator/DIV"/>
+      <genEnumLiterals ecoreEnumLiteral="PoST.ecore#//MulOperator/MOD"/>
+    </genEnums>
     <genClasses ecoreClass="PoST.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//Model/greetings"/>
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//Greeting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//Greeting/name"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//Expression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//Expression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//Expression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//XorExpression"/>
+    <genClasses ecoreClass="PoST.ecore#//AndExpression"/>
+    <genClasses ecoreClass="PoST.ecore#//CompExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//CompExpression/compOp"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//EquExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//EquExpression/equOp"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//AddExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//AddExpression/addOp"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//MulExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//MulExpression/mulOp"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//PowerExpression"/>
+    <genClasses ecoreClass="PoST.ecore#//UnaryExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//UnaryExpression/unOp"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//PrimaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//PrimaryExpression/const"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PoST.ecore#//PrimaryExpression/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//PrimaryExpression/nestExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//StatementList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//StatementList/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//Statement"/>
+    <genClasses ecoreClass="PoST.ecore#//AssignmentStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PoST.ecore#//AssignmentStatement/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//AssignmentStatement/value"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//SelectionStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//SelectionStatement/elseStatement"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//IfStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//IfStatement/mainCond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//IfStatement/mainStatement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//IfStatement/elseIfCond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//IfStatement/elseIfStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//CaseStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//CaseStatement/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//CaseStatement/caseElements"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//CaseElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//CaseElement/caseList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//CaseElement/statement"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//CaseList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//CaseList/caseListElement"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//IterationStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//IterationStatement/statement"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//ForStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PoST.ecore#//ForStatement/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//ForStatement/forList"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//ForList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//ForList/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//ForList/end"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//ForList/step"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//WhileStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//WhileStatement/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//RepeatStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//RepeatStatement/cond"/>
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//SymbolicVariable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SymbolicVariable/name"/>

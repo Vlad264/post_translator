@@ -42,6 +42,213 @@ public interface PoSTFactory extends EFactory
   Greeting createGreeting();
 
   /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Xor Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Xor Expression</em>'.
+   * @generated
+   */
+  XorExpression createXorExpression();
+
+  /**
+   * Returns a new object of class '<em>And Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>And Expression</em>'.
+   * @generated
+   */
+  AndExpression createAndExpression();
+
+  /**
+   * Returns a new object of class '<em>Comp Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Comp Expression</em>'.
+   * @generated
+   */
+  CompExpression createCompExpression();
+
+  /**
+   * Returns a new object of class '<em>Equ Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Equ Expression</em>'.
+   * @generated
+   */
+  EquExpression createEquExpression();
+
+  /**
+   * Returns a new object of class '<em>Add Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Add Expression</em>'.
+   * @generated
+   */
+  AddExpression createAddExpression();
+
+  /**
+   * Returns a new object of class '<em>Mul Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mul Expression</em>'.
+   * @generated
+   */
+  MulExpression createMulExpression();
+
+  /**
+   * Returns a new object of class '<em>Power Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Power Expression</em>'.
+   * @generated
+   */
+  PowerExpression createPowerExpression();
+
+  /**
+   * Returns a new object of class '<em>Unary Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unary Expression</em>'.
+   * @generated
+   */
+  UnaryExpression createUnaryExpression();
+
+  /**
+   * Returns a new object of class '<em>Primary Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Primary Expression</em>'.
+   * @generated
+   */
+  PrimaryExpression createPrimaryExpression();
+
+  /**
+   * Returns a new object of class '<em>Statement List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Statement List</em>'.
+   * @generated
+   */
+  StatementList createStatementList();
+
+  /**
+   * Returns a new object of class '<em>Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Statement</em>'.
+   * @generated
+   */
+  Statement createStatement();
+
+  /**
+   * Returns a new object of class '<em>Assignment Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assignment Statement</em>'.
+   * @generated
+   */
+  AssignmentStatement createAssignmentStatement();
+
+  /**
+   * Returns a new object of class '<em>Selection Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Selection Statement</em>'.
+   * @generated
+   */
+  SelectionStatement createSelectionStatement();
+
+  /**
+   * Returns a new object of class '<em>If Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>If Statement</em>'.
+   * @generated
+   */
+  IfStatement createIfStatement();
+
+  /**
+   * Returns a new object of class '<em>Case Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Case Statement</em>'.
+   * @generated
+   */
+  CaseStatement createCaseStatement();
+
+  /**
+   * Returns a new object of class '<em>Case Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Case Element</em>'.
+   * @generated
+   */
+  CaseElement createCaseElement();
+
+  /**
+   * Returns a new object of class '<em>Case List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Case List</em>'.
+   * @generated
+   */
+  CaseList createCaseList();
+
+  /**
+   * Returns a new object of class '<em>Iteration Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Iteration Statement</em>'.
+   * @generated
+   */
+  IterationStatement createIterationStatement();
+
+  /**
+   * Returns a new object of class '<em>For Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For Statement</em>'.
+   * @generated
+   */
+  ForStatement createForStatement();
+
+  /**
+   * Returns a new object of class '<em>For List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For List</em>'.
+   * @generated
+   */
+  ForList createForList();
+
+  /**
+   * Returns a new object of class '<em>While Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>While Statement</em>'.
+   * @generated
+   */
+  WhileStatement createWhileStatement();
+
+  /**
+   * Returns a new object of class '<em>Repeat Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Repeat Statement</em>'.
+   * @generated
+   */
+  RepeatStatement createRepeatStatement();
+
+  /**
    * Returns a new object of class '<em>Symbolic Variable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

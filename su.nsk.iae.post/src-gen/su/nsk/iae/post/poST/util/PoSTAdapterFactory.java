@@ -86,6 +86,121 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
         return createGreetingAdapter();
       }
       @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseXorExpression(XorExpression object)
+      {
+        return createXorExpressionAdapter();
+      }
+      @Override
+      public Adapter caseAndExpression(AndExpression object)
+      {
+        return createAndExpressionAdapter();
+      }
+      @Override
+      public Adapter caseCompExpression(CompExpression object)
+      {
+        return createCompExpressionAdapter();
+      }
+      @Override
+      public Adapter caseEquExpression(EquExpression object)
+      {
+        return createEquExpressionAdapter();
+      }
+      @Override
+      public Adapter caseAddExpression(AddExpression object)
+      {
+        return createAddExpressionAdapter();
+      }
+      @Override
+      public Adapter caseMulExpression(MulExpression object)
+      {
+        return createMulExpressionAdapter();
+      }
+      @Override
+      public Adapter casePowerExpression(PowerExpression object)
+      {
+        return createPowerExpressionAdapter();
+      }
+      @Override
+      public Adapter caseUnaryExpression(UnaryExpression object)
+      {
+        return createUnaryExpressionAdapter();
+      }
+      @Override
+      public Adapter casePrimaryExpression(PrimaryExpression object)
+      {
+        return createPrimaryExpressionAdapter();
+      }
+      @Override
+      public Adapter caseStatementList(StatementList object)
+      {
+        return createStatementListAdapter();
+      }
+      @Override
+      public Adapter caseStatement(Statement object)
+      {
+        return createStatementAdapter();
+      }
+      @Override
+      public Adapter caseAssignmentStatement(AssignmentStatement object)
+      {
+        return createAssignmentStatementAdapter();
+      }
+      @Override
+      public Adapter caseSelectionStatement(SelectionStatement object)
+      {
+        return createSelectionStatementAdapter();
+      }
+      @Override
+      public Adapter caseIfStatement(IfStatement object)
+      {
+        return createIfStatementAdapter();
+      }
+      @Override
+      public Adapter caseCaseStatement(CaseStatement object)
+      {
+        return createCaseStatementAdapter();
+      }
+      @Override
+      public Adapter caseCaseElement(CaseElement object)
+      {
+        return createCaseElementAdapter();
+      }
+      @Override
+      public Adapter caseCaseList(CaseList object)
+      {
+        return createCaseListAdapter();
+      }
+      @Override
+      public Adapter caseIterationStatement(IterationStatement object)
+      {
+        return createIterationStatementAdapter();
+      }
+      @Override
+      public Adapter caseForStatement(ForStatement object)
+      {
+        return createForStatementAdapter();
+      }
+      @Override
+      public Adapter caseForList(ForList object)
+      {
+        return createForListAdapter();
+      }
+      @Override
+      public Adapter caseWhileStatement(WhileStatement object)
+      {
+        return createWhileStatementAdapter();
+      }
+      @Override
+      public Adapter caseRepeatStatement(RepeatStatement object)
+      {
+        return createRepeatStatementAdapter();
+      }
+      @Override
       public Adapter caseSymbolicVariable(SymbolicVariable object)
       {
         return createSymbolicVariableAdapter();
@@ -233,6 +348,351 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGreetingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.XorExpression <em>Xor Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.XorExpression
+   * @generated
+   */
+  public Adapter createXorExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.AndExpression <em>And Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.AndExpression
+   * @generated
+   */
+  public Adapter createAndExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.CompExpression <em>Comp Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.CompExpression
+   * @generated
+   */
+  public Adapter createCompExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.EquExpression <em>Equ Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.EquExpression
+   * @generated
+   */
+  public Adapter createEquExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.AddExpression <em>Add Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.AddExpression
+   * @generated
+   */
+  public Adapter createAddExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.MulExpression <em>Mul Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.MulExpression
+   * @generated
+   */
+  public Adapter createMulExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.PowerExpression <em>Power Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.PowerExpression
+   * @generated
+   */
+  public Adapter createPowerExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.UnaryExpression <em>Unary Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.UnaryExpression
+   * @generated
+   */
+  public Adapter createUnaryExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.PrimaryExpression <em>Primary Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.PrimaryExpression
+   * @generated
+   */
+  public Adapter createPrimaryExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.StatementList <em>Statement List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.StatementList
+   * @generated
+   */
+  public Adapter createStatementListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.Statement
+   * @generated
+   */
+  public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.AssignmentStatement <em>Assignment Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.AssignmentStatement
+   * @generated
+   */
+  public Adapter createAssignmentStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SelectionStatement <em>Selection Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.SelectionStatement
+   * @generated
+   */
+  public Adapter createSelectionStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.IfStatement <em>If Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.IfStatement
+   * @generated
+   */
+  public Adapter createIfStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.CaseStatement <em>Case Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.CaseStatement
+   * @generated
+   */
+  public Adapter createCaseStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.CaseElement <em>Case Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.CaseElement
+   * @generated
+   */
+  public Adapter createCaseElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.CaseList <em>Case List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.CaseList
+   * @generated
+   */
+  public Adapter createCaseListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.IterationStatement <em>Iteration Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.IterationStatement
+   * @generated
+   */
+  public Adapter createIterationStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ForStatement <em>For Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ForStatement
+   * @generated
+   */
+  public Adapter createForStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ForList <em>For List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ForList
+   * @generated
+   */
+  public Adapter createForListAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.WhileStatement <em>While Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.WhileStatement
+   * @generated
+   */
+  public Adapter createWhileStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.RepeatStatement <em>Repeat Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.RepeatStatement
+   * @generated
+   */
+  public Adapter createRepeatStatementAdapter()
   {
     return null;
   }

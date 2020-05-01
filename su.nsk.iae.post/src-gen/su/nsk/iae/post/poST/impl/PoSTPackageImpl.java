@@ -5,35 +5,63 @@ package su.nsk.iae.post.poST.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import su.nsk.iae.post.poST.AddExpression;
+import su.nsk.iae.post.poST.AddOperator;
+import su.nsk.iae.post.poST.AndExpression;
+import su.nsk.iae.post.poST.AssignmentStatement;
+import su.nsk.iae.post.poST.CaseElement;
+import su.nsk.iae.post.poST.CaseList;
+import su.nsk.iae.post.poST.CaseStatement;
+import su.nsk.iae.post.poST.CompExpression;
+import su.nsk.iae.post.poST.CompOperator;
 import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.EquExpression;
+import su.nsk.iae.post.poST.EquOperator;
+import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
+import su.nsk.iae.post.poST.ForList;
+import su.nsk.iae.post.poST.ForStatement;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
 import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
 import su.nsk.iae.post.poST.Greeting;
+import su.nsk.iae.post.poST.IfStatement;
 import su.nsk.iae.post.poST.InputOutputVarDeclaration;
 import su.nsk.iae.post.poST.InputVarDeclaration;
 import su.nsk.iae.post.poST.IntegerLiteral;
+import su.nsk.iae.post.poST.IterationStatement;
 import su.nsk.iae.post.poST.Model;
+import su.nsk.iae.post.poST.MulExpression;
+import su.nsk.iae.post.poST.MulOperator;
 import su.nsk.iae.post.poST.NumericLiteral;
 import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTFactory;
 import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.PowerExpression;
+import su.nsk.iae.post.poST.PrimaryExpression;
 import su.nsk.iae.post.poST.RealLiteral;
+import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SignedInteger;
 import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleElementTypeDeclaration;
+import su.nsk.iae.post.poST.Statement;
+import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.TempVarDeclaration;
 import su.nsk.iae.post.poST.TimeLiteral;
+import su.nsk.iae.post.poST.UnaryExpression;
 import su.nsk.iae.post.poST.VarDeclaration;
 import su.nsk.iae.post.poST.VarInitDeclaration;
 import su.nsk.iae.post.poST.VarList;
+import su.nsk.iae.post.poST.WhileStatement;
+import su.nsk.iae.post.poST.XorExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,6 +84,167 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   private EClass greetingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xorExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass andExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass compExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass equExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass addExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mulExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass powerExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass unaryExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass primaryExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass statementListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass assignmentStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass selectionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ifStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass caseStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass caseElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass caseListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass iterationStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forListEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass whileStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass repeatStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -198,6 +387,34 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
   private EClass realLiteralEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum compOperatorEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum equOperatorEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum addOperatorEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum mulOperatorEEnum = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -302,6 +519,600 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
   public EAttribute getGreeting_Name()
   {
     return (EAttribute)greetingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpression_Left()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpression_Right()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getXorExpression()
+  {
+    return xorExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAndExpression()
+  {
+    return andExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCompExpression()
+  {
+    return compExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCompExpression_CompOp()
+  {
+    return (EAttribute)compExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEquExpression()
+  {
+    return equExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEquExpression_EquOp()
+  {
+    return (EAttribute)equExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAddExpression()
+  {
+    return addExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getAddExpression_AddOp()
+  {
+    return (EAttribute)addExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMulExpression()
+  {
+    return mulExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMulExpression_MulOp()
+  {
+    return (EAttribute)mulExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPowerExpression()
+  {
+    return powerExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getUnaryExpression()
+  {
+    return unaryExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getUnaryExpression_UnOp()
+  {
+    return (EAttribute)unaryExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPrimaryExpression()
+  {
+    return primaryExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPrimaryExpression_Const()
+  {
+    return (EReference)primaryExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPrimaryExpression_Variable()
+  {
+    return (EReference)primaryExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPrimaryExpression_NestExpr()
+  {
+    return (EReference)primaryExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStatementList()
+  {
+    return statementListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStatementList_Statements()
+  {
+    return (EReference)statementListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStatement()
+  {
+    return statementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAssignmentStatement()
+  {
+    return assignmentStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssignmentStatement_Variable()
+  {
+    return (EReference)assignmentStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssignmentStatement_Value()
+  {
+    return (EReference)assignmentStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSelectionStatement()
+  {
+    return selectionStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSelectionStatement_ElseStatement()
+  {
+    return (EReference)selectionStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIfStatement()
+  {
+    return ifStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfStatement_MainCond()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfStatement_MainStatement()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfStatement_ElseIfCond()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfStatement_ElseIfStatements()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCaseStatement()
+  {
+    return caseStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCaseStatement_Cond()
+  {
+    return (EReference)caseStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCaseStatement_CaseElements()
+  {
+    return (EReference)caseStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCaseElement()
+  {
+    return caseElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCaseElement_CaseList()
+  {
+    return (EReference)caseElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCaseElement_Statement()
+  {
+    return (EReference)caseElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCaseList()
+  {
+    return caseListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCaseList_CaseListElement()
+  {
+    return (EReference)caseListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIterationStatement()
+  {
+    return iterationStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIterationStatement_Statement()
+  {
+    return (EReference)iterationStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForStatement()
+  {
+    return forStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForStatement_Variable()
+  {
+    return (EReference)forStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForStatement_ForList()
+  {
+    return (EReference)forStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForList()
+  {
+    return forListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForList_Start()
+  {
+    return (EReference)forListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForList_End()
+  {
+    return (EReference)forListEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForList_Step()
+  {
+    return (EReference)forListEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getWhileStatement()
+  {
+    return whileStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getWhileStatement_Cond()
+  {
+    return (EReference)whileStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRepeatStatement()
+  {
+    return repeatStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRepeatStatement_Cond()
+  {
+    return (EReference)repeatStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -860,6 +1671,50 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
+  public EEnum getCompOperator()
+  {
+    return compOperatorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getEquOperator()
+  {
+    return equOperatorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getAddOperator()
+  {
+    return addOperatorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getMulOperator()
+  {
+    return mulOperatorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public PoSTFactory getPoSTFactory()
   {
     return (PoSTFactory)getEFactoryInstance();
@@ -890,6 +1745,83 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     greetingEClass = createEClass(GREETING);
     createEAttribute(greetingEClass, GREETING__NAME);
+
+    expressionEClass = createEClass(EXPRESSION);
+    createEReference(expressionEClass, EXPRESSION__LEFT);
+    createEReference(expressionEClass, EXPRESSION__RIGHT);
+
+    xorExpressionEClass = createEClass(XOR_EXPRESSION);
+
+    andExpressionEClass = createEClass(AND_EXPRESSION);
+
+    compExpressionEClass = createEClass(COMP_EXPRESSION);
+    createEAttribute(compExpressionEClass, COMP_EXPRESSION__COMP_OP);
+
+    equExpressionEClass = createEClass(EQU_EXPRESSION);
+    createEAttribute(equExpressionEClass, EQU_EXPRESSION__EQU_OP);
+
+    addExpressionEClass = createEClass(ADD_EXPRESSION);
+    createEAttribute(addExpressionEClass, ADD_EXPRESSION__ADD_OP);
+
+    mulExpressionEClass = createEClass(MUL_EXPRESSION);
+    createEAttribute(mulExpressionEClass, MUL_EXPRESSION__MUL_OP);
+
+    powerExpressionEClass = createEClass(POWER_EXPRESSION);
+
+    unaryExpressionEClass = createEClass(UNARY_EXPRESSION);
+    createEAttribute(unaryExpressionEClass, UNARY_EXPRESSION__UN_OP);
+
+    primaryExpressionEClass = createEClass(PRIMARY_EXPRESSION);
+    createEReference(primaryExpressionEClass, PRIMARY_EXPRESSION__CONST);
+    createEReference(primaryExpressionEClass, PRIMARY_EXPRESSION__VARIABLE);
+    createEReference(primaryExpressionEClass, PRIMARY_EXPRESSION__NEST_EXPR);
+
+    statementListEClass = createEClass(STATEMENT_LIST);
+    createEReference(statementListEClass, STATEMENT_LIST__STATEMENTS);
+
+    statementEClass = createEClass(STATEMENT);
+
+    assignmentStatementEClass = createEClass(ASSIGNMENT_STATEMENT);
+    createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VARIABLE);
+    createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VALUE);
+
+    selectionStatementEClass = createEClass(SELECTION_STATEMENT);
+    createEReference(selectionStatementEClass, SELECTION_STATEMENT__ELSE_STATEMENT);
+
+    ifStatementEClass = createEClass(IF_STATEMENT);
+    createEReference(ifStatementEClass, IF_STATEMENT__MAIN_COND);
+    createEReference(ifStatementEClass, IF_STATEMENT__MAIN_STATEMENT);
+    createEReference(ifStatementEClass, IF_STATEMENT__ELSE_IF_COND);
+    createEReference(ifStatementEClass, IF_STATEMENT__ELSE_IF_STATEMENTS);
+
+    caseStatementEClass = createEClass(CASE_STATEMENT);
+    createEReference(caseStatementEClass, CASE_STATEMENT__COND);
+    createEReference(caseStatementEClass, CASE_STATEMENT__CASE_ELEMENTS);
+
+    caseElementEClass = createEClass(CASE_ELEMENT);
+    createEReference(caseElementEClass, CASE_ELEMENT__CASE_LIST);
+    createEReference(caseElementEClass, CASE_ELEMENT__STATEMENT);
+
+    caseListEClass = createEClass(CASE_LIST);
+    createEReference(caseListEClass, CASE_LIST__CASE_LIST_ELEMENT);
+
+    iterationStatementEClass = createEClass(ITERATION_STATEMENT);
+    createEReference(iterationStatementEClass, ITERATION_STATEMENT__STATEMENT);
+
+    forStatementEClass = createEClass(FOR_STATEMENT);
+    createEReference(forStatementEClass, FOR_STATEMENT__VARIABLE);
+    createEReference(forStatementEClass, FOR_STATEMENT__FOR_LIST);
+
+    forListEClass = createEClass(FOR_LIST);
+    createEReference(forListEClass, FOR_LIST__START);
+    createEReference(forListEClass, FOR_LIST__END);
+    createEReference(forListEClass, FOR_LIST__STEP);
+
+    whileStatementEClass = createEClass(WHILE_STATEMENT);
+    createEReference(whileStatementEClass, WHILE_STATEMENT__COND);
+
+    repeatStatementEClass = createEClass(REPEAT_STATEMENT);
+    createEReference(repeatStatementEClass, REPEAT_STATEMENT__COND);
 
     symbolicVariableEClass = createEClass(SYMBOLIC_VARIABLE);
     createEAttribute(symbolicVariableEClass, SYMBOLIC_VARIABLE__NAME);
@@ -960,6 +1892,12 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     realLiteralEClass = createEClass(REAL_LITERAL);
     createEReference(realLiteralEClass, REAL_LITERAL__DIV);
     createEAttribute(realLiteralEClass, REAL_LITERAL__MOD);
+
+    // Create enums
+    compOperatorEEnum = createEEnum(COMP_OPERATOR);
+    equOperatorEEnum = createEEnum(EQU_OPERATOR);
+    addOperatorEEnum = createEEnum(ADD_OPERATOR);
+    mulOperatorEEnum = createEEnum(MUL_OPERATOR);
   }
 
   /**
@@ -991,6 +1929,22 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    xorExpressionEClass.getESuperTypes().add(this.getExpression());
+    andExpressionEClass.getESuperTypes().add(this.getXorExpression());
+    compExpressionEClass.getESuperTypes().add(this.getAndExpression());
+    equExpressionEClass.getESuperTypes().add(this.getCompExpression());
+    addExpressionEClass.getESuperTypes().add(this.getEquExpression());
+    mulExpressionEClass.getESuperTypes().add(this.getAddExpression());
+    powerExpressionEClass.getESuperTypes().add(this.getMulExpression());
+    unaryExpressionEClass.getESuperTypes().add(this.getPowerExpression());
+    assignmentStatementEClass.getESuperTypes().add(this.getStatement());
+    selectionStatementEClass.getESuperTypes().add(this.getStatement());
+    ifStatementEClass.getESuperTypes().add(this.getSelectionStatement());
+    caseStatementEClass.getESuperTypes().add(this.getSelectionStatement());
+    iterationStatementEClass.getESuperTypes().add(this.getStatement());
+    forStatementEClass.getESuperTypes().add(this.getIterationStatement());
+    whileStatementEClass.getESuperTypes().add(this.getIterationStatement());
+    repeatStatementEClass.getESuperTypes().add(this.getIterationStatement());
     timeLiteralEClass.getESuperTypes().add(this.getConstant());
     numericLiteralEClass.getESuperTypes().add(this.getConstant());
     integerLiteralEClass.getESuperTypes().add(this.getNumericLiteral());
@@ -1002,6 +1956,83 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     initEClass(greetingEClass, Greeting.class, "Greeting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGreeting_Name(), ecorePackage.getEString(), "name", null, 0, 1, Greeting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpression_Left(), this.getExpression(), null, "left", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Right(), ecorePackage.getEObject(), null, "right", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xorExpressionEClass, XorExpression.class, "XorExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(andExpressionEClass, AndExpression.class, "AndExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(compExpressionEClass, CompExpression.class, "CompExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCompExpression_CompOp(), this.getCompOperator(), "compOp", null, 0, 1, CompExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(equExpressionEClass, EquExpression.class, "EquExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEquExpression_EquOp(), this.getEquOperator(), "equOp", null, 0, 1, EquExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(addExpressionEClass, AddExpression.class, "AddExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAddExpression_AddOp(), this.getAddOperator(), "addOp", null, 0, 1, AddExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mulExpressionEClass, MulExpression.class, "MulExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMulExpression_MulOp(), this.getMulOperator(), "mulOp", null, 0, 1, MulExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(powerExpressionEClass, PowerExpression.class, "PowerExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(unaryExpressionEClass, UnaryExpression.class, "UnaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUnaryExpression_UnOp(), ecorePackage.getEBoolean(), "unOp", null, 0, 1, UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(primaryExpressionEClass, PrimaryExpression.class, "PrimaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPrimaryExpression_Const(), this.getConstant(), null, "const", null, 0, 1, PrimaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPrimaryExpression_Variable(), this.getSymbolicVariable(), null, "variable", null, 0, 1, PrimaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPrimaryExpression_NestExpr(), this.getExpression(), null, "nestExpr", null, 0, 1, PrimaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(statementListEClass, StatementList.class, "StatementList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStatementList_Statements(), this.getStatement(), null, "statements", null, 0, -1, StatementList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(assignmentStatementEClass, AssignmentStatement.class, "AssignmentStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssignmentStatement_Variable(), this.getSymbolicVariable(), null, "variable", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssignmentStatement_Value(), this.getExpression(), null, "value", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(selectionStatementEClass, SelectionStatement.class, "SelectionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSelectionStatement_ElseStatement(), this.getStatementList(), null, "elseStatement", null, 0, 1, SelectionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ifStatementEClass, IfStatement.class, "IfStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIfStatement_MainCond(), this.getExpression(), null, "mainCond", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_MainStatement(), this.getStatementList(), null, "mainStatement", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_ElseIfCond(), this.getExpression(), null, "elseIfCond", null, 0, -1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_ElseIfStatements(), this.getStatementList(), null, "elseIfStatements", null, 0, -1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(caseStatementEClass, CaseStatement.class, "CaseStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCaseStatement_Cond(), this.getExpression(), null, "cond", null, 0, 1, CaseStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCaseStatement_CaseElements(), this.getCaseElement(), null, "caseElements", null, 0, -1, CaseStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(caseElementEClass, CaseElement.class, "CaseElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCaseElement_CaseList(), this.getCaseList(), null, "caseList", null, 0, 1, CaseElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCaseElement_Statement(), this.getStatementList(), null, "statement", null, 0, 1, CaseElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(caseListEClass, CaseList.class, "CaseList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCaseList_CaseListElement(), this.getSignedInteger(), null, "caseListElement", null, 0, -1, CaseList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(iterationStatementEClass, IterationStatement.class, "IterationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIterationStatement_Statement(), this.getStatementList(), null, "statement", null, 0, 1, IterationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forStatementEClass, ForStatement.class, "ForStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getForStatement_Variable(), this.getSymbolicVariable(), null, "variable", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForStatement_ForList(), this.getForList(), null, "forList", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forListEClass, ForList.class, "ForList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getForList_Start(), this.getExpression(), null, "start", null, 0, 1, ForList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForList_End(), this.getExpression(), null, "end", null, 0, 1, ForList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForList_Step(), this.getExpression(), null, "step", null, 0, 1, ForList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(whileStatementEClass, WhileStatement.class, "WhileStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWhileStatement_Cond(), this.getExpression(), null, "cond", null, 0, 1, WhileStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(repeatStatementEClass, RepeatStatement.class, "RepeatStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRepeatStatement_Cond(), this.getExpression(), null, "cond", null, 0, 1, RepeatStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(symbolicVariableEClass, SymbolicVariable.class, "SymbolicVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSymbolicVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, SymbolicVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1072,6 +2103,26 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     initEClass(realLiteralEClass, RealLiteral.class, "RealLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRealLiteral_Div(), this.getSignedInteger(), null, "div", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRealLiteral_Mod(), ecorePackage.getEInt(), "mod", null, 0, 1, RealLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(compOperatorEEnum, CompOperator.class, "CompOperator");
+    addEEnumLiteral(compOperatorEEnum, CompOperator.EQUAL);
+    addEEnumLiteral(compOperatorEEnum, CompOperator.NOT_EQUAL);
+
+    initEEnum(equOperatorEEnum, EquOperator.class, "EquOperator");
+    addEEnumLiteral(equOperatorEEnum, EquOperator.LESS);
+    addEEnumLiteral(equOperatorEEnum, EquOperator.GREATER);
+    addEEnumLiteral(equOperatorEEnum, EquOperator.LESS_EQU);
+    addEEnumLiteral(equOperatorEEnum, EquOperator.GREATER_EQU);
+
+    initEEnum(addOperatorEEnum, AddOperator.class, "AddOperator");
+    addEEnumLiteral(addOperatorEEnum, AddOperator.PLUS);
+    addEEnumLiteral(addOperatorEEnum, AddOperator.MINUS);
+
+    initEEnum(mulOperatorEEnum, MulOperator.class, "MulOperator");
+    addEEnumLiteral(mulOperatorEEnum, MulOperator.MUL);
+    addEEnumLiteral(mulOperatorEEnum, MulOperator.DIV);
+    addEEnumLiteral(mulOperatorEEnum, MulOperator.MOD);
 
     // Create resource
     createResource(eNS_URI);

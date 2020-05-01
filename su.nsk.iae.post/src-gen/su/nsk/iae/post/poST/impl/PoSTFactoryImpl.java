@@ -4,6 +4,7 @@
 package su.nsk.iae.post.poST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -67,6 +68,29 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
     {
       case PoSTPackage.MODEL: return createModel();
       case PoSTPackage.GREETING: return createGreeting();
+      case PoSTPackage.EXPRESSION: return createExpression();
+      case PoSTPackage.XOR_EXPRESSION: return createXorExpression();
+      case PoSTPackage.AND_EXPRESSION: return createAndExpression();
+      case PoSTPackage.COMP_EXPRESSION: return createCompExpression();
+      case PoSTPackage.EQU_EXPRESSION: return createEquExpression();
+      case PoSTPackage.ADD_EXPRESSION: return createAddExpression();
+      case PoSTPackage.MUL_EXPRESSION: return createMulExpression();
+      case PoSTPackage.POWER_EXPRESSION: return createPowerExpression();
+      case PoSTPackage.UNARY_EXPRESSION: return createUnaryExpression();
+      case PoSTPackage.PRIMARY_EXPRESSION: return createPrimaryExpression();
+      case PoSTPackage.STATEMENT_LIST: return createStatementList();
+      case PoSTPackage.STATEMENT: return createStatement();
+      case PoSTPackage.ASSIGNMENT_STATEMENT: return createAssignmentStatement();
+      case PoSTPackage.SELECTION_STATEMENT: return createSelectionStatement();
+      case PoSTPackage.IF_STATEMENT: return createIfStatement();
+      case PoSTPackage.CASE_STATEMENT: return createCaseStatement();
+      case PoSTPackage.CASE_ELEMENT: return createCaseElement();
+      case PoSTPackage.CASE_LIST: return createCaseList();
+      case PoSTPackage.ITERATION_STATEMENT: return createIterationStatement();
+      case PoSTPackage.FOR_STATEMENT: return createForStatement();
+      case PoSTPackage.FOR_LIST: return createForList();
+      case PoSTPackage.WHILE_STATEMENT: return createWhileStatement();
+      case PoSTPackage.REPEAT_STATEMENT: return createRepeatStatement();
       case PoSTPackage.SYMBOLIC_VARIABLE: return createSymbolicVariable();
       case PoSTPackage.VAR_INIT_DECLARATION: return createVarInitDeclaration();
       case PoSTPackage.VAR_LIST: return createVarList();
@@ -98,6 +122,52 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
    * @generated
    */
   @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case PoSTPackage.COMP_OPERATOR:
+        return createCompOperatorFromString(eDataType, initialValue);
+      case PoSTPackage.EQU_OPERATOR:
+        return createEquOperatorFromString(eDataType, initialValue);
+      case PoSTPackage.ADD_OPERATOR:
+        return createAddOperatorFromString(eDataType, initialValue);
+      case PoSTPackage.MUL_OPERATOR:
+        return createMulOperatorFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case PoSTPackage.COMP_OPERATOR:
+        return convertCompOperatorToString(eDataType, instanceValue);
+      case PoSTPackage.EQU_OPERATOR:
+        return convertEquOperatorToString(eDataType, instanceValue);
+      case PoSTPackage.ADD_OPERATOR:
+        return convertAddOperatorToString(eDataType, instanceValue);
+      case PoSTPackage.MUL_OPERATOR:
+        return convertMulOperatorToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Model createModel()
   {
     ModelImpl model = new ModelImpl();
@@ -114,6 +184,282 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     GreetingImpl greeting = new GreetingImpl();
     return greeting;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XorExpression createXorExpression()
+  {
+    XorExpressionImpl xorExpression = new XorExpressionImpl();
+    return xorExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AndExpression createAndExpression()
+  {
+    AndExpressionImpl andExpression = new AndExpressionImpl();
+    return andExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CompExpression createCompExpression()
+  {
+    CompExpressionImpl compExpression = new CompExpressionImpl();
+    return compExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EquExpression createEquExpression()
+  {
+    EquExpressionImpl equExpression = new EquExpressionImpl();
+    return equExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AddExpression createAddExpression()
+  {
+    AddExpressionImpl addExpression = new AddExpressionImpl();
+    return addExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MulExpression createMulExpression()
+  {
+    MulExpressionImpl mulExpression = new MulExpressionImpl();
+    return mulExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PowerExpression createPowerExpression()
+  {
+    PowerExpressionImpl powerExpression = new PowerExpressionImpl();
+    return powerExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public UnaryExpression createUnaryExpression()
+  {
+    UnaryExpressionImpl unaryExpression = new UnaryExpressionImpl();
+    return unaryExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PrimaryExpression createPrimaryExpression()
+  {
+    PrimaryExpressionImpl primaryExpression = new PrimaryExpressionImpl();
+    return primaryExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StatementList createStatementList()
+  {
+    StatementListImpl statementList = new StatementListImpl();
+    return statementList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Statement createStatement()
+  {
+    StatementImpl statement = new StatementImpl();
+    return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AssignmentStatement createAssignmentStatement()
+  {
+    AssignmentStatementImpl assignmentStatement = new AssignmentStatementImpl();
+    return assignmentStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SelectionStatement createSelectionStatement()
+  {
+    SelectionStatementImpl selectionStatement = new SelectionStatementImpl();
+    return selectionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IfStatement createIfStatement()
+  {
+    IfStatementImpl ifStatement = new IfStatementImpl();
+    return ifStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CaseStatement createCaseStatement()
+  {
+    CaseStatementImpl caseStatement = new CaseStatementImpl();
+    return caseStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CaseElement createCaseElement()
+  {
+    CaseElementImpl caseElement = new CaseElementImpl();
+    return caseElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CaseList createCaseList()
+  {
+    CaseListImpl caseList = new CaseListImpl();
+    return caseList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IterationStatement createIterationStatement()
+  {
+    IterationStatementImpl iterationStatement = new IterationStatementImpl();
+    return iterationStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForStatement createForStatement()
+  {
+    ForStatementImpl forStatement = new ForStatementImpl();
+    return forStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForList createForList()
+  {
+    ForListImpl forList = new ForListImpl();
+    return forList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public WhileStatement createWhileStatement()
+  {
+    WhileStatementImpl whileStatement = new WhileStatementImpl();
+    return whileStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public RepeatStatement createRepeatStatement()
+  {
+    RepeatStatementImpl repeatStatement = new RepeatStatementImpl();
+    return repeatStatement;
   }
 
   /**
@@ -354,6 +700,94 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     RealLiteralImpl realLiteral = new RealLiteralImpl();
     return realLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompOperator createCompOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    CompOperator result = CompOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertCompOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EquOperator createEquOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    EquOperator result = EquOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertEquOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AddOperator createAddOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    AddOperator result = AddOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertAddOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MulOperator createMulOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    MulOperator result = MulOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertMulOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**
