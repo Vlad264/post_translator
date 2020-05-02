@@ -7,7 +7,11 @@ import su.nsk.iae.post.poST.TimeLiteral
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import su.nsk.iae.post.poST.SignedInteger
 
-class CommonGenerator {
+abstract class CommonGenerator {
+	
+	protected def String generateGlobalTimeName() {
+		return '''___global_time'''
+	}
 	
 	protected def String getValue(Constant value) {
 		if (value === null) {
