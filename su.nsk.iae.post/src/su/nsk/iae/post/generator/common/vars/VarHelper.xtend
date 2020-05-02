@@ -89,6 +89,6 @@ abstract class VarHelper extends CommonGenerator {
 	}
 	
 	private def String generateConst(VarData data) {
-		return '''«IF data.isConst»const«ENDIF»'''
+		return '''«IF data.isConst»const «ENDIF»'''
 	}
 }
