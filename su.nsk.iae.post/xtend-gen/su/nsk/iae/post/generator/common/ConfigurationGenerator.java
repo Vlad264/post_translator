@@ -18,25 +18,38 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import su.nsk.iae.post.generator.common.CommonGenerator;
 import su.nsk.iae.post.generator.common.ProgramGenerator;
+import su.nsk.iae.post.generator.common.TaskData;
 import su.nsk.iae.post.generator.common.vars.GlobalVarHelper;
 import su.nsk.iae.post.generator.common.vars.VarHelper;
+import su.nsk.iae.post.generator.common.vars.data.DirectVarData;
+import su.nsk.iae.post.poST.AssignmentType;
 import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
+import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
 import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.Program;
 import su.nsk.iae.post.poST.ProgramConfElement;
 import su.nsk.iae.post.poST.ProgramConfiguration;
+import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 
 @SuppressWarnings("all")
-public class ConfigurationGenerator extends CommonGenerator {
+public abstract class ConfigurationGenerator extends CommonGenerator {
   private Configuration configuration;
   
   private VarHelper globalVars = new GlobalVarHelper();
   
   private List<ProgramGenerator> programList = new LinkedList<ProgramGenerator>();
   
-  private Map<String, List<String>> taskMap = new HashMap<String, List<String>>();
+  private Map<String, List<TaskData>> taskMap = new HashMap<String, List<TaskData>>();
+  
+  private Map<String, DirectVarData> directMap = new HashMap<String, DirectVarData>();
+  
+  protected abstract String parseDirectVar(final DirectVarData varData);
+  
+  protected abstract String generateRead(final String directVarName, final int size, final List<Integer> address, final String assigmentVar);
+  
+  protected abstract String generateWrite(final String directVarName, final int size, final List<Integer> address, final String value);
   
   public ConfigurationGenerator(final Resource resource) {
     final Model model = ((Model[])Conversions.unwrapArray((Iterables.<Model>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Model.class)), Model.class))[0];
@@ -44,12 +57,15 @@ public class ConfigurationGenerator extends CommonGenerator {
     final EList<Program> programs = model.getPrograms();
     EList<GlobalVarDeclaration> _resGlobVars = this.configuration.getResources().get(0).getResGlobVars();
     for (final GlobalVarDeclaration v : _resGlobVars) {
-      this.globalVars.add(v);
+      {
+        this.globalVars.add(v);
+        this.parseDirectVars(v.getVarsAs());
+      }
     }
     EList<Task> _tasks = this.configuration.getResources().get(0).getResStatement().getTasks();
     for (final Task t : _tasks) {
       String _name = t.getName();
-      LinkedList<String> _linkedList = new LinkedList<String>();
+      LinkedList<TaskData> _linkedList = new LinkedList<TaskData>();
       this.taskMap.put(_name, _linkedList);
     }
     EList<ProgramConfiguration> _programConfs = this.configuration.getResources().get(0).getResStatement().getProgramConfs();
@@ -63,15 +79,36 @@ public class ConfigurationGenerator extends CommonGenerator {
         Program _findFirst = IterableExtensions.<Program>findFirst(programs, _function);
         String _name_1 = c.getName();
         final ProgramGenerator programGenerator = new ProgramGenerator(_findFirst, _name_1);
+        List<TaskData> _get = this.taskMap.get(c.getTask().getName());
+        TaskData _taskData = new TaskData();
+        _get.add(_taskData);
+        TaskData _last = IterableExtensions.<TaskData>last(this.taskMap.get(c.getTask().getName()));
+        _last.setName(c.getName());
         EList<ProgramConfElement> _elements = c.getAgrs().getElements();
         for (final ProgramConfElement e : _elements) {
-          programGenerator.addMapVar(e.getProgramVar().getName(), e.getGlobVar().getName());
+          {
+            AssignmentType _assig = e.getAssig();
+            if (_assig != null) {
+              switch (_assig) {
+                case IN:
+                  IterableExtensions.<TaskData>last(this.taskMap.get(c.getTask().getName())).getInVars().add(e.getGlobVar().getName());
+                  break;
+                case OUT:
+                  IterableExtensions.<TaskData>last(this.taskMap.get(c.getTask().getName())).getOutVars().add(e.getGlobVar().getName());
+                  break;
+                default:
+                  break;
+              }
+            }
+            programGenerator.addMapVar(e.getProgramVar().getName(), e.getGlobVar().getName());
+          }
         }
         this.programList.add(programGenerator);
         Task _task = c.getTask();
         boolean _tripleNotEquals = (_task != null);
         if (_tripleNotEquals) {
-          this.taskMap.get(c.getTask().getName()).add(programGenerator.generateCall());
+          TaskData _last_1 = IterableExtensions.<TaskData>last(this.taskMap.get(c.getTask().getName()));
+          _last_1.setProgramCall(programGenerator.generateCall());
         }
       }
     }
@@ -89,8 +126,6 @@ public class ConfigurationGenerator extends CommonGenerator {
   private String generateMain() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#include <avr/io.h>");
-    _builder.newLine();
-    _builder.append("#include <avr/interrupt.h>");
     _builder.newLine();
     {
       for(final ProgramGenerator p : this.programList) {
@@ -126,16 +161,6 @@ public class ConfigurationGenerator extends CommonGenerator {
     _builder.append(_generate);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("//Timer interrupt handler");
-    _builder.newLine();
-    _builder.append("ISR(TIMER1_COMPA_vect) {");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("++___global_time;");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
     _builder.append("int main(int argc, char *argv[]) {");
     _builder.newLine();
     _builder.append("\t");
@@ -153,65 +178,13 @@ public class ConfigurationGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("//Set registers of timer 1 to zero");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("TCCR1A = 0;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("TCCR1B = 0;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("//Set CTC mode and match register");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("TCCR1B |= (1 << WGM12);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("OCR1A = 16;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("//Set division factor to 1024");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("TCCR1B |= (1 << CS10);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("TCCR1B |= (1 << CS12);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("//Enable interrupt by coincidence");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("TIMSK1 |= (1 << OCIE1A);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("//Enable interrupt");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("sei();");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
     _builder.append("//Time vars for tasks");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("unsigned long curtime;");
     _builder.newLine();
     {
       EList<Task> _tasks_1 = this.configuration.getResources().get(0).getResStatement().getTasks();
       for(final Task t_1 : _tasks_1) {
         _builder.append("\t");
-        _builder.append("long ");
+        _builder.append("unsigned long ");
         String _lowerCase = t_1.getName().toLowerCase();
         _builder.append(_lowerCase, "\t");
         _builder.append("_time;");
@@ -222,8 +195,10 @@ public class ConfigurationGenerator extends CommonGenerator {
     _builder.append("for (;;) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("curtime = ___globaltime;");
-    _builder.newLine();
+    String _generateGlobalTimeName_1 = this.generateGlobalTimeName();
+    _builder.append(_generateGlobalTimeName_1, "\t\t");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     {
       final Comparator<Task> _function = (Task a, Task b) -> {
         int _priority = a.getInit().getPriority();
@@ -239,20 +214,63 @@ public class ConfigurationGenerator extends CommonGenerator {
         _builder.append("_time <= curtime) {");
         _builder.newLineIfNotEmpty();
         {
-          List<String> _get = this.taskMap.get(t_2.getName());
-          for(final String p_1 : _get) {
+          List<TaskData> _get = this.taskMap.get(t_2.getName());
+          for(final TaskData p_1 : _get) {
             _builder.append("\t\t");
             _builder.append("\t");
-            _builder.append(p_1, "\t\t\t");
+            _builder.append("//Program ");
+            String _name = p_1.getName();
+            _builder.append(_name, "\t\t\t");
+            _builder.newLineIfNotEmpty();
+            {
+              List<String> _inVars = p_1.getInVars();
+              for(final String in : _inVars) {
+                {
+                  boolean _containsKey = this.directMap.containsKey(in);
+                  if (_containsKey) {
+                    _builder.append("\t\t");
+                    _builder.append("\t");
+                    String _generateRead = this.generateRead(this.parseDirectVar(this.directMap.get(in)), this.directMap.get(in).getSize(), this.directMap.get(in).getAddress(), in);
+                    _builder.append(_generateRead, "\t\t\t");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              }
+            }
+            _builder.append("\t\t");
+            _builder.append("\t");
+            String _programCall = p_1.getProgramCall();
+            _builder.append(_programCall, "\t\t\t");
             _builder.append(";");
             _builder.newLineIfNotEmpty();
+            {
+              List<String> _outVars = p_1.getOutVars();
+              for(final String out : _outVars) {
+                {
+                  boolean _containsKey_1 = this.directMap.containsKey(out);
+                  if (_containsKey_1) {
+                    _builder.append("\t\t");
+                    _builder.append("\t");
+                    String _generateWrite = this.generateWrite(this.parseDirectVar(this.directMap.get(out)), this.directMap.get(out).getSize(), this.directMap.get(out).getAddress(), out);
+                    _builder.append(_generateWrite, "\t\t\t");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              }
+            }
+            _builder.append("\t\t");
+            _builder.append("\t");
+            _builder.newLine();
           }
         }
         _builder.append("\t\t");
         _builder.append("\t");
         String _lowerCase_2 = t_2.getName().toLowerCase();
         _builder.append(_lowerCase_2, "\t\t\t");
-        _builder.append("_time = curtime + ");
+        _builder.append("_time = ");
+        String _generateGlobalTimeName_2 = this.generateGlobalTimeName();
+        _builder.append(_generateGlobalTimeName_2, "\t\t\t");
+        _builder.append(" + ");
         String _upperCase_1 = t_2.getName().toUpperCase();
         _builder.append(_upperCase_1, "\t\t\t");
         _builder.append("_INTERVAL;");
@@ -271,5 +289,18 @@ public class ConfigurationGenerator extends CommonGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder.toString();
+  }
+  
+  private void parseDirectVars(final EList<GlobalVarInitDeclaration> list) {
+    for (final GlobalVarInitDeclaration v : list) {
+      {
+        String _location = v.getLocation();
+        final DirectVarData data = new DirectVarData(_location);
+        EList<SymbolicVariable> _vars = v.getVarList().getVars();
+        for (final SymbolicVariable e : _vars) {
+          this.directMap.put(e.getName(), data);
+        }
+      }
+    }
   }
 }
