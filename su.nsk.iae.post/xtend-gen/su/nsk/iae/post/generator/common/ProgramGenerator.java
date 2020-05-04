@@ -51,6 +51,8 @@ public class ProgramGenerator extends CommonGenerator {
   private List<ProcessGenerator> processList = new LinkedList<ProcessGenerator>();
   
   public ProgramGenerator(final Program program, final String taskName) {
+    this.program = program;
+    this.taskName = taskName.toLowerCase();
     EList<InputVarDeclaration> _progInVars = program.getProgInVars();
     for (final InputVarDeclaration v : _progInVars) {
       this.inVarList.add(v);
@@ -80,8 +82,6 @@ public class ProgramGenerator extends CommonGenerator {
       ProcessGenerator _processGenerator = new ProcessGenerator(this, p);
       this.processList.add(_processGenerator);
     }
-    this.program = program;
-    this.taskName = taskName.toLowerCase();
   }
   
   public void addMapVar(final String key, final String value) {
@@ -167,6 +167,7 @@ public class ProgramGenerator extends CommonGenerator {
         String _generateEnum = p_1.generateEnum(this.processList.indexOf(p_1));
         _builder.append(_generateEnum);
         _builder.newLineIfNotEmpty();
+        _builder.newLine();
       }
     }
     _builder.newLine();
@@ -190,8 +191,8 @@ public class ProgramGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("//Program Vars");
     _builder.newLine();
-    String _generateDeclaration = this.varList.generateDeclaration();
-    _builder.append(_generateDeclaration);
+    String _generate_1 = this.varList.generate();
+    _builder.append(_generate_1);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("//Processes Vars");
@@ -213,16 +214,16 @@ public class ProgramGenerator extends CommonGenerator {
       }
     }
     _builder.newLine();
-    String _generateDeclaration_1 = this.generateDeclaration();
-    _builder.append(_generateDeclaration_1);
+    String _generateDeclaration = this.generateDeclaration();
+    _builder.append(_generateDeclaration);
     _builder.append(" {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("//Program Temp Vars");
     _builder.newLine();
     _builder.append("\t");
-    String _generate_1 = this.tempVarList.generate();
-    _builder.append(_generate_1, "\t");
+    String _generate_2 = this.tempVarList.generate();
+    _builder.append(_generate_2, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -257,6 +258,7 @@ public class ProgramGenerator extends CommonGenerator {
         String _generateInitDefinition = p_6.generateInitDefinition();
         _builder.append(_generateInitDefinition);
         _builder.newLineIfNotEmpty();
+        _builder.newLine();
       }
     }
     _builder.newLine();

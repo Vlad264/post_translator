@@ -172,7 +172,7 @@ public abstract class VarHelper extends CommonGenerator {
     {
       boolean _isConst = data.isConst();
       if (_isConst) {
-        _builder.append("const");
+        _builder.append("const ");
       }
     }
     return _builder.toString();

@@ -28,6 +28,7 @@ import su.nsk.iae.post.poST.StartProcessStatement
 import su.nsk.iae.post.poST.StopProcessStatement
 import su.nsk.iae.post.poST.ErrorProcessStatement
 import su.nsk.iae.post.poST.SetStateStatement
+import su.nsk.iae.post.poST.TimeoutStatement
 
 class StateGenerator extends CommonGenerator {
 	
@@ -46,8 +47,9 @@ class StateGenerator extends CommonGenerator {
 			«state.statement.generateStatementList»
 			«IF state.timeout !== null»
 				//Timeout statement
-				«generateTimeout»
+				«state.timeout.generateTimeout»
 			«ENDIF»
+			break;
 		}
 	'''
 	
@@ -55,8 +57,10 @@ class StateGenerator extends CommonGenerator {
 		return state.name
 	}
 	
-	private def String generateTimeout() '''
-	
+	private def String generateTimeout(TimeoutStatement timeout) '''
+		if ((«generateGlobalTimeName» - «process.generateStartTime») >= «IF timeout.const !== null»«getValue(timeout.const)»«ELSE»«generateVar(timeout.variable)»«ENDIF») {
+			«timeout.statement.generateStatementList»
+		}
 	'''
 	
 	private def String generateStatementList(StatementList statementList) '''
@@ -157,7 +161,7 @@ class StateGenerator extends CommonGenerator {
 				}
 			}
 			UnaryExpression:
-				return '''«IF exp.unOp»!«ENDIF»«exp.right.generateExpression»'''
+				return '''!«exp.right.generateExpression»'''
 			PowerExpression:
 				return '''«exp.left.generateExpression» ** «exp.right.generateExpression»'''
 			MulExpression:
@@ -211,6 +215,5 @@ class StateGenerator extends CommonGenerator {
 				return '''%'''
 		}
 	}
-	
 	
 }

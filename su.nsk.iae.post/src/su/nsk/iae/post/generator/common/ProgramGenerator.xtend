@@ -30,6 +30,9 @@ class ProgramGenerator extends CommonGenerator {
 	List<ProcessGenerator> processList = new LinkedList
 	
 	new(Program program, String taskName) {
+		this.program = program
+		this.taskName = taskName.toLowerCase
+		
 		for (v : program.progInVars) {
 			inVarList.add(v)
 		}
@@ -48,11 +51,10 @@ class ProgramGenerator extends CommonGenerator {
 		for (v : program.progTempVars) {
 			tempVarList.add(v)
 		}
+		
 		for (p: program.processes) {
 			processList.add(new ProcessGenerator(this, p))
 		}
-		this.program = program
-		this.taskName = taskName.toLowerCase
 	}
 	
 	def void addMapVar(String key, String value) {
@@ -94,6 +96,7 @@ class ProgramGenerator extends CommonGenerator {
 		
 		«FOR p : processList»
 			«p.generateEnum(processList.indexOf(p))»
+			
 		«ENDFOR»
 		
 		//Input Vars
@@ -106,7 +109,7 @@ class ProgramGenerator extends CommonGenerator {
 		«externalVarList.generate»
 		
 		//Program Vars
-		«varList.generateDeclaration»
+		«varList.generate»
 		
 		//Processes Vars
 		«FOR p : processList»
@@ -134,6 +137,7 @@ class ProgramGenerator extends CommonGenerator {
 		
 		«FOR p : processList»
 			«p.generateInitDefinition»
+			
 		«ENDFOR»
 		
 	'''

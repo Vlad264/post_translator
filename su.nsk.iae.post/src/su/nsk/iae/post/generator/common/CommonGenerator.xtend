@@ -38,8 +38,28 @@ abstract class CommonGenerator {
 	}
 	
 	protected static def long getTimeAsMilliseconds(String interval) {
-		
-		return 0
+		var str = interval.replaceAll("ms", "q")
+		var res = 0;
+		if (str.contains("d")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("d"))) * 86400000
+			str = str.substring(str.indexOf("d") + 1)
+		}
+		if (str.contains("h")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("h"))) * 3600000
+			str = str.substring(str.indexOf("h") + 1)
+		}
+		if (str.contains("m")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("m"))) * 60000
+			str = str.substring(str.indexOf("m") + 1)
+		}
+		if (str.contains("s")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("s"))) * 1000
+			str = str.substring(str.indexOf("s") + 1)
+		}
+		if (str.contains("q")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("q")))
+		}
+		return res
 	}
 	
 	protected def String getCType(String type) {

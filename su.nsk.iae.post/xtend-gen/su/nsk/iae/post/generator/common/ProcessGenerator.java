@@ -26,6 +26,10 @@ public class ProcessGenerator {
   private List<StateGenerator> stateList = new LinkedList<StateGenerator>();
   
   public ProcessGenerator(final ProgramGenerator program, final su.nsk.iae.post.poST.Process process) {
+    this.program = program;
+    this.process = process;
+    this.varList.setNamePrefix(this.generateProcessPrefix());
+    this.tempVarList.setNamePrefix(this.generateProcessPrefix());
     EList<VarDeclaration> _procVars = process.getProcVars();
     for (final VarDeclaration v : _procVars) {
       this.varList.add(v);
@@ -39,8 +43,6 @@ public class ProcessGenerator {
       StateGenerator _stateGenerator = new StateGenerator(program, this, s);
       this.stateList.add(_stateGenerator);
     }
-    this.program = program;
-    this.process = process;
   }
   
   public String getName() {
@@ -128,6 +130,7 @@ public class ProcessGenerator {
         _builder.append("STOP");
       }
     }
+    _builder.append(";");
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }

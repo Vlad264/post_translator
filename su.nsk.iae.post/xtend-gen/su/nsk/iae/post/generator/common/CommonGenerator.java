@@ -56,7 +56,55 @@ public abstract class CommonGenerator {
   }
   
   protected static long getTimeAsMilliseconds(final String interval) {
-    return 0;
+    String str = interval.replaceAll("ms", "q");
+    int res = 0;
+    boolean _contains = str.contains("d");
+    if (_contains) {
+      int _res = res;
+      Integer _valueOf = Integer.valueOf(str.substring(0, str.indexOf("d")));
+      int _multiply = ((_valueOf).intValue() * 86400000);
+      res = (_res + _multiply);
+      int _indexOf = str.indexOf("d");
+      int _plus = (_indexOf + 1);
+      str = str.substring(_plus);
+    }
+    boolean _contains_1 = str.contains("h");
+    if (_contains_1) {
+      int _res_1 = res;
+      Integer _valueOf_1 = Integer.valueOf(str.substring(0, str.indexOf("h")));
+      int _multiply_1 = ((_valueOf_1).intValue() * 3600000);
+      res = (_res_1 + _multiply_1);
+      int _indexOf_1 = str.indexOf("h");
+      int _plus_1 = (_indexOf_1 + 1);
+      str = str.substring(_plus_1);
+    }
+    boolean _contains_2 = str.contains("m");
+    if (_contains_2) {
+      int _res_2 = res;
+      Integer _valueOf_2 = Integer.valueOf(str.substring(0, str.indexOf("m")));
+      int _multiply_2 = ((_valueOf_2).intValue() * 60000);
+      res = (_res_2 + _multiply_2);
+      int _indexOf_2 = str.indexOf("m");
+      int _plus_2 = (_indexOf_2 + 1);
+      str = str.substring(_plus_2);
+    }
+    boolean _contains_3 = str.contains("s");
+    if (_contains_3) {
+      int _res_3 = res;
+      Integer _valueOf_3 = Integer.valueOf(str.substring(0, str.indexOf("s")));
+      int _multiply_3 = ((_valueOf_3).intValue() * 1000);
+      res = (_res_3 + _multiply_3);
+      int _indexOf_3 = str.indexOf("s");
+      int _plus_3 = (_indexOf_3 + 1);
+      str = str.substring(_plus_3);
+    }
+    boolean _contains_4 = str.contains("q");
+    if (_contains_4) {
+      int _res_4 = res;
+      Integer _valueOf_4 = Integer.valueOf(str.substring(0, str.indexOf("q")));
+      res = (_res_4 + (_valueOf_4).intValue());
+    }
+    return res;
   }
   
   protected String getCType(final String type) {

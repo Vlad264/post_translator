@@ -18,17 +18,21 @@ class ProcessGenerator {
 	List<StateGenerator> stateList = new LinkedList
 	
 	new(ProgramGenerator program, Process process) {
+		this.program = program
+		this.process = process
+		
+		varList.namePrefix = generateProcessPrefix
+		tempVarList.namePrefix = generateProcessPrefix
 		for (v : process.procVars) {
 			varList.add(v)
 		}
 		for (v : process.procTempVars) {
 			tempVarList.add(v)
 		}
+		
 		for (s : process.states) {
 			stateList.add(new StateGenerator(program, this, s))
 		}
-		this.program = program
-		this.process = process
 	}
 	
 	def String getName() {
@@ -66,7 +70,7 @@ class ProcessGenerator {
 			«ENDFOR»
 			STOP = 254,
 			ERROR = 255
-		} «generateEnumName» = «IF index === 0»«stateList.get(0).name.toUpperCase»«ELSE»STOP«ENDIF»
+		} «generateEnumName» = «IF index === 0»«stateList.get(0).name.toUpperCase»«ELSE»STOP«ENDIF»;
 	'''
 	
 	def String generateEnumName() {

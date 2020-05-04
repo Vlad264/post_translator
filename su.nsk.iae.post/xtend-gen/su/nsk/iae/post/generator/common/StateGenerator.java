@@ -1,20 +1,32 @@
 package su.nsk.iae.post.generator.common;
 
+import com.google.common.base.Objects;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import su.nsk.iae.post.generator.common.CommonGenerator;
 import su.nsk.iae.post.generator.common.ProcessGenerator;
 import su.nsk.iae.post.generator.common.ProgramGenerator;
+import su.nsk.iae.post.poST.AddExpression;
+import su.nsk.iae.post.poST.AddOperator;
+import su.nsk.iae.post.poST.AndExpression;
 import su.nsk.iae.post.poST.AssignmentStatement;
 import su.nsk.iae.post.poST.CaseElement;
 import su.nsk.iae.post.poST.CaseStatement;
+import su.nsk.iae.post.poST.CompExpression;
+import su.nsk.iae.post.poST.CompOperator;
+import su.nsk.iae.post.poST.Constant;
+import su.nsk.iae.post.poST.EquExpression;
 import su.nsk.iae.post.poST.EquOperator;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ForStatement;
 import su.nsk.iae.post.poST.IfStatement;
+import su.nsk.iae.post.poST.MulExpression;
 import su.nsk.iae.post.poST.MulOperator;
+import su.nsk.iae.post.poST.PowerExpression;
+import su.nsk.iae.post.poST.PrimaryExpression;
+import su.nsk.iae.post.poST.ProcessStatusExpression;
 import su.nsk.iae.post.poST.RepeatStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
@@ -25,7 +37,9 @@ import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.TimeoutStatement;
+import su.nsk.iae.post.poST.UnaryExpression;
 import su.nsk.iae.post.poST.WhileStatement;
+import su.nsk.iae.post.poST.XorExpression;
 
 @SuppressWarnings("all")
 public class StateGenerator extends CommonGenerator {
@@ -60,11 +74,14 @@ public class StateGenerator extends CommonGenerator {
         _builder.append("//Timeout statement");
         _builder.newLine();
         _builder.append("\t");
-        String _generateTimeout = this.generateTimeout();
+        String _generateTimeout = this.generateTimeout(this.state.getTimeout());
         _builder.append(_generateTimeout, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.append("\t");
+    _builder.append("break;");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder.toString();
@@ -74,9 +91,33 @@ public class StateGenerator extends CommonGenerator {
     return this.state.getName();
   }
   
-  private String generateTimeout() {
+  private String generateTimeout(final TimeoutStatement timeout) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if ((");
+    String _generateGlobalTimeName = this.generateGlobalTimeName();
+    _builder.append(_generateGlobalTimeName);
+    _builder.append(" - ");
+    String _generateStartTime = this.process.generateStartTime();
+    _builder.append(_generateStartTime);
+    _builder.append(") >= ");
+    {
+      Constant _const = timeout.getConst();
+      boolean _tripleNotEquals = (_const != null);
+      if (_tripleNotEquals) {
+        String _value = this.getValue(timeout.getConst());
+        _builder.append(_value);
+      } else {
+        String _generateVar = this.generateVar(timeout.getVariable());
+        _builder.append(_generateVar);
+      }
+    }
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
+    String _generateStatementList = this.generateStatementList(timeout.getStatement());
+    _builder.append(_generateStatementList, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
     _builder.newLine();
     return _builder.toString();
   }
@@ -393,8 +434,186 @@ public class StateGenerator extends CommonGenerator {
   }
   
   private String generateExpression(final Expression exp) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field unOp is undefined for the type UnaryExpression");
+    boolean _matched = false;
+    if (exp instanceof PrimaryExpression) {
+      _matched=true;
+      Constant _const = ((PrimaryExpression)exp).getConst();
+      boolean _tripleNotEquals = (_const != null);
+      if (_tripleNotEquals) {
+        return this.getValue(((PrimaryExpression)exp).getConst());
+      } else {
+        SymbolicVariable _variable = ((PrimaryExpression)exp).getVariable();
+        boolean _tripleNotEquals_1 = (_variable != null);
+        if (_tripleNotEquals_1) {
+          return this.generateVar(((PrimaryExpression)exp).getVariable());
+        } else {
+          ProcessStatusExpression _procStatus = ((PrimaryExpression)exp).getProcStatus();
+          boolean _tripleNotEquals_2 = (_procStatus != null);
+          if (_tripleNotEquals_2) {
+            StringConcatenation _builder = new StringConcatenation();
+            String _generateProcessEnum = this.program.generateProcessEnum(((PrimaryExpression)exp).getProcStatus().getProcess().getName());
+            _builder.append(_generateProcessEnum);
+            _builder.append(" == ");
+            {
+              State _stateName = ((PrimaryExpression)exp).getProcStatus().getStateName();
+              boolean _tripleNotEquals_3 = (_stateName != null);
+              if (_tripleNotEquals_3) {
+                String _upperCase = ((PrimaryExpression)exp).getProcStatus().getStateName().getName().toUpperCase();
+                _builder.append(_upperCase);
+              } else {
+                boolean _isStop = ((PrimaryExpression)exp).getProcStatus().isStop();
+                if (_isStop) {
+                  _builder.append("STOP");
+                } else {
+                  _builder.append("ERROR");
+                }
+              }
+            }
+            return _builder.toString();
+          } else {
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("(");
+            String _generateExpression = this.generateExpression(((PrimaryExpression)exp).getNestExpr());
+            _builder_1.append(_generateExpression);
+            _builder_1.append(")");
+            return _builder_1.toString();
+          }
+        }
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof UnaryExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("!");
+        String _generateExpression = this.generateExpression(((UnaryExpression)exp).getRight());
+        _builder.append(_generateExpression);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof PowerExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(((PowerExpression)exp).getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" ** ");
+        String _generateExpression_1 = this.generateExpression(((PowerExpression)exp).getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof MulExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(((MulExpression)exp).getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" ");
+        String _generateMulOperators = this.generateMulOperators(((MulExpression)exp).getMulOp());
+        _builder.append(_generateMulOperators);
+        _builder.append(" ");
+        String _generateExpression_1 = this.generateExpression(((MulExpression)exp).getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof AddExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(((AddExpression)exp).getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" ");
+        {
+          AddOperator _addOp = ((AddExpression)exp).getAddOp();
+          boolean _equals = Objects.equal(_addOp, AddOperator.PLUS);
+          if (_equals) {
+            _builder.append("+");
+          } else {
+            _builder.append("-");
+          }
+        }
+        _builder.append(" ");
+        String _generateExpression_1 = this.generateExpression(((AddExpression)exp).getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof EquExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(((EquExpression)exp).getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" ");
+        String _generateEquOperators = this.generateEquOperators(((EquExpression)exp).getEquOp());
+        _builder.append(_generateEquOperators);
+        _builder.append(" ");
+        String _generateExpression_1 = this.generateExpression(((EquExpression)exp).getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof CompExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(((CompExpression)exp).getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" ");
+        {
+          CompOperator _compOp = ((CompExpression)exp).getCompOp();
+          boolean _equals = Objects.equal(_compOp, CompOperator.EQUAL);
+          if (_equals) {
+            _builder.append("==");
+          } else {
+            _builder.append("!=");
+          }
+        }
+        _builder.append(" ");
+        String _generateExpression_1 = this.generateExpression(((CompExpression)exp).getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof AndExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(((AndExpression)exp).getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" & ");
+        String _generateExpression_1 = this.generateExpression(((AndExpression)exp).getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof XorExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(((XorExpression)exp).getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" ^ ");
+        String _generateExpression_1 = this.generateExpression(((XorExpression)exp).getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (exp instanceof Expression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _generateExpression = this.generateExpression(exp.getLeft());
+        _builder.append(_generateExpression);
+        _builder.append(" | ");
+        String _generateExpression_1 = this.generateExpression(exp.getRight());
+        _builder.append(_generateExpression_1);
+        return _builder.toString();
+      }
+    }
+    return null;
   }
   
   private String generateVar(final SymbolicVariable varName) {

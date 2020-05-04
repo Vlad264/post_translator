@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import su.nsk.iae.post.generator.common.ConfigurationGenerator;
 
 /**
  * Generates code from your model files on save.
@@ -15,7 +16,16 @@ import org.eclipse.xtext.generator.IGeneratorContext;
  */
 @SuppressWarnings("all")
 public class PoSTGenerator extends AbstractGenerator {
+  private ConfigurationGenerator generator;
+  
+  @Override
+  public void beforeGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    ConfigurationGenerator _configurationGenerator = new ConfigurationGenerator(resource);
+    this.generator = _configurationGenerator;
+  }
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    this.generator.generate(fsa);
   }
 }
