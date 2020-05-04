@@ -91,24 +91,27 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 			for (;;) {
 				«generateGlobalTimeName»;
 				«FOR t : configuration.resources.get(0).resStatement.tasks.sortWith([a,b | return a.init.priority - b.init.priority])»
-					if («t.name.toLowerCase»_time <= curtime) {
-						«FOR p : taskMap.get(t.name)»
-							//Program «p.name»
-							«FOR in : p.inVars»
-								«IF directMap.containsKey(in)»
-									«generateRead(parseDirectVar(directMap.get(in)), directMap.get(in).size, directMap.get(in).address, in)»
-								«ENDIF»
+					«IF !taskMap.get(t.name).empty»
+						if («t.name.toLowerCase»_time <= curtime) {
+							«FOR p : taskMap.get(t.name)»
+								//Program «p.name»
+								«FOR in : p.inVars»
+									«IF directMap.containsKey(in)»
+										«generateRead(parseDirectVar(directMap.get(in)), directMap.get(in).size, directMap.get(in).address, in)»
+									«ENDIF»
+								«ENDFOR»
+								«p.programCall»;
+								«FOR out : p.outVars»
+									«IF directMap.containsKey(out)»
+										«generateWrite(parseDirectVar(directMap.get(out)), directMap.get(out).size, directMap.get(out).address, out)»
+									«ENDIF»
+								«ENDFOR»
+								
 							«ENDFOR»
-							«p.programCall»;
-							«FOR out : p.outVars»
-								«IF directMap.containsKey(out)»
-									«generateWrite(parseDirectVar(directMap.get(out)), directMap.get(out).size, directMap.get(out).address, out)»
-								«ENDIF»
-							«ENDFOR»
-							
-						«ENDFOR»
-						«t.name.toLowerCase»_time = «generateGlobalTimeName» + «t.name.toUpperCase»_INTERVAL;
-					}
+							//Find next activation time
+							«t.name.toLowerCase»_time = «generateGlobalTimeName» + «t.name.toUpperCase»_INTERVAL;
+						}
+					«ENDIF»
 				«ENDFOR»
 			}
 			return 0;

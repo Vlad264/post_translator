@@ -207,77 +207,87 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
       };
       List<Task> _sortWith = IterableExtensions.<Task>sortWith(this.configuration.getResources().get(0).getResStatement().getTasks(), _function);
       for(final Task t_2 : _sortWith) {
-        _builder.append("\t\t");
-        _builder.append("if (");
-        String _lowerCase_1 = t_2.getName().toLowerCase();
-        _builder.append(_lowerCase_1, "\t\t");
-        _builder.append("_time <= curtime) {");
-        _builder.newLineIfNotEmpty();
         {
-          List<TaskData> _get = this.taskMap.get(t_2.getName());
-          for(final TaskData p_1 : _get) {
+          boolean _isEmpty = this.taskMap.get(t_2.getName()).isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
             _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("//Program ");
-            String _name = p_1.getName();
-            _builder.append(_name, "\t\t\t");
+            _builder.append("if (");
+            String _lowerCase_1 = t_2.getName().toLowerCase();
+            _builder.append(_lowerCase_1, "\t\t");
+            _builder.append("_time <= curtime) {");
             _builder.newLineIfNotEmpty();
             {
-              List<String> _inVars = p_1.getInVars();
-              for(final String in : _inVars) {
+              List<TaskData> _get = this.taskMap.get(t_2.getName());
+              for(final TaskData p_1 : _get) {
+                _builder.append("\t\t");
+                _builder.append("\t");
+                _builder.append("//Program ");
+                String _name = p_1.getName();
+                _builder.append(_name, "\t\t\t");
+                _builder.newLineIfNotEmpty();
                 {
-                  boolean _containsKey = this.directMap.containsKey(in);
-                  if (_containsKey) {
-                    _builder.append("\t\t");
-                    _builder.append("\t");
-                    String _generateRead = this.generateRead(this.parseDirectVar(this.directMap.get(in)), this.directMap.get(in).getSize(), this.directMap.get(in).getAddress(), in);
-                    _builder.append(_generateRead, "\t\t\t");
-                    _builder.newLineIfNotEmpty();
+                  List<String> _inVars = p_1.getInVars();
+                  for(final String in : _inVars) {
+                    {
+                      boolean _containsKey = this.directMap.containsKey(in);
+                      if (_containsKey) {
+                        _builder.append("\t\t");
+                        _builder.append("\t");
+                        String _generateRead = this.generateRead(this.parseDirectVar(this.directMap.get(in)), this.directMap.get(in).getSize(), this.directMap.get(in).getAddress(), in);
+                        _builder.append(_generateRead, "\t\t\t");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
                   }
                 }
+                _builder.append("\t\t");
+                _builder.append("\t");
+                String _programCall = p_1.getProgramCall();
+                _builder.append(_programCall, "\t\t\t");
+                _builder.append(";");
+                _builder.newLineIfNotEmpty();
+                {
+                  List<String> _outVars = p_1.getOutVars();
+                  for(final String out : _outVars) {
+                    {
+                      boolean _containsKey_1 = this.directMap.containsKey(out);
+                      if (_containsKey_1) {
+                        _builder.append("\t\t");
+                        _builder.append("\t");
+                        String _generateWrite = this.generateWrite(this.parseDirectVar(this.directMap.get(out)), this.directMap.get(out).getSize(), this.directMap.get(out).getAddress(), out);
+                        _builder.append(_generateWrite, "\t\t\t");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
+                  }
+                }
+                _builder.append("\t\t");
+                _builder.append("\t");
+                _builder.newLine();
               }
             }
             _builder.append("\t\t");
             _builder.append("\t");
-            String _programCall = p_1.getProgramCall();
-            _builder.append(_programCall, "\t\t\t");
-            _builder.append(";");
-            _builder.newLineIfNotEmpty();
-            {
-              List<String> _outVars = p_1.getOutVars();
-              for(final String out : _outVars) {
-                {
-                  boolean _containsKey_1 = this.directMap.containsKey(out);
-                  if (_containsKey_1) {
-                    _builder.append("\t\t");
-                    _builder.append("\t");
-                    String _generateWrite = this.generateWrite(this.parseDirectVar(this.directMap.get(out)), this.directMap.get(out).getSize(), this.directMap.get(out).getAddress(), out);
-                    _builder.append(_generateWrite, "\t\t\t");
-                    _builder.newLineIfNotEmpty();
-                  }
-                }
-              }
-            }
+            _builder.append("//Find next activation time");
+            _builder.newLine();
             _builder.append("\t\t");
             _builder.append("\t");
+            String _lowerCase_2 = t_2.getName().toLowerCase();
+            _builder.append(_lowerCase_2, "\t\t\t");
+            _builder.append("_time = ");
+            String _generateGlobalTimeName_2 = this.generateGlobalTimeName();
+            _builder.append(_generateGlobalTimeName_2, "\t\t\t");
+            _builder.append(" + ");
+            String _upperCase_1 = t_2.getName().toUpperCase();
+            _builder.append(_upperCase_1, "\t\t\t");
+            _builder.append("_INTERVAL;");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t");
+            _builder.append("}");
             _builder.newLine();
           }
         }
-        _builder.append("\t\t");
-        _builder.append("\t");
-        String _lowerCase_2 = t_2.getName().toLowerCase();
-        _builder.append(_lowerCase_2, "\t\t\t");
-        _builder.append("_time = ");
-        String _generateGlobalTimeName_2 = this.generateGlobalTimeName();
-        _builder.append(_generateGlobalTimeName_2, "\t\t\t");
-        _builder.append(" + ");
-        String _upperCase_1 = t_2.getName().toUpperCase();
-        _builder.append(_upperCase_1, "\t\t\t");
-        _builder.append("_INTERVAL;");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
       }
     }
     _builder.append("\t");
