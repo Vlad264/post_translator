@@ -3626,15 +3626,15 @@ ruleVarDeclaration returns [EObject current=null]
 		}
 		(
 			(
-				lv_const_1_0='CONST'
+				lv_const_1_0='CONSTANT'
 				{
-					newLeafNode(lv_const_1_0, grammarAccess.getVarDeclarationAccess().getConstCONSTKeyword_1_0());
+					newLeafNode(lv_const_1_0, grammarAccess.getVarDeclarationAccess().getConstCONSTANTKeyword_1_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getVarDeclarationRule());
 					}
-					setWithLastConsumed($current, "const", true, "CONST");
+					setWithLastConsumed($current, "const", true, "CONSTANT");
 				}
 			)
 		)?
@@ -3744,11 +3744,25 @@ ruleExternalVarDeclaration returns [EObject current=null]
 		}
 		(
 			(
+				lv_const_1_0='CONSTANT'
+				{
+					newLeafNode(lv_const_1_0, grammarAccess.getExternalVarDeclarationAccess().getConstCONSTANTKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getExternalVarDeclarationRule());
+					}
+					setWithLastConsumed($current, "const", true, "CONSTANT");
+				}
+			)
+		)?
+		(
+			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExternalVarDeclarationAccess().getVarsExternalVarInitDeclarationParserRuleCall_1_0_0());
+						newCompositeNode(grammarAccess.getExternalVarDeclarationAccess().getVarsExternalVarInitDeclarationParserRuleCall_2_0_0());
 					}
-					lv_vars_1_0=ruleExternalVarInitDeclaration
+					lv_vars_2_0=ruleExternalVarInitDeclaration
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getExternalVarDeclarationRule());
@@ -3756,20 +3770,20 @@ ruleExternalVarDeclaration returns [EObject current=null]
 						add(
 							$current,
 							"vars",
-							lv_vars_1_0,
+							lv_vars_2_0,
 							"su.nsk.iae.post.PoST.ExternalVarInitDeclaration");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_2=';'
+			otherlv_3=';'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getExternalVarDeclarationAccess().getSemicolonKeyword_1_1());
+				newLeafNode(otherlv_3, grammarAccess.getExternalVarDeclarationAccess().getSemicolonKeyword_2_1());
 			}
 		)+
-		otherlv_3='END_VAR'
+		otherlv_4='END_VAR'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getExternalVarDeclarationAccess().getEND_VARKeyword_2());
+			newLeafNode(otherlv_4, grammarAccess.getExternalVarDeclarationAccess().getEND_VARKeyword_3());
 		}
 	)
 ;
@@ -3857,15 +3871,15 @@ ruleGlobalVarDeclaration returns [EObject current=null]
 		}
 		(
 			(
-				lv_const_1_0='CONST'
+				lv_const_1_0='CONSTANT'
 				{
-					newLeafNode(lv_const_1_0, grammarAccess.getGlobalVarDeclarationAccess().getConstCONSTKeyword_1_0());
+					newLeafNode(lv_const_1_0, grammarAccess.getGlobalVarDeclarationAccess().getConstCONSTANTKeyword_1_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getGlobalVarDeclarationRule());
 					}
-					setWithLastConsumed($current, "const", true, "CONST");
+					setWithLastConsumed($current, "const", true, "CONSTANT");
 				}
 			)
 		)?

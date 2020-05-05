@@ -15,15 +15,15 @@ class ExternalVarHelper extends VarHelper {
 	
 	override add(EObject varDecl) {
 		if (varDecl instanceof ExternalVarDeclaration) {
-			parseExternVar(varDecl.vars)
+			parseExternVar(varDecl.vars, varDecl.const)
 		}
 	}
 	
-	private def void parseExternVar(EList<ExternalVarInitDeclaration> varList) {
+	private def void parseExternVar(EList<ExternalVarInitDeclaration> varList, boolean isConst) {
 		for (v : varList) {
 			val type = getCType(v.type)
 			for (e : v.varList.vars) {
-				listDecl.add(new VarData(e.name, type, null, false))
+				listDecl.add(new VarData(e.name, type, null, isConst))
 			}
 		}
 	}

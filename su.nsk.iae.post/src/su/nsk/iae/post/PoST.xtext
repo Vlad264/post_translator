@@ -290,7 +290,7 @@ InputOutputVarDeclaration:
 	'END_VAR';
 
 VarDeclaration:
-	'VAR' (const?='CONST')?
+	'VAR' (const?='CONSTANT')?
 		(vars+=VarInitDeclaration ';')+
 	'END_VAR';
 
@@ -300,7 +300,7 @@ TempVarDeclaration:
 	'END_VAR';
 
 ExternalVarDeclaration:
-	'VAR_EXTERNAL'
+	'VAR_EXTERNAL' (const?='CONSTANT')?
 		(vars+=ExternalVarInitDeclaration ';')+
 	'END_VAR';
 
@@ -308,7 +308,7 @@ ExternalVarInitDeclaration:
 	varList=VarList ':' type=DataTypeName;
 
 GlobalVarDeclaration:
-	'VAR_GLOBAL' (const?='CONST')?
+	'VAR_GLOBAL' (const?='CONSTANT')?
 		(
 			(varsSimple+=VarInitDeclaration ';') | 
 			(varsAs+=GlobalVarInitDeclaration ';')

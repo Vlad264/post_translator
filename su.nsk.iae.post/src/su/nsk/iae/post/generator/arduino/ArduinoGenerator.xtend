@@ -52,4 +52,8 @@ class ArduinoGenerator extends ConfigurationGenerator {
 		return '''0b«temp.map[it].join»'''
 	}
 	
+	override protected generateTimeControl() '''
+		return millis();
+	'''
+	
 }

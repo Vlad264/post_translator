@@ -136,7 +136,7 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTempVarDeclarationAccess().getGroup(), "rule__TempVarDeclaration__Group__0");
 			builder.put(grammarAccess.getTempVarDeclarationAccess().getGroup_1(), "rule__TempVarDeclaration__Group_1__0");
 			builder.put(grammarAccess.getExternalVarDeclarationAccess().getGroup(), "rule__ExternalVarDeclaration__Group__0");
-			builder.put(grammarAccess.getExternalVarDeclarationAccess().getGroup_1(), "rule__ExternalVarDeclaration__Group_1__0");
+			builder.put(grammarAccess.getExternalVarDeclarationAccess().getGroup_2(), "rule__ExternalVarDeclaration__Group_2__0");
 			builder.put(grammarAccess.getExternalVarInitDeclarationAccess().getGroup(), "rule__ExternalVarInitDeclaration__Group__0");
 			builder.put(grammarAccess.getGlobalVarDeclarationAccess().getGroup(), "rule__GlobalVarDeclaration__Group__0");
 			builder.put(grammarAccess.getGlobalVarDeclarationAccess().getGroup_2_0(), "rule__GlobalVarDeclaration__Group_2_0__0");
@@ -259,7 +259,8 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getVarDeclarationAccess().getConstAssignment_1(), "rule__VarDeclaration__ConstAssignment_1");
 			builder.put(grammarAccess.getVarDeclarationAccess().getVarsAssignment_2_0(), "rule__VarDeclaration__VarsAssignment_2_0");
 			builder.put(grammarAccess.getTempVarDeclarationAccess().getVarsAssignment_1_0(), "rule__TempVarDeclaration__VarsAssignment_1_0");
-			builder.put(grammarAccess.getExternalVarDeclarationAccess().getVarsAssignment_1_0(), "rule__ExternalVarDeclaration__VarsAssignment_1_0");
+			builder.put(grammarAccess.getExternalVarDeclarationAccess().getConstAssignment_1(), "rule__ExternalVarDeclaration__ConstAssignment_1");
+			builder.put(grammarAccess.getExternalVarDeclarationAccess().getVarsAssignment_2_0(), "rule__ExternalVarDeclaration__VarsAssignment_2_0");
 			builder.put(grammarAccess.getExternalVarInitDeclarationAccess().getVarListAssignment_0(), "rule__ExternalVarInitDeclaration__VarListAssignment_0");
 			builder.put(grammarAccess.getExternalVarInitDeclarationAccess().getTypeAssignment_2(), "rule__ExternalVarInitDeclaration__TypeAssignment_2");
 			builder.put(grammarAccess.getGlobalVarDeclarationAccess().getConstAssignment_1(), "rule__GlobalVarDeclaration__ConstAssignment_1");

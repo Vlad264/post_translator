@@ -26,6 +26,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	protected def String parseDirectVar(DirectVarData varData)
 	protected def String generateRead(String directVarName, int size, List<Integer> address, String assigmentVar)
 	protected def String generateWrite(String directVarName, int size, List<Integer> address, String value)
+	protected def String generateTimeControl()
 	
 	new(Resource resource) {
 		val model = resource.allContents.toIterable.filter(Model).get(0)
@@ -78,6 +79,10 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 		
 		«globalVars.generate»
 		
+		unsigned int get_current_time(void) {
+			«generateTimeControl»
+		}
+		
 		int main(int argc, char *argv[]) {
 			//Set ports B, C for input and port C for output
 			DDRB = 0xff;
@@ -89,7 +94,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 				unsigned long «t.name.toLowerCase»_time;
 			«ENDFOR»
 			for (;;) {
-				«generateGlobalTimeName»;
+				«generateGlobalTimeName» = get_current_time();
 				«FOR t : configuration.resources.get(0).resStatement.tasks.sortWith([a,b | return a.init.priority - b.init.priority])»
 					«IF !taskMap.get(t.name).empty»
 						if («t.name.toLowerCase»_time <= curtime) {

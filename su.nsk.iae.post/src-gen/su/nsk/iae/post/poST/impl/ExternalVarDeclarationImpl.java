@@ -5,6 +5,7 @@ package su.nsk.iae.post.poST.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -12,6 +13,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -29,6 +31,7 @@ import su.nsk.iae.post.poST.PoSTPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link su.nsk.iae.post.poST.impl.ExternalVarDeclarationImpl#isConst <em>Const</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.impl.ExternalVarDeclarationImpl#getVars <em>Vars</em>}</li>
  * </ul>
  *
@@ -36,6 +39,26 @@ import su.nsk.iae.post.poST.PoSTPackage;
  */
 public class ExternalVarDeclarationImpl extends MinimalEObjectImpl.Container implements ExternalVarDeclaration
 {
+  /**
+   * The default value of the '{@link #isConst() <em>Const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConst()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean CONST_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isConst() <em>Const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConst()
+   * @generated
+   * @ordered
+   */
+  protected boolean const_ = CONST_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -65,6 +88,31 @@ public class ExternalVarDeclarationImpl extends MinimalEObjectImpl.Container imp
   protected EClass eStaticClass()
   {
     return PoSTPackage.Literals.EXTERNAL_VAR_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isConst()
+  {
+    return const_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConst(boolean newConst)
+  {
+    boolean oldConst = const_;
+    const_ = newConst;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.EXTERNAL_VAR_DECLARATION__CONST, oldConst, const_));
   }
 
   /**
@@ -108,6 +156,8 @@ public class ExternalVarDeclarationImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case PoSTPackage.EXTERNAL_VAR_DECLARATION__CONST:
+        return isConst();
       case PoSTPackage.EXTERNAL_VAR_DECLARATION__VARS:
         return getVars();
     }
@@ -125,6 +175,9 @@ public class ExternalVarDeclarationImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case PoSTPackage.EXTERNAL_VAR_DECLARATION__CONST:
+        setConst((Boolean)newValue);
+        return;
       case PoSTPackage.EXTERNAL_VAR_DECLARATION__VARS:
         getVars().clear();
         getVars().addAll((Collection<? extends ExternalVarInitDeclaration>)newValue);
@@ -143,6 +196,9 @@ public class ExternalVarDeclarationImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case PoSTPackage.EXTERNAL_VAR_DECLARATION__CONST:
+        setConst(CONST_EDEFAULT);
+        return;
       case PoSTPackage.EXTERNAL_VAR_DECLARATION__VARS:
         getVars().clear();
         return;
@@ -160,10 +216,29 @@ public class ExternalVarDeclarationImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
+      case PoSTPackage.EXTERNAL_VAR_DECLARATION__CONST:
+        return const_ != CONST_EDEFAULT;
       case PoSTPackage.EXTERNAL_VAR_DECLARATION__VARS:
         return vars != null && !vars.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (const: ");
+    result.append(const_);
+    result.append(')');
+    return result.toString();
   }
 
 } //ExternalVarDeclarationImpl

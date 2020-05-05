@@ -2225,13 +2225,22 @@ public interface PoSTPackage extends EPackage
   int EXTERNAL_VAR_DECLARATION = 50;
 
   /**
+   * The feature id for the '<em><b>Const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_VAR_DECLARATION__CONST = 0;
+
+  /**
    * The feature id for the '<em><b>Vars</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXTERNAL_VAR_DECLARATION__VARS = 0;
+  int EXTERNAL_VAR_DECLARATION__VARS = 1;
 
   /**
    * The number of structural features of the '<em>External Var Declaration</em>' class.
@@ -2240,7 +2249,7 @@ public interface PoSTPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXTERNAL_VAR_DECLARATION_FEATURE_COUNT = 1;
+  int EXTERNAL_VAR_DECLARATION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.ExternalVarInitDeclarationImpl <em>External Var Init Declaration</em>}' class.
@@ -4155,6 +4164,17 @@ public interface PoSTPackage extends EPackage
   EClass getExternalVarDeclaration();
 
   /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.ExternalVarDeclaration#isConst <em>Const</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Const</em>'.
+   * @see su.nsk.iae.post.poST.ExternalVarDeclaration#isConst()
+   * @see #getExternalVarDeclaration()
+   * @generated
+   */
+  EAttribute getExternalVarDeclaration_Const();
+
+  /**
    * Returns the meta object for the containment reference list '{@link su.nsk.iae.post.poST.ExternalVarDeclaration#getVars <em>Vars</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5754,6 +5774,14 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EClass EXTERNAL_VAR_DECLARATION = eINSTANCE.getExternalVarDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Const</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXTERNAL_VAR_DECLARATION__CONST = eINSTANCE.getExternalVarDeclaration_Const();
 
     /**
      * The meta object literal for the '<em><b>Vars</b></em>' containment reference list feature.

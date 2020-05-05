@@ -119,4 +119,12 @@ public class ArduinoGenerator extends ConfigurationGenerator {
     _builder.append(_join);
     return _builder.toString();
   }
+  
+  @Override
+  protected String generateTimeControl() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("return millis();");
+    _builder.newLine();
+    return _builder.toString();
+  }
 }

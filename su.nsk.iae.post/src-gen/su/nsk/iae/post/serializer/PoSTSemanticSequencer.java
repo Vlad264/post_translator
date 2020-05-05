@@ -522,7 +522,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ExternalVarDeclaration returns ExternalVarDeclaration
 	 *
 	 * Constraint:
-	 *     vars+=ExternalVarInitDeclaration+
+	 *     (const?='CONSTANT'? vars+=ExternalVarInitDeclaration+)
 	 */
 	protected void sequence_ExternalVarDeclaration(ISerializationContext context, ExternalVarDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -593,7 +593,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     GlobalVarDeclaration returns GlobalVarDeclaration
 	 *
 	 * Constraint:
-	 *     (const?='CONST'? (varsSimple+=VarInitDeclaration | varsAs+=GlobalVarInitDeclaration)+)
+	 *     (const?='CONSTANT'? (varsSimple+=VarInitDeclaration | varsAs+=GlobalVarInitDeclaration)+)
 	 */
 	protected void sequence_GlobalVarDeclaration(ISerializationContext context, GlobalVarDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1198,7 +1198,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     VarDeclaration returns VarDeclaration
 	 *
 	 * Constraint:
-	 *     (const?='CONST'? vars+=VarInitDeclaration+)
+	 *     (const?='CONSTANT'? vars+=VarInitDeclaration+)
 	 */
 	protected void sequence_VarDeclaration(ISerializationContext context, VarDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -2185,7 +2185,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cVARKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cConstAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cConstCONSTKeyword_1_0 = (Keyword)cConstAssignment_1.eContents().get(0);
+		private final Keyword cConstCONSTANTKeyword_1_0 = (Keyword)cConstAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Assignment cVarsAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
 		private final RuleCall cVarsVarInitDeclarationParserRuleCall_2_0_0 = (RuleCall)cVarsAssignment_2_0.eContents().get(0);
@@ -2193,21 +2193,21 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEND_VARKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//VarDeclaration:
-		//	'VAR' const?='CONST'? (vars+=VarInitDeclaration ';')+
+		//	'VAR' const?='CONSTANT'? (vars+=VarInitDeclaration ';')+
 		//	'END_VAR';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'VAR' const?='CONST'? (vars+=VarInitDeclaration ';')+ 'END_VAR'
+		//'VAR' const?='CONSTANT'? (vars+=VarInitDeclaration ';')+ 'END_VAR'
 		public Group getGroup() { return cGroup; }
 		
 		//'VAR'
 		public Keyword getVARKeyword_0() { return cVARKeyword_0; }
 		
-		//const?='CONST'?
+		//const?='CONSTANT'?
 		public Assignment getConstAssignment_1() { return cConstAssignment_1; }
 		
-		//'CONST'
-		public Keyword getConstCONSTKeyword_1_0() { return cConstCONSTKeyword_1_0; }
+		//'CONSTANT'
+		public Keyword getConstCONSTANTKeyword_1_0() { return cConstCONSTANTKeyword_1_0; }
 		
 		//(vars+=VarInitDeclaration ';')+
 		public Group getGroup_2() { return cGroup_2; }
@@ -2264,37 +2264,45 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ExternalVarDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cVAR_EXTERNALKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cVarsAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cVarsExternalVarInitDeclarationParserRuleCall_1_0_0 = (RuleCall)cVarsAssignment_1_0.eContents().get(0);
-		private final Keyword cSemicolonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Keyword cEND_VARKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cConstAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cConstCONSTANTKeyword_1_0 = (Keyword)cConstAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Assignment cVarsAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cVarsExternalVarInitDeclarationParserRuleCall_2_0_0 = (RuleCall)cVarsAssignment_2_0.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Keyword cEND_VARKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//ExternalVarDeclaration:
-		//	'VAR_EXTERNAL' (vars+=ExternalVarInitDeclaration ';')+
+		//	'VAR_EXTERNAL' const?='CONSTANT'? (vars+=ExternalVarInitDeclaration ';')+
 		//	'END_VAR';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'VAR_EXTERNAL' (vars+=ExternalVarInitDeclaration ';')+ 'END_VAR'
+		//'VAR_EXTERNAL' const?='CONSTANT'? (vars+=ExternalVarInitDeclaration ';')+ 'END_VAR'
 		public Group getGroup() { return cGroup; }
 		
 		//'VAR_EXTERNAL'
 		public Keyword getVAR_EXTERNALKeyword_0() { return cVAR_EXTERNALKeyword_0; }
 		
+		//const?='CONSTANT'?
+		public Assignment getConstAssignment_1() { return cConstAssignment_1; }
+		
+		//'CONSTANT'
+		public Keyword getConstCONSTANTKeyword_1_0() { return cConstCONSTANTKeyword_1_0; }
+		
 		//(vars+=ExternalVarInitDeclaration ';')+
-		public Group getGroup_1() { return cGroup_1; }
+		public Group getGroup_2() { return cGroup_2; }
 		
 		//vars+=ExternalVarInitDeclaration
-		public Assignment getVarsAssignment_1_0() { return cVarsAssignment_1_0; }
+		public Assignment getVarsAssignment_2_0() { return cVarsAssignment_2_0; }
 		
 		//ExternalVarInitDeclaration
-		public RuleCall getVarsExternalVarInitDeclarationParserRuleCall_1_0_0() { return cVarsExternalVarInitDeclarationParserRuleCall_1_0_0; }
+		public RuleCall getVarsExternalVarInitDeclarationParserRuleCall_2_0_0() { return cVarsExternalVarInitDeclarationParserRuleCall_2_0_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_1_1() { return cSemicolonKeyword_1_1; }
+		public Keyword getSemicolonKeyword_2_1() { return cSemicolonKeyword_2_1; }
 		
 		//'END_VAR'
-		public Keyword getEND_VARKeyword_2() { return cEND_VARKeyword_2; }
+		public Keyword getEND_VARKeyword_3() { return cEND_VARKeyword_3; }
 	}
 	public class ExternalVarInitDeclarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ExternalVarInitDeclaration");
@@ -2332,7 +2340,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cVAR_GLOBALKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cConstAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cConstCONSTKeyword_1_0 = (Keyword)cConstAssignment_1.eContents().get(0);
+		private final Keyword cConstCONSTANTKeyword_1_0 = (Keyword)cConstAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
 		private final Assignment cVarsSimpleAssignment_2_0_0 = (Assignment)cGroup_2_0.eContents().get(0);
@@ -2345,21 +2353,21 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEND_VARKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//GlobalVarDeclaration:
-		//	'VAR_GLOBAL' const?='CONST'? (varsSimple+=VarInitDeclaration ';' | varsAs+=GlobalVarInitDeclaration ';')+
+		//	'VAR_GLOBAL' const?='CONSTANT'? (varsSimple+=VarInitDeclaration ';' | varsAs+=GlobalVarInitDeclaration ';')+
 		//	'END_VAR';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'VAR_GLOBAL' const?='CONST'? (varsSimple+=VarInitDeclaration ';' | varsAs+=GlobalVarInitDeclaration ';')+ 'END_VAR'
+		//'VAR_GLOBAL' const?='CONSTANT'? (varsSimple+=VarInitDeclaration ';' | varsAs+=GlobalVarInitDeclaration ';')+ 'END_VAR'
 		public Group getGroup() { return cGroup; }
 		
 		//'VAR_GLOBAL'
 		public Keyword getVAR_GLOBALKeyword_0() { return cVAR_GLOBALKeyword_0; }
 		
-		//const?='CONST'?
+		//const?='CONSTANT'?
 		public Assignment getConstAssignment_1() { return cConstAssignment_1; }
 		
-		//'CONST'
-		public Keyword getConstCONSTKeyword_1_0() { return cConstCONSTKeyword_1_0; }
+		//'CONSTANT'
+		public Keyword getConstCONSTANTKeyword_1_0() { return cConstCONSTANTKeyword_1_0; }
 		
 		//(varsSimple+=VarInitDeclaration ';' | varsAs+=GlobalVarInitDeclaration ';')+
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
@@ -3834,7 +3842,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//VarDeclaration:
-	//	'VAR' const?='CONST'? (vars+=VarInitDeclaration ';')+
+	//	'VAR' const?='CONSTANT'? (vars+=VarInitDeclaration ';')+
 	//	'END_VAR';
 	public VarDeclarationElements getVarDeclarationAccess() {
 		return pVarDeclaration;
@@ -3856,7 +3864,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ExternalVarDeclaration:
-	//	'VAR_EXTERNAL' (vars+=ExternalVarInitDeclaration ';')+
+	//	'VAR_EXTERNAL' const?='CONSTANT'? (vars+=ExternalVarInitDeclaration ';')+
 	//	'END_VAR';
 	public ExternalVarDeclarationElements getExternalVarDeclarationAccess() {
 		return pExternalVarDeclaration;
@@ -3877,7 +3885,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//GlobalVarDeclaration:
-	//	'VAR_GLOBAL' const?='CONST'? (varsSimple+=VarInitDeclaration ';' | varsAs+=GlobalVarInitDeclaration ';')+
+	//	'VAR_GLOBAL' const?='CONSTANT'? (varsSimple+=VarInitDeclaration ';' | varsAs+=GlobalVarInitDeclaration ';')+
 	//	'END_VAR';
 	public GlobalVarDeclarationElements getGlobalVarDeclarationAccess() {
 		return pGlobalVarDeclaration;

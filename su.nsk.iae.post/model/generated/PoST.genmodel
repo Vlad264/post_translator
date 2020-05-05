@@ -212,6 +212,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//TempVarDeclaration/vars"/>
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//ExternalVarDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//ExternalVarDeclaration/const"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//ExternalVarDeclaration/vars"/>
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//ExternalVarInitDeclaration">

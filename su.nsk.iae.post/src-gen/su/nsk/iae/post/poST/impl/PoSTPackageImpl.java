@@ -2169,9 +2169,20 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
+  public EAttribute getExternalVarDeclaration_Const()
+  {
+    return (EAttribute)externalVarDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getExternalVarDeclaration_Vars()
   {
-    return (EReference)externalVarDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EReference)externalVarDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2748,6 +2759,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     createEReference(tempVarDeclarationEClass, TEMP_VAR_DECLARATION__VARS);
 
     externalVarDeclarationEClass = createEClass(EXTERNAL_VAR_DECLARATION);
+    createEAttribute(externalVarDeclarationEClass, EXTERNAL_VAR_DECLARATION__CONST);
     createEReference(externalVarDeclarationEClass, EXTERNAL_VAR_DECLARATION__VARS);
 
     externalVarInitDeclarationEClass = createEClass(EXTERNAL_VAR_INIT_DECLARATION);
@@ -3043,6 +3055,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     initEReference(getTempVarDeclaration_Vars(), this.getVarInitDeclaration(), null, "vars", null, 0, -1, TempVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(externalVarDeclarationEClass, ExternalVarDeclaration.class, "ExternalVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExternalVarDeclaration_Const(), ecorePackage.getEBoolean(), "const", null, 0, 1, ExternalVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExternalVarDeclaration_Vars(), this.getExternalVarInitDeclaration(), null, "vars", null, 0, -1, ExternalVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(externalVarInitDeclarationEClass, ExternalVarInitDeclaration.class, "ExternalVarInitDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -51,6 +51,8 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   protected abstract String generateWrite(final String directVarName, final int size, final List<Integer> address, final String value);
   
+  protected abstract String generateTimeControl();
+  
   public ConfigurationGenerator(final Resource resource) {
     final Model model = ((Model[])Conversions.unwrapArray((Iterables.<Model>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Model.class)), Model.class))[0];
     this.configuration = model.getConf();
@@ -161,6 +163,15 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.append(_generate);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
+    _builder.append("unsigned int get_current_time(void) {");
+    _builder.newLine();
+    _builder.append("\t");
+    String _generateTimeControl = this.generateTimeControl();
+    _builder.append(_generateTimeControl, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
     _builder.append("int main(int argc, char *argv[]) {");
     _builder.newLine();
     _builder.append("\t");
@@ -197,7 +208,7 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.append("\t\t");
     String _generateGlobalTimeName_1 = this.generateGlobalTimeName();
     _builder.append(_generateGlobalTimeName_1, "\t\t");
-    _builder.append(";");
+    _builder.append(" = get_current_time();");
     _builder.newLineIfNotEmpty();
     {
       final Comparator<Task> _function = (Task a, Task b) -> {
