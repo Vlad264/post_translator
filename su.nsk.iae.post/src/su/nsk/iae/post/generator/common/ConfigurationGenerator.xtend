@@ -23,10 +23,14 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	Map<String, List<TaskData>> taskMap = new HashMap
 	Map<String, DirectVarData> directMap = new HashMap
 	
+	protected def String generateInclude()
+	protected def String generateGlobalVars()
+	protected def String generateInitTimeControl()
+	protected def String generateTimeControlDefinition()
+	protected def String generateTimeControlCall()
 	protected def String parseDirectVar(DirectVarData varData)
 	protected def String generateRead(String directVarName, int size, List<Integer> address, String assigmentVar)
 	protected def String generateWrite(String directVarName, int size, List<Integer> address, String value)
-	protected def String generateTimeControl()
 	
 	new(Resource resource) {
 		val model = resource.allContents.toIterable.filter(Model).get(0)
@@ -66,7 +70,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	}
 	
 	private def String generateMain() '''
-		#include <avr/io.h>
+		«generateInclude»
 		«FOR p : programList»
 			#include "«p.generateFileName».h"
 		«ENDFOR»
@@ -77,11 +81,11 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 		
 		unsigned long «generateGlobalTimeName»;
 		
+		«generateGlobalVars»
+		
 		«globalVars.generate»
 		
-		unsigned int get_current_time(void) {
-			«generateTimeControl»
-		}
+		«generateTimeControlDefinition»
 		
 		int main(int argc, char *argv[]) {
 			//Set ports B, C for input and port C for output
@@ -89,12 +93,14 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 			DDRC = 0xff;
 			DDRD = 0;
 			
+			«generateInitTimeControl»
+			
 			//Time vars for tasks
 			«FOR t : configuration.resources.get(0).resStatement.tasks»
 				unsigned long «t.name.toLowerCase»_time;
 			«ENDFOR»
 			for (;;) {
-				«generateGlobalTimeName» = get_current_time();
+				«generateGlobalTimeName» = «generateTimeControlCall»;
 				«FOR t : configuration.resources.get(0).resStatement.tasks.sortWith([a,b | return a.init.priority - b.init.priority])»
 					«IF !taskMap.get(t.name).empty»
 						if («t.name.toLowerCase»_time <= curtime) {

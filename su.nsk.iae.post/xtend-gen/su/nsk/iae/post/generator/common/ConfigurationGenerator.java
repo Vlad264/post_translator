@@ -45,13 +45,21 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   private Map<String, DirectVarData> directMap = new HashMap<String, DirectVarData>();
   
+  protected abstract String generateInclude();
+  
+  protected abstract String generateGlobalVars();
+  
+  protected abstract String generateInitTimeControl();
+  
+  protected abstract String generateTimeControlDefinition();
+  
+  protected abstract String generateTimeControlCall();
+  
   protected abstract String parseDirectVar(final DirectVarData varData);
   
   protected abstract String generateRead(final String directVarName, final int size, final List<Integer> address, final String assigmentVar);
   
   protected abstract String generateWrite(final String directVarName, final int size, final List<Integer> address, final String value);
-  
-  protected abstract String generateTimeControl();
   
   public ConfigurationGenerator(final Resource resource) {
     final Model model = ((Model[])Conversions.unwrapArray((Iterables.<Model>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Model.class)), Model.class))[0];
@@ -127,8 +135,9 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   private String generateMain() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("#include <avr/io.h>");
-    _builder.newLine();
+    String _generateInclude = this.generateInclude();
+    _builder.append(_generateInclude);
+    _builder.newLineIfNotEmpty();
     {
       for(final ProgramGenerator p : this.programList) {
         _builder.append("#include \"");
@@ -159,18 +168,17 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
+    String _generateGlobalVars = this.generateGlobalVars();
+    _builder.append(_generateGlobalVars);
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
     String _generate = this.globalVars.generate();
     _builder.append(_generate);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("unsigned int get_current_time(void) {");
-    _builder.newLine();
-    _builder.append("\t");
-    String _generateTimeControl = this.generateTimeControl();
-    _builder.append(_generateTimeControl, "\t");
+    String _generateTimeControlDefinition = this.generateTimeControlDefinition();
+    _builder.append(_generateTimeControlDefinition);
     _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("int main(int argc, char *argv[]) {");
     _builder.newLine();
@@ -186,6 +194,12 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.append("\t");
     _builder.append("DDRD = 0;");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    String _generateInitTimeControl = this.generateInitTimeControl();
+    _builder.append(_generateInitTimeControl, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
@@ -208,7 +222,10 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.append("\t\t");
     String _generateGlobalTimeName_1 = this.generateGlobalTimeName();
     _builder.append(_generateGlobalTimeName_1, "\t\t");
-    _builder.append(" = get_current_time();");
+    _builder.append(" = ");
+    String _generateTimeControlCall = this.generateTimeControlCall();
+    _builder.append(_generateTimeControlCall, "\t\t");
+    _builder.append(";");
     _builder.newLineIfNotEmpty();
     {
       final Comparator<Task> _function = (Task a, Task b) -> {

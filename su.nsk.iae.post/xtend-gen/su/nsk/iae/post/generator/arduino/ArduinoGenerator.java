@@ -19,6 +19,124 @@ public class ArduinoGenerator extends ConfigurationGenerator {
   }
   
   @Override
+  protected String generateInclude() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("#include <avr/io.h> ");
+    _builder.newLine();
+    _builder.append("#include <avr/interrupt.h>");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  @Override
+  protected String generateGlobalVars() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("#define F_CPU 16000000UL");
+    _builder.newLine();
+    _builder.append("static volatile unsigned long ovf_cnt = 0;");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  @Override
+  protected String generateInitTimeControl() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("//Init timer0");
+    _builder.newLine();
+    _builder.append("TCCR0 = (1<<CS00) | (1 <<CS02); // /1024 prescaler");
+    _builder.newLine();
+    _builder.append("TIMSK = (1<<TOIE0); // overflow interrupt");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  @Override
+  protected String generateTimeControlDefinition() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("unsigned long get_millis(void) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("unsigned char sreg = SREG;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("cli(); //start critical section");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("unsigned long ovf = ovf_cnt;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("unsigned long tcnt = TCNT0;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("SREG = sreg; //end of critical section - no sei() needed");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("//Timer has already overflown, but interrupt has yet to execute");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("if ((TIFR & _BV(TOV0)) && (tcnt < 255)) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("ovf++;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("unsigned long fract;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("const unsigned long mfcpu = F_CPU/1000; // 1000 -> milliseconds");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fract = ovf % mfcpu;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fract <<= (8UL + 10UL); //8 -> 256 timer, 10 -> 1024 prescaler");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("fract /= mfcpu;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ovf /= mfcpu;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ovf <<= (8UL + 10UL);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ovf += fract;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return ovf + (tcnt << 10UL) / mfcpu;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("//Timer0 overflow interrupt handler");
+    _builder.newLine();
+    _builder.append("ISR(TIMER0_OVF_vect) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ovf_cnt++;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  @Override
+  protected String generateTimeControlCall() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("get_millis()");
+    return _builder.toString();
+  }
+  
+  @Override
   protected String parseDirectVar(final DirectVarData varData) {
     DirectVarData.Type _type = varData.getType();
     boolean _equals = Objects.equal(_type, DirectVarData.Type.INPUT);
@@ -117,14 +235,6 @@ public class ArduinoGenerator extends ConfigurationGenerator {
     };
     String _join = IterableExtensions.join(ListExtensions.<String, String>map(temp, _function));
     _builder.append(_join);
-    return _builder.toString();
-  }
-  
-  @Override
-  protected String generateTimeControl() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("return millis();");
-    _builder.newLine();
     return _builder.toString();
   }
 }

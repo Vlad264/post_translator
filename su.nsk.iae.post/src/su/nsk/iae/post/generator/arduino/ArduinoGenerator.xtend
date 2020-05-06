@@ -12,6 +12,59 @@ class ArduinoGenerator extends ConfigurationGenerator {
 		super(resource)
 	}
 	
+	override protected generateInclude() '''
+		#include <avr/io.h> 
+		#include <avr/interrupt.h>
+	'''
+	
+	override protected generateGlobalVars() '''
+		#define F_CPU 16000000UL
+		static volatile unsigned long ovf_cnt = 0;
+	'''
+	
+	override protected generateInitTimeControl() '''
+		//Init timer0
+		TCCR0 = (1<<CS00) | (1 <<CS02); // /1024 prescaler
+		TIMSK = (1<<TOIE0); // overflow interrupt
+	'''
+	
+	override protected generateTimeControlDefinition() '''	
+		unsigned long get_millis(void) {
+			unsigned char sreg = SREG;
+			cli(); //start critical section
+			unsigned long ovf = ovf_cnt;
+			unsigned long tcnt = TCNT0;
+			SREG = sreg; //end of critical section - no sei() needed
+		
+			//Timer has already overflown, but interrupt has yet to execute
+			if ((TIFR & _BV(TOV0)) && (tcnt < 255)) {
+				ovf++;
+			}
+		
+			unsigned long fract;
+			const unsigned long mfcpu = F_CPU/1000; // 1000 -> milliseconds
+		
+			fract = ovf % mfcpu;
+			fract <<= (8UL + 10UL); //8 -> 256 timer, 10 -> 1024 prescaler
+			fract /= mfcpu;
+		
+			ovf /= mfcpu;
+			ovf <<= (8UL + 10UL);
+			ovf += fract;
+		
+			return ovf + (tcnt << 10UL) / mfcpu;
+		}
+		
+		//Timer0 overflow interrupt handler
+		ISR(TIMER0_OVF_vect) {
+			ovf_cnt++;
+		}
+	'''
+	
+	override protected generateTimeControlCall() {
+		return '''get_millis()'''
+	}
+	
 	override protected parseDirectVar(DirectVarData varData) {
 		if (varData.type == DirectVarData.Type.INPUT) {
 			if (varData.address.get(0) == 2) {
@@ -51,9 +104,5 @@ class ArduinoGenerator extends ConfigurationGenerator {
 		}
 		return '''0b«temp.map[it].join»'''
 	}
-	
-	override protected generateTimeControl() '''
-		return millis();
-	'''
 	
 }
