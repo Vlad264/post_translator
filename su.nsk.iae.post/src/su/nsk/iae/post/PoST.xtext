@@ -104,7 +104,7 @@ ProcessStatusExpression:
 	'PROCESS' process=[Process] 'IN' 'STATE' (stateName=[State] | stop?='STOP' | error?='ERROR');
 
 StartProcessStatement:
-	'START' 'PROCESS' process=[Process];
+	{StartProcessStatement} 'START' 'PROCESS' process=[Process];
 
 StopProcessStatement:
 	{StopProcessStatement} 'STOP' 'PROCESS' process=[Process]?;

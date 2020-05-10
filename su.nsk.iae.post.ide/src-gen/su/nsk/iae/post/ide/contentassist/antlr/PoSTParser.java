@@ -200,7 +200,7 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getProcessStatusExpressionAccess().getStateNameAssignment_4_0(), "rule__ProcessStatusExpression__StateNameAssignment_4_0");
 			builder.put(grammarAccess.getProcessStatusExpressionAccess().getStopAssignment_4_1(), "rule__ProcessStatusExpression__StopAssignment_4_1");
 			builder.put(grammarAccess.getProcessStatusExpressionAccess().getErrorAssignment_4_2(), "rule__ProcessStatusExpression__ErrorAssignment_4_2");
-			builder.put(grammarAccess.getStartProcessStatementAccess().getProcessAssignment_2(), "rule__StartProcessStatement__ProcessAssignment_2");
+			builder.put(grammarAccess.getStartProcessStatementAccess().getProcessAssignment_3(), "rule__StartProcessStatement__ProcessAssignment_3");
 			builder.put(grammarAccess.getStopProcessStatementAccess().getProcessAssignment_3(), "rule__StopProcessStatement__ProcessAssignment_3");
 			builder.put(grammarAccess.getErrorProcessStatementAccess().getProcessAssignment_3(), "rule__ErrorProcessStatement__ProcessAssignment_3");
 			builder.put(grammarAccess.getTimeoutStatementAccess().getConstAssignment_1_0(), "rule__TimeoutStatement__ConstAssignment_1_0");

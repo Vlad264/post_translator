@@ -4559,9 +4559,9 @@ rule__StartProcessStatement__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getStartProcessStatementAccess().getSTARTKeyword_0()); }
-	'START'
-	{ after(grammarAccess.getStartProcessStatementAccess().getSTARTKeyword_0()); }
+	{ before(grammarAccess.getStartProcessStatementAccess().getStartProcessStatementAction_0()); }
+	()
+	{ after(grammarAccess.getStartProcessStatementAccess().getStartProcessStatementAction_0()); }
 )
 ;
 finally {
@@ -4586,9 +4586,9 @@ rule__StartProcessStatement__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getStartProcessStatementAccess().getPROCESSKeyword_1()); }
-	'PROCESS'
-	{ after(grammarAccess.getStartProcessStatementAccess().getPROCESSKeyword_1()); }
+	{ before(grammarAccess.getStartProcessStatementAccess().getSTARTKeyword_1()); }
+	'START'
+	{ after(grammarAccess.getStartProcessStatementAccess().getSTARTKeyword_1()); }
 )
 ;
 finally {
@@ -4601,6 +4601,7 @@ rule__StartProcessStatement__Group__2
 	}
 :
 	rule__StartProcessStatement__Group__2__Impl
+	rule__StartProcessStatement__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4612,9 +4613,35 @@ rule__StartProcessStatement__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getStartProcessStatementAccess().getProcessAssignment_2()); }
-	(rule__StartProcessStatement__ProcessAssignment_2)
-	{ after(grammarAccess.getStartProcessStatementAccess().getProcessAssignment_2()); }
+	{ before(grammarAccess.getStartProcessStatementAccess().getPROCESSKeyword_2()); }
+	'PROCESS'
+	{ after(grammarAccess.getStartProcessStatementAccess().getPROCESSKeyword_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StartProcessStatement__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__StartProcessStatement__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StartProcessStatement__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getStartProcessStatementAccess().getProcessAssignment_3()); }
+	(rule__StartProcessStatement__ProcessAssignment_3)
+	{ after(grammarAccess.getStartProcessStatementAccess().getProcessAssignment_3()); }
 )
 ;
 finally {
@@ -11213,19 +11240,19 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__StartProcessStatement__ProcessAssignment_2
+rule__StartProcessStatement__ProcessAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getStartProcessStatementAccess().getProcessProcessCrossReference_2_0()); }
+		{ before(grammarAccess.getStartProcessStatementAccess().getProcessProcessCrossReference_3_0()); }
 		(
-			{ before(grammarAccess.getStartProcessStatementAccess().getProcessProcessIDTerminalRuleCall_2_0_1()); }
+			{ before(grammarAccess.getStartProcessStatementAccess().getProcessProcessIDTerminalRuleCall_3_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getStartProcessStatementAccess().getProcessProcessIDTerminalRuleCall_2_0_1()); }
+			{ after(grammarAccess.getStartProcessStatementAccess().getProcessProcessIDTerminalRuleCall_3_0_1()); }
 		)
-		{ after(grammarAccess.getStartProcessStatementAccess().getProcessProcessCrossReference_2_0()); }
+		{ after(grammarAccess.getStartProcessStatementAccess().getProcessProcessCrossReference_3_0()); }
 	)
 ;
 finally {

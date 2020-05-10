@@ -1010,7 +1010,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PoSTPackage.Literals.PROCESS_STATEMENTS__PROCESS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStartProcessStatementAccess().getProcessProcessIDTerminalRuleCall_2_0_1(), semanticObject.eGet(PoSTPackage.Literals.PROCESS_STATEMENTS__PROCESS, false));
+		feeder.accept(grammarAccess.getStartProcessStatementAccess().getProcessProcessIDTerminalRuleCall_3_0_1(), semanticObject.eGet(PoSTPackage.Literals.PROCESS_STATEMENTS__PROCESS, false));
 		feeder.finish();
 	}
 	

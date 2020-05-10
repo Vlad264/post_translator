@@ -1382,13 +1382,20 @@ ruleStartProcessStatement returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='START'
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getStartProcessStatementAccess().getStartProcessStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='START'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getStartProcessStatementAccess().getSTARTKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getStartProcessStatementAccess().getSTARTKeyword_1());
 		}
-		otherlv_1='PROCESS'
+		otherlv_2='PROCESS'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getStartProcessStatementAccess().getPROCESSKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getStartProcessStatementAccess().getPROCESSKeyword_2());
 		}
 		(
 			(
@@ -1397,9 +1404,9 @@ ruleStartProcessStatement returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getStartProcessStatementRule());
 					}
 				}
-				otherlv_2=RULE_ID
+				otherlv_3=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getStartProcessStatementAccess().getProcessProcessCrossReference_2_0());
+					newLeafNode(otherlv_3, grammarAccess.getStartProcessStatementAccess().getProcessProcessCrossReference_3_0());
 				}
 			)
 		)

@@ -822,33 +822,37 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	public class StartProcessStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.StartProcessStatement");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSTARTKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cPROCESSKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cProcessAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cProcessProcessCrossReference_2_0 = (CrossReference)cProcessAssignment_2.eContents().get(0);
-		private final RuleCall cProcessProcessIDTerminalRuleCall_2_0_1 = (RuleCall)cProcessProcessCrossReference_2_0.eContents().get(1);
+		private final Action cStartProcessStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSTARTKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPROCESSKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cProcessAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cProcessProcessCrossReference_3_0 = (CrossReference)cProcessAssignment_3.eContents().get(0);
+		private final RuleCall cProcessProcessIDTerminalRuleCall_3_0_1 = (RuleCall)cProcessProcessCrossReference_3_0.eContents().get(1);
 		
 		//StartProcessStatement:
-		//	'START' 'PROCESS' process=[Process];
+		//	{StartProcessStatement} 'START' 'PROCESS' process=[Process];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'START' 'PROCESS' process=[Process]
+		//{StartProcessStatement} 'START' 'PROCESS' process=[Process]
 		public Group getGroup() { return cGroup; }
 		
+		//{StartProcessStatement}
+		public Action getStartProcessStatementAction_0() { return cStartProcessStatementAction_0; }
+		
 		//'START'
-		public Keyword getSTARTKeyword_0() { return cSTARTKeyword_0; }
+		public Keyword getSTARTKeyword_1() { return cSTARTKeyword_1; }
 		
 		//'PROCESS'
-		public Keyword getPROCESSKeyword_1() { return cPROCESSKeyword_1; }
+		public Keyword getPROCESSKeyword_2() { return cPROCESSKeyword_2; }
 		
 		//process=[Process]
-		public Assignment getProcessAssignment_2() { return cProcessAssignment_2; }
+		public Assignment getProcessAssignment_3() { return cProcessAssignment_3; }
 		
 		//[Process]
-		public CrossReference getProcessProcessCrossReference_2_0() { return cProcessProcessCrossReference_2_0; }
+		public CrossReference getProcessProcessCrossReference_3_0() { return cProcessProcessCrossReference_3_0; }
 		
 		//ID
-		public RuleCall getProcessProcessIDTerminalRuleCall_2_0_1() { return cProcessProcessIDTerminalRuleCall_2_0_1; }
+		public RuleCall getProcessProcessIDTerminalRuleCall_3_0_1() { return cProcessProcessIDTerminalRuleCall_3_0_1; }
 	}
 	public class StopProcessStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.StopProcessStatement");
@@ -3385,7 +3389,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//StartProcessStatement:
-	//	'START' 'PROCESS' process=[Process];
+	//	{StartProcessStatement} 'START' 'PROCESS' process=[Process];
 	public StartProcessStatementElements getStartProcessStatementAccess() {
 		return pStartProcessStatement;
 	}

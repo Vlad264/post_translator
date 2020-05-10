@@ -6,6 +6,7 @@ import org.eclipse.xtext.validation.Check;
 
 import su.nsk.iae.post.poST.AssignmentStatement;
 import su.nsk.iae.post.poST.AssignmentType;
+import su.nsk.iae.post.poST.ErrorProcessStatement;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
@@ -24,6 +25,7 @@ import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.StartProcessStatement;
+import su.nsk.iae.post.poST.StopProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TempVarDeclaration;
@@ -289,11 +291,9 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	@Check
 	public void checkProcessStatusExpression(ProcessStatusExpression expr) {
 		Program program = EcoreUtil2.getContainerOfType(expr, Program.class);
-		for (Process p : program.getProcesses()) {
-			if ((p != expr.getProcess()) && p.getName().equals(expr.getProcess().getName())) {
-				error("Name error: No process with this name",
-						PoSTPackage.eINSTANCE.getProcessStatements_Process());
-			}
+		if (!program.getProcesses().contains(expr.getProcess())) {
+			error("Name error: No process with this name",
+					PoSTPackage.eINSTANCE.getProcessStatements_Process());
 		}
 	}
 	
@@ -303,23 +303,44 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if (statement.isNext()) {
 			su.nsk.iae.post.poST.State state = EcoreUtil2.getContainerOfType(statement, su.nsk.iae.post.poST.State.class);
 			if (process.getStates().indexOf(state) + 1 >= process.getStates().size()) {
-				error("Invalide statement: no next state in the process",
+				error("Invalide statement: No next state in the process",
 						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
 			}
 		} else {
 			if (!process.getStates().contains(statement.getState())) {
-				error("Invalide statement: no state " + statement.getState().getName() + " in the process " + process.getName(),
+				error("Invalide statement: No state with this name",
 						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
 			}
 		}
 	}
 	
 	@Check
-	public void checkStartProcess(StartProcessStatement statement) {
+	public void checkStartProcessStatement(StartProcessStatement statement) {
 		Program program = EcoreUtil2.getContainerOfType(statement, Program.class);
 		if (!program.getProcesses().contains(statement.getProcess())) {
-			//error("Invalide statement: no process " + statement.getProcess().getName() + " in the program " + program.getName(),
-			//		statement.);
+			error("Invalide statement: No process with this name", null);
+		}
+	}
+	
+	@Check
+	public void checkStopProcessStatement(StopProcessStatement statement) {
+		if (statement.getProcess() == null) {
+			return;
+		}
+		Program program = EcoreUtil2.getContainerOfType(statement, Program.class);
+		if (!program.getProcesses().contains(statement.getProcess())) {
+			error("Invalide statement: No process with this name", null);
+		}
+	}
+	
+	@Check
+	public void checkErrorProcessStatement(ErrorProcessStatement statement) {
+		if (statement.getProcess() == null) {
+			return;
+		}
+		Program program = EcoreUtil2.getContainerOfType(statement, Program.class);
+		if (!program.getProcesses().contains(statement.getProcess())) {
+			error("Invalide statement: No process with this name", null);
 		}
 	}
 	
