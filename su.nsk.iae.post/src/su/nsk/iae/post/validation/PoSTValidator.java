@@ -4,7 +4,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 
-import su.nsk.iae.post.poST.Configuration;
+import su.nsk.iae.post.poST.AssignmentType;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
@@ -16,6 +16,8 @@ import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.Process;
 import su.nsk.iae.post.poST.Program;
+import su.nsk.iae.post.poST.ProgramConfElement;
+import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.StartProcessStatement;
@@ -121,6 +123,44 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if ((res != null) && checkVariableNameConflictsInResource(res, varName)) {
 			error("Var conflict: Configuration already has a variable with this name",
 					PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+		}
+	}
+	
+	@Check
+	public void checkProgramConfiguration(ProgramConfiguration conf) {
+		int programVars = 0;
+		for (InputVarDeclaration varDecl : conf.getProgram().getProgInVars()) {
+			for (VarInitDeclaration varList : varDecl.getVars()) {
+				programVars += varList.getVarList().getVars().size();
+			}
+		}
+		for (OutputVarDeclaration varDecl : conf.getProgram().getProgOutVars()) {
+			for (VarInitDeclaration varList : varDecl.getVars()) {
+				programVars += varList.getVarList().getVars().size();
+			}
+		}
+		if ((conf.getAgrs() != null) && (programVars != conf.getAgrs().getElements().size())) {
+			error("Attached error: Not all input and output variables are used",
+					PoSTPackage.eINSTANCE.getProgramConfiguration_Agrs());
+		}
+	}
+	
+	@Check
+	public void checkProgramConfElement(ProgramConfElement element) {
+		if (element.getAssig() == AssignmentType.IN) {
+			if (EcoreUtil2.getContainerOfType(element.getProgramVar(), InputVarDeclaration.class) == null) {
+				error("Attached error: Must be a input var from Program",
+						PoSTPackage.eINSTANCE.getProgramConfElement_ProgramVar());
+			}
+		} else {
+			if (EcoreUtil2.getContainerOfType(element.getProgramVar(), OutputVarDeclaration.class) == null) {
+				error("Attached error: Must be a output var from Program",
+						PoSTPackage.eINSTANCE.getProgramConfElement_ProgramVar());
+			}
+		}
+		if (EcoreUtil2.getContainerOfType(element.getGlobVar(), Resource.class) == null) {
+			error("Attached error: Must be a global var from Resource",
+					PoSTPackage.eINSTANCE.getProgramConfElement_GlobVar());
 		}
 	}
 	
