@@ -6,10 +6,12 @@ import org.eclipse.xtext.validation.Check;
 
 import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
+import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
 import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
 import su.nsk.iae.post.poST.InputOutputVarDeclaration;
 import su.nsk.iae.post.poST.InputVarDeclaration;
+import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.Process;
@@ -90,88 +92,134 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	
 	@Check
 	public void checkVariableNameConflicts(SymbolicVariable varName) {
-		Process process = EcoreUtil2.getContainerOfType(varName, Process.class);
-		if (process != null) {
-			for (VarDeclaration varDecl : process.getProcVars()) {
-				if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
-					error("Var conflict: Process already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
+		if (EcoreUtil2.getContainerOfType(varName, ExternalVarDeclaration.class) != null) {
+			if (checkVariableNameConflictsInExternalVars(varName)) {
+				error("External var error: An external global variable cannot be found",
+						PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+				return;
 			}
-			for (TempVarDeclaration varDecl : process.getProcTempVars()) {
-				if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
-					error("Var conflict: Process already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
+			return;
+		}
+		Process process = EcoreUtil2.getContainerOfType(varName, Process.class);
+		if ((process != null) && checkVariableNameConflictsInProcess(process, varName)) {
+			if (checkVariableNameConflictsInProcess(process, varName)) {
+				error("Var conflict: Process already has a variable with this name",
+						PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+				return;
 			}
 		}
 		Program program = EcoreUtil2.getContainerOfType(varName, Program.class);
 		if (program != null) {
-			for (InputVarDeclaration varDecl : program.getProgInVars()) {
-				if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
-					error("Var conflict: Program already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
-			}
-			for (OutputVarDeclaration varDecl : program.getProgOutVars()) {
-				if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
-					error("Var conflict: Program already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
-			}
-			for (InputOutputVarDeclaration varDecl : program.getProgInOutVars()) {
-				if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
-					error("Var conflict: Program already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
-			}
-			for (ExternalVarDeclaration varDecl : program.getProgExternVars()) {
-				
-			}
-			for (VarDeclaration varDecl : program.getProgVars()) {
-				if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
-					error("Var conflict: Program already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
-			}
-			for (TempVarDeclaration varDecl : program.getProgTempVars()) {
-				if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
-					error("Var conflict: Program already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
+			if (checkVariableNameConflictsInProgram(program, varName)) {
+				error("Var conflict: Program already has a variable with this name",
+						PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+				return;
 			}
 			return;
 		}
 		Resource res = EcoreUtil2.getContainerOfType(varName, Resource.class);
-		if (res != null) {
-			for (GlobalVarDeclaration varDecl : res.getResGlobVars()) {
-				if (checkVarInitDeclaration(varDecl.getVarsSimple(), varName)) {
-					error("Var conflict: Configuration already has a variable with this name",
-							PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-					return;
-				}
-				for (GlobalVarInitDeclaration varList : varDecl.getVarsAs()) {
-					for (SymbolicVariable v : varList.getVarList().getVars()) {
-						if ((v != varName) && (v.getName().equals(varName.getName()))) {
-							error("Var conflict: Configuration already has a variable with this name",
-									PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
-							return;
-						}
-					}
-				}
+		if ((res != null) && checkVariableNameConflictsInResource(res, varName)) {
+			error("Var conflict: Configuration already has a variable with this name",
+					PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+		}
+	}
+	
+	private boolean checkVariableNameConflictsInExternalVars(SymbolicVariable varName) {
+		Model model = EcoreUtil2.getContainerOfType(varName, Model.class);
+		for (GlobalVarDeclaration varDecl : model.getConf().getResources().get(0).getResGlobVars()) {
+			if (!checkVarInitDeclaration(varDecl.getVarsSimple(), varName) && 
+					!checkGlobalVarInitDeclaration(varDecl.getVarsAs(), varName)) {
+				return true;
 			}
 		}
+		if (model.getConf().getResources().get(0).getResGlobVars().isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean checkVariableNameConflictsInProcess(Process process, SymbolicVariable varName) {
+		for (VarDeclaration varDecl : process.getProcVars()) {
+			if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		for (TempVarDeclaration varDecl : process.getProcTempVars()) {
+			if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkVariableNameConflictsInProgram(Program program, SymbolicVariable varName) {
+		for (InputVarDeclaration varDecl : program.getProgInVars()) {
+			if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		for (OutputVarDeclaration varDecl : program.getProgOutVars()) {
+			if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		for (InputOutputVarDeclaration varDecl : program.getProgInOutVars()) {
+			if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		for (ExternalVarDeclaration varDecl : program.getProgExternVars()) {
+			if (checkExternalVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		for (VarDeclaration varDecl : program.getProgVars()) {
+			if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		for (TempVarDeclaration varDecl : program.getProgTempVars()) {
+			if (checkVarInitDeclaration(varDecl.getVars(), varName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkVariableNameConflictsInResource(Resource resource, SymbolicVariable varName) {
+		for (GlobalVarDeclaration varDecl : resource.getResGlobVars()) {
+			if (checkVarInitDeclaration(varDecl.getVarsSimple(), varName) || 
+					checkGlobalVarInitDeclaration(varDecl.getVarsAs(), varName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private boolean checkVarInitDeclaration(EList<VarInitDeclaration> decls, SymbolicVariable varName) {
 		for (VarInitDeclaration varList : decls) {
+			for (SymbolicVariable v : varList.getVarList().getVars()) {
+				if ((v != varName) && (v.getName().equals(varName.getName()))) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkGlobalVarInitDeclaration(EList<GlobalVarInitDeclaration> decls, SymbolicVariable varName) {
+		for (GlobalVarInitDeclaration varList : decls) {
+			for (SymbolicVariable v : varList.getVarList().getVars()) {
+				if ((v != varName) && (v.getName().equals(varName.getName()))) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkExternalVarInitDeclaration(EList<ExternalVarInitDeclaration> decls, SymbolicVariable varName) {
+		for (ExternalVarInitDeclaration varList : decls) {
 			for (SymbolicVariable v : varList.getVarList().getVars()) {
 				if ((v != varName) && (v.getName().equals(varName.getName()))) {
 					return true;
