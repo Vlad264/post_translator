@@ -1,6 +1,13 @@
 package su.nsk.iae.post.validation;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 
@@ -130,6 +137,15 @@ public class PoSTValidator extends AbstractPoSTValidator {
 			error("Var conflict: Configuration already has a variable with this name",
 					PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
 		}
+	}
+	
+	@Check
+	public void checkVariableUnreachable(SymbolicVariable varName) {
+		Program program = EcoreUtil2.getContainerOfType(varName, Program.class);
+		if ((program != null) && !hasCrossReferences(program, varName)) {
+			warning("Variable is nevef used", PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+		}
+		
 	}
 	
 	@Check
@@ -345,6 +361,17 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	/* ======================= END poST Validator ======================= */
+	
+	private boolean hasCrossReferences(EObject context, EObject target) {
+		Set<EObject> targetSet = new HashSet<EObject>();
+		targetSet.add(target);
+		List<EReference> res = new ArrayList<EReference>();
+		EcoreUtil2.ElementReferenceAcceptor acceptor = (EObject referrer, EObject referenced, EReference reference, int index) -> {
+				res.add(reference);
+		};
+		EcoreUtil2.findCrossReferences(context, targetSet, acceptor);
+		return !res.isEmpty();
+	}
 	
 	private boolean checkVariableNameConflictsInExternalVars(SymbolicVariable varName) {
 		Model model = EcoreUtil2.getContainerOfType(varName, Model.class);
