@@ -22,6 +22,7 @@ import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
+import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TempVarDeclaration;
 import su.nsk.iae.post.poST.VarDeclaration;
 import su.nsk.iae.post.poST.VarInitDeclaration;
@@ -123,6 +124,17 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if ((res != null) && checkVariableNameConflictsInResource(res, varName)) {
 			error("Var conflict: Configuration already has a variable with this name",
 					PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+		}
+	}
+	
+	@Check
+	public void checkTaskNameConflicts(Task task) {
+		Resource res = EcoreUtil2.getContainerOfType(task, Resource.class);
+		for (Task t : res.getResStatement().getTasks()) {
+			if ((t != task) && t.getName().equals(task.getName())) {
+				error("Name error: Task with this name already exists",
+						PoSTPackage.eINSTANCE.getTask_Name());
+			}
 		}
 	}
 	
