@@ -161,7 +161,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if (checkVariableNameConflictsInProcess(EcoreUtil2.getContainerOfType(expr, Process.class), varName) ||
 				checkVariableNameConflictsInProgram(EcoreUtil2.getContainerOfType(expr, Program.class), varName)) {
 			error("Scope error: Variable is not visible in this process",
-					PoSTPackage.eINSTANCE.getAssignmentStatement_Variable());
+					PoSTPackage.eINSTANCE.getPrimaryExpression_Variable());
 			return;
 		}
 	}
@@ -247,7 +247,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		for (Process p : program.getProcesses()) {
 			if ((p != expr.getProcess()) && p.getName().equals(expr.getProcess().getName())) {
 				error("Name error: No process with this name",
-						PoSTPackage.eINSTANCE.getProcess_Name());
+						PoSTPackage.eINSTANCE.getProcessStatements_Process());
 			}
 		}
 	}
