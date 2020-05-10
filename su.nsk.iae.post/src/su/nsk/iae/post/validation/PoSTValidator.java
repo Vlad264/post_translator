@@ -15,7 +15,9 @@ import su.nsk.iae.post.poST.InputVarDeclaration;
 import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTPackage;
+import su.nsk.iae.post.poST.PrimaryExpression;
 import su.nsk.iae.post.poST.Process;
+import su.nsk.iae.post.poST.ProcessStatusExpression;
 import su.nsk.iae.post.poST.Program;
 import su.nsk.iae.post.poST.ProgramConfElement;
 import su.nsk.iae.post.poST.ProgramConfiguration;
@@ -151,6 +153,20 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	@Check
+	public void chekPrimaryExpression(PrimaryExpression expr) {
+		if (expr.getVariable() == null) {
+			return;
+		}
+		SymbolicVariable varName = expr.getVariable();
+		if (checkVariableNameConflictsInProcess(EcoreUtil2.getContainerOfType(expr, Process.class), varName) ||
+				checkVariableNameConflictsInProgram(EcoreUtil2.getContainerOfType(expr, Program.class), varName)) {
+			error("Scope error: Variable is not visible in this process",
+					PoSTPackage.eINSTANCE.getAssignmentStatement_Variable());
+			return;
+		}
+	}
+	
+	@Check
 	public void checkTaskNameConflicts(Task task) {
 		Resource res = EcoreUtil2.getContainerOfType(task, Resource.class);
 		for (Task t : res.getResStatement().getTasks()) {
@@ -221,6 +237,17 @@ public class PoSTValidator extends AbstractPoSTValidator {
 			if ((s != state) && s.getName().equals(state.getName())) {
 				error("Name error: State with this name already exists",
 						PoSTPackage.eINSTANCE.getState_Name());
+			}
+		}
+	}
+	
+	@Check
+	public void checkProcessStatusExpression(ProcessStatusExpression expr) {
+		Program program = EcoreUtil2.getContainerOfType(expr, Program.class);
+		for (Process p : program.getProcesses()) {
+			if ((p != expr.getProcess()) && p.getName().equals(expr.getProcess().getName())) {
+				error("Name error: No process with this name",
+						PoSTPackage.eINSTANCE.getProcess_Name());
 			}
 		}
 	}
