@@ -4,6 +4,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 
+import su.nsk.iae.post.poST.AssignmentStatement;
 import su.nsk.iae.post.poST.AssignmentType;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -124,6 +125,28 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if ((res != null) && checkVariableNameConflictsInResource(res, varName)) {
 			error("Var conflict: Configuration already has a variable with this name",
 					PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+		}
+	}
+	
+	@Check
+	public void checkAssignmentStatement(AssignmentStatement statement) {
+		SymbolicVariable varName = statement.getVariable();
+		if (checkVariableNameConflictsInProcess(EcoreUtil2.getContainerOfType(statement, Process.class), varName) ||
+				checkVariableNameConflictsInProgram(EcoreUtil2.getContainerOfType(statement, Program.class), varName)) {
+			error("Scope error: Variable is not visible in this process",
+					PoSTPackage.eINSTANCE.getAssignmentStatement_Variable());
+			return;
+		}
+		if ((EcoreUtil2.getContainerOfType(varName, InputVarDeclaration.class) != null)) {
+			error("Assignment error: Couldn't modidy input varsiable",
+					PoSTPackage.eINSTANCE.getAssignmentStatement_Variable());
+			return;
+		}
+		VarDeclaration inputDecl = EcoreUtil2.getContainerOfType(varName, VarDeclaration.class);
+		ExternalVarDeclaration externalDecl = EcoreUtil2.getContainerOfType(varName, ExternalVarDeclaration.class);
+		if (((inputDecl != null) && inputDecl.isConst()) || ((externalDecl != null) && externalDecl.isConst())) {
+			error("Assignment error: Couldn't modidy constant varsiable",
+					PoSTPackage.eINSTANCE.getAssignmentStatement_Variable());
 		}
 	}
 	
