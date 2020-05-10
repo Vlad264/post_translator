@@ -2479,15 +2479,15 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cNumericTypeNameParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cBIT_STRING_TYPE_NAMETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final Keyword cSTRINGKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cWSTRINGKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final RuleCall cTIME_TYPE_NAMETerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cSTRING_TYPE_NAMETerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		///* ======================= END Time Literals ======================= */
 		///* ======================= START Elementary data types ======================= */ DataTypeName:
-		//	NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING';
+		//	NumericTypeName | BIT_STRING_TYPE_NAME | TIME_TYPE_NAME | STRING_TYPE_NAME;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING'
+		//NumericTypeName | BIT_STRING_TYPE_NAME | TIME_TYPE_NAME | STRING_TYPE_NAME
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//NumericTypeName
@@ -2496,11 +2496,11 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//BIT_STRING_TYPE_NAME
 		public RuleCall getBIT_STRING_TYPE_NAMETerminalRuleCall_1() { return cBIT_STRING_TYPE_NAMETerminalRuleCall_1; }
 		
-		//'STRING'
-		public Keyword getSTRINGKeyword_2() { return cSTRINGKeyword_2; }
+		//TIME_TYPE_NAME
+		public RuleCall getTIME_TYPE_NAMETerminalRuleCall_2() { return cTIME_TYPE_NAMETerminalRuleCall_2; }
 		
-		//'WSTRING'
-		public Keyword getWSTRINGKeyword_3() { return cWSTRINGKeyword_3; }
+		//STRING_TYPE_NAME
+		public RuleCall getSTRING_TYPE_NAMETerminalRuleCall_3() { return cSTRING_TYPE_NAMETerminalRuleCall_3; }
 	}
 	public class NumericTypeNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.NumericTypeName");
@@ -3018,6 +3018,8 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tUNSIGNED_INTEGER_TYPE_NAME;
 	private final TerminalRule tREAL_TYPE_NAME;
 	private final TerminalRule tBIT_STRING_TYPE_NAME;
+	private final TerminalRule tTIME_TYPE_NAME;
+	private final TerminalRule tSTRING_TYPE_NAME;
 	private final SimpleSpecificationInitElements pSimpleSpecificationInit;
 	private final ConstantElements pConstant;
 	private final TerminalRule tINTEGER;
@@ -3130,6 +3132,8 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		this.tUNSIGNED_INTEGER_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.UNSIGNED_INTEGER_TYPE_NAME");
 		this.tREAL_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.REAL_TYPE_NAME");
 		this.tBIT_STRING_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.BIT_STRING_TYPE_NAME");
+		this.tTIME_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.TIME_TYPE_NAME");
+		this.tSTRING_TYPE_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.STRING_TYPE_NAME");
 		this.pSimpleSpecificationInit = new SimpleSpecificationInitElements();
 		this.pConstant = new ConstantElements();
 		this.tINTEGER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.INTEGER");
@@ -3917,7 +3921,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal TIME_PREF_LITERAL:
-	//	'T' | 'TIME';
+	//	'T';
 	public TerminalRule getTIME_PREF_LITERALRule() {
 		return tTIME_PREF_LITERAL;
 	}
@@ -3930,7 +3934,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	
 	///* ======================= END Time Literals ======================= */
 	///* ======================= START Elementary data types ======================= */ DataTypeName:
-	//	NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING';
+	//	NumericTypeName | BIT_STRING_TYPE_NAME | TIME_TYPE_NAME | STRING_TYPE_NAME;
 	public DataTypeNameElements getDataTypeNameAccess() {
 		return pDataTypeName;
 	}
@@ -3981,6 +3985,18 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	//	'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD';
 	public TerminalRule getBIT_STRING_TYPE_NAMERule() {
 		return tBIT_STRING_TYPE_NAME;
+	}
+	
+	//terminal TIME_TYPE_NAME:
+	//	'TIME';
+	public TerminalRule getTIME_TYPE_NAMERule() {
+		return tTIME_TYPE_NAME;
+	}
+	
+	//terminal STRING_TYPE_NAME:
+	//	'STRING' | 'WSTRING';
+	public TerminalRule getSTRING_TYPE_NAMERule() {
+		return tSTRING_TYPE_NAME;
 	}
 	
 	//SimpleSpecificationInit:

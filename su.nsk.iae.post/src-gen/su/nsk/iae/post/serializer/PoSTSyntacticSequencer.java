@@ -215,7 +215,7 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * terminal TIME_PREF_LITERAL:
-	 * 	('T' | 'TIME');
+	 * 	'T';
 	 */
 	protected String getTIME_PREF_LITERALToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)

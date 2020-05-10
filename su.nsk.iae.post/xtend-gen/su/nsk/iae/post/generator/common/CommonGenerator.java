@@ -170,6 +170,8 @@ public abstract class CommonGenerator {
           StringConcatenation _builder_14 = new StringConcatenation();
           _builder_14.append("byte");
           return _builder_14.toString();
+        case "TIME":
+          return "unsigned long";
         case "STRING":
           StringConcatenation _builder_15 = new StringConcatenation();
           _builder_15.append("char*");

@@ -4112,16 +4112,20 @@ ruleDataTypeName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
 			newLeafNode(this_BIT_STRING_TYPE_NAME_1, grammarAccess.getDataTypeNameAccess().getBIT_STRING_TYPE_NAMETerminalRuleCall_1());
 		}
 		    |
-		kw='STRING'
+		this_TIME_TYPE_NAME_2=RULE_TIME_TYPE_NAME
 		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDataTypeNameAccess().getSTRINGKeyword_2());
+			$current.merge(this_TIME_TYPE_NAME_2);
+		}
+		{
+			newLeafNode(this_TIME_TYPE_NAME_2, grammarAccess.getDataTypeNameAccess().getTIME_TYPE_NAMETerminalRuleCall_2());
 		}
 		    |
-		kw='WSTRING'
+		this_STRING_TYPE_NAME_3=RULE_STRING_TYPE_NAME
 		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDataTypeNameAccess().getWSTRINGKeyword_3());
+			$current.merge(this_STRING_TYPE_NAME_3);
+		}
+		{
+			newLeafNode(this_STRING_TYPE_NAME_3, grammarAccess.getDataTypeNameAccess().getSTRING_TYPE_NAMETerminalRuleCall_3());
 		}
 	)
 ;
@@ -4771,7 +4775,7 @@ fragment RULE_DIRECT_TYPE_PREFIX : ('I'|'Q'|'M');
 
 fragment RULE_DIRECT_SIZE_PREFIX : ('X'|'B'|'W'|'D'|'L');
 
-RULE_TIME_PREF_LITERAL : ('T'|'TIME');
+RULE_TIME_PREF_LITERAL : 'T';
 
 RULE_INTERVAL : (RULE_INTEGER 'd')? (RULE_INTEGER 'h')? (RULE_INTEGER 'm')? (RULE_INTEGER 's')? (RULE_INTEGER 'ms')?;
 
@@ -4782,6 +4786,10 @@ RULE_UNSIGNED_INTEGER_TYPE_NAME : ('USINT'|'UINT'|'UDINT'|'ULINT');
 RULE_REAL_TYPE_NAME : ('REAL'|'LREAL');
 
 RULE_BIT_STRING_TYPE_NAME : ('BOOL'|'BYTE'|'WORD'|'DWORD'|'LWORD');
+
+RULE_TIME_TYPE_NAME : 'TIME';
+
+RULE_STRING_TYPE_NAME : ('STRING'|'WSTRING');
 
 RULE_INTEGER : RULE_DIGIT+;
 

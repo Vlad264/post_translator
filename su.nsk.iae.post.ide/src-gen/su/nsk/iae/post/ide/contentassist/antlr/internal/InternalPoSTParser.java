@@ -22,15 +22,15 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_BIT_STRING_TYPE_NAME", "RULE_REAL_TYPE_NAME", "RULE_SIGNED_INTEGER_TYPE_NAME", "RULE_UNSIGNED_INTEGER_TYPE_NAME", "RULE_SINGLE_DECLARATION", "RULE_PRIORITY_DECLARATION", "RULE_INTERVAL_DECLARATION", "RULE_OR_OPERATOR", "RULE_XOR_OPERATOR", "RULE_AND_OPERATOR", "RULE_POWER_OPERATOR", "RULE_UNARY_OPERATOR", "RULE_SUBPROGRAM_CONTROL_STATEMENT", "RULE_EXIT_STATEMENT", "RULE_TIME_PREF_LITERAL", "RULE_BINARY_INTEGER", "RULE_OCTAL_INTEGER", "RULE_HEX_INTEGER", "RULE_BOOLEAN_LITERAL", "RULE_ID", "RULE_PLC_ARDUINI_LITERAL", "RULE_INTEGER", "RULE_DIRECT_VARIABLE", "RULE_INTERVAL", "RULE_REAL", "RULE_DIRECT_TYPE_PREFIX", "RULE_DIRECT_SIZE_PREFIX", "RULE_DIGIT", "RULE_BIT", "RULE_OCTAL_DIGIT", "RULE_HEX_DIGIT", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'LOOP'", "'STRING'", "'WSTRING'", "':='", "'=>'", "'='", "'<>'", "'<'", "'>'", "'<='", "'>='", "'+'", "'-'", "'*'", "'/'", "'MOD'", "'CONFIGURATION'", "'END_CONFIGURATION'", "'RESOURCE'", "'ON'", "'END_RESOURCE'", "';'", "'TASK'", "'('", "')'", "','", "'PROGRAM'", "':'", "'WITH'", "'END_PROGRAM'", "'PROCESS'", "'END_PROCESS'", "'STATE'", "'END_STATE'", "'SET'", "'IN'", "'START'", "'STOP'", "'ERROR'", "'TIMEOUT'", "'THEN'", "'END_TIMEOUT'", "'IF'", "'END_IF'", "'ELSEIF'", "'ELSE'", "'CASE'", "'OF'", "'END_CASE'", "'FOR'", "'DO'", "'END_FOR'", "'TO'", "'BY'", "'WHILE'", "'END_WHILE'", "'REPEAT'", "'UNTIL'", "'END_REPEAT'", "'VAR_INPUT'", "'END_VAR'", "'VAR_OUTPUT'", "'VAR_IN_OUT'", "'VAR'", "'VAR_TEMP'", "'VAR_EXTERNAL'", "'VAR_GLOBAL'", "'AT'", "'#'", "'NEXT'", "'CONSTANT'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_BIT_STRING_TYPE_NAME", "RULE_TIME_TYPE_NAME", "RULE_STRING_TYPE_NAME", "RULE_REAL_TYPE_NAME", "RULE_SIGNED_INTEGER_TYPE_NAME", "RULE_UNSIGNED_INTEGER_TYPE_NAME", "RULE_SINGLE_DECLARATION", "RULE_PRIORITY_DECLARATION", "RULE_INTERVAL_DECLARATION", "RULE_OR_OPERATOR", "RULE_XOR_OPERATOR", "RULE_AND_OPERATOR", "RULE_POWER_OPERATOR", "RULE_UNARY_OPERATOR", "RULE_SUBPROGRAM_CONTROL_STATEMENT", "RULE_EXIT_STATEMENT", "RULE_TIME_PREF_LITERAL", "RULE_BINARY_INTEGER", "RULE_OCTAL_INTEGER", "RULE_HEX_INTEGER", "RULE_BOOLEAN_LITERAL", "RULE_ID", "RULE_PLC_ARDUINI_LITERAL", "RULE_INTEGER", "RULE_DIRECT_VARIABLE", "RULE_INTERVAL", "RULE_REAL", "RULE_DIRECT_TYPE_PREFIX", "RULE_DIRECT_SIZE_PREFIX", "RULE_DIGIT", "RULE_BIT", "RULE_OCTAL_DIGIT", "RULE_HEX_DIGIT", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'LOOP'", "':='", "'=>'", "'='", "'<>'", "'<'", "'>'", "'<='", "'>='", "'+'", "'-'", "'*'", "'/'", "'MOD'", "'CONFIGURATION'", "'END_CONFIGURATION'", "'RESOURCE'", "'ON'", "'END_RESOURCE'", "';'", "'TASK'", "'('", "')'", "','", "'PROGRAM'", "':'", "'WITH'", "'END_PROGRAM'", "'PROCESS'", "'END_PROCESS'", "'STATE'", "'END_STATE'", "'SET'", "'IN'", "'START'", "'STOP'", "'ERROR'", "'TIMEOUT'", "'THEN'", "'END_TIMEOUT'", "'IF'", "'END_IF'", "'ELSEIF'", "'ELSE'", "'CASE'", "'OF'", "'END_CASE'", "'FOR'", "'DO'", "'END_FOR'", "'TO'", "'BY'", "'WHILE'", "'END_WHILE'", "'REPEAT'", "'UNTIL'", "'END_REPEAT'", "'VAR_INPUT'", "'END_VAR'", "'VAR_OUTPUT'", "'VAR_IN_OUT'", "'VAR'", "'VAR_TEMP'", "'VAR_EXTERNAL'", "'VAR_GLOBAL'", "'AT'", "'#'", "'NEXT'", "'CONSTANT'"
     };
     public static final int T__50=50;
-    public static final int RULE_PRIORITY_DECLARATION=9;
-    public static final int RULE_INTERVAL=27;
-    public static final int RULE_BIT=32;
-    public static final int RULE_SINGLE_DECLARATION=8;
+    public static final int RULE_PRIORITY_DECLARATION=11;
+    public static final int RULE_INTERVAL=29;
+    public static final int RULE_BIT=34;
+    public static final int RULE_SINGLE_DECLARATION=10;
     public static final int T__59=59;
-    public static final int RULE_SIGNED_INTEGER_TYPE_NAME=6;
+    public static final int RULE_SIGNED_INTEGER_TYPE_NAME=8;
     public static final int T__55=55;
     public static final int T__56=56;
     public static final int T__57=57;
@@ -41,13 +41,13 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final int T__54=54;
     public static final int T__60=60;
     public static final int T__61=61;
-    public static final int RULE_ID=23;
-    public static final int RULE_REAL_TYPE_NAME=5;
-    public static final int RULE_BOOLEAN_LITERAL=22;
-    public static final int RULE_REAL=28;
-    public static final int RULE_DIGIT=31;
+    public static final int RULE_ID=25;
+    public static final int RULE_REAL_TYPE_NAME=7;
+    public static final int RULE_BOOLEAN_LITERAL=24;
+    public static final int RULE_REAL=30;
+    public static final int RULE_DIGIT=33;
     public static final int T__66=66;
-    public static final int RULE_ML_COMMENT=36;
+    public static final int RULE_ML_COMMENT=38;
     public static final int T__67=67;
     public static final int T__68=68;
     public static final int T__69=69;
@@ -56,23 +56,23 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final int T__64=64;
     public static final int RULE_BIT_STRING_TYPE_NAME=4;
     public static final int T__65=65;
-    public static final int RULE_DIRECT_VARIABLE=26;
-    public static final int RULE_OR_OPERATOR=11;
-    public static final int RULE_XOR_OPERATOR=12;
-    public static final int RULE_HEX_INTEGER=21;
-    public static final int RULE_OCTAL_DIGIT=33;
-    public static final int RULE_AND_OPERATOR=13;
-    public static final int RULE_LETTER=35;
+    public static final int RULE_DIRECT_VARIABLE=28;
+    public static final int RULE_OR_OPERATOR=13;
+    public static final int RULE_XOR_OPERATOR=14;
+    public static final int RULE_HEX_INTEGER=23;
+    public static final int RULE_TIME_TYPE_NAME=5;
+    public static final int RULE_STRING_TYPE_NAME=6;
+    public static final int RULE_OCTAL_DIGIT=35;
+    public static final int RULE_AND_OPERATOR=15;
+    public static final int RULE_LETTER=37;
     public static final int T__48=48;
     public static final int T__49=49;
     public static final int T__44=44;
     public static final int T__45=45;
-    public static final int RULE_HEX_DIGIT=34;
+    public static final int RULE_HEX_DIGIT=36;
     public static final int T__46=46;
     public static final int T__47=47;
-    public static final int RULE_INTERVAL_DECLARATION=10;
-    public static final int T__40=40;
-    public static final int T__41=41;
+    public static final int RULE_INTERVAL_DECLARATION=12;
     public static final int T__42=42;
     public static final int T__43=43;
     public static final int T__91=91;
@@ -82,27 +82,27 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final int T__102=102;
     public static final int T__94=94;
     public static final int T__101=101;
-    public static final int RULE_SUBPROGRAM_CONTROL_STATEMENT=16;
+    public static final int RULE_SUBPROGRAM_CONTROL_STATEMENT=18;
     public static final int T__90=90;
     public static final int T__99=99;
     public static final int T__95=95;
-    public static final int RULE_UNSIGNED_INTEGER_TYPE_NAME=7;
+    public static final int RULE_UNSIGNED_INTEGER_TYPE_NAME=9;
     public static final int T__96=96;
     public static final int T__97=97;
     public static final int T__98=98;
-    public static final int RULE_DIRECT_SIZE_PREFIX=30;
-    public static final int RULE_UNARY_OPERATOR=15;
+    public static final int RULE_DIRECT_SIZE_PREFIX=32;
+    public static final int RULE_UNARY_OPERATOR=17;
     public static final int T__70=70;
     public static final int T__71=71;
     public static final int T__72=72;
-    public static final int RULE_DIRECT_TYPE_PREFIX=29;
-    public static final int RULE_POWER_OPERATOR=14;
-    public static final int RULE_BINARY_INTEGER=19;
-    public static final int RULE_SL_COMMENT=37;
-    public static final int RULE_EXIT_STATEMENT=17;
-    public static final int RULE_TIME_PREF_LITERAL=18;
+    public static final int RULE_DIRECT_TYPE_PREFIX=31;
+    public static final int RULE_POWER_OPERATOR=16;
+    public static final int RULE_BINARY_INTEGER=21;
+    public static final int RULE_SL_COMMENT=39;
+    public static final int RULE_EXIT_STATEMENT=19;
+    public static final int RULE_TIME_PREF_LITERAL=20;
     public static final int T__77=77;
-    public static final int RULE_OCTAL_INTEGER=20;
+    public static final int RULE_OCTAL_INTEGER=22;
     public static final int T__78=78;
     public static final int T__79=79;
     public static final int T__73=73;
@@ -115,9 +115,9 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final int T__110=110;
     public static final int T__82=82;
     public static final int T__83=83;
-    public static final int RULE_WS=38;
-    public static final int RULE_ANY_OTHER=39;
-    public static final int RULE_PLC_ARDUINI_LITERAL=24;
+    public static final int RULE_WS=40;
+    public static final int RULE_ANY_OTHER=41;
+    public static final int RULE_PLC_ARDUINI_LITERAL=26;
     public static final int T__88=88;
     public static final int T__108=108;
     public static final int T__89=89;
@@ -127,7 +127,7 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final int T__104=104;
     public static final int T__85=85;
     public static final int T__103=103;
-    public static final int RULE_INTEGER=25;
+    public static final int RULE_INTEGER=27;
     public static final int T__86=86;
     public static final int T__106=106;
     public static final int T__87=87;
@@ -1675,7 +1675,7 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
             // InternalPoST.g:543:3: 'LOOP'
             {
              before(grammarAccess.getLoopStatementAccess().getLOOPKeyword()); 
-            match(input,40,FOLLOW_2); 
+            match(input,42,FOLLOW_2); 
              after(grammarAccess.getLoopStatementAccess().getLOOPKeyword()); 
 
             }
@@ -6509,7 +6509,7 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
                 alt10=7;
                 }
                 break;
-            case 40:
+            case 42:
                 {
                 alt10=8;
                 }
@@ -6992,13 +6992,13 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DataTypeName__Alternatives"
-    // InternalPoST.g:2120:1: rule__DataTypeName__Alternatives : ( ( ruleNumericTypeName ) | ( RULE_BIT_STRING_TYPE_NAME ) | ( 'STRING' ) | ( 'WSTRING' ) );
+    // InternalPoST.g:2120:1: rule__DataTypeName__Alternatives : ( ( ruleNumericTypeName ) | ( RULE_BIT_STRING_TYPE_NAME ) | ( RULE_TIME_TYPE_NAME ) | ( RULE_STRING_TYPE_NAME ) );
     public final void rule__DataTypeName__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPoST.g:2124:1: ( ( ruleNumericTypeName ) | ( RULE_BIT_STRING_TYPE_NAME ) | ( 'STRING' ) | ( 'WSTRING' ) )
+            // InternalPoST.g:2124:1: ( ( ruleNumericTypeName ) | ( RULE_BIT_STRING_TYPE_NAME ) | ( RULE_TIME_TYPE_NAME ) | ( RULE_STRING_TYPE_NAME ) )
             int alt14=4;
             switch ( input.LA(1) ) {
             case RULE_REAL_TYPE_NAME:
@@ -7013,12 +7013,12 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
                 alt14=2;
                 }
                 break;
-            case 41:
+            case RULE_TIME_TYPE_NAME:
                 {
                 alt14=3;
                 }
                 break;
-            case 42:
+            case RULE_STRING_TYPE_NAME:
                 {
                 alt14=4;
                 }
@@ -7066,14 +7066,14 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalPoST.g:2137:2: ( 'STRING' )
+                    // InternalPoST.g:2137:2: ( RULE_TIME_TYPE_NAME )
                     {
-                    // InternalPoST.g:2137:2: ( 'STRING' )
-                    // InternalPoST.g:2138:3: 'STRING'
+                    // InternalPoST.g:2137:2: ( RULE_TIME_TYPE_NAME )
+                    // InternalPoST.g:2138:3: RULE_TIME_TYPE_NAME
                     {
-                     before(grammarAccess.getDataTypeNameAccess().getSTRINGKeyword_2()); 
-                    match(input,41,FOLLOW_2); 
-                     after(grammarAccess.getDataTypeNameAccess().getSTRINGKeyword_2()); 
+                     before(grammarAccess.getDataTypeNameAccess().getTIME_TYPE_NAMETerminalRuleCall_2()); 
+                    match(input,RULE_TIME_TYPE_NAME,FOLLOW_2); 
+                     after(grammarAccess.getDataTypeNameAccess().getTIME_TYPE_NAMETerminalRuleCall_2()); 
 
                     }
 
@@ -7081,14 +7081,14 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalPoST.g:2143:2: ( 'WSTRING' )
+                    // InternalPoST.g:2143:2: ( RULE_STRING_TYPE_NAME )
                     {
-                    // InternalPoST.g:2143:2: ( 'WSTRING' )
-                    // InternalPoST.g:2144:3: 'WSTRING'
+                    // InternalPoST.g:2143:2: ( RULE_STRING_TYPE_NAME )
+                    // InternalPoST.g:2144:3: RULE_STRING_TYPE_NAME
                     {
-                     before(grammarAccess.getDataTypeNameAccess().getWSTRINGKeyword_3()); 
-                    match(input,42,FOLLOW_2); 
-                     after(grammarAccess.getDataTypeNameAccess().getWSTRINGKeyword_3()); 
+                     before(grammarAccess.getDataTypeNameAccess().getSTRING_TYPE_NAMETerminalRuleCall_3()); 
+                    match(input,RULE_STRING_TYPE_NAME,FOLLOW_2); 
+                     after(grammarAccess.getDataTypeNameAccess().getSTRING_TYPE_NAMETerminalRuleCall_3()); 
 
                     }
 
@@ -19697,7 +19697,7 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
                 int alt49=2;
                 int LA49_0 = input.LA(1);
 
-                if ( ((LA49_0>=RULE_SUBPROGRAM_CONTROL_STATEMENT && LA49_0<=RULE_EXIT_STATEMENT)||LA49_0==RULE_ID||LA49_0==40||LA49_0==74||(LA49_0>=76 && LA49_0<=78)||LA49_0==82||LA49_0==86||LA49_0==89||LA49_0==94||LA49_0==96) ) {
+                if ( ((LA49_0>=RULE_SUBPROGRAM_CONTROL_STATEMENT && LA49_0<=RULE_EXIT_STATEMENT)||LA49_0==RULE_ID||LA49_0==42||LA49_0==74||(LA49_0>=76 && LA49_0<=78)||LA49_0==82||LA49_0==86||LA49_0==89||LA49_0==94||LA49_0==96) ) {
                     alt49=1;
                 }
 
@@ -37531,8 +37531,8 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String dfa_1s = "\6\uffff";
-    static final String dfa_2s = "\1\27\1\101\1\27\2\uffff\1\101";
-    static final String dfa_3s = "\1\27\1\153\1\27\2\uffff\1\153";
+    static final String dfa_2s = "\1\31\1\101\1\31\2\uffff\1\101";
+    static final String dfa_3s = "\1\31\1\153\1\31\2\uffff\1\153";
     static final String dfa_4s = "\3\uffff\1\1\1\2\1\uffff";
     static final String dfa_5s = "\6\uffff}>";
     static final String[] dfa_6s = {
@@ -37574,24 +37574,24 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000004L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0600000000000000L,0x0000040000000000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000002L,0x0000040000000000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0400000000000002L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x4000000000000000L,0x0000040000000004L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x1000000000000000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x4000000000000002L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x2000000000000000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x8000000000000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000500L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000001400L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x00100000127C00E0L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0010000049F00380L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000018L});
     public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000180000000000L});
@@ -37601,26 +37601,26 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0000018000000180L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000000002L,0x0000018000000000L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000010000830000L,0x0000000142447400L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x00000400020C0000L,0x0000000142447400L});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008200L});
     public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000100L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000800000L,0x0000000000006000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000002000000L,0x0000000000006000L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000000000007000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0010000012FC00E0L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x001000004BF00380L});
     public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
     public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000802L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x8010000012FC80E0L,0x0000000000000040L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000001002L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000002002L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000002002L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x801000004BF20380L,0x0000000000000040L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000008002L});
     public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000600000000000L});
     public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000600000000002L});
     public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0007800000000000L});
@@ -37629,18 +37629,18 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0018000000000002L});
     public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x00E0000000000000L});
     public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x00E0000000000002L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x8010000012FC00E0L,0x0000000000000040L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000010000830002L,0x0000000142447400L});
-    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000010002L});
+    public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x801000004BF00380L,0x0000000000000040L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x00000400020C0002L,0x0000000142447400L});
+    public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000000L,0x0000000000380000L});
     public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000002L,0x0000000000100000L});
     public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x00100000020000C0L});
+    public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0010000008000300L});
     public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000000000L,0x0000000001200000L});
-    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x00100000020000C2L});
+    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0010000008000302L});
     public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
     public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000000000000000L,0x0000000004000000L});
     public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
@@ -37649,18 +37649,18 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
     public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
     public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
-    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x00000600000000F0L});
+    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x00000000000003F0L});
     public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L});
-    public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000800000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000000000800002L,0x0000400000000000L});
+    public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000002000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000000002000002L,0x0000400000000000L});
     public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
-    public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000010000000L});
     public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_88 = new BitSet(new long[]{0x0010000008000000L});
-    public static final BitSet FOLLOW_89 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_90 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_91 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_92 = new BitSet(new long[]{0x00100000120000E0L});
+    public static final BitSet FOLLOW_88 = new BitSet(new long[]{0x0010000020000000L});
+    public static final BitSet FOLLOW_89 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_90 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_91 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_92 = new BitSet(new long[]{0x0010000048000380L});
 
 }

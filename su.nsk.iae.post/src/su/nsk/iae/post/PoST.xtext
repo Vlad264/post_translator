@@ -327,7 +327,7 @@ TimeLiteral:
 ;
 
 terminal TIME_PREF_LITERAL:
-	('T' | 'TIME');
+	'T';
 
 terminal INTERVAL returns ecore::EString:
 	(INTEGER 'd')? (INTEGER 'h')? (INTEGER 'm')? (INTEGER 's')? (INTEGER 'ms')?;
@@ -337,7 +337,7 @@ terminal INTERVAL returns ecore::EString:
 /* ======================= START Elementary data types ======================= */
 
 DataTypeName returns ecore::EString:
-	NumericTypeName | BIT_STRING_TYPE_NAME | 'STRING' | 'WSTRING';
+	NumericTypeName | BIT_STRING_TYPE_NAME | TIME_TYPE_NAME| STRING_TYPE_NAME;
 
 NumericTypeName returns ecore::EString:
 	IntegerTypeName | REAL_TYPE_NAME;
@@ -356,6 +356,12 @@ terminal REAL_TYPE_NAME returns ecore::EString:
 
 terminal BIT_STRING_TYPE_NAME returns ecore::EString:
 	'BOOL' | 'BYTE' | 'WORD' | 'DWORD' | 'LWORD';
+	
+terminal TIME_TYPE_NAME returns ecore::EString:
+	'TIME';
+	
+terminal STRING_TYPE_NAME returns ecore::EString:
+	'STRING' | 'WSTRING';
 
 SimpleSpecificationInit:
 	{SimpleSpecificationInit} type=DataTypeName (':=' value=Constant)?;

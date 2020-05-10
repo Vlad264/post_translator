@@ -98,6 +98,8 @@ abstract class CommonGenerator {
 			case "LWORD":
 				return '''byte'''
 				
+			case "TIME":
+				return "unsigned long"
 			case "STRING":
 				return '''char*'''
 			case "WSTRING":
