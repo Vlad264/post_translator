@@ -164,6 +164,60 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		}
 	}
 	
+	/* ======================= END Variables Validator ======================= */
+	
+	/* ======================= START poST Validator ======================= */
+	
+	@Check
+	public void checkProcessNameConflicts(Process process) {
+		Program program = EcoreUtil2.getContainerOfType(process, Program.class);
+		for (Process p : program.getProcesses()) {
+			if ((p != process) && p.getName().equals(process.getName())) {
+				error("Name error: Process with this name already exists",
+						PoSTPackage.eINSTANCE.getProcess_Name());
+			}
+		}
+	}
+	
+	@Check
+	public void checkStateNameConflicts(su.nsk.iae.post.poST.State state) {
+		Process process = EcoreUtil2.getContainerOfType(state, Process.class);
+		for (su.nsk.iae.post.poST.State s : process.getStates()) {
+			if ((s != state) && s.getName().equals(state.getName())) {
+				error("Name error: State with this name already exists",
+						PoSTPackage.eINSTANCE.getState_Name());
+			}
+		}
+	}
+	
+	@Check
+	public void checkNextState(SetStateStatement statement) {
+		Process process = EcoreUtil2.getContainerOfType(statement, Process.class);
+		if (statement.isNext()) {
+			su.nsk.iae.post.poST.State state = EcoreUtil2.getContainerOfType(statement, su.nsk.iae.post.poST.State.class);
+			if (process.getStates().indexOf(state) + 1 >= process.getStates().size()) {
+				error("Invalide statement: no next state in the process",
+						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
+			}
+		} else {
+			if (!process.getStates().contains(statement.getState())) {
+				error("Invalide statement: no state " + statement.getState().getName() + " in the process " + process.getName(),
+						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
+			}
+		}
+	}
+	
+	@Check
+	public void checkStartProcess(StartProcessStatement statement) {
+		Program program = EcoreUtil2.getContainerOfType(statement, Program.class);
+		if (!program.getProcesses().contains(statement.getProcess())) {
+			//error("Invalide statement: no process " + statement.getProcess().getName() + " in the program " + program.getName(),
+			//		statement.);
+		}
+	}
+	
+	/* ======================= END poST Validator ======================= */
+	
 	private boolean checkVariableNameConflictsInExternalVars(SymbolicVariable varName) {
 		Model model = EcoreUtil2.getContainerOfType(varName, Model.class);
 		for (GlobalVarDeclaration varDecl : model.getConf().getResources().get(0).getResGlobVars()) {
@@ -239,7 +293,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	private boolean checkVarInitDeclaration(EList<VarInitDeclaration> decls, SymbolicVariable varName) {
 		for (VarInitDeclaration varList : decls) {
 			for (SymbolicVariable v : varList.getVarList().getVars()) {
-				if ((v != varName) && (v.getName().equals(varName.getName()))) {
+				if ((v != varName) && v.getName().equals(varName.getName())) {
 					return true;
 				}
 			}
@@ -250,7 +304,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	private boolean checkGlobalVarInitDeclaration(EList<GlobalVarInitDeclaration> decls, SymbolicVariable varName) {
 		for (GlobalVarInitDeclaration varList : decls) {
 			for (SymbolicVariable v : varList.getVarList().getVars()) {
-				if ((v != varName) && (v.getName().equals(varName.getName()))) {
+				if ((v != varName) && v.getName().equals(varName.getName())) {
 					return true;
 				}
 			}
@@ -261,44 +315,11 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	private boolean checkExternalVarInitDeclaration(EList<ExternalVarInitDeclaration> decls, SymbolicVariable varName) {
 		for (ExternalVarInitDeclaration varList : decls) {
 			for (SymbolicVariable v : varList.getVarList().getVars()) {
-				if ((v != varName) && (v.getName().equals(varName.getName()))) {
+				if ((v != varName) && v.getName().equals(varName.getName())) {
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	
-	/* ======================= END Variables Validator ======================= */
-	
-	/* ======================= START poST Validator ======================= */
-	
-	@Check
-	public void checkNextState(SetStateStatement statement) {
-		Process process = EcoreUtil2.getContainerOfType(statement, Process.class);
-		if (statement.isNext()) {
-			su.nsk.iae.post.poST.State state = EcoreUtil2.getContainerOfType(statement, su.nsk.iae.post.poST.State.class);
-			if (process.getStates().indexOf(state) + 1 >= process.getStates().size()) {
-				error("Invalide statement: no next state in the process",
-						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
-			}
-		} else {
-			if (!process.getStates().contains(statement.getState())) {
-				error("Invalide statement: no state " + statement.getState().getName() + " in the process " + process.getName(),
-						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
-			}
-		}
-	}
-	
-	@Check
-	public void checkStartProcess(StartProcessStatement statement) {
-		Program program = EcoreUtil2.getContainerOfType(statement, Program.class);
-		if (!program.getProcesses().contains(statement.getProcess())) {
-			//error("Invalide statement: no process " + statement.getProcess().getName() + " in the program " + program.getName(),
-			//		statement.);
-		}
-	}
-	
-	/* ======================= END poST Validator ======================= */
-	
 }
