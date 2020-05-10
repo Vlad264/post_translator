@@ -49,7 +49,7 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   protected abstract String generateGlobalVars();
   
-  protected abstract String generateInitTimeControl();
+  protected abstract String generateInit();
   
   protected abstract String generateTimeControlDefinition();
   
@@ -151,14 +151,18 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     {
       EList<Task> _tasks = this.configuration.getResources().get(0).getResStatement().getTasks();
       for(final Task t : _tasks) {
-        _builder.append("#define ");
-        String _upperCase = t.getName().toUpperCase();
-        _builder.append(_upperCase);
-        _builder.append("_INTERVAL ");
-        String _value = this.getValue(t.getInit().getInterval());
-        _builder.append(_value);
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
+        {
+          if (((!Objects.equal(this.getValue(t.getInit().getInterval()), "0")) && (!this.taskMap.get(t.getName()).isEmpty()))) {
+            _builder.append("#define ");
+            String _upperCase = t.getName().toUpperCase();
+            _builder.append(_upperCase);
+            _builder.append("_INTERVAL ");
+            String _value = this.getValue(t.getInit().getInterval());
+            _builder.append(_value);
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.newLine();
@@ -183,22 +187,8 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.append("int main(int argc, char *argv[]) {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("//Set ports B, C for input and port C for output");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("DDRB = 0xff;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("DDRC = 0xff;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("DDRD = 0;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    String _generateInitTimeControl = this.generateInitTimeControl();
-    _builder.append(_generateInitTimeControl, "\t");
+    String _generateInit = this.generateInit();
+    _builder.append(_generateInit, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -208,12 +198,16 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     {
       EList<Task> _tasks_1 = this.configuration.getResources().get(0).getResStatement().getTasks();
       for(final Task t_1 : _tasks_1) {
-        _builder.append("\t");
-        _builder.append("unsigned long ");
-        String _lowerCase = t_1.getName().toLowerCase();
-        _builder.append(_lowerCase, "\t");
-        _builder.append("_time;");
-        _builder.newLineIfNotEmpty();
+        {
+          if (((!Objects.equal(this.getValue(t_1.getInit().getInterval()), "0")) && (!this.taskMap.get(t_1.getName()).isEmpty()))) {
+            _builder.append("\t");
+            _builder.append("unsigned long ");
+            String _lowerCase = t_1.getName().toLowerCase();
+            _builder.append(_lowerCase, "\t");
+            _builder.append("_time;");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.append("\t");
@@ -240,80 +234,53 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
           boolean _not = (!_isEmpty);
           if (_not) {
             _builder.append("\t\t");
-            _builder.append("if (");
-            String _lowerCase_1 = t_2.getName().toLowerCase();
-            _builder.append(_lowerCase_1, "\t\t");
-            _builder.append("_time <= curtime) {");
+            _builder.newLine();
+            _builder.append("\t\t");
+            _builder.append("//Task ");
+            String _name = t_2.getName();
+            _builder.append(_name, "\t\t");
             _builder.newLineIfNotEmpty();
             {
-              List<TaskData> _get = this.taskMap.get(t_2.getName());
-              for(final TaskData p_1 : _get) {
+              String _value_1 = this.getValue(t_2.getInit().getInterval());
+              boolean _notEquals = (!Objects.equal(_value_1, "0"));
+              if (_notEquals) {
                 _builder.append("\t\t");
-                _builder.append("\t");
-                _builder.append("//Program ");
-                String _name = p_1.getName();
-                _builder.append(_name, "\t\t\t");
+                _builder.append("if (");
+                String _lowerCase_1 = t_2.getName().toLowerCase();
+                _builder.append(_lowerCase_1, "\t\t");
+                _builder.append("_time <= curtime) {");
                 _builder.newLineIfNotEmpty();
-                {
-                  List<String> _inVars = p_1.getInVars();
-                  for(final String in : _inVars) {
-                    {
-                      boolean _containsKey = this.directMap.containsKey(in);
-                      if (_containsKey) {
-                        _builder.append("\t\t");
-                        _builder.append("\t");
-                        String _generateRead = this.generateRead(this.parseDirectVar(this.directMap.get(in)), this.directMap.get(in).getSize(), this.directMap.get(in).getAddress(), in);
-                        _builder.append(_generateRead, "\t\t\t");
-                        _builder.newLineIfNotEmpty();
-                      }
-                    }
-                  }
-                }
                 _builder.append("\t\t");
                 _builder.append("\t");
-                String _programCall = p_1.getProgramCall();
-                _builder.append(_programCall, "\t\t\t");
-                _builder.append(";");
+                String _generateTask = this.generateTask(t_2);
+                _builder.append(_generateTask, "\t\t\t");
                 _builder.newLineIfNotEmpty();
-                {
-                  List<String> _outVars = p_1.getOutVars();
-                  for(final String out : _outVars) {
-                    {
-                      boolean _containsKey_1 = this.directMap.containsKey(out);
-                      if (_containsKey_1) {
-                        _builder.append("\t\t");
-                        _builder.append("\t");
-                        String _generateWrite = this.generateWrite(this.parseDirectVar(this.directMap.get(out)), this.directMap.get(out).getSize(), this.directMap.get(out).getAddress(), out);
-                        _builder.append(_generateWrite, "\t\t\t");
-                        _builder.newLineIfNotEmpty();
-                      }
-                    }
-                  }
-                }
                 _builder.append("\t\t");
                 _builder.append("\t");
+                _builder.append("//Find next activation time");
                 _builder.newLine();
+                _builder.append("\t\t");
+                _builder.append("\t");
+                String _lowerCase_2 = t_2.getName().toLowerCase();
+                _builder.append(_lowerCase_2, "\t\t\t");
+                _builder.append("_time = ");
+                String _generateGlobalTimeName_2 = this.generateGlobalTimeName();
+                _builder.append(_generateGlobalTimeName_2, "\t\t\t");
+                _builder.append(" + ");
+                String _upperCase_1 = t_2.getName().toUpperCase();
+                _builder.append(_upperCase_1, "\t\t\t");
+                _builder.append("_INTERVAL;");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t\t");
+                _builder.append("}");
+                _builder.newLine();
+              } else {
+                _builder.append("\t\t");
+                String _generateTask_1 = this.generateTask(t_2);
+                _builder.append(_generateTask_1, "\t\t");
+                _builder.newLineIfNotEmpty();
               }
             }
-            _builder.append("\t\t");
-            _builder.append("\t");
-            _builder.append("//Find next activation time");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("\t");
-            String _lowerCase_2 = t_2.getName().toLowerCase();
-            _builder.append(_lowerCase_2, "\t\t\t");
-            _builder.append("_time = ");
-            String _generateGlobalTimeName_2 = this.generateGlobalTimeName();
-            _builder.append(_generateGlobalTimeName_2, "\t\t\t");
-            _builder.append(" + ");
-            String _upperCase_1 = t_2.getName().toUpperCase();
-            _builder.append(_upperCase_1, "\t\t\t");
-            _builder.append("_INTERVAL;");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t\t");
-            _builder.append("}");
-            _builder.newLine();
           }
         }
       }
@@ -326,6 +293,50 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    return _builder.toString();
+  }
+  
+  private String generateTask(final Task task) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      List<TaskData> _get = this.taskMap.get(task.getName());
+      for(final TaskData p : _get) {
+        _builder.append("//Program ");
+        String _name = p.getName();
+        _builder.append(_name);
+        _builder.newLineIfNotEmpty();
+        {
+          List<String> _inVars = p.getInVars();
+          for(final String in : _inVars) {
+            {
+              boolean _containsKey = this.directMap.containsKey(in);
+              if (_containsKey) {
+                String _generateRead = this.generateRead(this.parseDirectVar(this.directMap.get(in)), this.directMap.get(in).getSize(), this.directMap.get(in).getAddress(), in);
+                _builder.append(_generateRead);
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+        String _programCall = p.getProgramCall();
+        _builder.append(_programCall);
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+        {
+          List<String> _outVars = p.getOutVars();
+          for(final String out : _outVars) {
+            {
+              boolean _containsKey_1 = this.directMap.containsKey(out);
+              if (_containsKey_1) {
+                String _generateWrite = this.generateWrite(this.parseDirectVar(this.directMap.get(out)), this.directMap.get(out).getSize(), this.directMap.get(out).getAddress(), out);
+                _builder.append(_generateWrite);
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+      }
+    }
     return _builder.toString();
   }
   

@@ -22,7 +22,12 @@ class ArduinoGenerator extends ConfigurationGenerator {
 		static volatile unsigned long ovf_cnt = 0;
 	'''
 	
-	override protected generateInitTimeControl() '''
+	override protected generateInit() '''
+		//Set ports B, C for input and port C for output
+		DDRB = 0xff;
+		DDRC = 0xff;
+		DDRD = 0;
+				
 		//Init timer0
 		TCCR0 = (1<<CS00) | (1 <<CS02); // /1024 prescaler
 		TIMSK = (1<<TOIE0); // overflow interrupt

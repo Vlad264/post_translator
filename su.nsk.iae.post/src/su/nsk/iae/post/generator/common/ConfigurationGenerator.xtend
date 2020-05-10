@@ -14,6 +14,7 @@ import su.nsk.iae.post.generator.common.vars.data.DirectVarData
 import org.eclipse.emf.common.util.EList
 import su.nsk.iae.post.poST.GlobalVarInitDeclaration
 import su.nsk.iae.post.poST.AssignmentType
+import su.nsk.iae.post.poST.Task
 
 abstract class ConfigurationGenerator extends CommonGenerator {
 	
@@ -25,7 +26,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	
 	protected def String generateInclude()
 	protected def String generateGlobalVars()
-	protected def String generateInitTimeControl()
+	protected def String generateInit()
 	protected def String generateTimeControlDefinition()
 	protected def String generateTimeControlCall()
 	protected def String parseDirectVar(DirectVarData varData)
@@ -76,7 +77,9 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 		«ENDFOR»
 		
 		«FOR t : configuration.resources.get(0).resStatement.tasks»
-			#define «t.name.toUpperCase»_INTERVAL «getValue(t.init.interval)»;
+			«IF (getValue(t.init.interval) != "0") && (!taskMap.get(t.name).empty)»
+				#define «t.name.toUpperCase»_INTERVAL «getValue(t.init.interval)»;
+			«ENDIF»
 		«ENDFOR»
 		
 		unsigned long «generateGlobalTimeName»;
@@ -88,45 +91,51 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 		«generateTimeControlDefinition»
 		
 		int main(int argc, char *argv[]) {
-			//Set ports B, C for input and port C for output
-			DDRB = 0xff;
-			DDRC = 0xff;
-			DDRD = 0;
-			
-			«generateInitTimeControl»
+			«generateInit»
 			
 			//Time vars for tasks
 			«FOR t : configuration.resources.get(0).resStatement.tasks»
-				unsigned long «t.name.toLowerCase»_time;
+				«IF (getValue(t.init.interval) != "0") && (!taskMap.get(t.name).empty)»
+					unsigned long «t.name.toLowerCase»_time;
+				«ENDIF»
 			«ENDFOR»
 			for (;;) {
 				«generateGlobalTimeName» = «generateTimeControlCall»;
 				«FOR t : configuration.resources.get(0).resStatement.tasks.sortWith([a,b | return a.init.priority - b.init.priority])»
 					«IF !taskMap.get(t.name).empty»
-						if («t.name.toLowerCase»_time <= curtime) {
-							«FOR p : taskMap.get(t.name)»
-								//Program «p.name»
-								«FOR in : p.inVars»
-									«IF directMap.containsKey(in)»
-										«generateRead(parseDirectVar(directMap.get(in)), directMap.get(in).size, directMap.get(in).address, in)»
-									«ENDIF»
-								«ENDFOR»
-								«p.programCall»;
-								«FOR out : p.outVars»
-									«IF directMap.containsKey(out)»
-										«generateWrite(parseDirectVar(directMap.get(out)), directMap.get(out).size, directMap.get(out).address, out)»
-									«ENDIF»
-								«ENDFOR»
-								
-							«ENDFOR»
-							//Find next activation time
-							«t.name.toLowerCase»_time = «generateGlobalTimeName» + «t.name.toUpperCase»_INTERVAL;
-						}
+						
+						//Task «t.name»
+						«IF getValue(t.init.interval) != "0"»
+							if («t.name.toLowerCase»_time <= curtime) {
+								«t.generateTask»
+								//Find next activation time
+								«t.name.toLowerCase»_time = «generateGlobalTimeName» + «t.name.toUpperCase»_INTERVAL;
+							}
+						«ELSE»
+							«t.generateTask»
+						«ENDIF»
 					«ENDIF»
 				«ENDFOR»
 			}
 			return 0;
 		}
+	'''
+	
+	private def String generateTask(Task task) '''
+		«FOR p : taskMap.get(task.name)»
+			//Program «p.name»
+			«FOR in : p.inVars»
+				«IF directMap.containsKey(in)»
+					«generateRead(parseDirectVar(directMap.get(in)), directMap.get(in).size, directMap.get(in).address, in)»
+				«ENDIF»
+			«ENDFOR»
+			«p.programCall»;
+			«FOR out : p.outVars»
+				«IF directMap.containsKey(out)»
+					«generateWrite(parseDirectVar(directMap.get(out)), directMap.get(out).size, directMap.get(out).address, out)»
+				«ENDIF»
+			«ENDFOR»
+		«ENDFOR»
 	'''
 	
 	private def void parseDirectVars(EList<GlobalVarInitDeclaration> list) {

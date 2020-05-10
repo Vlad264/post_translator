@@ -39,8 +39,18 @@ public class ArduinoGenerator extends ConfigurationGenerator {
   }
   
   @Override
-  protected String generateInitTimeControl() {
+  protected String generateInit() {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("//Set ports B, C for input and port C for output");
+    _builder.newLine();
+    _builder.append("DDRB = 0xff;");
+    _builder.newLine();
+    _builder.append("DDRC = 0xff;");
+    _builder.newLine();
+    _builder.append("DDRD = 0;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
     _builder.append("//Init timer0");
     _builder.newLine();
     _builder.append("TCCR0 = (1<<CS00) | (1 <<CS02); // /1024 prescaler");

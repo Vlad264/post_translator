@@ -140,10 +140,10 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	@Check
-	public void checkVariableUnreachable(SymbolicVariable varName) {
+	public void checkNeverUseVariable(SymbolicVariable varName) {
 		Program program = EcoreUtil2.getContainerOfType(varName, Program.class);
 		if ((program != null) && !hasCrossReferences(program, varName)) {
-			warning("Variable is nevef used", PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
+			warning("Variable is never use", PoSTPackage.eINSTANCE.getSymbolicVariable_Name());
 		}
 		
 	}

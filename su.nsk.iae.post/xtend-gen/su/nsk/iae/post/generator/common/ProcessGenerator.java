@@ -15,8 +15,6 @@ import su.nsk.iae.post.poST.VarDeclaration;
 
 @SuppressWarnings("all")
 public class ProcessGenerator {
-  private ProgramGenerator program;
-  
   private su.nsk.iae.post.poST.Process process;
   
   private VarHelper varList = new SimpleVarHelper();
@@ -26,7 +24,6 @@ public class ProcessGenerator {
   private List<StateGenerator> stateList = new LinkedList<StateGenerator>();
   
   public ProcessGenerator(final ProgramGenerator program, final su.nsk.iae.post.poST.Process process) {
-    this.program = program;
     this.process = process;
     this.varList.setNamePrefix(this.generateProcessPrefix());
     this.tempVarList.setNamePrefix(this.generateProcessPrefix());

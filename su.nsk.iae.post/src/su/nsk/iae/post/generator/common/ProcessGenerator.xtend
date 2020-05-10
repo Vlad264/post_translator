@@ -9,7 +9,6 @@ import su.nsk.iae.post.poST.Process
 
 class ProcessGenerator {
 	
-	ProgramGenerator program
 	Process process
 	
 	VarHelper varList = new SimpleVarHelper
@@ -18,7 +17,6 @@ class ProcessGenerator {
 	List<StateGenerator> stateList = new LinkedList
 	
 	new(ProgramGenerator program, Process process) {
-		this.program = program
 		this.process = process
 		
 		varList.namePrefix = generateProcessPrefix
