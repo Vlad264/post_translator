@@ -231,6 +231,26 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	@Check
+	public void checkProcessUnreachable(Process process) {
+		Program program = EcoreUtil2.getContainerOfType(process, Program.class);
+		if (program.getProcesses().indexOf(process) == 0) {
+			return;
+		}
+		for (Process p : program.getProcesses()) {
+			if (p == process) {
+				continue;
+			}
+			for (StartProcessStatement s : EcoreUtil2.getAllContentsOfType(p, StartProcessStatement.class)) {
+				if (s.getProcess() == process) {
+					return;
+				}
+			}
+		}
+		warning("Process is unreachable", 
+				PoSTPackage.eINSTANCE.getProcess_Name());
+	}
+	
+	@Check
 	public void checkStateNameConflicts(su.nsk.iae.post.poST.State state) {
 		Process process = EcoreUtil2.getContainerOfType(state, Process.class);
 		for (su.nsk.iae.post.poST.State s : process.getStates()) {
@@ -239,6 +259,31 @@ public class PoSTValidator extends AbstractPoSTValidator {
 						PoSTPackage.eINSTANCE.getState_Name());
 			}
 		}
+	}
+	
+	@Check
+	public void checkStateUnreachable(su.nsk.iae.post.poST.State state) {
+		Process process = EcoreUtil2.getContainerOfType(state, Process.class);
+		if (process.getStates().indexOf(state) == 0) {
+			return;
+		}
+		for (su.nsk.iae.post.poST.State st : process.getStates()) {
+			if (st == state) {
+				continue;
+			}
+			for (SetStateStatement s : EcoreUtil2.getAllContentsOfType(st, SetStateStatement.class)) {
+				if (s.getState() == state) {
+					return;
+				}
+			}
+		}
+		for (SetStateStatement s : EcoreUtil2.getAllContentsOfType(process.getStates().get(process.getStates().indexOf(state) - 1), SetStateStatement.class)) {
+			if (s.isNext()) {
+				return;
+			}
+		}
+		warning("State is unreachable", 
+				PoSTPackage.eINSTANCE.getState_Name());
 	}
 	
 	@Check
