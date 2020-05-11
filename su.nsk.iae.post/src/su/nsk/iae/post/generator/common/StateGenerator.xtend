@@ -43,7 +43,7 @@ class StateGenerator extends CommonGenerator {
 	}
 	
 	def String generateBody() '''
-		case «state.name.toUpperCase»: {
+		case «process.getEnumStateName(state.name)»: {
 			«state.statement.generateStatementList»
 			«IF state.timeout !== null»
 				//Timeout statement
@@ -137,7 +137,7 @@ class StateGenerator extends CommonGenerator {
 				return '''«IF s.process !== null»«program.generateProcessEnum(s.process.name)»«ELSE»«process.generateEnumName»«ENDIF» = ERROR;'''
 			SetStateStatement:
 				return '''
-					«process.generateEnumName» = «IF s.next»«process.getNextState(this).toUpperCase»«ELSE»«s.state.name.toUpperCase»«ENDIF»;
+					«process.generateEnumName» = «IF s.next»«process.getNextState(this).toUpperCase»«ELSE»«process.getEnumStateName(s.state.name)»«ENDIF»;
 					«process.generateStartTime» = «generateGlobalTimeName»;
 				'''
 		}

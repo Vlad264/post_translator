@@ -16,6 +16,8 @@ import su.nsk.iae.post.generator.common.vars.data.DirectVarData;
 public class ArduinoGenerator extends ConfigurationGenerator {
   public ArduinoGenerator(final Resource resource) {
     super(resource);
+    this.headerFileType = ".hh";
+    this.codeFileType = ".cpp";
   }
   
   @Override
@@ -31,8 +33,6 @@ public class ArduinoGenerator extends ConfigurationGenerator {
   @Override
   protected String generateGlobalVars() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("#define F_CPU 16000000UL");
-    _builder.newLine();
     _builder.append("static volatile unsigned long ovf_cnt = 0;");
     _builder.newLine();
     return _builder.toString();
@@ -53,9 +53,9 @@ public class ArduinoGenerator extends ConfigurationGenerator {
     _builder.newLine();
     _builder.append("//Init timer0");
     _builder.newLine();
-    _builder.append("TCCR0 = (1<<CS00) | (1 <<CS02); // /1024 prescaler");
+    _builder.append("TCCR0B = (1<<CS00) | (1 <<CS02); // /1024 prescaler");
     _builder.newLine();
-    _builder.append("TIMSK = (1<<TOIE0); // overflow interrupt");
+    _builder.append("TIMSK0 = (1<<TOIE0); // overflow interrupt");
     _builder.newLine();
     return _builder.toString();
   }
@@ -85,7 +85,7 @@ public class ArduinoGenerator extends ConfigurationGenerator {
     _builder.append("//Timer has already overflown, but interrupt has yet to execute");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("if ((TIFR & _BV(TOV0)) && (tcnt < 255)) {");
+    _builder.append("if ((TIFR0 & _BV(TOV0)) && (tcnt < 255)) {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("ovf++;");

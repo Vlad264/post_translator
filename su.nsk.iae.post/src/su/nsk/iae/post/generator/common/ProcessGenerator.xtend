@@ -45,11 +45,15 @@ class ProcessGenerator {
 		return varList.contains(name) || tempVarList.contains(name)
 	}
 	
+	def String getEnumStateName(String name) {
+		return '''«this.name.toUpperCase»_«name.toUpperCase»'''
+	}
+	
 	def String getNextState(StateGenerator state) {
 		if (stateList.indexOf(state) + 1 < stateList.size) {
-			return stateList.get(stateList.indexOf(state) + 1).name
+			return getEnumStateName(stateList.get(stateList.indexOf(state) + 1).name)
 		}
-		return stateList.get(0).name
+		return getEnumStateName(stateList.get(0).name)
 	}
 	
 	def String generateVars() '''
@@ -62,13 +66,11 @@ class ProcessGenerator {
 	
 	def String generateEnum(int index) '''
 		//Process «process.name» enum
-		enum g_process_«name.toLowerCase»_state_enum_t {
+		static enum g_process_«name.toLowerCase»_state_enum_t {
 			«FOR s : stateList»
-				«s.name.toUpperCase»,
+				«s.name.enumStateName»,
 			«ENDFOR»
-			STOP = 254,
-			ERROR = 255
-		} «generateEnumName» = «IF index === 0»«stateList.get(0).name.toUpperCase»«ELSE»STOP«ENDIF»;
+		} «generateEnumName» = «IF index === 0»«stateList.get(0).name.enumStateName»«ELSE»STOP«ENDIF»;
 	'''
 	
 	def String generateEnumName() {
@@ -81,8 +83,8 @@ class ProcessGenerator {
 			«FOR s : stateList»
 				«s.generateBody»
 			«ENDFOR»
-			STOP:
-			ERROR:
+			case STOP:
+			case ERROR:
 				break;
 		}
 	'''
@@ -92,7 +94,7 @@ class ProcessGenerator {
 	}
 	
 	def String generateInitDeclaration() {
-		return '''void init_process_«name»(void)'''
+		return '''static void init_process_«name»(void)'''
 	}
 	
 	def String generateInitDefinition() '''

@@ -58,8 +58,8 @@ public class StateGenerator extends CommonGenerator {
   public String generateBody() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("case ");
-    String _upperCase = this.state.getName().toUpperCase();
-    _builder.append(_upperCase);
+    String _enumStateName = this.process.getEnumStateName(this.state.getName());
+    _builder.append(_enumStateName);
     _builder.append(": {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -404,8 +404,8 @@ public class StateGenerator extends CommonGenerator {
             String _upperCase = this.process.getNextState(this).toUpperCase();
             _builder.append(_upperCase);
           } else {
-            String _upperCase_1 = ((SetStateStatement)s).getState().getName().toUpperCase();
-            _builder.append(_upperCase_1);
+            String _enumStateName = this.process.getEnumStateName(((SetStateStatement)s).getState().getName());
+            _builder.append(_enumStateName);
           }
         }
         _builder.append(";");

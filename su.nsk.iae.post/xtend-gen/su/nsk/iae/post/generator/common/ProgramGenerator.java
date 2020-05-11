@@ -109,17 +109,17 @@ public class ProgramGenerator extends CommonGenerator {
     return _builder_1.toString();
   }
   
-  public void generate(final IFileSystemAccess2 fsa) {
+  public void generate(final IFileSystemAccess2 fsa, final String header, final String code) {
     StringConcatenation _builder = new StringConcatenation();
     String _generateFileName = this.generateFileName();
     _builder.append(_generateFileName);
-    _builder.append(".h");
+    _builder.append(header);
     fsa.generateFile(_builder.toString(), this.generateH());
     StringConcatenation _builder_1 = new StringConcatenation();
     String _generateFileName_1 = this.generateFileName();
     _builder_1.append(_generateFileName_1);
-    _builder_1.append(".c");
-    fsa.generateFile(_builder_1.toString(), this.generateC());
+    _builder_1.append(code);
+    fsa.generateFile(_builder_1.toString(), this.generateC(header));
   }
   
   public String generateCall() {
@@ -156,7 +156,7 @@ public class ProgramGenerator extends CommonGenerator {
     return _builder.toString();
   }
   
-  private String generateC() {
+  private String generateC(final String header) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#include <stdint.h>");
     _builder.newLine();
@@ -165,7 +165,8 @@ public class ProgramGenerator extends CommonGenerator {
     _builder.append("#include \"");
     String _generateFileName = this.generateFileName();
     _builder.append(_generateFileName);
-    _builder.append(".h\"");
+    _builder.append(header);
+    _builder.append("\"");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("extern unsigned long ");
@@ -182,6 +183,11 @@ public class ProgramGenerator extends CommonGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.newLine();
+    _builder.append("#define STOP 254");
+    _builder.newLine();
+    _builder.append("#define ERROR 255");
+    _builder.newLine();
     _builder.newLine();
     {
       for(final ProcessGenerator p_1 : this.processList) {

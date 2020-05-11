@@ -45,6 +45,10 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   private Map<String, DirectVarData> directMap = new HashMap<String, DirectVarData>();
   
+  protected String headerFileType = ".h";
+  
+  protected String codeFileType = ".c";
+  
   protected abstract String generateInclude();
   
   protected abstract String generateGlobalVars();
@@ -126,10 +130,11 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   public void generate(final IFileSystemAccess2 fsa) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("main.c");
+    _builder.append("main");
+    _builder.append(this.codeFileType);
     fsa.generateFile(_builder.toString(), this.generateMain());
     for (final ProgramGenerator p : this.programList) {
-      p.generate(fsa);
+      p.generate(fsa, this.headerFileType, this.codeFileType);
     }
   }
   
@@ -147,7 +152,8 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
         _builder.append("#include \"");
         String _generateFileName = p.generateFileName();
         _builder.append(_generateFileName);
-        _builder.append(".h\"");
+        _builder.append(this.headerFileType);
+        _builder.append("\"");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -208,7 +214,7 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
             _builder.append("unsigned long ");
             String _lowerCase = t_1.getName().toLowerCase();
             _builder.append(_lowerCase, "\t");
-            _builder.append("_time;");
+            _builder.append("_time = 0;");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -252,7 +258,10 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
                 _builder.append("if (");
                 String _lowerCase_1 = t_2.getName().toLowerCase();
                 _builder.append(_lowerCase_1, "\t\t");
-                _builder.append("_time <= curtime) {");
+                _builder.append("_time <= ");
+                String _generateGlobalTimeName_2 = this.generateGlobalTimeName();
+                _builder.append(_generateGlobalTimeName_2, "\t\t");
+                _builder.append(") {");
                 _builder.newLineIfNotEmpty();
                 _builder.append("\t\t");
                 _builder.append("\t");
@@ -268,8 +277,8 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
                 String _lowerCase_2 = t_2.getName().toLowerCase();
                 _builder.append(_lowerCase_2, "\t\t\t");
                 _builder.append("_time = ");
-                String _generateGlobalTimeName_2 = this.generateGlobalTimeName();
-                _builder.append(_generateGlobalTimeName_2, "\t\t\t");
+                String _generateGlobalTimeName_3 = this.generateGlobalTimeName();
+                _builder.append(_generateGlobalTimeName_3, "\t\t\t");
                 _builder.append(" + ");
                 String _upperCase_1 = t_2.getName().toUpperCase();
                 _builder.append(_upperCase_1, "\t\t\t");

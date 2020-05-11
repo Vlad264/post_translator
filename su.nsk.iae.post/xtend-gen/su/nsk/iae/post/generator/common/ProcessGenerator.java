@@ -59,6 +59,16 @@ public class ProcessGenerator {
     return (this.varList.contains(name) || this.tempVarList.contains(name));
   }
   
+  public String getEnumStateName(final String name) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _upperCase = this.getName().toUpperCase();
+    _builder.append(_upperCase);
+    _builder.append("_");
+    String _upperCase_1 = name.toUpperCase();
+    _builder.append(_upperCase_1);
+    return _builder.toString();
+  }
+  
   public String getNextState(final StateGenerator state) {
     int _indexOf = this.stateList.indexOf(state);
     int _plus = (_indexOf + 1);
@@ -67,9 +77,9 @@ public class ProcessGenerator {
     if (_lessThan) {
       int _indexOf_1 = this.stateList.indexOf(state);
       int _plus_1 = (_indexOf_1 + 1);
-      return this.stateList.get(_plus_1).getName();
+      return this.getEnumStateName(this.stateList.get(_plus_1).getName());
     }
-    return this.stateList.get(0).getName();
+    return this.getEnumStateName(this.stateList.get(0).getName());
   }
   
   public String generateVars() {
@@ -95,7 +105,7 @@ public class ProcessGenerator {
     _builder.append(_name);
     _builder.append(" enum");
     _builder.newLineIfNotEmpty();
-    _builder.append("enum g_process_");
+    _builder.append("static enum g_process_");
     String _lowerCase = this.getName().toLowerCase();
     _builder.append(_lowerCase);
     _builder.append("_state_enum_t {");
@@ -103,26 +113,20 @@ public class ProcessGenerator {
     {
       for(final StateGenerator s : this.stateList) {
         _builder.append("\t");
-        String _upperCase = s.getName().toUpperCase();
-        _builder.append(_upperCase, "\t");
+        String _enumStateName = this.getEnumStateName(s.getName());
+        _builder.append(_enumStateName, "\t");
         _builder.append(",");
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("\t");
-    _builder.append("STOP = 254,");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("ERROR = 255");
-    _builder.newLine();
     _builder.append("} ");
     String _generateEnumName = this.generateEnumName();
     _builder.append(_generateEnumName);
     _builder.append(" = ");
     {
       if ((index == 0)) {
-        String _upperCase_1 = this.stateList.get(0).getName().toUpperCase();
-        _builder.append(_upperCase_1);
+        String _enumStateName_1 = this.getEnumStateName(this.stateList.get(0).getName());
+        _builder.append(_enumStateName_1);
       } else {
         _builder.append("STOP");
       }
@@ -161,10 +165,10 @@ public class ProcessGenerator {
       }
     }
     _builder.append("\t");
-    _builder.append("STOP:");
+    _builder.append("case STOP:");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("ERROR:");
+    _builder.append("case ERROR:");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("break;");
@@ -185,7 +189,7 @@ public class ProcessGenerator {
   
   public String generateInitDeclaration() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void init_process_");
+    _builder.append("static void init_process_");
     String _name = this.getName();
     _builder.append(_name);
     _builder.append("(void)");

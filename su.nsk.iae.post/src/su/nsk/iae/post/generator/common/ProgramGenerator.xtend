@@ -74,9 +74,9 @@ class ProgramGenerator extends CommonGenerator {
 		return '''«generateProgramPrefix»«name»'''
 	}
 	
-	def void generate(IFileSystemAccess2 fsa) {
-		fsa.generateFile('''«generateFileName».h''', generateH)
-		fsa.generateFile('''«generateFileName».c''', generateC)
+	def void generate(IFileSystemAccess2 fsa, String header, String code) {
+		fsa.generateFile('''«generateFileName»«header»''', generateH)
+		fsa.generateFile('''«generateFileName»«code»''', generateC(header))
 	}
 	
 	def String generateCall() {
@@ -95,15 +95,18 @@ class ProgramGenerator extends CommonGenerator {
 		«generateDeclaration»;
 	'''
 	
-	private def String generateC() '''
+	private def String generateC(String header) '''
 		#include <stdint.h>
 		#include <stdbool.h>
-		#include "«generateFileName».h"
+		#include "«generateFileName»«header»"
 		
 		extern unsigned long «generateGlobalTimeName»;
 		«FOR p : processList»
 			static unsigned long «p.generateStartTime»;
 		«ENDFOR»
+		
+		#define STOP 254
+		#define ERROR 255
 		
 		«FOR p : processList»
 			«p.generateEnum(processList.indexOf(p))»

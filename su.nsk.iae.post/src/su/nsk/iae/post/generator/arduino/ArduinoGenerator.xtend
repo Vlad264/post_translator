@@ -10,6 +10,8 @@ class ArduinoGenerator extends ConfigurationGenerator {
 	
 	new(Resource resource) {
 		super(resource)
+		headerFileType = ".hh"
+		codeFileType = ".cpp"
 	}
 	
 	override protected generateInclude() '''
@@ -18,7 +20,6 @@ class ArduinoGenerator extends ConfigurationGenerator {
 	'''
 	
 	override protected generateGlobalVars() '''
-		#define F_CPU 16000000UL
 		static volatile unsigned long ovf_cnt = 0;
 	'''
 	
@@ -29,8 +30,8 @@ class ArduinoGenerator extends ConfigurationGenerator {
 		DDRD = 0;
 				
 		//Init timer0
-		TCCR0 = (1<<CS00) | (1 <<CS02); // /1024 prescaler
-		TIMSK = (1<<TOIE0); // overflow interrupt
+		TCCR0B = (1<<CS00) | (1 <<CS02); // /1024 prescaler
+		TIMSK0 = (1<<TOIE0); // overflow interrupt
 	'''
 	
 	override protected generateTimeControlDefinition() '''	
@@ -42,7 +43,7 @@ class ArduinoGenerator extends ConfigurationGenerator {
 			SREG = sreg; //end of critical section - no sei() needed
 		
 			//Timer has already overflown, but interrupt has yet to execute
-			if ((TIFR & _BV(TOV0)) && (tcnt < 255)) {
+			if ((TIFR0 & _BV(TOV0)) && (tcnt < 255)) {
 				ovf++;
 			}
 		

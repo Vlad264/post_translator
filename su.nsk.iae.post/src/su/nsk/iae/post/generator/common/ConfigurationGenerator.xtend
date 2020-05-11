@@ -23,6 +23,8 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	List<ProgramGenerator> programList = new LinkedList
 	Map<String, List<TaskData>> taskMap = new HashMap
 	Map<String, DirectVarData> directMap = new HashMap
+	protected String headerFileType = ".h"
+	protected String codeFileType = ".c"
 	
 	protected def String generateInclude()
 	protected def String generateGlobalVars()
@@ -64,9 +66,9 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	}
 	
 	def void generate(IFileSystemAccess2 fsa) {
-		fsa.generateFile('''main.c''', generateMain)
+		fsa.generateFile('''main«codeFileType»''', generateMain)
 		for (p : programList) {
-			p.generate(fsa)
+			p.generate(fsa, headerFileType, codeFileType)
 		}
 	}
 	
@@ -75,7 +77,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 		#include <stdint.h>
 		#include <stdbool.h>
 		«FOR p : programList»
-			#include "«p.generateFileName».h"
+			#include "«p.generateFileName»«headerFileType»"
 		«ENDFOR»
 		
 		«FOR t : configuration.resources.get(0).resStatement.tasks»
@@ -98,7 +100,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 			//Time vars for tasks
 			«FOR t : configuration.resources.get(0).resStatement.tasks»
 				«IF (getValue(t.init.interval) != "0") && (!taskMap.get(t.name).empty)»
-					unsigned long «t.name.toLowerCase»_time;
+					unsigned long «t.name.toLowerCase»_time = 0;
 				«ENDIF»
 			«ENDFOR»
 			for (;;) {
@@ -108,7 +110,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 						
 						//Task «t.name»
 						«IF getValue(t.init.interval) != "0"»
-							if («t.name.toLowerCase»_time <= curtime) {
+							if («t.name.toLowerCase»_time <= «generateGlobalTimeName») {
 								«t.generateTask»
 								//Find next activation time
 								«t.name.toLowerCase»_time = «generateGlobalTimeName» + «t.name.toUpperCase»_INTERVAL;
