@@ -53,6 +53,8 @@ public class ProgramGenerator extends CommonGenerator {
   public ProgramGenerator(final Program program, final String taskName) {
     this.program = program;
     this.taskName = taskName.toLowerCase();
+    this.varList.setNamePrefix(this.generateProgramPrefix());
+    this.tempVarList.setNamePrefix(this.generateProgramPrefix());
     EList<InputVarDeclaration> _progInVars = program.getProgInVars();
     for (final InputVarDeclaration v : _progInVars) {
       this.inVarList.add(v);
@@ -88,8 +90,23 @@ public class ProgramGenerator extends CommonGenerator {
     this.mapVars.put(key, value);
   }
   
-  public boolean containsInputOutputVar(final String name) {
-    return ((this.inVarList.contains(name) || this.outVarList.contains(name)) || this.inOutVarList.contains(name));
+  public String generateProgramVar(final String name) {
+    if ((((this.inVarList.contains(name) || 
+      this.outVarList.contains(name)) || 
+      this.inOutVarList.contains(name)) || 
+      this.externalVarList.contains(name))) {
+      StringConcatenation _builder = new StringConcatenation();
+      String _upperCase = this.generateProgramPrefix().toUpperCase();
+      _builder.append(_upperCase);
+      String _upperCase_1 = name.toUpperCase();
+      _builder.append(_upperCase_1);
+      return _builder.toString();
+    }
+    StringConcatenation _builder_1 = new StringConcatenation();
+    String _generateProgramPrefix = this.generateProgramPrefix();
+    _builder_1.append(_generateProgramPrefix);
+    _builder_1.append(name);
+    return _builder_1.toString();
   }
   
   public void generate(final IFileSystemAccess2 fsa) {
@@ -173,26 +190,26 @@ public class ProgramGenerator extends CommonGenerator {
     _builder.newLine();
     _builder.append("//Input Vars");
     _builder.newLine();
-    String _generateInputOutputVar = this.generateInputOutputVar(this.inVarList);
-    _builder.append(_generateInputOutputVar);
+    String _generateExternVar = this.generateExternVar(this.inVarList);
+    _builder.append(_generateExternVar);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("//Output Vars");
     _builder.newLine();
-    String _generateInputOutputVar_1 = this.generateInputOutputVar(this.outVarList);
-    _builder.append(_generateInputOutputVar_1);
+    String _generateExternVar_1 = this.generateExternVar(this.outVarList);
+    _builder.append(_generateExternVar_1);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("//External Vars");
     _builder.newLine();
-    String _generate = this.externalVarList.generate();
-    _builder.append(_generate);
+    String _generateExternVar_2 = this.generateExternVar(this.externalVarList);
+    _builder.append(_generateExternVar_2);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("//Program Vars");
     _builder.newLine();
-    String _generate_1 = this.varList.generate();
-    _builder.append(_generate_1);
+    String _generate = this.varList.generate();
+    _builder.append(_generate);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("//Processes Vars");
@@ -222,8 +239,8 @@ public class ProgramGenerator extends CommonGenerator {
     _builder.append("//Program Temp Vars");
     _builder.newLine();
     _builder.append("\t");
-    String _generate_2 = this.tempVarList.generate();
-    _builder.append(_generate_2, "\t");
+    String _generate_1 = this.tempVarList.generate();
+    _builder.append(_generate_1, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -273,7 +290,13 @@ public class ProgramGenerator extends CommonGenerator {
     return _builder.toString();
   }
   
-  private String generateInputOutputVar(final VarHelper varList) {
+  private String generateProgramPrefix() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("program_");
+    return _builder.toString();
+  }
+  
+  private String generateExternVar(final VarHelper varList) {
     StringConcatenation _builder = new StringConcatenation();
     {
       List<VarData> _list = varList.getList();
@@ -290,11 +313,31 @@ public class ProgramGenerator extends CommonGenerator {
             _builder.append(";");
             _builder.newLineIfNotEmpty();
             _builder.append("#define ");
-            String _upperCase = v.getName().toUpperCase();
+            String _upperCase = this.generateProgramPrefix().toUpperCase();
             _builder.append(_upperCase);
+            String _upperCase_1 = v.getName().toUpperCase();
+            _builder.append(_upperCase_1);
             _builder.append(" ");
             String _get_1 = this.mapVars.get(v.getName());
             _builder.append(_get_1);
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("extern ");
+            String _type_1 = v.getType();
+            _builder.append(_type_1);
+            _builder.append(" ");
+            String _name = v.getName();
+            _builder.append(_name);
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("#define ");
+            String _upperCase_2 = this.generateProgramPrefix().toUpperCase();
+            _builder.append(_upperCase_2);
+            String _upperCase_3 = v.getName().toUpperCase();
+            _builder.append(_upperCase_3);
+            _builder.append(" ");
+            String _name_1 = v.getName();
+            _builder.append(_name_1);
             _builder.newLineIfNotEmpty();
           }
         }

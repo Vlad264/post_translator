@@ -10,7 +10,7 @@ import su.nsk.iae.post.poST.SignedInteger
 abstract class CommonGenerator {
 	
 	protected def String generateGlobalTimeName() {
-		return '''___global_time'''
+		return '''global_time'''
 	}
 	
 	protected def String getValue(Constant value) {

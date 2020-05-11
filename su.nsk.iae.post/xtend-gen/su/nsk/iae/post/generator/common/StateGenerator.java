@@ -626,14 +626,7 @@ public class StateGenerator extends CommonGenerator {
       _builder.append(_name);
       return _builder.toString();
     }
-    boolean _containsInputOutputVar = this.program.containsInputOutputVar(varName.getName());
-    if (_containsInputOutputVar) {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      String _upperCase = varName.getName().toUpperCase();
-      _builder_1.append(_upperCase);
-      return _builder_1.toString();
-    }
-    return this.getName();
+    return this.program.generateProgramVar(varName.getName());
   }
   
   private String generateEquOperators(final EquOperator op) {

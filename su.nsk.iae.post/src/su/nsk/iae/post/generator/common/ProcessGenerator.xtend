@@ -38,7 +38,7 @@ class ProcessGenerator {
 	}
 	
 	def String generateProcessPrefix() {
-		return '''___process_«name»_'''
+		return '''process_«name»_'''
 	}
 	
 	def boolean containsVar(String name) {
@@ -62,7 +62,7 @@ class ProcessGenerator {
 	
 	def String generateEnum(int index) '''
 		//Process «process.name» enum
-		enum ___process_«name.toLowerCase»_state_enum_t {
+		enum g_process_«name.toLowerCase»_state_enum_t {
 			«FOR s : stateList»
 				«s.name.toUpperCase»,
 			«ENDFOR»
@@ -72,7 +72,7 @@ class ProcessGenerator {
 	'''
 	
 	def String generateEnumName() {
-		return '''___process_«name.toLowerCase»_current_state'''
+		return '''g_process_«name.toLowerCase»_current_state'''
 	}
 	
 	def String generateBody() '''
@@ -102,7 +102,7 @@ class ProcessGenerator {
 	'''
 	
 	def String generateStartTime() {
-		return '''___process_«process.name.toLowerCase»_state_start_time'''
+		return '''g_process_«process.name.toLowerCase»_state_start_time'''
 	}
 	
 }

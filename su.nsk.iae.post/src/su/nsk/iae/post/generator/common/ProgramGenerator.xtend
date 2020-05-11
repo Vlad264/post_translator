@@ -33,6 +33,8 @@ class ProgramGenerator extends CommonGenerator {
 		this.program = program
 		this.taskName = taskName.toLowerCase
 		
+		varList.namePrefix = generateProgramPrefix
+		tempVarList.namePrefix = generateProgramPrefix
 		for (v : program.progInVars) {
 			inVarList.add(v)
 		}
@@ -61,8 +63,15 @@ class ProgramGenerator extends CommonGenerator {
 		mapVars.put(key, value)
 	}
 	
-	def boolean containsInputOutputVar(String name) {
-		return inVarList.contains(name) || outVarList.contains(name) || inOutVarList.contains(name)
+	def String generateProgramVar(String name) {
+		if (inVarList.contains(name) || 
+			outVarList.contains(name) || 
+			inOutVarList.contains(name) ||
+			externalVarList.contains(name)
+		) {
+			return '''«generateProgramPrefix.toUpperCase»«name.toUpperCase»'''
+		}
+		return '''«generateProgramPrefix»«name»'''
 	}
 	
 	def void generate(IFileSystemAccess2 fsa) {
@@ -100,13 +109,13 @@ class ProgramGenerator extends CommonGenerator {
 		«ENDFOR»
 		
 		//Input Vars
-		«inVarList.generateInputOutputVar»
+		«inVarList.generateExternVar»
 		
 		//Output Vars
-		«outVarList.generateInputOutputVar»
+		«outVarList.generateExternVar»
 		
 		//External Vars
-		«externalVarList.generate»
+		«externalVarList.generateExternVar»
 		
 		//Program Vars
 		«varList.generate»
@@ -146,11 +155,18 @@ class ProgramGenerator extends CommonGenerator {
 		return '''void program_«taskName»(void)'''
 	}
 	
-	private def String generateInputOutputVar(VarHelper varList) '''
+	private def String generateProgramPrefix() {
+		return '''program_'''
+	}
+	
+	private def String generateExternVar(VarHelper varList) '''
 		«FOR v : varList.list»
 			«IF mapVars.containsKey(v.name)»
 				extern «v.type» «mapVars.get(v.name)»;
-				#define «v.name.toUpperCase» «mapVars.get(v.name)»
+				#define «generateProgramPrefix.toUpperCase»«v.name.toUpperCase» «mapVars.get(v.name)»
+			«ELSE»
+				extern «v.type» «v.name»;
+				#define «generateProgramPrefix.toUpperCase»«v.name.toUpperCase» «v.name»
 			«ENDIF»
 		«ENDFOR»
 	'''

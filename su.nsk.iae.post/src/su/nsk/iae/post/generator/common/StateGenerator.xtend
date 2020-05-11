@@ -186,10 +186,7 @@ class StateGenerator extends CommonGenerator {
 		if (process.containsVar(varName.name)) {
 			return '''«process.generateProcessPrefix»«varName.name»'''
 		}
-		if (program.containsInputOutputVar(varName.name)) {
-			return '''«varName.name.toUpperCase»'''
-		}
-		return name
+		return program.generateProgramVar(varName.name)
 	}
 	
 	private def String generateEquOperators(EquOperator op) {

@@ -48,7 +48,7 @@ public class ProcessGenerator {
   
   public String generateProcessPrefix() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("___process_");
+    _builder.append("process_");
     String _name = this.getName();
     _builder.append(_name);
     _builder.append("_");
@@ -95,7 +95,7 @@ public class ProcessGenerator {
     _builder.append(_name);
     _builder.append(" enum");
     _builder.newLineIfNotEmpty();
-    _builder.append("enum ___process_");
+    _builder.append("enum g_process_");
     String _lowerCase = this.getName().toLowerCase();
     _builder.append(_lowerCase);
     _builder.append("_state_enum_t {");
@@ -134,7 +134,7 @@ public class ProcessGenerator {
   
   public String generateEnumName() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("___process_");
+    _builder.append("g_process_");
     String _lowerCase = this.getName().toLowerCase();
     _builder.append(_lowerCase);
     _builder.append("_current_state");
@@ -209,7 +209,7 @@ public class ProcessGenerator {
   
   public String generateStartTime() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("___process_");
+    _builder.append("g_process_");
     String _lowerCase = this.process.getName().toLowerCase();
     _builder.append(_lowerCase);
     _builder.append("_state_start_time");

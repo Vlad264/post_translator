@@ -13,7 +13,7 @@ import su.nsk.iae.post.poST.TimeLiteral;
 public abstract class CommonGenerator {
   protected String generateGlobalTimeName() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("___global_time");
+    _builder.append("global_time");
     return _builder.toString();
   }
   
