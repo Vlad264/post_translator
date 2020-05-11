@@ -158,6 +158,10 @@ public class ProgramGenerator extends CommonGenerator {
   
   private String generateC() {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("#include <stdint.h>");
+    _builder.newLine();
+    _builder.append("#include <stdbool.h>");
+    _builder.newLine();
     _builder.append("#include \"");
     String _generateFileName = this.generateFileName();
     _builder.append(_generateFileName);

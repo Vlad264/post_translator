@@ -112,35 +112,35 @@ public abstract class CommonGenerator {
       switch (type) {
         case "SINT":
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("int");
+          _builder.append("int8_t");
           return _builder.toString();
         case "INT":
           StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("int");
+          _builder_1.append("int16_t");
           return _builder_1.toString();
         case "DINT":
           StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("int");
+          _builder_2.append("int32_t");
           return _builder_2.toString();
         case "LINT":
           StringConcatenation _builder_3 = new StringConcatenation();
-          _builder_3.append("int");
+          _builder_3.append("int64_t");
           return _builder_3.toString();
         case "USINT":
           StringConcatenation _builder_4 = new StringConcatenation();
-          _builder_4.append("unsigned int");
+          _builder_4.append("uint8_t");
           return _builder_4.toString();
         case "UINT":
           StringConcatenation _builder_5 = new StringConcatenation();
-          _builder_5.append("unsigned int");
+          _builder_5.append("uint16_t");
           return _builder_5.toString();
         case "UDINT":
           StringConcatenation _builder_6 = new StringConcatenation();
-          _builder_6.append("unsigned int");
+          _builder_6.append("uint32_t");
           return _builder_6.toString();
         case "ULINT":
           StringConcatenation _builder_7 = new StringConcatenation();
-          _builder_7.append("unsigned int");
+          _builder_7.append("uint64_t");
           return _builder_7.toString();
         case "REAL":
           StringConcatenation _builder_8 = new StringConcatenation();
@@ -156,19 +156,19 @@ public abstract class CommonGenerator {
           return _builder_10.toString();
         case "BYTE":
           StringConcatenation _builder_11 = new StringConcatenation();
-          _builder_11.append("byte");
+          _builder_11.append("uint8_t");
           return _builder_11.toString();
         case "WORD":
           StringConcatenation _builder_12 = new StringConcatenation();
-          _builder_12.append("byte");
+          _builder_12.append("uint16_t");
           return _builder_12.toString();
         case "DWORD":
           StringConcatenation _builder_13 = new StringConcatenation();
-          _builder_13.append("byte");
+          _builder_13.append("uint32_t");
           return _builder_13.toString();
         case "LWORD":
           StringConcatenation _builder_14 = new StringConcatenation();
-          _builder_14.append("byte");
+          _builder_14.append("uint64_t");
           return _builder_14.toString();
         case "TIME":
           return "unsigned long";

@@ -96,6 +96,8 @@ class ProgramGenerator extends CommonGenerator {
 	'''
 	
 	private def String generateC() '''
+		#include <stdint.h>
+		#include <stdbool.h>
 		#include "«generateFileName».h"
 		
 		extern unsigned long «generateGlobalTimeName»;

@@ -65,22 +65,22 @@ abstract class CommonGenerator {
 	protected def String getCType(String type) {
 		switch(type) {
 			case "SINT":
-				return '''int'''
+				return '''int8_t'''
 			case "INT":
-				return '''int'''
+				return '''int16_t'''
 			case "DINT":
-				return '''int'''
+				return '''int32_t'''
 			case "LINT":
-				return '''int'''
+				return '''int64_t'''
 			
 			case "USINT":
-				return '''unsigned int'''
+				return '''uint8_t'''
 			case "UINT":
-				return '''unsigned int'''
+				return '''uint16_t'''
 			case "UDINT":
-				return '''unsigned int'''
+				return '''uint32_t'''
 			case "ULINT":
-				return '''unsigned int'''
+				return '''uint64_t'''
 			
 			case "REAL":
 				return '''float'''
@@ -90,13 +90,13 @@ abstract class CommonGenerator {
 			case "BOOL":
 				return '''bool'''
 			case "BYTE":
-				return '''byte'''
+				return '''uint8_t'''
 			case "WORD":
-				return '''byte'''
+				return '''uint16_t'''
 			case "DWORD":
-				return '''byte'''
+				return '''uint32_t'''
 			case "LWORD":
-				return '''byte'''
+				return '''uint64_t'''
 				
 			case "TIME":
 				return "unsigned long"

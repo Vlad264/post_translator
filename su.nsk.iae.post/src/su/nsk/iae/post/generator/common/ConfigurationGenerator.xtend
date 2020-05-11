@@ -72,6 +72,8 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	
 	private def String generateMain() '''
 		«generateInclude»
+		#include <stdint.h>
+		#include <stdbool.h>
 		«FOR p : programList»
 			#include "«p.generateFileName».h"
 		«ENDFOR»

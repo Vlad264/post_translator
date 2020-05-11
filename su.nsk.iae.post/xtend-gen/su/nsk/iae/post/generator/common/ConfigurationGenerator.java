@@ -138,6 +138,10 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     String _generateInclude = this.generateInclude();
     _builder.append(_generateInclude);
     _builder.newLineIfNotEmpty();
+    _builder.append("#include <stdint.h>");
+    _builder.newLine();
+    _builder.append("#include <stdbool.h>");
+    _builder.newLine();
     {
       for(final ProgramGenerator p : this.programList) {
         _builder.append("#include \"");
