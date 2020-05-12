@@ -108,7 +108,9 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cONKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
+		private final Alternatives cTypeAlternatives_3_0 = (Alternatives)cTypeAssignment_3.eContents().get(0);
+		private final RuleCall cTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0 = (RuleCall)cTypeAlternatives_3_0.eContents().get(0);
+		private final RuleCall cTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cTypeAlternatives_3_0.eContents().get(1);
 		private final Assignment cResGlobVarsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cResGlobVarsGlobalVarDeclarationParserRuleCall_4_0 = (RuleCall)cResGlobVarsAssignment_4.eContents().get(0);
 		private final Assignment cResStatementAssignment_5 = (Assignment)cGroup.eContents().get(5);
@@ -116,13 +118,12 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEND_RESOURCEKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Resource:
-		//	'RESOURCE' name=ID 'ON' type?=PLC_ARDUINI_LITERAL
-		//	resGlobVars+=GlobalVarDeclaration?
+		//	'RESOURCE' name=ID 'ON' type=(PLC_ARDUINI_LITERAL | ID) resGlobVars+=GlobalVarDeclaration?
 		//	resStatement=SingleResource
 		//	'END_RESOURCE';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'RESOURCE' name=ID 'ON' type?=PLC_ARDUINI_LITERAL resGlobVars+=GlobalVarDeclaration? resStatement=SingleResource
+		//'RESOURCE' name=ID 'ON' type=(PLC_ARDUINI_LITERAL | ID) resGlobVars+=GlobalVarDeclaration? resStatement=SingleResource
 		//'END_RESOURCE'
 		public Group getGroup() { return cGroup; }
 		
@@ -138,11 +139,17 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//'ON'
 		public Keyword getONKeyword_2() { return cONKeyword_2; }
 		
-		//type?=PLC_ARDUINI_LITERAL
+		//type=(PLC_ARDUINI_LITERAL | ID)
 		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 		
+		//(PLC_ARDUINI_LITERAL | ID)
+		public Alternatives getTypeAlternatives_3_0() { return cTypeAlternatives_3_0; }
+		
 		//PLC_ARDUINI_LITERAL
-		public RuleCall getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0() { return cTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0; }
+		public RuleCall getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0() { return cTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0; }
+		
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_3_0_1() { return cTypeIDTerminalRuleCall_3_0_1; }
 		
 		//resGlobVars+=GlobalVarDeclaration?
 		public Assignment getResGlobVarsAssignment_4() { return cResGlobVarsAssignment_4; }
@@ -3210,8 +3217,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Resource:
-	//	'RESOURCE' name=ID 'ON' type?=PLC_ARDUINI_LITERAL
-	//	resGlobVars+=GlobalVarDeclaration?
+	//	'RESOURCE' name=ID 'ON' type=(PLC_ARDUINI_LITERAL | ID) resGlobVars+=GlobalVarDeclaration?
 	//	resStatement=SingleResource
 	//	'END_RESOURCE';
 	public ResourceElements getResourceAccess() {

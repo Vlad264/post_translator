@@ -1,15 +1,17 @@
 package su.nsk.iae.post.generator.arduino
 
-import su.nsk.iae.post.generator.common.ConfigurationGenerator
-import org.eclipse.emf.ecore.resource.Resource
-import su.nsk.iae.post.generator.common.vars.data.DirectVarData
-import java.util.List
 import java.util.LinkedList
+import java.util.List
+import org.eclipse.emf.common.util.EList
+import su.nsk.iae.post.generator.common.ResourceGenerator
+import su.nsk.iae.post.generator.common.vars.data.DirectVarData
+import su.nsk.iae.post.poST.Program
+import su.nsk.iae.post.poST.Resource
 
-class ArduinoGenerator extends ConfigurationGenerator {
-	
-	new(Resource resource) {
-		super(resource)
+class ArduinoGenerator extends ResourceGenerator {
+
+	new(Resource resource, EList<Program> programs, String path) {
+		super(resource, programs, path)
 		headerFileType = ".hh"
 		codeFileType = ".cpp"
 	}

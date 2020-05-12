@@ -1,24 +1,25 @@
 package su.nsk.iae.post.generator.common
 
-import su.nsk.iae.post.poST.Configuration
-import java.util.List
-import java.util.LinkedList
-import org.eclipse.emf.ecore.resource.Resource
-import su.nsk.iae.post.poST.Model
-import java.util.Map
 import java.util.HashMap
-import org.eclipse.xtext.generator.IFileSystemAccess2
-import su.nsk.iae.post.generator.common.vars.VarHelper
-import su.nsk.iae.post.generator.common.vars.GlobalVarHelper
-import su.nsk.iae.post.generator.common.vars.data.DirectVarData
+import java.util.LinkedList
+import java.util.List
+import java.util.Map
 import org.eclipse.emf.common.util.EList
-import su.nsk.iae.post.poST.GlobalVarInitDeclaration
+import org.eclipse.xtext.generator.IFileSystemAccess2
+import su.nsk.iae.post.generator.common.vars.GlobalVarHelper
+import su.nsk.iae.post.generator.common.vars.VarHelper
+import su.nsk.iae.post.generator.common.vars.data.DirectVarData
 import su.nsk.iae.post.poST.AssignmentType
+import su.nsk.iae.post.poST.GlobalVarInitDeclaration
+import su.nsk.iae.post.poST.Program
+import su.nsk.iae.post.poST.Resource
 import su.nsk.iae.post.poST.Task
 
-abstract class ConfigurationGenerator extends CommonGenerator {
+abstract class ResourceGenerator extends CommonGenerator {
 	
-	Configuration configuration
+	Resource resource
+	String path = ""
+	
 	VarHelper globalVars = new GlobalVarHelper
 	List<ProgramGenerator> programList = new LinkedList
 	Map<String, List<TaskData>> taskMap = new HashMap
@@ -35,18 +36,17 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	protected def String generateRead(String directVarName, int size, List<Integer> address, String assigmentVar)
 	protected def String generateWrite(String directVarName, int size, List<Integer> address, String value)
 	
-	new(Resource resource) {
-		val model = resource.allContents.toIterable.filter(Model).get(0)
-		this.configuration = model.conf
-		val programs = model.programs
-		for (v : configuration.resources.get(0).resGlobVars) {
+	new(Resource resource, EList<Program> programs, String path) {
+		this.resource = resource
+		this.path = path
+		for (v : resource.resGlobVars) {
 			globalVars.add(v)
 			parseDirectVars(v.varsAs)
 		}
-		for (t : configuration.resources.get(0).resStatement.tasks) {
+		for (t : resource.resStatement.tasks) {
 			taskMap.put(t.name, new LinkedList)
 		}
-		for (c : configuration.resources.get(0).resStatement.programConfs) {
+		for (c : resource.resStatement.programConfs) {
 			val programGenerator = new ProgramGenerator(programs.findFirst[name == c.program.name], c.name)
 			taskMap.get(c.task.name).add(new TaskData)
 			taskMap.get(c.task.name).last.name = c.name
@@ -66,9 +66,9 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 	}
 	
 	def void generate(IFileSystemAccess2 fsa) {
-		fsa.generateFile('''main«codeFileType»''', generateMain)
+		fsa.generateFile('''«path»main«codeFileType»''', generateMain)
 		for (p : programList) {
-			p.generate(fsa, headerFileType, codeFileType)
+			p.generate(fsa, path, headerFileType, codeFileType)
 		}
 	}
 	
@@ -80,7 +80,7 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 			#include "«p.generateFileName»«headerFileType»"
 		«ENDFOR»
 		
-		«FOR t : configuration.resources.get(0).resStatement.tasks»
+		«FOR t : resource.resStatement.tasks»
 			«IF (getValue(t.init.interval) != "0") && (!taskMap.get(t.name).empty)»
 				#define «t.name.toUpperCase»_INTERVAL «getValue(t.init.interval)»;
 			«ENDIF»
@@ -98,14 +98,14 @@ abstract class ConfigurationGenerator extends CommonGenerator {
 			«generateInit»
 			
 			//Time vars for tasks
-			«FOR t : configuration.resources.get(0).resStatement.tasks»
+			«FOR t : resource.resStatement.tasks»
 				«IF (getValue(t.init.interval) != "0") && (!taskMap.get(t.name).empty)»
 					unsigned long «t.name.toLowerCase»_time = 0;
 				«ENDIF»
 			«ENDFOR»
 			for (;;) {
 				«generateGlobalTimeName» = «generateTimeControlCall»;
-				«FOR t : configuration.resources.get(0).resStatement.tasks.sortWith([a,b | return a.init.priority - b.init.priority])»
+				«FOR t : resource.resStatement.tasks.sortWith([a,b | return a.init.priority - b.init.priority])»
 					«IF !taskMap.get(t.name).empty»
 						
 						//Task «t.name»

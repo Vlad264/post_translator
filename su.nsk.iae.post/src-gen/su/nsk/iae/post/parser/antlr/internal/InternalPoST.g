@@ -245,20 +245,37 @@ ruleResource returns [EObject current=null]
 		}
 		(
 			(
-				lv_type_3_0=RULE_PLC_ARDUINI_LITERAL
-				{
-					newLeafNode(lv_type_3_0, grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getResourceRule());
+				(
+					lv_type_3_1=RULE_PLC_ARDUINI_LITERAL
+					{
+						newLeafNode(lv_type_3_1, grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"type",
-						true,
-						"su.nsk.iae.post.PoST.PLC_ARDUINI_LITERAL");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getResourceRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"type",
+							lv_type_3_1,
+							"su.nsk.iae.post.PoST.PLC_ARDUINI_LITERAL");
+					}
+					    |
+					lv_type_3_2=RULE_ID
+					{
+						newLeafNode(lv_type_3_2, grammarAccess.getResourceAccess().getTypeIDTerminalRuleCall_3_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getResourceRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"type",
+							lv_type_3_2,
+							"su.nsk.iae.post.PoST.ID");
+					}
+				)
 			)
 		)
 		(

@@ -31,6 +31,7 @@ public class PoSTParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, PoSTGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getResourceAccess().getTypeAlternatives_3_0(), "rule__Resource__TypeAlternatives_3_0");
 			builder.put(grammarAccess.getTaskInitializationAccess().getAlternatives(), "rule__TaskInitialization__Alternatives");
 			builder.put(grammarAccess.getProgramAccess().getAlternatives_2(), "rule__Program__Alternatives_2");
 			builder.put(grammarAccess.getProcessAccess().getAlternatives_2(), "rule__Process__Alternatives_2");

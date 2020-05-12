@@ -4,23 +4,28 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import su.nsk.iae.post.generator.common.ConfigurationGenerator
 import su.nsk.iae.post.generator.arduino.ArduinoGenerator
+import su.nsk.iae.post.generator.common.ResourceGenerator
+import su.nsk.iae.post.poST.Model
+import java.util.List
+import java.util.LinkedList
 
-/**
- * Generates code from your model files on save.
- * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
- */
 class PoSTGenerator extends AbstractGenerator {
 	
-	ConfigurationGenerator generator
+	List<ResourceGenerator> generators = new LinkedList
 	
 	override beforeGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		generator = new ArduinoGenerator(resource)
+		val model = resource.allContents.toIterable.filter(Model).get(0)
+		for (res : model.conf.resources) {
+			if (res.type.equals("PLC_ARDUINO")) {
+				generators.add(new ArduinoGenerator(res, model.programs, '''«res.name.toLowerCase»/'''))
+			}
+		}
 	}
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		generator.generate(fsa)
+		for (res : generators) {
+			res.generate(fsa)
+		}
 	}
 }

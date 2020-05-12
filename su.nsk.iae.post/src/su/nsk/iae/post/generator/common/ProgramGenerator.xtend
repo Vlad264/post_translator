@@ -74,9 +74,9 @@ class ProgramGenerator extends CommonGenerator {
 		return '''«generateProgramPrefix»«name»'''
 	}
 	
-	def void generate(IFileSystemAccess2 fsa, String header, String code) {
-		fsa.generateFile('''«generateFileName»«header»''', generateH)
-		fsa.generateFile('''«generateFileName»«code»''', generateC(header))
+	def void generate(IFileSystemAccess2 fsa, String path, String header, String code) {
+		fsa.generateFile('''«path»«generateFileName»«header»''', generateH)
+		fsa.generateFile('''«path»«generateFileName»«code»''', generateC(header))
 	}
 	
 	def String generateCall() {

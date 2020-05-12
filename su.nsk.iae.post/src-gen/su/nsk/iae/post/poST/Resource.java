@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link su.nsk.iae.post.poST.Resource#getName <em>Name</em>}</li>
- *   <li>{@link su.nsk.iae.post.poST.Resource#isType <em>Type</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.Resource#getType <em>Type</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.Resource#getResGlobVars <em>Res Glob Vars</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.Resource#getResStatement <em>Res Statement</em>}</li>
  * </ul>
@@ -55,22 +55,22 @@ public interface Resource extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(boolean)
+   * @see #setType(String)
    * @see su.nsk.iae.post.poST.PoSTPackage#getResource_Type()
    * @model
    * @generated
    */
-  boolean isType();
+  String getType();
 
   /**
-   * Sets the value of the '{@link su.nsk.iae.post.poST.Resource#isType <em>Type</em>}' attribute.
+   * Sets the value of the '{@link su.nsk.iae.post.poST.Resource#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #isType()
+   * @see #getType()
    * @generated
    */
-  void setType(boolean value);
+  void setType(String value);
 
   /**
    * Returns the value of the '<em><b>Res Glob Vars</b></em>' containment reference list.

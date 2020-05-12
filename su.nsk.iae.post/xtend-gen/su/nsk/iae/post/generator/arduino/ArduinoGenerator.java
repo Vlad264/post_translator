@@ -3,19 +3,21 @@ package su.nsk.iae.post.generator.arduino;
 import com.google.common.base.Objects;
 import java.util.LinkedList;
 import java.util.List;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import su.nsk.iae.post.generator.common.ConfigurationGenerator;
+import su.nsk.iae.post.generator.common.ResourceGenerator;
 import su.nsk.iae.post.generator.common.vars.data.DirectVarData;
+import su.nsk.iae.post.poST.Program;
+import su.nsk.iae.post.poST.Resource;
 
 @SuppressWarnings("all")
-public class ArduinoGenerator extends ConfigurationGenerator {
-  public ArduinoGenerator(final Resource resource) {
-    super(resource);
+public class ArduinoGenerator extends ResourceGenerator {
+  public ArduinoGenerator(final Resource resource, final EList<Program> programs, final String path) {
+    super(resource, programs, path);
     this.headerFileType = ".hh";
     this.codeFileType = ".cpp";
   }

@@ -33,7 +33,7 @@ import su.nsk.iae.post.poST.SingleResource;
  * </p>
  * <ul>
  *   <li>{@link su.nsk.iae.post.poST.impl.ResourceImpl#getName <em>Name</em>}</li>
- *   <li>{@link su.nsk.iae.post.poST.impl.ResourceImpl#isType <em>Type</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.impl.ResourceImpl#getType <em>Type</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.impl.ResourceImpl#getResGlobVars <em>Res Glob Vars</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.impl.ResourceImpl#getResStatement <em>Res Statement</em>}</li>
  * </ul>
@@ -63,24 +63,24 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isType() <em>Type</em>}' attribute.
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isType()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final boolean TYPE_EDEFAULT = false;
+  protected static final String TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #isType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isType()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected boolean type = TYPE_EDEFAULT;
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getResGlobVars() <em>Res Glob Vars</em>}' containment reference list.
@@ -154,7 +154,7 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
    * @generated
    */
   @Override
-  public boolean isType()
+  public String getType()
   {
     return type;
   }
@@ -165,9 +165,9 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
    * @generated
    */
   @Override
-  public void setType(boolean newType)
+  public void setType(String newType)
   {
-    boolean oldType = type;
+    String oldType = type;
     type = newType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.RESOURCE__TYPE, oldType, type));
@@ -269,7 +269,7 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
       case PoSTPackage.RESOURCE__NAME:
         return getName();
       case PoSTPackage.RESOURCE__TYPE:
-        return isType();
+        return getType();
       case PoSTPackage.RESOURCE__RES_GLOB_VARS:
         return getResGlobVars();
       case PoSTPackage.RESOURCE__RES_STATEMENT:
@@ -293,7 +293,7 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
         setName((String)newValue);
         return;
       case PoSTPackage.RESOURCE__TYPE:
-        setType((Boolean)newValue);
+        setType((String)newValue);
         return;
       case PoSTPackage.RESOURCE__RES_GLOB_VARS:
         getResGlobVars().clear();
@@ -345,7 +345,7 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
       case PoSTPackage.RESOURCE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case PoSTPackage.RESOURCE__TYPE:
-        return type != TYPE_EDEFAULT;
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case PoSTPackage.RESOURCE__RES_GLOB_VARS:
         return resGlobVars != null && !resGlobVars.isEmpty();
       case PoSTPackage.RESOURCE__RES_STATEMENT:

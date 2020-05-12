@@ -54,8 +54,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getOCTAL_INTEGERToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getOR_OPERATORRule())
 			return getOR_OPERATORToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getPLC_ARDUINI_LITERALRule())
-			return getPLC_ARDUINI_LITERALToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPOWER_OPERATORRule())
 			return getPOWER_OPERATORToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPRIORITY_DECLARATIONRule())
@@ -161,16 +159,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "OR";
-	}
-	
-	/**
-	 * terminal PLC_ARDUINI_LITERAL:
-	 * 	'PLC_ARDUINO';
-	 */
-	protected String getPLC_ARDUINI_LITERALToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "PLC_ARDUINO";
 	}
 	
 	/**

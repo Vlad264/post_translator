@@ -1754,6 +1754,27 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Resource__TypeAlternatives_3_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0()); }
+		RULE_PLC_ARDUINI_LITERAL
+		{ after(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getResourceAccess().getTypeIDTerminalRuleCall_3_0_1()); }
+		RULE_ID
+		{ after(grammarAccess.getResourceAccess().getTypeIDTerminalRuleCall_3_0_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__TaskInitialization__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -10606,9 +10627,9 @@ rule__Resource__TypeAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0()); }
-		RULE_PLC_ARDUINI_LITERAL
-		{ after(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0()); }
+		{ before(grammarAccess.getResourceAccess().getTypeAlternatives_3_0()); }
+		(rule__Resource__TypeAlternatives_3_0)
+		{ after(grammarAccess.getResourceAccess().getTypeAlternatives_3_0()); }
 	)
 ;
 finally {

@@ -2760,11 +2760,11 @@ public interface PoSTPackage extends EPackage
   EAttribute getResource_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.Resource#isType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.Resource#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Type</em>'.
-   * @see su.nsk.iae.post.poST.Resource#isType()
+   * @see su.nsk.iae.post.poST.Resource#getType()
    * @see #getResource()
    * @generated
    */

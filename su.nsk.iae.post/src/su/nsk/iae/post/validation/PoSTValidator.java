@@ -238,6 +238,14 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	/* ======================= START poST Validator ======================= */
 	
 	@Check
+	public void checkResource(Resource resource) {
+		if (!resource.getType().equals("PLC_ARDUINO")) {
+			error("Platform error: Translator doesn't support this platform",
+					PoSTPackage.eINSTANCE.getResource_Type());
+		}
+	}
+	
+	@Check
 	public void checkProcessNameConflicts(Process process) {
 		Program program = EcoreUtil2.getContainerOfType(process, Program.class);
 		for (Process p : program.getProcesses()) {

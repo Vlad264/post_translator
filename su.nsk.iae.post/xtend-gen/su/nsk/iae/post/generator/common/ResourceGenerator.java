@@ -1,21 +1,16 @@
 package su.nsk.iae.post.generator.common;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import su.nsk.iae.post.generator.common.CommonGenerator;
 import su.nsk.iae.post.generator.common.ProgramGenerator;
 import su.nsk.iae.post.generator.common.TaskData;
@@ -23,19 +18,20 @@ import su.nsk.iae.post.generator.common.vars.GlobalVarHelper;
 import su.nsk.iae.post.generator.common.vars.VarHelper;
 import su.nsk.iae.post.generator.common.vars.data.DirectVarData;
 import su.nsk.iae.post.poST.AssignmentType;
-import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
 import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
-import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.Program;
 import su.nsk.iae.post.poST.ProgramConfElement;
 import su.nsk.iae.post.poST.ProgramConfiguration;
+import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 
 @SuppressWarnings("all")
-public abstract class ConfigurationGenerator extends CommonGenerator {
-  private Configuration configuration;
+public abstract class ResourceGenerator extends CommonGenerator {
+  private Resource resource;
+  
+  private String path = "";
   
   private VarHelper globalVars = new GlobalVarHelper();
   
@@ -65,24 +61,23 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   protected abstract String generateWrite(final String directVarName, final int size, final List<Integer> address, final String value);
   
-  public ConfigurationGenerator(final Resource resource) {
-    final Model model = ((Model[])Conversions.unwrapArray((Iterables.<Model>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Model.class)), Model.class))[0];
-    this.configuration = model.getConf();
-    final EList<Program> programs = model.getPrograms();
-    EList<GlobalVarDeclaration> _resGlobVars = this.configuration.getResources().get(0).getResGlobVars();
+  public ResourceGenerator(final Resource resource, final EList<Program> programs, final String path) {
+    this.resource = resource;
+    this.path = path;
+    EList<GlobalVarDeclaration> _resGlobVars = resource.getResGlobVars();
     for (final GlobalVarDeclaration v : _resGlobVars) {
       {
         this.globalVars.add(v);
         this.parseDirectVars(v.getVarsAs());
       }
     }
-    EList<Task> _tasks = this.configuration.getResources().get(0).getResStatement().getTasks();
+    EList<Task> _tasks = resource.getResStatement().getTasks();
     for (final Task t : _tasks) {
       String _name = t.getName();
       LinkedList<TaskData> _linkedList = new LinkedList<TaskData>();
       this.taskMap.put(_name, _linkedList);
     }
-    EList<ProgramConfiguration> _programConfs = this.configuration.getResources().get(0).getResStatement().getProgramConfs();
+    EList<ProgramConfiguration> _programConfs = resource.getResStatement().getProgramConfs();
     for (final ProgramConfiguration c : _programConfs) {
       {
         final Function1<Program, Boolean> _function = (Program it) -> {
@@ -130,11 +125,12 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
   
   public void generate(final IFileSystemAccess2 fsa) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append(this.path);
     _builder.append("main");
     _builder.append(this.codeFileType);
     fsa.generateFile(_builder.toString(), this.generateMain());
     for (final ProgramGenerator p : this.programList) {
-      p.generate(fsa, this.headerFileType, this.codeFileType);
+      p.generate(fsa, this.path, this.headerFileType, this.codeFileType);
     }
   }
   
@@ -159,7 +155,7 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     }
     _builder.newLine();
     {
-      EList<Task> _tasks = this.configuration.getResources().get(0).getResStatement().getTasks();
+      EList<Task> _tasks = this.resource.getResStatement().getTasks();
       for(final Task t : _tasks) {
         {
           if (((!Objects.equal(this.getValue(t.getInit().getInterval()), "0")) && (!this.taskMap.get(t.getName()).isEmpty()))) {
@@ -206,7 +202,7 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
     _builder.append("//Time vars for tasks");
     _builder.newLine();
     {
-      EList<Task> _tasks_1 = this.configuration.getResources().get(0).getResStatement().getTasks();
+      EList<Task> _tasks_1 = this.resource.getResStatement().getTasks();
       for(final Task t_1 : _tasks_1) {
         {
           if (((!Objects.equal(this.getValue(t_1.getInit().getInterval()), "0")) && (!this.taskMap.get(t_1.getName()).isEmpty()))) {
@@ -237,7 +233,7 @@ public abstract class ConfigurationGenerator extends CommonGenerator {
         int _priority_1 = b.getInit().getPriority();
         return (_priority - _priority_1);
       };
-      List<Task> _sortWith = IterableExtensions.<Task>sortWith(this.configuration.getResources().get(0).getResStatement().getTasks(), _function);
+      List<Task> _sortWith = IterableExtensions.<Task>sortWith(this.resource.getResStatement().getTasks(), _function);
       for(final Task t_2 : _sortWith) {
         {
           boolean _isEmpty = this.taskMap.get(t_2.getName()).isEmpty();

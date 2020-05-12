@@ -109,13 +109,15 @@ public class ProgramGenerator extends CommonGenerator {
     return _builder_1.toString();
   }
   
-  public void generate(final IFileSystemAccess2 fsa, final String header, final String code) {
+  public void generate(final IFileSystemAccess2 fsa, final String path, final String header, final String code) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append(path);
     String _generateFileName = this.generateFileName();
     _builder.append(_generateFileName);
     _builder.append(header);
     fsa.generateFile(_builder.toString(), this.generateH());
     StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append(path);
     String _generateFileName_1 = this.generateFileName();
     _builder_1.append(_generateFileName_1);
     _builder_1.append(code);
