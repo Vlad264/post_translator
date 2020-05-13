@@ -13,6 +13,7 @@ import org.eclipse.xtext.validation.Check;
 
 import su.nsk.iae.post.poST.AssignmentStatement;
 import su.nsk.iae.post.poST.AssignmentType;
+import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -242,6 +243,17 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if (!resource.getType().equals("PLC_ARDUINO")) {
 			error("Platform error: Translator doesn't support this platform",
 					PoSTPackage.eINSTANCE.getResource_Type());
+		}
+	}
+	
+	@Check
+	public void checkResourceNameConflicts(Resource resource) {
+		Configuration conf = EcoreUtil2.getContainerOfType(resource, Configuration.class);
+		for (Resource res : conf.getResources()) {
+			if ((res != resource) && res.getName().equals(resource.getName())) {
+				error("Name error: Resource with this name already exists",
+						PoSTPackage.eINSTANCE.getProcess_Name());
+			}
 		}
 	}
 	
