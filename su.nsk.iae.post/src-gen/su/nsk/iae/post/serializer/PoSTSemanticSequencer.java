@@ -939,7 +939,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Resource returns Resource
 	 *
 	 * Constraint:
-	 *     (name=ID (type=PLC_ARDUINI_LITERAL | type=ID) resGlobVars+=GlobalVarDeclaration? resStatement=SingleResource)
+	 *     (name=ID (type=ATMEGA168_PLC_LITERAL | type=ID) resGlobVars+=GlobalVarDeclaration? resStatement=SingleResource)
 	 */
 	protected void sequence_Resource(ISerializationContext context, Resource semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

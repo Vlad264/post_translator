@@ -17,7 +17,7 @@ class PoSTGenerator extends AbstractGenerator {
 	override beforeGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val model = resource.allContents.toIterable.filter(Model).get(0)
 		for (res : model.conf.resources) {
-			if (res.type.equals("PLC_ARDUINO")) {
+			if (res.type.equals("ATmega168_PLC")) {
 				generators.add(new ArduinoGenerator(res, model.programs, '''«res.name.toLowerCase»/'''))
 			}
 		}

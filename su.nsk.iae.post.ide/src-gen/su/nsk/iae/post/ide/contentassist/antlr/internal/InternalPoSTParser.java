@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_PLC_ARDUINI_LITERAL", "RULE_ID", "RULE_BIT_STRING_TYPE_NAME", "RULE_TIME_TYPE_NAME", "RULE_STRING_TYPE_NAME", "RULE_REAL_TYPE_NAME", "RULE_SIGNED_INTEGER_TYPE_NAME", "RULE_UNSIGNED_INTEGER_TYPE_NAME", "RULE_SINGLE_DECLARATION", "RULE_PRIORITY_DECLARATION", "RULE_INTERVAL_DECLARATION", "RULE_OR_OPERATOR", "RULE_XOR_OPERATOR", "RULE_AND_OPERATOR", "RULE_POWER_OPERATOR", "RULE_UNARY_OPERATOR", "RULE_SUBPROGRAM_CONTROL_STATEMENT", "RULE_EXIT_STATEMENT", "RULE_TIME_PREF_LITERAL", "RULE_BINARY_INTEGER", "RULE_OCTAL_INTEGER", "RULE_HEX_INTEGER", "RULE_BOOLEAN_LITERAL", "RULE_INTEGER", "RULE_DIRECT_VARIABLE", "RULE_INTERVAL", "RULE_REAL", "RULE_DIRECT_TYPE_PREFIX", "RULE_DIRECT_SIZE_PREFIX", "RULE_DIGIT", "RULE_BIT", "RULE_OCTAL_DIGIT", "RULE_HEX_DIGIT", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'LOOP'", "':='", "'=>'", "'='", "'<>'", "'<'", "'>'", "'<='", "'>='", "'+'", "'-'", "'*'", "'/'", "'MOD'", "'CONFIGURATION'", "'END_CONFIGURATION'", "'RESOURCE'", "'ON'", "'END_RESOURCE'", "';'", "'TASK'", "'('", "')'", "','", "'PROGRAM'", "':'", "'WITH'", "'END_PROGRAM'", "'PROCESS'", "'END_PROCESS'", "'STATE'", "'END_STATE'", "'SET'", "'IN'", "'START'", "'STOP'", "'ERROR'", "'TIMEOUT'", "'THEN'", "'END_TIMEOUT'", "'IF'", "'END_IF'", "'ELSEIF'", "'ELSE'", "'CASE'", "'OF'", "'END_CASE'", "'FOR'", "'DO'", "'END_FOR'", "'TO'", "'BY'", "'WHILE'", "'END_WHILE'", "'REPEAT'", "'UNTIL'", "'END_REPEAT'", "'VAR_INPUT'", "'END_VAR'", "'VAR_OUTPUT'", "'VAR_IN_OUT'", "'VAR'", "'VAR_TEMP'", "'VAR_EXTERNAL'", "'VAR_GLOBAL'", "'AT'", "'#'", "'NEXT'", "'CONSTANT'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ATMEGA168_PLC_LITERAL", "RULE_ID", "RULE_BIT_STRING_TYPE_NAME", "RULE_TIME_TYPE_NAME", "RULE_STRING_TYPE_NAME", "RULE_REAL_TYPE_NAME", "RULE_SIGNED_INTEGER_TYPE_NAME", "RULE_UNSIGNED_INTEGER_TYPE_NAME", "RULE_SINGLE_DECLARATION", "RULE_PRIORITY_DECLARATION", "RULE_INTERVAL_DECLARATION", "RULE_OR_OPERATOR", "RULE_XOR_OPERATOR", "RULE_AND_OPERATOR", "RULE_POWER_OPERATOR", "RULE_UNARY_OPERATOR", "RULE_SUBPROGRAM_CONTROL_STATEMENT", "RULE_EXIT_STATEMENT", "RULE_TIME_PREF_LITERAL", "RULE_BINARY_INTEGER", "RULE_OCTAL_INTEGER", "RULE_HEX_INTEGER", "RULE_BOOLEAN_LITERAL", "RULE_INTEGER", "RULE_DIRECT_VARIABLE", "RULE_INTERVAL", "RULE_REAL", "RULE_DIRECT_TYPE_PREFIX", "RULE_DIRECT_SIZE_PREFIX", "RULE_DIGIT", "RULE_BIT", "RULE_OCTAL_DIGIT", "RULE_HEX_DIGIT", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'LOOP'", "':='", "'=>'", "'='", "'<>'", "'<'", "'>'", "'<='", "'>='", "'+'", "'-'", "'*'", "'/'", "'MOD'", "'CONFIGURATION'", "'END_CONFIGURATION'", "'RESOURCE'", "'ON'", "'END_RESOURCE'", "';'", "'TASK'", "'('", "')'", "','", "'PROGRAM'", "':'", "'WITH'", "'END_PROGRAM'", "'PROCESS'", "'END_PROCESS'", "'STATE'", "'END_STATE'", "'SET'", "'IN'", "'START'", "'STOP'", "'ERROR'", "'TIMEOUT'", "'THEN'", "'END_TIMEOUT'", "'IF'", "'END_IF'", "'ELSEIF'", "'ELSE'", "'CASE'", "'OF'", "'END_CASE'", "'FOR'", "'DO'", "'END_FOR'", "'TO'", "'BY'", "'WHILE'", "'END_WHILE'", "'REPEAT'", "'UNTIL'", "'END_REPEAT'", "'VAR_INPUT'", "'END_VAR'", "'VAR_OUTPUT'", "'VAR_IN_OUT'", "'VAR'", "'VAR_TEMP'", "'VAR_EXTERNAL'", "'VAR_GLOBAL'", "'AT'", "'#'", "'NEXT'", "'CONSTANT'"
     };
     public static final int T__50=50;
     public static final int RULE_PRIORITY_DECLARATION=13;
@@ -56,6 +56,7 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final int T__64=64;
     public static final int RULE_BIT_STRING_TYPE_NAME=6;
     public static final int T__65=65;
+    public static final int RULE_ATMEGA168_PLC_LITERAL=4;
     public static final int RULE_DIRECT_VARIABLE=28;
     public static final int RULE_OR_OPERATOR=15;
     public static final int RULE_XOR_OPERATOR=16;
@@ -117,7 +118,6 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
     public static final int T__83=83;
     public static final int RULE_WS=40;
     public static final int RULE_ANY_OTHER=41;
-    public static final int RULE_PLC_ARDUINI_LITERAL=4;
     public static final int T__88=88;
     public static final int T__108=108;
     public static final int T__89=89;
@@ -5399,17 +5399,17 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Resource__TypeAlternatives_3_0"
-    // InternalPoST.g:1757:1: rule__Resource__TypeAlternatives_3_0 : ( ( RULE_PLC_ARDUINI_LITERAL ) | ( RULE_ID ) );
+    // InternalPoST.g:1757:1: rule__Resource__TypeAlternatives_3_0 : ( ( RULE_ATMEGA168_PLC_LITERAL ) | ( RULE_ID ) );
     public final void rule__Resource__TypeAlternatives_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalPoST.g:1761:1: ( ( RULE_PLC_ARDUINI_LITERAL ) | ( RULE_ID ) )
+            // InternalPoST.g:1761:1: ( ( RULE_ATMEGA168_PLC_LITERAL ) | ( RULE_ID ) )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==RULE_PLC_ARDUINI_LITERAL) ) {
+            if ( (LA1_0==RULE_ATMEGA168_PLC_LITERAL) ) {
                 alt1=1;
             }
             else if ( (LA1_0==RULE_ID) ) {
@@ -5423,14 +5423,14 @@ public class InternalPoSTParser extends AbstractInternalContentAssistParser {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalPoST.g:1762:2: ( RULE_PLC_ARDUINI_LITERAL )
+                    // InternalPoST.g:1762:2: ( RULE_ATMEGA168_PLC_LITERAL )
                     {
-                    // InternalPoST.g:1762:2: ( RULE_PLC_ARDUINI_LITERAL )
-                    // InternalPoST.g:1763:3: RULE_PLC_ARDUINI_LITERAL
+                    // InternalPoST.g:1762:2: ( RULE_ATMEGA168_PLC_LITERAL )
+                    // InternalPoST.g:1763:3: RULE_ATMEGA168_PLC_LITERAL
                     {
-                     before(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0()); 
-                    match(input,RULE_PLC_ARDUINI_LITERAL,FOLLOW_2); 
-                     after(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0()); 
+                     before(grammarAccess.getResourceAccess().getTypeATMEGA168_PLC_LITERALTerminalRuleCall_3_0_0()); 
+                    match(input,RULE_ATMEGA168_PLC_LITERAL,FOLLOW_2); 
+                     after(grammarAccess.getResourceAccess().getTypeATMEGA168_PLC_LITERALTerminalRuleCall_3_0_0()); 
 
                     }
 

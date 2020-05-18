@@ -1760,9 +1760,9 @@ rule__Resource__TypeAlternatives_3_0
 	}
 :
 	(
-		{ before(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0()); }
-		RULE_PLC_ARDUINI_LITERAL
-		{ after(grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0()); }
+		{ before(grammarAccess.getResourceAccess().getTypeATMEGA168_PLC_LITERALTerminalRuleCall_3_0_0()); }
+		RULE_ATMEGA168_PLC_LITERAL
+		{ after(grammarAccess.getResourceAccess().getTypeATMEGA168_PLC_LITERALTerminalRuleCall_3_0_0()); }
 	)
 	|
 	(
@@ -12494,7 +12494,7 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-RULE_PLC_ARDUINI_LITERAL : 'PLC_ARDUINO';
+RULE_ATMEGA168_PLC_LITERAL : 'ATmega168_PLC';
 
 RULE_SINGLE_DECLARATION : 'SINGLE';
 

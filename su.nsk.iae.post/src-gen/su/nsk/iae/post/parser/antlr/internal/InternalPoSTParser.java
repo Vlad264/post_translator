@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalPoSTParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_PLC_ARDUINI_LITERAL", "RULE_SINGLE_DECLARATION", "RULE_INTERVAL_DECLARATION", "RULE_PRIORITY_DECLARATION", "RULE_INTEGER", "RULE_OR_OPERATOR", "RULE_XOR_OPERATOR", "RULE_AND_OPERATOR", "RULE_POWER_OPERATOR", "RULE_UNARY_OPERATOR", "RULE_SUBPROGRAM_CONTROL_STATEMENT", "RULE_EXIT_STATEMENT", "RULE_DIRECT_VARIABLE", "RULE_TIME_PREF_LITERAL", "RULE_INTERVAL", "RULE_BIT_STRING_TYPE_NAME", "RULE_TIME_TYPE_NAME", "RULE_STRING_TYPE_NAME", "RULE_REAL_TYPE_NAME", "RULE_SIGNED_INTEGER_TYPE_NAME", "RULE_UNSIGNED_INTEGER_TYPE_NAME", "RULE_BINARY_INTEGER", "RULE_OCTAL_INTEGER", "RULE_HEX_INTEGER", "RULE_BOOLEAN_LITERAL", "RULE_REAL", "RULE_DIRECT_TYPE_PREFIX", "RULE_DIRECT_SIZE_PREFIX", "RULE_DIGIT", "RULE_BIT", "RULE_OCTAL_DIGIT", "RULE_HEX_DIGIT", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'CONFIGURATION'", "'END_CONFIGURATION'", "'RESOURCE'", "'ON'", "'END_RESOURCE'", "';'", "'TASK'", "'('", "')'", "':='", "','", "'PROGRAM'", "'WITH'", "':'", "'END_PROGRAM'", "'PROCESS'", "'END_PROCESS'", "'STATE'", "'END_STATE'", "'SET'", "'NEXT'", "'IN'", "'STOP'", "'ERROR'", "'START'", "'TIMEOUT'", "'THEN'", "'END_TIMEOUT'", "'LOOP'", "'IF'", "'ELSEIF'", "'ELSE'", "'END_IF'", "'CASE'", "'OF'", "'END_CASE'", "'FOR'", "'DO'", "'END_FOR'", "'TO'", "'BY'", "'WHILE'", "'END_WHILE'", "'REPEAT'", "'UNTIL'", "'END_REPEAT'", "'VAR_INPUT'", "'END_VAR'", "'VAR_OUTPUT'", "'VAR_IN_OUT'", "'VAR'", "'CONSTANT'", "'VAR_TEMP'", "'VAR_EXTERNAL'", "'VAR_GLOBAL'", "'AT'", "'#'", "'-'", "'=>'", "'='", "'<>'", "'<'", "'>'", "'<='", "'>='", "'+'", "'*'", "'/'", "'MOD'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_ATMEGA168_PLC_LITERAL", "RULE_SINGLE_DECLARATION", "RULE_INTERVAL_DECLARATION", "RULE_PRIORITY_DECLARATION", "RULE_INTEGER", "RULE_OR_OPERATOR", "RULE_XOR_OPERATOR", "RULE_AND_OPERATOR", "RULE_POWER_OPERATOR", "RULE_UNARY_OPERATOR", "RULE_SUBPROGRAM_CONTROL_STATEMENT", "RULE_EXIT_STATEMENT", "RULE_DIRECT_VARIABLE", "RULE_TIME_PREF_LITERAL", "RULE_INTERVAL", "RULE_BIT_STRING_TYPE_NAME", "RULE_TIME_TYPE_NAME", "RULE_STRING_TYPE_NAME", "RULE_REAL_TYPE_NAME", "RULE_SIGNED_INTEGER_TYPE_NAME", "RULE_UNSIGNED_INTEGER_TYPE_NAME", "RULE_BINARY_INTEGER", "RULE_OCTAL_INTEGER", "RULE_HEX_INTEGER", "RULE_BOOLEAN_LITERAL", "RULE_REAL", "RULE_DIRECT_TYPE_PREFIX", "RULE_DIRECT_SIZE_PREFIX", "RULE_DIGIT", "RULE_BIT", "RULE_OCTAL_DIGIT", "RULE_HEX_DIGIT", "RULE_LETTER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'CONFIGURATION'", "'END_CONFIGURATION'", "'RESOURCE'", "'ON'", "'END_RESOURCE'", "';'", "'TASK'", "'('", "')'", "':='", "','", "'PROGRAM'", "'WITH'", "':'", "'END_PROGRAM'", "'PROCESS'", "'END_PROCESS'", "'STATE'", "'END_STATE'", "'SET'", "'NEXT'", "'IN'", "'STOP'", "'ERROR'", "'START'", "'TIMEOUT'", "'THEN'", "'END_TIMEOUT'", "'LOOP'", "'IF'", "'ELSEIF'", "'ELSE'", "'END_IF'", "'CASE'", "'OF'", "'END_CASE'", "'FOR'", "'DO'", "'END_FOR'", "'TO'", "'BY'", "'WHILE'", "'END_WHILE'", "'REPEAT'", "'UNTIL'", "'END_REPEAT'", "'VAR_INPUT'", "'END_VAR'", "'VAR_OUTPUT'", "'VAR_IN_OUT'", "'VAR'", "'CONSTANT'", "'VAR_TEMP'", "'VAR_EXTERNAL'", "'VAR_GLOBAL'", "'AT'", "'#'", "'-'", "'=>'", "'='", "'<>'", "'<'", "'>'", "'<='", "'>='", "'+'", "'*'", "'/'", "'MOD'"
     };
     public static final int T__50=50;
     public static final int RULE_PRIORITY_DECLARATION=8;
@@ -56,6 +56,7 @@ public class InternalPoSTParser extends AbstractInternalAntlrParser {
     public static final int T__64=64;
     public static final int RULE_BIT_STRING_TYPE_NAME=20;
     public static final int T__65=65;
+    public static final int RULE_ATMEGA168_PLC_LITERAL=5;
     public static final int RULE_DIRECT_VARIABLE=17;
     public static final int RULE_OR_OPERATOR=10;
     public static final int RULE_XOR_OPERATOR=11;
@@ -117,7 +118,6 @@ public class InternalPoSTParser extends AbstractInternalAntlrParser {
     public static final int T__83=83;
     public static final int RULE_WS=40;
     public static final int RULE_ANY_OTHER=41;
-    public static final int RULE_PLC_ARDUINI_LITERAL=5;
     public static final int T__88=88;
     public static final int T__108=108;
     public static final int T__89=89;
@@ -591,7 +591,7 @@ public class InternalPoSTParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleResource"
-    // InternalPoST.g:212:1: ruleResource returns [EObject current=null] : (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' ) ;
+    // InternalPoST.g:212:1: ruleResource returns [EObject current=null] : (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' ) ;
     public final EObject ruleResource() throws RecognitionException {
         EObject current = null;
 
@@ -610,11 +610,11 @@ public class InternalPoSTParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalPoST.g:218:2: ( (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' ) )
-            // InternalPoST.g:219:2: (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' )
+            // InternalPoST.g:218:2: ( (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' ) )
+            // InternalPoST.g:219:2: (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' )
             {
-            // InternalPoST.g:219:2: (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' )
-            // InternalPoST.g:220:3: otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE'
+            // InternalPoST.g:219:2: (otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE' )
+            // InternalPoST.g:220:3: otherlv_0= 'RESOURCE' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'ON' ( ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) ) ) ( (lv_resGlobVars_4_0= ruleGlobalVarDeclaration ) )? ( (lv_resStatement_5_0= ruleSingleResource ) ) otherlv_6= 'END_RESOURCE'
             {
             otherlv_0=(Token)match(input,44,FOLLOW_4); 
 
@@ -650,17 +650,17 @@ public class InternalPoSTParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getResourceAccess().getONKeyword_2());
             		
-            // InternalPoST.g:246:3: ( ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) ) )
-            // InternalPoST.g:247:4: ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) )
+            // InternalPoST.g:246:3: ( ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) ) )
+            // InternalPoST.g:247:4: ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) )
             {
-            // InternalPoST.g:247:4: ( (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID ) )
-            // InternalPoST.g:248:5: (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID )
+            // InternalPoST.g:247:4: ( (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID ) )
+            // InternalPoST.g:248:5: (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID )
             {
-            // InternalPoST.g:248:5: (lv_type_3_1= RULE_PLC_ARDUINI_LITERAL | lv_type_3_2= RULE_ID )
+            // InternalPoST.g:248:5: (lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL | lv_type_3_2= RULE_ID )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( (LA5_0==RULE_PLC_ARDUINI_LITERAL) ) {
+            if ( (LA5_0==RULE_ATMEGA168_PLC_LITERAL) ) {
                 alt5=1;
             }
             else if ( (LA5_0==RULE_ID) ) {
@@ -674,11 +674,11 @@ public class InternalPoSTParser extends AbstractInternalAntlrParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalPoST.g:249:6: lv_type_3_1= RULE_PLC_ARDUINI_LITERAL
+                    // InternalPoST.g:249:6: lv_type_3_1= RULE_ATMEGA168_PLC_LITERAL
                     {
-                    lv_type_3_1=(Token)match(input,RULE_PLC_ARDUINI_LITERAL,FOLLOW_9); 
+                    lv_type_3_1=(Token)match(input,RULE_ATMEGA168_PLC_LITERAL,FOLLOW_9); 
 
-                    						newLeafNode(lv_type_3_1, grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0());
+                    						newLeafNode(lv_type_3_1, grammarAccess.getResourceAccess().getTypeATMEGA168_PLC_LITERALTerminalRuleCall_3_0_0());
                     					
 
                     						if (current==null) {
@@ -688,7 +688,7 @@ public class InternalPoSTParser extends AbstractInternalAntlrParser {
                     							current,
                     							"type",
                     							lv_type_3_1,
-                    							"su.nsk.iae.post.PoST.PLC_ARDUINI_LITERAL");
+                    							"su.nsk.iae.post.PoST.ATMEGA168_PLC_LITERAL");
                     					
 
                     }

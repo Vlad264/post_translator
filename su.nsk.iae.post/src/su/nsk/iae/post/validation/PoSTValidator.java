@@ -240,7 +240,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	
 	@Check
 	public void checkResource(Resource resource) {
-		if (!resource.getType().equals("PLC_ARDUINO")) {
+		if (!resource.getType().equals("ATmega168_PLC")) {
 			error("Platform error: Translator doesn't support this platform",
 					PoSTPackage.eINSTANCE.getResource_Type());
 		}

@@ -26,7 +26,7 @@ public class PoSTGenerator extends AbstractGenerator {
     final Model model = ((Model[])Conversions.unwrapArray((Iterables.<Model>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Model.class)), Model.class))[0];
     EList<su.nsk.iae.post.poST.Resource> _resources = model.getConf().getResources();
     for (final su.nsk.iae.post.poST.Resource res : _resources) {
-      boolean _equals = res.getType().equals("PLC_ARDUINO");
+      boolean _equals = res.getType().equals("ATmega168_PLC");
       if (_equals) {
         EList<Program> _programs = model.getPrograms();
         StringConcatenation _builder = new StringConcatenation();

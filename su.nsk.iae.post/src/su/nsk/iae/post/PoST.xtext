@@ -17,13 +17,13 @@ Configuration:
 	'END_CONFIGURATION';
 
 Resource:
-	'RESOURCE' name=ID 'ON' type=(PLC_ARDUINI_LITERAL | ID)
+	'RESOURCE' name=ID 'ON' type=(ATMEGA168_PLC_LITERAL | ID)
 		(resGlobVars+=GlobalVarDeclaration)?
 		resStatement=SingleResource
 	'END_RESOURCE';
 
-terminal PLC_ARDUINI_LITERAL returns ecore::EString:
-	'PLC_ARDUINO';
+terminal ATMEGA168_PLC_LITERAL returns ecore::EString:
+	'ATmega168_PLC';
 
 SingleResource:
 	{SingleResource} (tasks+=Task ';')*

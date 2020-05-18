@@ -246,9 +246,9 @@ ruleResource returns [EObject current=null]
 		(
 			(
 				(
-					lv_type_3_1=RULE_PLC_ARDUINI_LITERAL
+					lv_type_3_1=RULE_ATMEGA168_PLC_LITERAL
 					{
-						newLeafNode(lv_type_3_1, grammarAccess.getResourceAccess().getTypePLC_ARDUINI_LITERALTerminalRuleCall_3_0_0());
+						newLeafNode(lv_type_3_1, grammarAccess.getResourceAccess().getTypeATMEGA168_PLC_LITERALTerminalRuleCall_3_0_0());
 					}
 					{
 						if ($current==null) {
@@ -258,7 +258,7 @@ ruleResource returns [EObject current=null]
 							$current,
 							"type",
 							lv_type_3_1,
-							"su.nsk.iae.post.PoST.PLC_ARDUINI_LITERAL");
+							"su.nsk.iae.post.PoST.ATMEGA168_PLC_LITERAL");
 					}
 					    |
 					lv_type_3_2=RULE_ID
@@ -4771,7 +4771,7 @@ ruleMulOperator returns [Enumerator current=null]
 	)
 ;
 
-RULE_PLC_ARDUINI_LITERAL : 'PLC_ARDUINO';
+RULE_ATMEGA168_PLC_LITERAL : 'ATmega168_PLC';
 
 RULE_SINGLE_DECLARATION : 'SINGLE';
 
