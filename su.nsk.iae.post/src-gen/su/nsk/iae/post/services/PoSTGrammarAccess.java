@@ -999,21 +999,25 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	public class ResetTimerStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ResetTimerStatement");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRESETKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cTIMERKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cResetTimerStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cRESETKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cTIMERKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//ResetTimerStatement:
-		//	'RESET' 'TIMER';
+		//	{ResetTimerStatement} 'RESET' 'TIMER';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'RESET' 'TIMER'
+		//{ResetTimerStatement} 'RESET' 'TIMER'
 		public Group getGroup() { return cGroup; }
 		
+		//{ResetTimerStatement}
+		public Action getResetTimerStatementAction_0() { return cResetTimerStatementAction_0; }
+		
 		//'RESET'
-		public Keyword getRESETKeyword_0() { return cRESETKeyword_0; }
+		public Keyword getRESETKeyword_1() { return cRESETKeyword_1; }
 		
 		//'TIMER'
-		public Keyword getTIMERKeyword_1() { return cTIMERKeyword_1; }
+		public Keyword getTIMERKeyword_2() { return cTIMERKeyword_2; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.Expression");
@@ -1434,15 +1438,11 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSelectionStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cIterationStatementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cStatementAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
-		private final RuleCall cSUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0 = (RuleCall)cGroup_3_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final RuleCall cSubprogramControlStatementParserRuleCall_3_0 = (RuleCall)cGroup_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cStatementAction_4_0 = (Action)cGroup_4.eContents().get(0);
-		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
-		private final RuleCall cEXIT_STATEMENTTerminalRuleCall_4_1_0 = (RuleCall)cGroup_4_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_4_1_1 = (Keyword)cGroup_4_1.eContents().get(1);
+		private final RuleCall cExitStatementParserRuleCall_4_0 = (RuleCall)cGroup_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
 		private final RuleCall cProcessStatementsParserRuleCall_5_0 = (RuleCall)cGroup_5.eContents().get(0);
 		private final Keyword cSemicolonKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
@@ -1450,20 +1450,16 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSetStateStatementParserRuleCall_6_0 = (RuleCall)cGroup_6.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
 		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
-		private final Action cStatementAction_7_0 = (Action)cGroup_7.eContents().get(0);
-		private final Group cGroup_7_1 = (Group)cGroup_7.eContents().get(1);
-		private final RuleCall cResetTimerStatementParserRuleCall_7_1_0 = (RuleCall)cGroup_7_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_7_1_1 = (Keyword)cGroup_7_1.eContents().get(1);
+		private final RuleCall cResetTimerStatementParserRuleCall_7_0 = (RuleCall)cGroup_7.eContents().get(0);
+		private final Keyword cSemicolonKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
 		
 		//Statement:
-		//	AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-		//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (ResetTimerStatement
-		//	';');
+		//	AssignmentStatement ';' | SelectionStatement | IterationStatement | SubprogramControlStatement ';' | ExitStatement
+		//	';' | ProcessStatements ';' | SetStateStatement ';' | ResetTimerStatement ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-		//{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (ResetTimerStatement
-		//';')
+		//AssignmentStatement ';' | SelectionStatement | IterationStatement | SubprogramControlStatement ';' | ExitStatement ';' |
+		//ProcessStatements ';' | SetStateStatement ';' | ResetTimerStatement ';'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//AssignmentStatement ';'
@@ -1481,35 +1477,23 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//IterationStatement
 		public RuleCall getIterationStatementParserRuleCall_2() { return cIterationStatementParserRuleCall_2; }
 		
-		//{Statement} (SUBPROGRAM_CONTROL_STATEMENT ';')
+		//SubprogramControlStatement ';'
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//{Statement}
-		public Action getStatementAction_3_0() { return cStatementAction_3_0; }
-		
-		//(SUBPROGRAM_CONTROL_STATEMENT ';')
-		public Group getGroup_3_1() { return cGroup_3_1; }
-		
-		//SUBPROGRAM_CONTROL_STATEMENT
-		public RuleCall getSUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0() { return cSUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0; }
+		//SubprogramControlStatement
+		public RuleCall getSubprogramControlStatementParserRuleCall_3_0() { return cSubprogramControlStatementParserRuleCall_3_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_3_1_1() { return cSemicolonKeyword_3_1_1; }
+		public Keyword getSemicolonKeyword_3_1() { return cSemicolonKeyword_3_1; }
 		
-		//{Statement} (EXIT_STATEMENT ';')
+		//ExitStatement ';'
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//{Statement}
-		public Action getStatementAction_4_0() { return cStatementAction_4_0; }
-		
-		//(EXIT_STATEMENT ';')
-		public Group getGroup_4_1() { return cGroup_4_1; }
-		
-		//EXIT_STATEMENT
-		public RuleCall getEXIT_STATEMENTTerminalRuleCall_4_1_0() { return cEXIT_STATEMENTTerminalRuleCall_4_1_0; }
+		//ExitStatement
+		public RuleCall getExitStatementParserRuleCall_4_0() { return cExitStatementParserRuleCall_4_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_4_1_1() { return cSemicolonKeyword_4_1_1; }
+		public Keyword getSemicolonKeyword_4_1() { return cSemicolonKeyword_4_1; }
 		
 		//ProcessStatements ';'
 		public Group getGroup_5() { return cGroup_5; }
@@ -1529,20 +1513,14 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//';'
 		public Keyword getSemicolonKeyword_6_1() { return cSemicolonKeyword_6_1; }
 		
-		//{Statement} (ResetTimerStatement ';')
+		//ResetTimerStatement ';'
 		public Group getGroup_7() { return cGroup_7; }
 		
-		//{Statement}
-		public Action getStatementAction_7_0() { return cStatementAction_7_0; }
-		
-		//(ResetTimerStatement ';')
-		public Group getGroup_7_1() { return cGroup_7_1; }
-		
 		//ResetTimerStatement
-		public RuleCall getResetTimerStatementParserRuleCall_7_1_0() { return cResetTimerStatementParserRuleCall_7_1_0; }
+		public RuleCall getResetTimerStatementParserRuleCall_7_0() { return cResetTimerStatementParserRuleCall_7_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_7_1_1() { return cSemicolonKeyword_7_1_1; }
+		public Keyword getSemicolonKeyword_7_1() { return cSemicolonKeyword_7_1; }
 	}
 	public class AssignmentStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.AssignmentStatement");
@@ -2018,6 +1996,44 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'END_REPEAT'
 		public Keyword getEND_REPEATKeyword_4() { return cEND_REPEATKeyword_4; }
+	}
+	public class SubprogramControlStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SubprogramControlStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSubprogramControlStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cRETURNKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//SubprogramControlStatement:
+		//	{SubprogramControlStatement} 'RETURN';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{SubprogramControlStatement} 'RETURN'
+		public Group getGroup() { return cGroup; }
+		
+		//{SubprogramControlStatement}
+		public Action getSubprogramControlStatementAction_0() { return cSubprogramControlStatementAction_0; }
+		
+		//'RETURN'
+		public Keyword getRETURNKeyword_1() { return cRETURNKeyword_1; }
+	}
+	public class ExitStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ExitStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cExitStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cEXITKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//ExitStatement:
+		//	{ExitStatement} 'EXIT';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ExitStatement} 'EXIT'
+		public Group getGroup() { return cGroup; }
+		
+		//{ExitStatement}
+		public Action getExitStatementAction_0() { return cExitStatementAction_0; }
+		
+		//'EXIT'
+		public Keyword getEXITKeyword_1() { return cEXITKeyword_1; }
 	}
 	public class SymbolicVariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SymbolicVariable");
@@ -3020,8 +3036,8 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	private final ForListElements pForList;
 	private final WhileStatementElements pWhileStatement;
 	private final RepeatStatementElements pRepeatStatement;
-	private final TerminalRule tSUBPROGRAM_CONTROL_STATEMENT;
-	private final TerminalRule tEXIT_STATEMENT;
+	private final SubprogramControlStatementElements pSubprogramControlStatement;
+	private final ExitStatementElements pExitStatement;
 	private final SymbolicVariableElements pSymbolicVariable;
 	private final TerminalRule tDIRECT_VARIABLE;
 	private final TerminalRule tDIRECT_TYPE_PREFIX;
@@ -3134,8 +3150,8 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		this.pForList = new ForListElements();
 		this.pWhileStatement = new WhileStatementElements();
 		this.pRepeatStatement = new RepeatStatementElements();
-		this.tSUBPROGRAM_CONTROL_STATEMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SUBPROGRAM_CONTROL_STATEMENT");
-		this.tEXIT_STATEMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.EXIT_STATEMENT");
+		this.pSubprogramControlStatement = new SubprogramControlStatementElements();
+		this.pExitStatement = new ExitStatementElements();
 		this.pSymbolicVariable = new SymbolicVariableElements();
 		this.tDIRECT_VARIABLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.DIRECT_VARIABLE");
 		this.tDIRECT_TYPE_PREFIX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.DIRECT_TYPE_PREFIX");
@@ -3455,7 +3471,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ResetTimerStatement:
-	//	'RESET' 'TIMER';
+	//	{ResetTimerStatement} 'RESET' 'TIMER';
 	public ResetTimerStatementElements getResetTimerStatementAccess() {
 		return pResetTimerStatement;
 	}
@@ -3646,9 +3662,8 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Statement:
-	//	AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-	//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (ResetTimerStatement
-	//	';');
+	//	AssignmentStatement ';' | SelectionStatement | IterationStatement | SubprogramControlStatement ';' | ExitStatement
+	//	';' | ProcessStatements ';' | SetStateStatement ';' | ResetTimerStatement ';';
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -3780,16 +3795,24 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		return getRepeatStatementAccess().getRule();
 	}
 	
-	//terminal SUBPROGRAM_CONTROL_STATEMENT:
-	//	'RETURN';
-	public TerminalRule getSUBPROGRAM_CONTROL_STATEMENTRule() {
-		return tSUBPROGRAM_CONTROL_STATEMENT;
+	//SubprogramControlStatement:
+	//	{SubprogramControlStatement} 'RETURN';
+	public SubprogramControlStatementElements getSubprogramControlStatementAccess() {
+		return pSubprogramControlStatement;
 	}
 	
-	//terminal EXIT_STATEMENT:
-	//	'EXIT';
-	public TerminalRule getEXIT_STATEMENTRule() {
-		return tEXIT_STATEMENT;
+	public ParserRule getSubprogramControlStatementRule() {
+		return getSubprogramControlStatementAccess().getRule();
+	}
+	
+	//ExitStatement:
+	//	{ExitStatement} 'EXIT';
+	public ExitStatementElements getExitStatementAccess() {
+		return pExitStatement;
+	}
+	
+	public ParserRule getExitStatementRule() {
+		return getExitStatementAccess().getRule();
 	}
 	
 	///* ======================= END ST Expression ======================= */

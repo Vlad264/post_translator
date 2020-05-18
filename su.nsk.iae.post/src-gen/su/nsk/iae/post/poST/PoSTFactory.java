@@ -195,6 +195,15 @@ public interface PoSTFactory extends EFactory
   TimeoutStatement createTimeoutStatement();
 
   /**
+   * Returns a new object of class '<em>Reset Timer Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reset Timer Statement</em>'.
+   * @generated
+   */
+  ResetTimerStatement createResetTimerStatement();
+
+  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -400,6 +409,24 @@ public interface PoSTFactory extends EFactory
    * @generated
    */
   RepeatStatement createRepeatStatement();
+
+  /**
+   * Returns a new object of class '<em>Subprogram Control Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Subprogram Control Statement</em>'.
+   * @generated
+   */
+  SubprogramControlStatement createSubprogramControlStatement();
+
+  /**
+   * Returns a new object of class '<em>Exit Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Exit Statement</em>'.
+   * @generated
+   */
+  ExitStatement createExitStatement();
 
   /**
    * Returns a new object of class '<em>Symbolic Variable</em>'.

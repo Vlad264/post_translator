@@ -1,35 +1,35 @@
 package su.nsk.iae.post.generator.common
 
-import su.nsk.iae.post.poST.State
-import su.nsk.iae.post.poST.StatementList
-import su.nsk.iae.post.poST.Statement
-import su.nsk.iae.post.poST.Expression
-import su.nsk.iae.post.poST.XorExpression
-import su.nsk.iae.post.poST.AndExpression
-import su.nsk.iae.post.poST.CompExpression
-import su.nsk.iae.post.poST.EquExpression
 import su.nsk.iae.post.poST.AddExpression
+import su.nsk.iae.post.poST.AddOperator
+import su.nsk.iae.post.poST.AndExpression
+import su.nsk.iae.post.poST.AssignmentStatement
+import su.nsk.iae.post.poST.CaseStatement
+import su.nsk.iae.post.poST.CompExpression
+import su.nsk.iae.post.poST.CompOperator
+import su.nsk.iae.post.poST.EquExpression
+import su.nsk.iae.post.poST.EquOperator
+import su.nsk.iae.post.poST.ErrorProcessStatement
+import su.nsk.iae.post.poST.Expression
+import su.nsk.iae.post.poST.ForStatement
+import su.nsk.iae.post.poST.IfStatement
 import su.nsk.iae.post.poST.MulExpression
+import su.nsk.iae.post.poST.MulOperator
 import su.nsk.iae.post.poST.PowerExpression
 import su.nsk.iae.post.poST.PrimaryExpression
-import su.nsk.iae.post.poST.UnaryExpression
-import su.nsk.iae.post.poST.EquOperator
-import su.nsk.iae.post.poST.MulOperator
-import su.nsk.iae.post.poST.AddOperator
-import su.nsk.iae.post.poST.CompOperator
-import su.nsk.iae.post.poST.SymbolicVariable
-import su.nsk.iae.post.poST.AssignmentStatement
-import su.nsk.iae.post.poST.IfStatement
-import su.nsk.iae.post.poST.CaseStatement
-import su.nsk.iae.post.poST.ForStatement
-import su.nsk.iae.post.poST.WhileStatement
 import su.nsk.iae.post.poST.RepeatStatement
-import su.nsk.iae.post.poST.StartProcessStatement
-import su.nsk.iae.post.poST.StopProcessStatement
-import su.nsk.iae.post.poST.ErrorProcessStatement
+import su.nsk.iae.post.poST.ResetTimerStatement
 import su.nsk.iae.post.poST.SetStateStatement
+import su.nsk.iae.post.poST.StartProcessStatement
+import su.nsk.iae.post.poST.State
+import su.nsk.iae.post.poST.Statement
+import su.nsk.iae.post.poST.StatementList
+import su.nsk.iae.post.poST.StopProcessStatement
+import su.nsk.iae.post.poST.SymbolicVariable
 import su.nsk.iae.post.poST.TimeoutStatement
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import su.nsk.iae.post.poST.UnaryExpression
+import su.nsk.iae.post.poST.WhileStatement
+import su.nsk.iae.post.poST.XorExpression
 
 class StateGenerator extends CommonGenerator {
 	
@@ -141,12 +141,10 @@ class StateGenerator extends CommonGenerator {
 					«process.generateEnumName» = «IF s.next»«process.getNextState(this).toUpperCase»«ELSE»«process.getEnumStateName(s.state.name)»«ENDIF»;
 					«process.generateStartTime» = «generateGlobalTimeName»;
 				'''
-		}
-		val str = NodeModelUtils.getNode(s).text.trim
-		if (str.startsWith("RESET")) {
-			return '''
-				«process.generateStartTime» = «generateGlobalTimeName»;
-			'''
+			ResetTimerStatement:
+				return '''
+					«process.generateStartTime» = «generateGlobalTimeName»;
+				'''
 		}
 		return '''
 			break;

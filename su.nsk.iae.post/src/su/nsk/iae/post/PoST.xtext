@@ -118,7 +118,7 @@ TimeoutStatement:
 	'END_TIMEOUT';
 
 ResetTimerStatement:
-	'RESET' 'TIMER';
+	{ResetTimerStatement} 'RESET' 'TIMER';
 
 /* ======================= END poST Expression ======================= */
 	
@@ -188,11 +188,11 @@ Statement:
 	(AssignmentStatement ';') |
 	SelectionStatement |
 	IterationStatement |
-	{Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-	{Statement} (EXIT_STATEMENT ';') |
+	(SubprogramControlStatement ';') |
+	(ExitStatement ';') |
 	(ProcessStatements ';') |
 	(SetStateStatement ';') |
-	{Statement} (ResetTimerStatement ';');
+	(ResetTimerStatement ';');
 
 AssignmentStatement:
 	variable=[SymbolicVariable] ':=' value=Expression;
@@ -246,11 +246,12 @@ RepeatStatement:
 		statement=StatementList
 	'UNTIL' cond=Expression 'END_REPEAT';
 
-terminal SUBPROGRAM_CONTROL_STATEMENT:
-	'RETURN';
+SubprogramControlStatement:
+	{SubprogramControlStatement} 'RETURN';
+	
 
-terminal EXIT_STATEMENT:
-	'EXIT';
+ExitStatement:
+	{ExitStatement} 'EXIT';
 
 /* ======================= END ST Expression ======================= */
 	

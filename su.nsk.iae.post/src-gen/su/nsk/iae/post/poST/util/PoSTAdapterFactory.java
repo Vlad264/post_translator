@@ -21,6 +21,7 @@ import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.EquExpression;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.ExitStatement;
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -48,6 +49,7 @@ import su.nsk.iae.post.poST.ProgramConfElements;
 import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.ResetTimerStatement;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
@@ -59,6 +61,7 @@ import su.nsk.iae.post.poST.State;
 import su.nsk.iae.post.poST.Statement;
 import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SubprogramControlStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TaskInitialization;
@@ -231,6 +234,11 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
         return createTimeoutStatementAdapter();
       }
       @Override
+      public Adapter caseResetTimerStatement(ResetTimerStatement object)
+      {
+        return createResetTimerStatementAdapter();
+      }
+      @Override
       public Adapter caseExpression(Expression object)
       {
         return createExpressionAdapter();
@@ -344,6 +352,16 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
       public Adapter caseRepeatStatement(RepeatStatement object)
       {
         return createRepeatStatementAdapter();
+      }
+      @Override
+      public Adapter caseSubprogramControlStatement(SubprogramControlStatement object)
+      {
+        return createSubprogramControlStatementAdapter();
+      }
+      @Override
+      public Adapter caseExitStatement(ExitStatement object)
+      {
+        return createExitStatementAdapter();
       }
       @Override
       public Adapter caseSymbolicVariable(SymbolicVariable object)
@@ -748,6 +766,21 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ResetTimerStatement <em>Reset Timer Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ResetTimerStatement
+   * @generated
+   */
+  public Adapter createResetTimerStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1088,6 +1121,36 @@ public class PoSTAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRepeatStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.SubprogramControlStatement <em>Subprogram Control Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.SubprogramControlStatement
+   * @generated
+   */
+  public Adapter createSubprogramControlStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link su.nsk.iae.post.poST.ExitStatement <em>Exit Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see su.nsk.iae.post.poST.ExitStatement
+   * @generated
+   */
+  public Adapter createExitStatementAdapter()
   {
     return null;
   }

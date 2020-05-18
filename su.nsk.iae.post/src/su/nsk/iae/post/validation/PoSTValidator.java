@@ -166,7 +166,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 			return;
 		}
 		if ((EcoreUtil2.getContainerOfType(varName, InputVarDeclaration.class) != null)) {
-			error("Assignment error: Couldn't modidy input varsiable",
+			warning("Modification of input varsiable",
 					PoSTPackage.eINSTANCE.getAssignmentStatement_Variable());
 			return;
 		}
@@ -307,7 +307,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	@Check
-	public void checkStateUnreachable(su.nsk.iae.post.poST.State state) {
+	public void checkUnreachableState(su.nsk.iae.post.poST.State state) {
 		Process process = EcoreUtil2.getContainerOfType(state, Process.class);
 		if (process.getStates().indexOf(state) == 0) {
 			return;

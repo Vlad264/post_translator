@@ -114,6 +114,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference PoST.ecore#//TimeoutStatement/variable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//TimeoutStatement/statement"/>
     </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//ResetTimerStatement"/>
     <genClasses ecoreClass="PoST.ecore#//Expression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//Expression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//Expression/right"/>
@@ -186,6 +187,8 @@
     <genClasses ecoreClass="PoST.ecore#//RepeatStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//RepeatStatement/cond"/>
     </genClasses>
+    <genClasses ecoreClass="PoST.ecore#//SubprogramControlStatement"/>
+    <genClasses ecoreClass="PoST.ecore#//ExitStatement"/>
     <genClasses ecoreClass="PoST.ecore#//SymbolicVariable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//SymbolicVariable/name"/>
     </genClasses>

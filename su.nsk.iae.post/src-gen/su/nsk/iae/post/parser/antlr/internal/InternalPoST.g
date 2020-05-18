@@ -1624,14 +1624,14 @@ ruleTimeoutStatement returns [EObject current=null]
 ;
 
 // Entry rule entryRuleResetTimerStatement
-entryRuleResetTimerStatement returns [String current=null]:
+entryRuleResetTimerStatement returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getResetTimerStatementRule()); }
 	iv_ruleResetTimerStatement=ruleResetTimerStatement
-	{ $current=$iv_ruleResetTimerStatement.current.getText(); }
+	{ $current=$iv_ruleResetTimerStatement.current; }
 	EOF;
 
 // Rule ResetTimerStatement
-ruleResetTimerStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+ruleResetTimerStatement returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -1639,15 +1639,20 @@ ruleResetTimerStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatyp
 	leaveRule();
 }:
 	(
-		kw='RESET'
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getResetTimerStatementAccess().getResetTimerStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='RESET'
 		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getResetTimerStatementAccess().getRESETKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getResetTimerStatementAccess().getRESETKeyword_1());
 		}
-		kw='TIMER'
+		otherlv_2='TIMER'
 		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getResetTimerStatementAccess().getTIMERKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getResetTimerStatementAccess().getTIMERKeyword_2());
 		}
 	)
 ;
@@ -2434,57 +2439,47 @@ ruleStatement returns [EObject current=null]
 		}
 		    |
 		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getStatementAccess().getStatementAction_3_0(),
-						$current);
-				}
-			)
-			(
-				this_SUBPROGRAM_CONTROL_STATEMENT_5=RULE_SUBPROGRAM_CONTROL_STATEMENT
-				{
-					newLeafNode(this_SUBPROGRAM_CONTROL_STATEMENT_5, grammarAccess.getStatementAccess().getSUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0());
-				}
-				otherlv_6=';'
-				{
-					newLeafNode(otherlv_6, grammarAccess.getStatementAccess().getSemicolonKeyword_3_1_1());
-				}
-			)
+			{
+				newCompositeNode(grammarAccess.getStatementAccess().getSubprogramControlStatementParserRuleCall_3_0());
+			}
+			this_SubprogramControlStatement_4=ruleSubprogramControlStatement
+			{
+				$current = $this_SubprogramControlStatement_4.current;
+				afterParserOrEnumRuleCall();
+			}
+			otherlv_5=';'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getStatementAccess().getSemicolonKeyword_3_1());
+			}
 		)
 		    |
 		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getStatementAccess().getStatementAction_4_0(),
-						$current);
-				}
-			)
-			(
-				this_EXIT_STATEMENT_8=RULE_EXIT_STATEMENT
-				{
-					newLeafNode(this_EXIT_STATEMENT_8, grammarAccess.getStatementAccess().getEXIT_STATEMENTTerminalRuleCall_4_1_0());
-				}
-				otherlv_9=';'
-				{
-					newLeafNode(otherlv_9, grammarAccess.getStatementAccess().getSemicolonKeyword_4_1_1());
-				}
-			)
+			{
+				newCompositeNode(grammarAccess.getStatementAccess().getExitStatementParserRuleCall_4_0());
+			}
+			this_ExitStatement_6=ruleExitStatement
+			{
+				$current = $this_ExitStatement_6.current;
+				afterParserOrEnumRuleCall();
+			}
+			otherlv_7=';'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getStatementAccess().getSemicolonKeyword_4_1());
+			}
 		)
 		    |
 		(
 			{
 				newCompositeNode(grammarAccess.getStatementAccess().getProcessStatementsParserRuleCall_5_0());
 			}
-			this_ProcessStatements_10=ruleProcessStatements
+			this_ProcessStatements_8=ruleProcessStatements
 			{
-				$current = $this_ProcessStatements_10.current;
+				$current = $this_ProcessStatements_8.current;
 				afterParserOrEnumRuleCall();
 			}
-			otherlv_11=';'
+			otherlv_9=';'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getStatementAccess().getSemicolonKeyword_5_1());
+				newLeafNode(otherlv_9, grammarAccess.getStatementAccess().getSemicolonKeyword_5_1());
 			}
 		)
 		    |
@@ -2492,38 +2487,30 @@ ruleStatement returns [EObject current=null]
 			{
 				newCompositeNode(grammarAccess.getStatementAccess().getSetStateStatementParserRuleCall_6_0());
 			}
-			this_SetStateStatement_12=ruleSetStateStatement
+			this_SetStateStatement_10=ruleSetStateStatement
 			{
-				$current = $this_SetStateStatement_12.current;
+				$current = $this_SetStateStatement_10.current;
 				afterParserOrEnumRuleCall();
 			}
-			otherlv_13=';'
+			otherlv_11=';'
 			{
-				newLeafNode(otherlv_13, grammarAccess.getStatementAccess().getSemicolonKeyword_6_1());
+				newLeafNode(otherlv_11, grammarAccess.getStatementAccess().getSemicolonKeyword_6_1());
 			}
 		)
 		    |
 		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getStatementAccess().getStatementAction_7_0(),
-						$current);
-				}
-			)
-			(
-				{
-					newCompositeNode(grammarAccess.getStatementAccess().getResetTimerStatementParserRuleCall_7_1_0());
-				}
-				ruleResetTimerStatement
-				{
-					afterParserOrEnumRuleCall();
-				}
-				otherlv_16=';'
-				{
-					newLeafNode(otherlv_16, grammarAccess.getStatementAccess().getSemicolonKeyword_7_1_1());
-				}
-			)
+			{
+				newCompositeNode(grammarAccess.getStatementAccess().getResetTimerStatementParserRuleCall_7_0());
+			}
+			this_ResetTimerStatement_12=ruleResetTimerStatement
+			{
+				$current = $this_ResetTimerStatement_12.current;
+				afterParserOrEnumRuleCall();
+			}
+			otherlv_13=';'
+			{
+				newLeafNode(otherlv_13, grammarAccess.getStatementAccess().getSemicolonKeyword_7_1());
+			}
 		)
 	)
 ;
@@ -3330,6 +3317,66 @@ ruleRepeatStatement returns [EObject current=null]
 		otherlv_4='END_REPEAT'
 		{
 			newLeafNode(otherlv_4, grammarAccess.getRepeatStatementAccess().getEND_REPEATKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleSubprogramControlStatement
+entryRuleSubprogramControlStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSubprogramControlStatementRule()); }
+	iv_ruleSubprogramControlStatement=ruleSubprogramControlStatement
+	{ $current=$iv_ruleSubprogramControlStatement.current; }
+	EOF;
+
+// Rule SubprogramControlStatement
+ruleSubprogramControlStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getSubprogramControlStatementAccess().getSubprogramControlStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='RETURN'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getSubprogramControlStatementAccess().getRETURNKeyword_1());
+		}
+	)
+;
+
+// Entry rule entryRuleExitStatement
+entryRuleExitStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExitStatementRule()); }
+	iv_ruleExitStatement=ruleExitStatement
+	{ $current=$iv_ruleExitStatement.current; }
+	EOF;
+
+// Rule ExitStatement
+ruleExitStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getExitStatementAccess().getExitStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='EXIT'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getExitStatementAccess().getEXITKeyword_1());
 		}
 	)
 ;
@@ -4809,10 +4856,6 @@ RULE_AND_OPERATOR : ('&'|'AND');
 RULE_POWER_OPERATOR : '**';
 
 RULE_UNARY_OPERATOR : 'NOT';
-
-RULE_SUBPROGRAM_CONTROL_STATEMENT : 'RETURN';
-
-RULE_EXIT_STATEMENT : 'EXIT';
 
 RULE_DIRECT_VARIABLE : '%' RULE_DIRECT_TYPE_PREFIX RULE_DIRECT_SIZE_PREFIX RULE_INTEGER ('.' RULE_INTEGER)*;
 

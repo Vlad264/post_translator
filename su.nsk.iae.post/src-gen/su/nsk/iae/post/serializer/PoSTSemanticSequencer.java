@@ -25,6 +25,7 @@ import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.EquExpression;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.ExitStatement;
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -49,6 +50,7 @@ import su.nsk.iae.post.poST.ProgramConfElements;
 import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.ResetTimerStatement;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.SignedInteger;
@@ -56,9 +58,9 @@ import su.nsk.iae.post.poST.SimpleSpecificationInit;
 import su.nsk.iae.post.poST.SingleResource;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.State;
-import su.nsk.iae.post.poST.Statement;
 import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SubprogramControlStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TaskInitialization;
@@ -119,6 +121,9 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case PoSTPackage.ERROR_PROCESS_STATEMENT:
 				sequence_ErrorProcessStatement(context, (ErrorProcessStatement) semanticObject); 
+				return; 
+			case PoSTPackage.EXIT_STATEMENT:
+				sequence_ExitStatement(context, (ExitStatement) semanticObject); 
 				return; 
 			case PoSTPackage.EXPRESSION:
 				sequence_Expression(context, (Expression) semanticObject); 
@@ -192,6 +197,9 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.REPEAT_STATEMENT:
 				sequence_RepeatStatement(context, (RepeatStatement) semanticObject); 
 				return; 
+			case PoSTPackage.RESET_TIMER_STATEMENT:
+				sequence_ResetTimerStatement(context, (ResetTimerStatement) semanticObject); 
+				return; 
 			case PoSTPackage.RESOURCE:
 				sequence_Resource(context, (Resource) semanticObject); 
 				return; 
@@ -213,14 +221,14 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case PoSTPackage.STATE:
 				sequence_State(context, (State) semanticObject); 
 				return; 
-			case PoSTPackage.STATEMENT:
-				sequence_Statement(context, (Statement) semanticObject); 
-				return; 
 			case PoSTPackage.STATEMENT_LIST:
 				sequence_StatementList(context, (StatementList) semanticObject); 
 				return; 
 			case PoSTPackage.STOP_PROCESS_STATEMENT:
 				sequence_StopProcessStatement(context, (StopProcessStatement) semanticObject); 
+				return; 
+			case PoSTPackage.SUBPROGRAM_CONTROL_STATEMENT:
+				sequence_SubprogramControlStatement(context, (SubprogramControlStatement) semanticObject); 
 				return; 
 			case PoSTPackage.SYMBOLIC_VARIABLE:
 				sequence_SymbolicVariable(context, (SymbolicVariable) semanticObject); 
@@ -491,6 +499,19 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     process=[Process|ID]?
 	 */
 	protected void sequence_ErrorProcessStatement(ISerializationContext context, ErrorProcessStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns ExitStatement
+	 *     ExitStatement returns ExitStatement
+	 *
+	 * Constraint:
+	 *     {ExitStatement}
+	 */
+	protected void sequence_ExitStatement(ISerializationContext context, ExitStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -936,6 +957,19 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ResetTimerStatement returns ResetTimerStatement
+	 *     Statement returns ResetTimerStatement
+	 *
+	 * Constraint:
+	 *     {ResetTimerStatement}
+	 */
+	protected void sequence_ResetTimerStatement(ISerializationContext context, ResetTimerStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Resource returns Resource
 	 *
 	 * Constraint:
@@ -1041,18 +1075,6 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Statement returns Statement
-	 *
-	 * Constraint:
-	 *     {Statement}
-	 */
-	protected void sequence_Statement(ISerializationContext context, Statement semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     ProcessStatements returns StopProcessStatement
 	 *     StopProcessStatement returns StopProcessStatement
 	 *     Statement returns StopProcessStatement
@@ -1061,6 +1083,19 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     process=[Process|ID]?
 	 */
 	protected void sequence_StopProcessStatement(ISerializationContext context, StopProcessStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns SubprogramControlStatement
+	 *     SubprogramControlStatement returns SubprogramControlStatement
+	 *
+	 * Constraint:
+	 *     {SubprogramControlStatement}
+	 */
+	protected void sequence_SubprogramControlStatement(ISerializationContext context, SubprogramControlStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -103,13 +103,10 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getStatementListAccess().getGroup(), "rule__StatementList__Group__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup_0(), "rule__Statement__Group_0__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup_3(), "rule__Statement__Group_3__0");
-			builder.put(grammarAccess.getStatementAccess().getGroup_3_1(), "rule__Statement__Group_3_1__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup_4(), "rule__Statement__Group_4__0");
-			builder.put(grammarAccess.getStatementAccess().getGroup_4_1(), "rule__Statement__Group_4_1__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup_5(), "rule__Statement__Group_5__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup_6(), "rule__Statement__Group_6__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup_7(), "rule__Statement__Group_7__0");
-			builder.put(grammarAccess.getStatementAccess().getGroup_7_1(), "rule__Statement__Group_7_1__0");
 			builder.put(grammarAccess.getAssignmentStatementAccess().getGroup(), "rule__AssignmentStatement__Group__0");
 			builder.put(grammarAccess.getIfStatementAccess().getGroup(), "rule__IfStatement__Group__0");
 			builder.put(grammarAccess.getIfStatementAccess().getGroup_4(), "rule__IfStatement__Group_4__0");
@@ -124,6 +121,8 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getForListAccess().getGroup_3(), "rule__ForList__Group_3__0");
 			builder.put(grammarAccess.getWhileStatementAccess().getGroup(), "rule__WhileStatement__Group__0");
 			builder.put(grammarAccess.getRepeatStatementAccess().getGroup(), "rule__RepeatStatement__Group__0");
+			builder.put(grammarAccess.getSubprogramControlStatementAccess().getGroup(), "rule__SubprogramControlStatement__Group__0");
+			builder.put(grammarAccess.getExitStatementAccess().getGroup(), "rule__ExitStatement__Group__0");
 			builder.put(grammarAccess.getVarInitDeclarationAccess().getGroup(), "rule__VarInitDeclaration__Group__0");
 			builder.put(grammarAccess.getVarListAccess().getGroup(), "rule__VarList__Group__0");
 			builder.put(grammarAccess.getVarListAccess().getGroup_1(), "rule__VarList__Group_1__0");

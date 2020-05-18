@@ -19,6 +19,7 @@ import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.EquExpression;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.ExitStatement;
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -46,6 +47,7 @@ import su.nsk.iae.post.poST.ProgramConfElements;
 import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.ResetTimerStatement;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
@@ -57,6 +59,7 @@ import su.nsk.iae.post.poST.State;
 import su.nsk.iae.post.poST.Statement;
 import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SubprogramControlStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TaskInitialization;
@@ -271,6 +274,14 @@ public class PoSTSwitch<T> extends Switch<T>
       {
         TimeoutStatement timeoutStatement = (TimeoutStatement)theEObject;
         T result = caseTimeoutStatement(timeoutStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.RESET_TIMER_STATEMENT:
+      {
+        ResetTimerStatement resetTimerStatement = (ResetTimerStatement)theEObject;
+        T result = caseResetTimerStatement(resetTimerStatement);
+        if (result == null) result = caseStatement(resetTimerStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -490,6 +501,22 @@ public class PoSTSwitch<T> extends Switch<T>
         T result = caseRepeatStatement(repeatStatement);
         if (result == null) result = caseIterationStatement(repeatStatement);
         if (result == null) result = caseStatement(repeatStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.SUBPROGRAM_CONTROL_STATEMENT:
+      {
+        SubprogramControlStatement subprogramControlStatement = (SubprogramControlStatement)theEObject;
+        T result = caseSubprogramControlStatement(subprogramControlStatement);
+        if (result == null) result = caseStatement(subprogramControlStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case PoSTPackage.EXIT_STATEMENT:
+      {
+        ExitStatement exitStatement = (ExitStatement)theEObject;
+        T result = caseExitStatement(exitStatement);
+        if (result == null) result = caseStatement(exitStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -941,6 +968,22 @@ public class PoSTSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Reset Timer Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reset Timer Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseResetTimerStatement(ResetTimerStatement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1304,6 +1347,38 @@ public class PoSTSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRepeatStatement(RepeatStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Subprogram Control Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Subprogram Control Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubprogramControlStatement(SubprogramControlStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Exit Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Exit Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExitStatement(ExitStatement object)
   {
     return null;
   }

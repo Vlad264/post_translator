@@ -11,7 +11,6 @@ import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -23,14 +22,12 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected PoSTGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Constant_BINARY_INTEGERTerminalRuleCall_2_1_or_BOOLEAN_LITERALTerminalRuleCall_5_1_or_HEX_INTEGERTerminalRuleCall_4_1_or_OCTAL_INTEGERTerminalRuleCall_3_1;
-	protected AbstractElementAlias match_Statement___EXIT_STATEMENTTerminalRuleCall_4_1_0_SemicolonKeyword_4_1_1___or___ResetTimerStatementParserRuleCall_7_1_0_SemicolonKeyword_7_1_1___or___SUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0_SemicolonKeyword_3_1_1__;
 	protected AbstractElementAlias match_TimeLiteral_HyphenMinusKeyword_2_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (PoSTGrammarAccess) access;
 		match_Constant_BINARY_INTEGERTerminalRuleCall_2_1_or_BOOLEAN_LITERALTerminalRuleCall_5_1_or_HEX_INTEGERTerminalRuleCall_4_1_or_OCTAL_INTEGERTerminalRuleCall_3_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getConstantAccess().getBINARY_INTEGERTerminalRuleCall_2_1()), new TokenAlias(false, false, grammarAccess.getConstantAccess().getBOOLEAN_LITERALTerminalRuleCall_5_1()), new TokenAlias(false, false, grammarAccess.getConstantAccess().getHEX_INTEGERTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getConstantAccess().getOCTAL_INTEGERTerminalRuleCall_3_1()));
-		match_Statement___EXIT_STATEMENTTerminalRuleCall_4_1_0_SemicolonKeyword_4_1_1___or___ResetTimerStatementParserRuleCall_7_1_0_SemicolonKeyword_7_1_1___or___SUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0_SemicolonKeyword_3_1_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getStatementAccess().getEXIT_STATEMENTTerminalRuleCall_4_1_0()), new TokenAlias(false, false, grammarAccess.getStatementAccess().getSemicolonKeyword_4_1_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getStatementAccess().getResetTimerStatementParserRuleCall_7_1_0()), new TokenAlias(false, false, grammarAccess.getStatementAccess().getSemicolonKeyword_7_1_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getStatementAccess().getSUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0()), new TokenAlias(false, false, grammarAccess.getStatementAccess().getSemicolonKeyword_3_1_1())));
 		match_TimeLiteral_HyphenMinusKeyword_2_q = new TokenAlias(false, true, grammarAccess.getTimeLiteralAccess().getHyphenMinusKeyword_2());
 	}
 	
@@ -42,8 +39,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getBINARY_INTEGERToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getBOOLEAN_LITERALRule())
 			return getBOOLEAN_LITERALToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getEXIT_STATEMENTRule())
-			return getEXIT_STATEMENTToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getHEX_INTEGERRule())
 			return getHEX_INTEGERToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getINTERVAL_DECLARATIONRule())
@@ -56,12 +51,8 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 			return getPOWER_OPERATORToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getPRIORITY_DECLARATIONRule())
 			return getPRIORITY_DECLARATIONToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getResetTimerStatementRule())
-			return getResetTimerStatementToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getSINGLE_DECLARATIONRule())
 			return getSINGLE_DECLARATIONToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getSUBPROGRAM_CONTROL_STATEMENTRule())
-			return getSUBPROGRAM_CONTROL_STATEMENTToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getTIME_PREF_LITERALRule())
 			return getTIME_PREF_LITERALToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getUNARY_OPERATORRule())
@@ -99,16 +90,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "TRUE";
-	}
-	
-	/**
-	 * terminal EXIT_STATEMENT:
-	 * 	'EXIT';
-	 */
-	protected String getEXIT_STATEMENTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "EXIT";
 	}
 	
 	/**
@@ -172,16 +153,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * ResetTimerStatement:
-	 * 	'RESET' 'TIMER';
-	 */
-	protected String getResetTimerStatementToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "RESET TIMER";
-	}
-	
-	/**
 	 * terminal SINGLE_DECLARATION:
 	 * 	'SINGLE';
 	 */
@@ -189,16 +160,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "SINGLE";
-	}
-	
-	/**
-	 * terminal SUBPROGRAM_CONTROL_STATEMENT:
-	 * 	'RETURN';
-	 */
-	protected String getSUBPROGRAM_CONTROL_STATEMENTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "RETURN";
 	}
 	
 	/**
@@ -239,8 +200,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_Constant_BINARY_INTEGERTerminalRuleCall_2_1_or_BOOLEAN_LITERALTerminalRuleCall_5_1_or_HEX_INTEGERTerminalRuleCall_4_1_or_OCTAL_INTEGERTerminalRuleCall_3_1.equals(syntax))
 				emit_Constant_BINARY_INTEGERTerminalRuleCall_2_1_or_BOOLEAN_LITERALTerminalRuleCall_5_1_or_HEX_INTEGERTerminalRuleCall_4_1_or_OCTAL_INTEGERTerminalRuleCall_3_1(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Statement___EXIT_STATEMENTTerminalRuleCall_4_1_0_SemicolonKeyword_4_1_1___or___ResetTimerStatementParserRuleCall_7_1_0_SemicolonKeyword_7_1_1___or___SUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0_SemicolonKeyword_3_1_1__.equals(syntax))
-				emit_Statement___EXIT_STATEMENTTerminalRuleCall_4_1_0_SemicolonKeyword_4_1_1___or___ResetTimerStatementParserRuleCall_7_1_0_SemicolonKeyword_7_1_1___or___SUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0_SemicolonKeyword_3_1_1__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_TimeLiteral_HyphenMinusKeyword_2_q.equals(syntax))
 				emit_TimeLiteral_HyphenMinusKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -255,17 +214,6 @@ public class PoSTSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) (rule start)
 	 */
 	protected void emit_Constant_BINARY_INTEGERTerminalRuleCall_2_1_or_BOOLEAN_LITERALTerminalRuleCall_5_1_or_HEX_INTEGERTerminalRuleCall_4_1_or_OCTAL_INTEGERTerminalRuleCall_3_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     (SUBPROGRAM_CONTROL_STATEMENT ';') | (EXIT_STATEMENT ';') | (ResetTimerStatement ';')
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) (rule start)
-	 */
-	protected void emit_Statement___EXIT_STATEMENTTerminalRuleCall_4_1_0_SemicolonKeyword_4_1_1___or___ResetTimerStatementParserRuleCall_7_1_0_SemicolonKeyword_7_1_1___or___SUBPROGRAM_CONTROL_STATEMENTTerminalRuleCall_3_1_0_SemicolonKeyword_3_1_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

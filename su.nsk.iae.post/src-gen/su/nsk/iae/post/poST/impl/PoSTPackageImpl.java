@@ -26,6 +26,7 @@ import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.EquExpression;
 import su.nsk.iae.post.poST.EquOperator;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.ExitStatement;
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -55,6 +56,7 @@ import su.nsk.iae.post.poST.ProgramConfElements;
 import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.ResetTimerStatement;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
@@ -66,6 +68,7 @@ import su.nsk.iae.post.poST.State;
 import su.nsk.iae.post.poST.Statement;
 import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SubprogramControlStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TaskInitialization;
@@ -219,6 +222,13 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   private EClass timeoutStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass resetTimerStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -380,6 +390,20 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   private EClass repeatStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass subprogramControlStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exitStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1377,6 +1401,17 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
    * @generated
    */
   @Override
+  public EClass getResetTimerStatement()
+  {
+    return resetTimerStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getExpression()
   {
     return expressionEClass;
@@ -1963,6 +1998,28 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
   public EReference getRepeatStatement_Cond()
   {
     return (EReference)repeatStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSubprogramControlStatement()
+  {
+    return subprogramControlStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExitStatement()
+  {
+    return exitStatementEClass;
   }
 
   /**
@@ -2667,6 +2724,8 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     createEReference(timeoutStatementEClass, TIMEOUT_STATEMENT__VARIABLE);
     createEReference(timeoutStatementEClass, TIMEOUT_STATEMENT__STATEMENT);
 
+    resetTimerStatementEClass = createEClass(RESET_TIMER_STATEMENT);
+
     expressionEClass = createEClass(EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__LEFT);
     createEReference(expressionEClass, EXPRESSION__RIGHT);
@@ -2743,6 +2802,10 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     repeatStatementEClass = createEClass(REPEAT_STATEMENT);
     createEReference(repeatStatementEClass, REPEAT_STATEMENT__COND);
+
+    subprogramControlStatementEClass = createEClass(SUBPROGRAM_CONTROL_STATEMENT);
+
+    exitStatementEClass = createEClass(EXIT_STATEMENT);
 
     symbolicVariableEClass = createEClass(SYMBOLIC_VARIABLE);
     createEAttribute(symbolicVariableEClass, SYMBOLIC_VARIABLE__NAME);
@@ -2853,6 +2916,7 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     startProcessStatementEClass.getESuperTypes().add(this.getProcessStatements());
     stopProcessStatementEClass.getESuperTypes().add(this.getProcessStatements());
     errorProcessStatementEClass.getESuperTypes().add(this.getProcessStatements());
+    resetTimerStatementEClass.getESuperTypes().add(this.getStatement());
     xorExpressionEClass.getESuperTypes().add(this.getExpression());
     andExpressionEClass.getESuperTypes().add(this.getXorExpression());
     compExpressionEClass.getESuperTypes().add(this.getAndExpression());
@@ -2870,6 +2934,8 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     forStatementEClass.getESuperTypes().add(this.getIterationStatement());
     whileStatementEClass.getESuperTypes().add(this.getIterationStatement());
     repeatStatementEClass.getESuperTypes().add(this.getIterationStatement());
+    subprogramControlStatementEClass.getESuperTypes().add(this.getStatement());
+    exitStatementEClass.getESuperTypes().add(this.getStatement());
     timeLiteralEClass.getESuperTypes().add(this.getConstant());
     numericLiteralEClass.getESuperTypes().add(this.getConstant());
     integerLiteralEClass.getESuperTypes().add(this.getNumericLiteral());
@@ -2964,6 +3030,8 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
     initEReference(getTimeoutStatement_Variable(), this.getSymbolicVariable(), null, "variable", null, 0, 1, TimeoutStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTimeoutStatement_Statement(), this.getStatementList(), null, "statement", null, 0, 1, TimeoutStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(resetTimerStatementEClass, ResetTimerStatement.class, "ResetTimerStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpression_Left(), this.getExpression(), null, "left", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Right(), this.getXorExpression(), null, "right", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3040,6 +3108,10 @@ public class PoSTPackageImpl extends EPackageImpl implements PoSTPackage
 
     initEClass(repeatStatementEClass, RepeatStatement.class, "RepeatStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getRepeatStatement_Cond(), this.getExpression(), null, "cond", null, 0, 1, RepeatStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(subprogramControlStatementEClass, SubprogramControlStatement.class, "SubprogramControlStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(exitStatementEClass, ExitStatement.class, "ExitStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(symbolicVariableEClass, SymbolicVariable.class, "SymbolicVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSymbolicVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, SymbolicVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

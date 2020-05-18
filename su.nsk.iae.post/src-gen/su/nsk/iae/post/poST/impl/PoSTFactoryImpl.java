@@ -27,6 +27,7 @@ import su.nsk.iae.post.poST.Constant;
 import su.nsk.iae.post.poST.EquExpression;
 import su.nsk.iae.post.poST.EquOperator;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
+import su.nsk.iae.post.poST.ExitStatement;
 import su.nsk.iae.post.poST.Expression;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
@@ -56,6 +57,7 @@ import su.nsk.iae.post.poST.ProgramConfElements;
 import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.RealLiteral;
 import su.nsk.iae.post.poST.RepeatStatement;
+import su.nsk.iae.post.poST.ResetTimerStatement;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
@@ -67,6 +69,7 @@ import su.nsk.iae.post.poST.State;
 import su.nsk.iae.post.poST.Statement;
 import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
+import su.nsk.iae.post.poST.SubprogramControlStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TaskInitialization;
@@ -151,6 +154,7 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
       case PoSTPackage.STOP_PROCESS_STATEMENT: return createStopProcessStatement();
       case PoSTPackage.ERROR_PROCESS_STATEMENT: return createErrorProcessStatement();
       case PoSTPackage.TIMEOUT_STATEMENT: return createTimeoutStatement();
+      case PoSTPackage.RESET_TIMER_STATEMENT: return createResetTimerStatement();
       case PoSTPackage.EXPRESSION: return createExpression();
       case PoSTPackage.XOR_EXPRESSION: return createXorExpression();
       case PoSTPackage.AND_EXPRESSION: return createAndExpression();
@@ -174,6 +178,8 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
       case PoSTPackage.FOR_LIST: return createForList();
       case PoSTPackage.WHILE_STATEMENT: return createWhileStatement();
       case PoSTPackage.REPEAT_STATEMENT: return createRepeatStatement();
+      case PoSTPackage.SUBPROGRAM_CONTROL_STATEMENT: return createSubprogramControlStatement();
+      case PoSTPackage.EXIT_STATEMENT: return createExitStatement();
       case PoSTPackage.SYMBOLIC_VARIABLE: return createSymbolicVariable();
       case PoSTPackage.VAR_INIT_DECLARATION: return createVarInitDeclaration();
       case PoSTPackage.VAR_LIST: return createVarList();
@@ -482,6 +488,18 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
    * @generated
    */
   @Override
+  public ResetTimerStatement createResetTimerStatement()
+  {
+    ResetTimerStatementImpl resetTimerStatement = new ResetTimerStatementImpl();
+    return resetTimerStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Expression createExpression()
   {
     ExpressionImpl expression = new ExpressionImpl();
@@ -750,6 +768,30 @@ public class PoSTFactoryImpl extends EFactoryImpl implements PoSTFactory
   {
     RepeatStatementImpl repeatStatement = new RepeatStatementImpl();
     return repeatStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SubprogramControlStatement createSubprogramControlStatement()
+  {
+    SubprogramControlStatementImpl subprogramControlStatement = new SubprogramControlStatementImpl();
+    return subprogramControlStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExitStatement createExitStatement()
+  {
+    ExitStatementImpl exitStatement = new ExitStatementImpl();
+    return exitStatement;
   }
 
   /**
