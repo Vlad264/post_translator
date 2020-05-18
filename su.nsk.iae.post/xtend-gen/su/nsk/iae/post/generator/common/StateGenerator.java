@@ -3,6 +3,7 @@ package su.nsk.iae.post.generator.common;
 import com.google.common.base.Objects;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import su.nsk.iae.post.generator.common.CommonGenerator;
 import su.nsk.iae.post.generator.common.ProcessGenerator;
@@ -420,17 +421,23 @@ public class StateGenerator extends CommonGenerator {
         return _builder.toString();
       }
     }
-    StringConcatenation _builder = new StringConcatenation();
-    String _generateStartTime = this.process.generateStartTime();
-    _builder.append(_generateStartTime);
-    _builder.append(" = ");
-    String _generateGlobalTimeName = this.generateGlobalTimeName();
-    _builder.append(_generateGlobalTimeName);
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    _builder.append("break;");
-    _builder.newLine();
-    return _builder.toString();
+    final String str = NodeModelUtils.getNode(s).getText().trim();
+    boolean _startsWith = str.startsWith("RESET");
+    if (_startsWith) {
+      StringConcatenation _builder = new StringConcatenation();
+      String _generateStartTime = this.process.generateStartTime();
+      _builder.append(_generateStartTime);
+      _builder.append(" = ");
+      String _generateGlobalTimeName = this.generateGlobalTimeName();
+      _builder.append(_generateGlobalTimeName);
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      return _builder.toString();
+    }
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("break;");
+    _builder_1.newLine();
+    return _builder_1.toString();
   }
   
   private String generateExpression(final Expression exp) {

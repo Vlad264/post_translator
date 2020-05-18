@@ -19,6 +19,7 @@ import su.nsk.iae.post.poST.ExternalVarDeclaration;
 import su.nsk.iae.post.poST.ExternalVarInitDeclaration;
 import su.nsk.iae.post.poST.GlobalVarDeclaration;
 import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
+import su.nsk.iae.post.poST.IfStatement;
 import su.nsk.iae.post.poST.InputOutputVarDeclaration;
 import su.nsk.iae.post.poST.InputVarDeclaration;
 import su.nsk.iae.post.poST.Model;
@@ -381,6 +382,14 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	/* ======================= END poST Validator ======================= */
+	
+	@Check
+	public void checkIfStatement(IfStatement statement) {
+		if (statement.getMainStatement().getStatements().isEmpty()) {
+			warning("Statement boby is empty", 
+					PoSTPackage.eINSTANCE.getIfStatement_MainStatement());
+		}
+	}
 	
 	private boolean hasCrossReferences(EObject context, EObject target) {
 		Set<EObject> targetSet = new HashSet<EObject>();

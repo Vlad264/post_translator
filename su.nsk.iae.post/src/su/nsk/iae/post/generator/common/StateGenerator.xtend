@@ -29,6 +29,7 @@ import su.nsk.iae.post.poST.StopProcessStatement
 import su.nsk.iae.post.poST.ErrorProcessStatement
 import su.nsk.iae.post.poST.SetStateStatement
 import su.nsk.iae.post.poST.TimeoutStatement
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 
 class StateGenerator extends CommonGenerator {
 	
@@ -141,8 +142,13 @@ class StateGenerator extends CommonGenerator {
 					«process.generateStartTime» = «generateGlobalTimeName»;
 				'''
 		}
+		val str = NodeModelUtils.getNode(s).text.trim
+		if (str.startsWith("RESET")) {
+			return '''
+				«process.generateStartTime» = «generateGlobalTimeName»;
+			'''
+		}
 		return '''
-			«process.generateStartTime» = «generateGlobalTimeName»;
 			break;
 		'''
 	}

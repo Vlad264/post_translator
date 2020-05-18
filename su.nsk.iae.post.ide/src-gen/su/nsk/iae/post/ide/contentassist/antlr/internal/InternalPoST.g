@@ -524,25 +524,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleLoopStatement
-entryRuleLoopStatement
+// Entry rule entryRuleResetTimerStatement
+entryRuleResetTimerStatement
 :
-{ before(grammarAccess.getLoopStatementRule()); }
-	 ruleLoopStatement
-{ after(grammarAccess.getLoopStatementRule()); } 
+{ before(grammarAccess.getResetTimerStatementRule()); }
+	 ruleResetTimerStatement
+{ after(grammarAccess.getResetTimerStatementRule()); } 
 	 EOF 
 ;
 
-// Rule LoopStatement
-ruleLoopStatement 
+// Rule ResetTimerStatement
+ruleResetTimerStatement 
 	@init {
 		int stackSize = keepStackSize();
 	}
 	:
 	(
-		{ before(grammarAccess.getLoopStatementAccess().getLOOPKeyword()); }
-		'LOOP'
-		{ after(grammarAccess.getLoopStatementAccess().getLOOPKeyword()); }
+		{ before(grammarAccess.getResetTimerStatementAccess().getGroup()); }
+		(rule__ResetTimerStatement__Group__0)
+		{ after(grammarAccess.getResetTimerStatementAccess().getGroup()); }
 	)
 ;
 finally {
@@ -5021,6 +5021,60 @@ finally {
 }
 
 
+rule__ResetTimerStatement__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ResetTimerStatement__Group__0__Impl
+	rule__ResetTimerStatement__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ResetTimerStatement__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getResetTimerStatementAccess().getRESETKeyword_0()); }
+	'RESET'
+	{ after(grammarAccess.getResetTimerStatementAccess().getRESETKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ResetTimerStatement__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ResetTimerStatement__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ResetTimerStatement__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getResetTimerStatementAccess().getTIMERKeyword_1()); }
+	'TIMER'
+	{ after(grammarAccess.getResetTimerStatementAccess().getTIMERKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 rule__Expression__Group__0
 	@init {
 		int stackSize = keepStackSize();
@@ -6740,9 +6794,9 @@ rule__Statement__Group_7_1__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getStatementAccess().getLoopStatementParserRuleCall_7_1_0()); }
-	ruleLoopStatement
-	{ after(grammarAccess.getStatementAccess().getLoopStatementParserRuleCall_7_1_0()); }
+	{ before(grammarAccess.getStatementAccess().getResetTimerStatementParserRuleCall_7_1_0()); }
+	ruleResetTimerStatement
+	{ after(grammarAccess.getStatementAccess().getResetTimerStatementParserRuleCall_7_1_0()); }
 )
 ;
 finally {

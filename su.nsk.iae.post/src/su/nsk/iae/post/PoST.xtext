@@ -117,8 +117,8 @@ TimeoutStatement:
 		statement=StatementList
 	'END_TIMEOUT';
 
-LoopStatement:
-	'LOOP';
+ResetTimerStatement:
+	'RESET' 'TIMER';
 
 /* ======================= END poST Expression ======================= */
 	
@@ -192,7 +192,7 @@ Statement:
 	{Statement} (EXIT_STATEMENT ';') |
 	(ProcessStatements ';') |
 	(SetStateStatement ';') |
-	{Statement} (LoopStatement ';');
+	{Statement} (ResetTimerStatement ';');
 
 AssignmentStatement:
 	variable=[SymbolicVariable] ':=' value=Expression;

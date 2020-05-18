@@ -1609,26 +1609,33 @@ ruleTimeoutStatement returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleLoopStatement
-entryRuleLoopStatement returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getLoopStatementRule()); }
-	iv_ruleLoopStatement=ruleLoopStatement
-	{ $current=$iv_ruleLoopStatement.current.getText(); }
+// Entry rule entryRuleResetTimerStatement
+entryRuleResetTimerStatement returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getResetTimerStatementRule()); }
+	iv_ruleResetTimerStatement=ruleResetTimerStatement
+	{ $current=$iv_ruleResetTimerStatement.current.getText(); }
 	EOF;
 
-// Rule LoopStatement
-ruleLoopStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+// Rule ResetTimerStatement
+ruleResetTimerStatement returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 @init {
 	enterRule();
 }
 @after {
 	leaveRule();
 }:
-	kw='LOOP'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getLoopStatementAccess().getLOOPKeyword());
-	}
+	(
+		kw='RESET'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getResetTimerStatementAccess().getRESETKeyword_0());
+		}
+		kw='TIMER'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getResetTimerStatementAccess().getTIMERKeyword_1());
+		}
+	)
 ;
 
 // Entry rule entryRuleExpression
@@ -2492,9 +2499,9 @@ ruleStatement returns [EObject current=null]
 			)
 			(
 				{
-					newCompositeNode(grammarAccess.getStatementAccess().getLoopStatementParserRuleCall_7_1_0());
+					newCompositeNode(grammarAccess.getStatementAccess().getResetTimerStatementParserRuleCall_7_1_0());
 				}
-				ruleLoopStatement
+				ruleResetTimerStatement
 				{
 					afterParserOrEnumRuleCall();
 				}

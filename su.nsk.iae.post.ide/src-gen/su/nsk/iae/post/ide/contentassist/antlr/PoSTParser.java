@@ -81,6 +81,7 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getStopProcessStatementAccess().getGroup(), "rule__StopProcessStatement__Group__0");
 			builder.put(grammarAccess.getErrorProcessStatementAccess().getGroup(), "rule__ErrorProcessStatement__Group__0");
 			builder.put(grammarAccess.getTimeoutStatementAccess().getGroup(), "rule__TimeoutStatement__Group__0");
+			builder.put(grammarAccess.getResetTimerStatementAccess().getGroup(), "rule__ResetTimerStatement__Group__0");
 			builder.put(grammarAccess.getExpressionAccess().getGroup(), "rule__Expression__Group__0");
 			builder.put(grammarAccess.getExpressionAccess().getGroup_1(), "rule__Expression__Group_1__0");
 			builder.put(grammarAccess.getXorExpressionAccess().getGroup(), "rule__XorExpression__Group__0");

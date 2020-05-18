@@ -988,16 +988,24 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//'END_TIMEOUT'
 		public Keyword getEND_TIMEOUTKeyword_4() { return cEND_TIMEOUTKeyword_4; }
 	}
-	public class LoopStatementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.LoopStatement");
-		private final Keyword cLOOPKeyword = (Keyword)rule.eContents().get(1);
+	public class ResetTimerStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.ResetTimerStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRESETKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cTIMERKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//LoopStatement:
-		//	'LOOP';
+		//ResetTimerStatement:
+		//	'RESET' 'TIMER';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'LOOP'
-		public Keyword getLOOPKeyword() { return cLOOPKeyword; }
+		//'RESET' 'TIMER'
+		public Group getGroup() { return cGroup; }
+		
+		//'RESET'
+		public Keyword getRESETKeyword_0() { return cRESETKeyword_0; }
+		
+		//'TIMER'
+		public Keyword getTIMERKeyword_1() { return cTIMERKeyword_1; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.Expression");
@@ -1436,16 +1444,18 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
 		private final Action cStatementAction_7_0 = (Action)cGroup_7.eContents().get(0);
 		private final Group cGroup_7_1 = (Group)cGroup_7.eContents().get(1);
-		private final RuleCall cLoopStatementParserRuleCall_7_1_0 = (RuleCall)cGroup_7_1.eContents().get(0);
+		private final RuleCall cResetTimerStatementParserRuleCall_7_1_0 = (RuleCall)cGroup_7_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_7_1_1 = (Keyword)cGroup_7_1.eContents().get(1);
 		
 		//Statement:
 		//	AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-		//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (LoopStatement ';');
+		//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (ResetTimerStatement
+		//	';');
 		@Override public ParserRule getRule() { return rule; }
 		
 		//AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-		//{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (LoopStatement ';')
+		//{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (ResetTimerStatement
+		//';')
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//AssignmentStatement ';'
@@ -1511,17 +1521,17 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//';'
 		public Keyword getSemicolonKeyword_6_1() { return cSemicolonKeyword_6_1; }
 		
-		//{Statement} (LoopStatement ';')
+		//{Statement} (ResetTimerStatement ';')
 		public Group getGroup_7() { return cGroup_7; }
 		
 		//{Statement}
 		public Action getStatementAction_7_0() { return cStatementAction_7_0; }
 		
-		//(LoopStatement ';')
+		//(ResetTimerStatement ';')
 		public Group getGroup_7_1() { return cGroup_7_1; }
 		
-		//LoopStatement
-		public RuleCall getLoopStatementParserRuleCall_7_1_0() { return cLoopStatementParserRuleCall_7_1_0; }
+		//ResetTimerStatement
+		public RuleCall getResetTimerStatementParserRuleCall_7_1_0() { return cResetTimerStatementParserRuleCall_7_1_0; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_7_1_1() { return cSemicolonKeyword_7_1_1; }
@@ -2969,7 +2979,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	private final StopProcessStatementElements pStopProcessStatement;
 	private final ErrorProcessStatementElements pErrorProcessStatement;
 	private final TimeoutStatementElements pTimeoutStatement;
-	private final LoopStatementElements pLoopStatement;
+	private final ResetTimerStatementElements pResetTimerStatement;
 	private final ExpressionElements pExpression;
 	private final TerminalRule tOR_OPERATOR;
 	private final XorExpressionElements pXorExpression;
@@ -3083,7 +3093,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		this.pStopProcessStatement = new StopProcessStatementElements();
 		this.pErrorProcessStatement = new ErrorProcessStatementElements();
 		this.pTimeoutStatement = new TimeoutStatementElements();
-		this.pLoopStatement = new LoopStatementElements();
+		this.pResetTimerStatement = new ResetTimerStatementElements();
 		this.pExpression = new ExpressionElements();
 		this.tOR_OPERATOR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.OR_OPERATOR");
 		this.pXorExpression = new XorExpressionElements();
@@ -3436,14 +3446,14 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		return getTimeoutStatementAccess().getRule();
 	}
 	
-	//LoopStatement:
-	//	'LOOP';
-	public LoopStatementElements getLoopStatementAccess() {
-		return pLoopStatement;
+	//ResetTimerStatement:
+	//	'RESET' 'TIMER';
+	public ResetTimerStatementElements getResetTimerStatementAccess() {
+		return pResetTimerStatement;
 	}
 	
-	public ParserRule getLoopStatementRule() {
-		return getLoopStatementAccess().getRule();
+	public ParserRule getResetTimerStatementRule() {
+		return getResetTimerStatementAccess().getRule();
 	}
 	
 	///* ======================= END poST Expression ======================= */
@@ -3629,7 +3639,8 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Statement:
 	//	AssignmentStatement ';' | SelectionStatement | IterationStatement | {Statement} (SUBPROGRAM_CONTROL_STATEMENT ';') |
-	//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (LoopStatement ';');
+	//	{Statement} (EXIT_STATEMENT ';') | ProcessStatements ';' | SetStateStatement ';' | {Statement} (ResetTimerStatement
+	//	';');
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
