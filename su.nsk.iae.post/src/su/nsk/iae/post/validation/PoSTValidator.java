@@ -24,16 +24,19 @@ import su.nsk.iae.post.poST.GlobalVarInitDeclaration;
 import su.nsk.iae.post.poST.IfStatement;
 import su.nsk.iae.post.poST.InputOutputVarDeclaration;
 import su.nsk.iae.post.poST.InputVarDeclaration;
+import su.nsk.iae.post.poST.IterationStatement;
 import su.nsk.iae.post.poST.Model;
 import su.nsk.iae.post.poST.OutputVarDeclaration;
 import su.nsk.iae.post.poST.PoSTPackage;
 import su.nsk.iae.post.poST.PrimaryExpression;
 import su.nsk.iae.post.poST.Process;
+import su.nsk.iae.post.poST.ProcessStatements;
 import su.nsk.iae.post.poST.ProcessStatusExpression;
 import su.nsk.iae.post.poST.Program;
 import su.nsk.iae.post.poST.ProgramConfElement;
 import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.Resource;
+import su.nsk.iae.post.poST.SelectionStatement;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.StartProcessStatement;
 import su.nsk.iae.post.poST.Statement;
@@ -359,9 +362,21 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	public void checkUselessState(su.nsk.iae.post.poST.State state) {
 		EList<Statement> list = state.getStatement().getStatements();
 		if (list.size() == 1) {
-			warning("Useless state",
-					PoSTPackage.eINSTANCE.getState_Name());
+			if (!(list.get(0) instanceof SelectionStatement) &&
+					!(list.get(0) instanceof IterationStatement) &&
+					!(list.get(0) instanceof TimeoutStatement)) {
+				warning("Useless state",
+						PoSTPackage.eINSTANCE.getState_Name());
+			}
 		}
+		for (Statement s : list) {
+			if (!(s instanceof AssignmentStatement) &&
+					!(s instanceof ProcessStatements)) {
+				return;
+			}
+		}
+		warning("Useless state",
+				PoSTPackage.eINSTANCE.getState_Name());
 	}
 	
 	@Check
@@ -470,7 +485,7 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if (str.contains("q")) {
 			res += Integer.valueOf(str.substring(0, str.indexOf("q")));
 		}
-		if (res >= 0xFFFFFFFF) {
+		if (res >= 0xFFFFFFFFL) {
 			error("Time error: Max value of time is 4294967295 milliseconds or near 50 days",
 					PoSTPackage.eINSTANCE.getTimeLiteral_Interval());
 		}
