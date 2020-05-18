@@ -254,6 +254,14 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	@Check
+	public void checkEmptyProgram(Program program) {
+		if (program.getProcesses().isEmpty()) {
+			error("Statement error: Program can't be empty",
+					PoSTPackage.eINSTANCE.getProcess_Name());
+		}
+	}
+	
+	@Check
 	public void checkResourceNameConflicts(Resource resource) {
 		Configuration conf = EcoreUtil2.getContainerOfType(resource, Configuration.class);
 		for (Resource res : conf.getResources()) {
@@ -272,6 +280,14 @@ public class PoSTValidator extends AbstractPoSTValidator {
 				error("Name error: Process with this name already exists",
 						PoSTPackage.eINSTANCE.getProcess_Name());
 			}
+		}
+	}
+	
+	@Check
+	public void checkEmptyProcess(Process process) {
+		if (process.getStates().isEmpty()) {
+			error("Statement error: Process can't be empty",
+					PoSTPackage.eINSTANCE.getProcess_Name());
 		}
 	}
 	
@@ -307,6 +323,14 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	@Check
+	public void checkEmptyState(su.nsk.iae.post.poST.State state) {
+		if (state.getStatement().getStatements().isEmpty()) {
+			error("Statement error: State can't be empty",
+					PoSTPackage.eINSTANCE.getState_Name());
+		}
+	}
+	
+	@Check
 	public void checkUnreachableState(su.nsk.iae.post.poST.State state) {
 		Process process = EcoreUtil2.getContainerOfType(state, Process.class);
 		if (process.getStates().indexOf(state) == 0) {
@@ -329,6 +353,15 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		}
 		warning("State is unreachable", 
 				PoSTPackage.eINSTANCE.getState_Name());
+	}
+	
+	@Check
+	public void checkUselessState(su.nsk.iae.post.poST.State state) {
+		EList<Statement> list = state.getStatement().getStatements();
+		if (list.size() == 1) {
+			warning("Useless state",
+					PoSTPackage.eINSTANCE.getState_Name());
+		}
 	}
 	
 	@Check
