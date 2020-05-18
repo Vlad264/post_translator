@@ -1140,10 +1140,24 @@ ruleState returns [EObject current=null]
 		)
 		(
 			(
+				lv_looped_2_0='LOOPED'
 				{
-					newCompositeNode(grammarAccess.getStateAccess().getStatementStatementListParserRuleCall_2_0());
+					newLeafNode(lv_looped_2_0, grammarAccess.getStateAccess().getLoopedLOOPEDKeyword_2_0());
 				}
-				lv_statement_2_0=ruleStatementList
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getStateRule());
+					}
+					setWithLastConsumed($current, "looped", true, "LOOPED");
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getStateAccess().getStatementStatementListParserRuleCall_3_0());
+				}
+				lv_statement_3_0=ruleStatementList
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getStateRule());
@@ -1151,7 +1165,7 @@ ruleState returns [EObject current=null]
 					set(
 						$current,
 						"statement",
-						lv_statement_2_0,
+						lv_statement_3_0,
 						"su.nsk.iae.post.PoST.StatementList");
 					afterParserOrEnumRuleCall();
 				}
@@ -1160,9 +1174,9 @@ ruleState returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getStateAccess().getTimeoutTimeoutStatementParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getStateAccess().getTimeoutTimeoutStatementParserRuleCall_4_0());
 				}
-				lv_timeout_3_0=ruleTimeoutStatement
+				lv_timeout_4_0=ruleTimeoutStatement
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getStateRule());
@@ -1170,15 +1184,15 @@ ruleState returns [EObject current=null]
 					set(
 						$current,
 						"timeout",
-						lv_timeout_3_0,
+						lv_timeout_4_0,
 						"su.nsk.iae.post.PoST.TimeoutStatement");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
-		otherlv_4='END_STATE'
+		otherlv_5='END_STATE'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getStateAccess().getEND_STATEKeyword_4());
+			newLeafNode(otherlv_5, grammarAccess.getStateAccess().getEND_STATEKeyword_5());
 		}
 	)
 ;

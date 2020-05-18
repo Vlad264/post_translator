@@ -1020,7 +1020,7 @@ public class PoSTSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     State returns State
 	 *
 	 * Constraint:
-	 *     (name=ID statement=StatementList timeout=TimeoutStatement?)
+	 *     (name=ID looped?='LOOPED'? statement=StatementList timeout=TimeoutStatement?)
 	 */
 	protected void sequence_State(ISerializationContext context, State semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

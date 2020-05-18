@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link su.nsk.iae.post.poST.State#getName <em>Name</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.State#isLooped <em>Looped</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.State#getStatement <em>Statement</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.State#getTimeout <em>Timeout</em>}</li>
  * </ul>
@@ -46,6 +47,28 @@ public interface State extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Looped</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Looped</em>' attribute.
+   * @see #setLooped(boolean)
+   * @see su.nsk.iae.post.poST.PoSTPackage#getState_Looped()
+   * @model
+   * @generated
+   */
+  boolean isLooped();
+
+  /**
+   * Sets the value of the '{@link su.nsk.iae.post.poST.State#isLooped <em>Looped</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Looped</em>' attribute.
+   * @see #isLooped()
+   * @generated
+   */
+  void setLooped(boolean value);
 
   /**
    * Returns the value of the '<em><b>Statement</b></em>' containment reference.

@@ -194,8 +194,9 @@ public class PoSTParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getProcessAccess().getProcTempVarsAssignment_2_1(), "rule__Process__ProcTempVarsAssignment_2_1");
 			builder.put(grammarAccess.getProcessAccess().getStatesAssignment_3(), "rule__Process__StatesAssignment_3");
 			builder.put(grammarAccess.getStateAccess().getNameAssignment_1(), "rule__State__NameAssignment_1");
-			builder.put(grammarAccess.getStateAccess().getStatementAssignment_2(), "rule__State__StatementAssignment_2");
-			builder.put(grammarAccess.getStateAccess().getTimeoutAssignment_3(), "rule__State__TimeoutAssignment_3");
+			builder.put(grammarAccess.getStateAccess().getLoopedAssignment_2(), "rule__State__LoopedAssignment_2");
+			builder.put(grammarAccess.getStateAccess().getStatementAssignment_3(), "rule__State__StatementAssignment_3");
+			builder.put(grammarAccess.getStateAccess().getTimeoutAssignment_4(), "rule__State__TimeoutAssignment_4");
 			builder.put(grammarAccess.getSetStateStatementAccess().getStateAssignment_2_0_1(), "rule__SetStateStatement__StateAssignment_2_0_1");
 			builder.put(grammarAccess.getSetStateStatementAccess().getNextAssignment_2_1(), "rule__SetStateStatement__NextAssignment_2_1");
 			builder.put(grammarAccess.getProcessStatusExpressionAccess().getProcessAssignment_1(), "rule__ProcessStatusExpression__ProcessAssignment_1");

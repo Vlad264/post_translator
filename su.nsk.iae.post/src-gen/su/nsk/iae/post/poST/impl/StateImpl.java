@@ -26,6 +26,7 @@ import su.nsk.iae.post.poST.TimeoutStatement;
  * </p>
  * <ul>
  *   <li>{@link su.nsk.iae.post.poST.impl.StateImpl#getName <em>Name</em>}</li>
+ *   <li>{@link su.nsk.iae.post.poST.impl.StateImpl#isLooped <em>Looped</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.impl.StateImpl#getStatement <em>Statement</em>}</li>
  *   <li>{@link su.nsk.iae.post.poST.impl.StateImpl#getTimeout <em>Timeout</em>}</li>
  * </ul>
@@ -53,6 +54,26 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isLooped() <em>Looped</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isLooped()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean LOOPED_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isLooped() <em>Looped</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isLooped()
+   * @generated
+   * @ordered
+   */
+  protected boolean looped = LOOPED_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
@@ -118,6 +139,31 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.STATE__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isLooped()
+  {
+    return looped;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setLooped(boolean newLooped)
+  {
+    boolean oldLooped = looped;
+    looped = newLooped;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PoSTPackage.STATE__LOOPED, oldLooped, looped));
   }
 
   /**
@@ -250,6 +296,8 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State
     {
       case PoSTPackage.STATE__NAME:
         return getName();
+      case PoSTPackage.STATE__LOOPED:
+        return isLooped();
       case PoSTPackage.STATE__STATEMENT:
         return getStatement();
       case PoSTPackage.STATE__TIMEOUT:
@@ -270,6 +318,9 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State
     {
       case PoSTPackage.STATE__NAME:
         setName((String)newValue);
+        return;
+      case PoSTPackage.STATE__LOOPED:
+        setLooped((Boolean)newValue);
         return;
       case PoSTPackage.STATE__STATEMENT:
         setStatement((StatementList)newValue);
@@ -294,6 +345,9 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State
       case PoSTPackage.STATE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case PoSTPackage.STATE__LOOPED:
+        setLooped(LOOPED_EDEFAULT);
+        return;
       case PoSTPackage.STATE__STATEMENT:
         setStatement((StatementList)null);
         return;
@@ -316,6 +370,8 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State
     {
       case PoSTPackage.STATE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case PoSTPackage.STATE__LOOPED:
+        return looped != LOOPED_EDEFAULT;
       case PoSTPackage.STATE__STATEMENT:
         return statement != null;
       case PoSTPackage.STATE__TIMEOUT:
@@ -337,6 +393,8 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", looped: ");
+    result.append(looped);
     result.append(')');
     return result.toString();
   }

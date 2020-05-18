@@ -645,20 +645,22 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSTATEKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cStatementAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStatementStatementListParserRuleCall_2_0 = (RuleCall)cStatementAssignment_2.eContents().get(0);
-		private final Assignment cTimeoutAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTimeoutTimeoutStatementParserRuleCall_3_0 = (RuleCall)cTimeoutAssignment_3.eContents().get(0);
-		private final Keyword cEND_STATEKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cLoopedAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cLoopedLOOPEDKeyword_2_0 = (Keyword)cLoopedAssignment_2.eContents().get(0);
+		private final Assignment cStatementAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStatementStatementListParserRuleCall_3_0 = (RuleCall)cStatementAssignment_3.eContents().get(0);
+		private final Assignment cTimeoutAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTimeoutTimeoutStatementParserRuleCall_4_0 = (RuleCall)cTimeoutAssignment_4.eContents().get(0);
+		private final Keyword cEND_STATEKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//State:
-		//	'STATE' name=ID
+		//	'STATE' name=ID looped?='LOOPED'?
 		//	statement=StatementList
 		//	timeout=TimeoutStatement?
 		//	'END_STATE';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'STATE' name=ID statement=StatementList timeout=TimeoutStatement? 'END_STATE'
+		//'STATE' name=ID looped?='LOOPED'? statement=StatementList timeout=TimeoutStatement? 'END_STATE'
 		public Group getGroup() { return cGroup; }
 		
 		//'STATE'
@@ -670,20 +672,26 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
+		//looped?='LOOPED'?
+		public Assignment getLoopedAssignment_2() { return cLoopedAssignment_2; }
+		
+		//'LOOPED'
+		public Keyword getLoopedLOOPEDKeyword_2_0() { return cLoopedLOOPEDKeyword_2_0; }
+		
 		//statement=StatementList
-		public Assignment getStatementAssignment_2() { return cStatementAssignment_2; }
+		public Assignment getStatementAssignment_3() { return cStatementAssignment_3; }
 		
 		//StatementList
-		public RuleCall getStatementStatementListParserRuleCall_2_0() { return cStatementStatementListParserRuleCall_2_0; }
+		public RuleCall getStatementStatementListParserRuleCall_3_0() { return cStatementStatementListParserRuleCall_3_0; }
 		
 		//timeout=TimeoutStatement?
-		public Assignment getTimeoutAssignment_3() { return cTimeoutAssignment_3; }
+		public Assignment getTimeoutAssignment_4() { return cTimeoutAssignment_4; }
 		
 		//TimeoutStatement
-		public RuleCall getTimeoutTimeoutStatementParserRuleCall_3_0() { return cTimeoutTimeoutStatementParserRuleCall_3_0; }
+		public RuleCall getTimeoutTimeoutStatementParserRuleCall_4_0() { return cTimeoutTimeoutStatementParserRuleCall_4_0; }
 		
 		//'END_STATE'
-		public Keyword getEND_STATEKeyword_4() { return cEND_STATEKeyword_4; }
+		public Keyword getEND_STATEKeyword_5() { return cEND_STATEKeyword_5; }
 	}
 	public class SetStateStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "su.nsk.iae.post.PoST.SetStateStatement");
@@ -3362,7 +3370,7 @@ public class PoSTGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//State:
-	//	'STATE' name=ID
+	//	'STATE' name=ID looped?='LOOPED'?
 	//	statement=StatementList
 	//	timeout=TimeoutStatement?
 	//	'END_STATE';

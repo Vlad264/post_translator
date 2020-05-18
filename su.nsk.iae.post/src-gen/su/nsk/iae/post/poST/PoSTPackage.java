@@ -611,13 +611,22 @@ public interface PoSTPackage extends EPackage
   int STATE__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Looped</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE__LOOPED = 1;
+
+  /**
    * The feature id for the '<em><b>Statement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STATE__STATEMENT = 1;
+  int STATE__STATEMENT = 2;
 
   /**
    * The feature id for the '<em><b>Timeout</b></em>' containment reference.
@@ -626,7 +635,7 @@ public interface PoSTPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STATE__TIMEOUT = 2;
+  int STATE__TIMEOUT = 3;
 
   /**
    * The number of structural features of the '<em>State</em>' class.
@@ -635,7 +644,7 @@ public interface PoSTPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STATE_FEATURE_COUNT = 3;
+  int STATE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link su.nsk.iae.post.poST.impl.StatementImpl <em>Statement</em>}' class.
@@ -3191,6 +3200,17 @@ public interface PoSTPackage extends EPackage
   EAttribute getState_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link su.nsk.iae.post.poST.State#isLooped <em>Looped</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Looped</em>'.
+   * @see su.nsk.iae.post.poST.State#isLooped()
+   * @see #getState()
+   * @generated
+   */
+  EAttribute getState_Looped();
+
+  /**
    * Returns the meta object for the containment reference '{@link su.nsk.iae.post.poST.State#getStatement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4960,6 +4980,14 @@ public interface PoSTPackage extends EPackage
      * @generated
      */
     EAttribute STATE__NAME = eINSTANCE.getState_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Looped</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STATE__LOOPED = eINSTANCE.getState_Looped();
 
     /**
      * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.

@@ -89,7 +89,7 @@ Process:
 	'END_PROCESS';
 
 State:
-	'STATE' name=ID
+	'STATE' name=ID (looped?='LOOPED')?
 		statement=StatementList
 		timeout=TimeoutStatement?
 	'END_STATE';

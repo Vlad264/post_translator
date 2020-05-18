@@ -13,6 +13,8 @@ import org.eclipse.xtext.validation.Check;
 
 import su.nsk.iae.post.poST.AssignmentStatement;
 import su.nsk.iae.post.poST.AssignmentType;
+import su.nsk.iae.post.poST.CaseElement;
+import su.nsk.iae.post.poST.CaseStatement;
 import su.nsk.iae.post.poST.Configuration;
 import su.nsk.iae.post.poST.ErrorProcessStatement;
 import su.nsk.iae.post.poST.ExternalVarDeclaration;
@@ -34,6 +36,8 @@ import su.nsk.iae.post.poST.ProgramConfiguration;
 import su.nsk.iae.post.poST.Resource;
 import su.nsk.iae.post.poST.SetStateStatement;
 import su.nsk.iae.post.poST.StartProcessStatement;
+import su.nsk.iae.post.poST.Statement;
+import su.nsk.iae.post.poST.StatementList;
 import su.nsk.iae.post.poST.StopProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
@@ -327,6 +331,22 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	}
 	
 	@Check
+	public void checkLoopedState(su.nsk.iae.post.poST.State state) {
+		boolean hasSet = containsStatement(state.getStatement(), SetStateStatement.class);
+		if (state.isLooped()) {
+			if (hasSet) {
+				warning("State mustn't be LOOPED", 
+						PoSTPackage.eINSTANCE.getState_Looped());
+			}
+		} else {
+			if (!hasSet) {
+				warning("State must be LOOPED", 
+						PoSTPackage.eINSTANCE.getState_Name());
+			}
+		}
+	}
+	
+	@Check
 	public void checkProcessStatusExpression(ProcessStatusExpression expr) {
 		Program program = EcoreUtil2.getContainerOfType(expr, Program.class);
 		if (!program.getProcesses().contains(expr.getProcess())) {
@@ -412,6 +432,39 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		};
 		EcoreUtil2.findCrossReferences(context, targetSet, acceptor);
 		return !res.isEmpty();
+	}
+	
+	private <T extends Statement> boolean containsStatement(StatementList list, Class<T> type) {
+		for (Statement s : list.getStatements()) {
+			if (type.isInstance(s)) {
+				return true;
+			}
+			boolean tmp = true;
+			if (s instanceof IfStatement) {
+				tmp &= containsStatement(((IfStatement) s).getMainStatement(), type);
+				for (StatementList l : ((IfStatement) s).getElseIfStatements()) {
+					tmp &= containsStatement(l, type);
+				}
+				if (((IfStatement) s).getElseStatement() != null) {
+					tmp &= containsStatement(((IfStatement) s).getElseStatement(), type);
+				}
+				if (tmp) {
+					return true;
+				}
+			}
+			if (s instanceof CaseStatement) {
+				for (CaseElement e : ((CaseStatement) s).getCaseElements()) {
+					tmp &= containsStatement(e.getStatement(), type);
+				}
+				if (((CaseStatement) s).getElseStatement() != null) {
+					tmp &= containsStatement(((CaseStatement) s).getElseStatement(), type);
+				}
+				if (tmp) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	private boolean checkVariableNameConflictsInExternalVars(SymbolicVariable varName) {

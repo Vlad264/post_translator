@@ -89,6 +89,7 @@
     </genClasses>
     <genClasses ecoreClass="PoST.ecore#//State">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//State/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PoST.ecore#//State/looped"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//State/statement"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PoST.ecore#//State/timeout"/>
     </genClasses>
