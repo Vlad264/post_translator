@@ -38,6 +38,7 @@ import su.nsk.iae.post.poST.StopProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TempVarDeclaration;
+import su.nsk.iae.post.poST.TimeoutStatement;
 import su.nsk.iae.post.poST.VarDeclaration;
 import su.nsk.iae.post.poST.VarInitDeclaration;
 
@@ -337,8 +338,8 @@ public class PoSTValidator extends AbstractPoSTValidator {
 	@Check
 	public void checkNextState(SetStateStatement statement) {
 		Process process = EcoreUtil2.getContainerOfType(statement, Process.class);
+		su.nsk.iae.post.poST.State state = EcoreUtil2.getContainerOfType(statement, su.nsk.iae.post.poST.State.class);
 		if (statement.isNext()) {
-			su.nsk.iae.post.poST.State state = EcoreUtil2.getContainerOfType(statement, su.nsk.iae.post.poST.State.class);
 			if (process.getStates().indexOf(state) + 1 >= process.getStates().size()) {
 				error("Invalide statement: No next state in the process",
 						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
@@ -346,7 +347,10 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		} else {
 			if (!process.getStates().contains(statement.getState())) {
 				error("Invalide statement: No state with this name",
-						PoSTPackage.eINSTANCE.getSetStateStatement_Next());
+						PoSTPackage.eINSTANCE.getSetStateStatement_State());
+			} else if (state.getName().equals(statement.getState().getName())) {
+				warning("Useless statement, use RESET TIMER", 
+						PoSTPackage.eINSTANCE.getSetStateStatement_State());
 			}
 		}
 	}
@@ -378,6 +382,14 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		Program program = EcoreUtil2.getContainerOfType(statement, Program.class);
 		if (!program.getProcesses().contains(statement.getProcess())) {
 			error("Invalide statement: No process with this name", null);
+		}
+	}
+	
+	@Check
+	public void checkTimeoutStatement(TimeoutStatement statement) {
+		if (statement.getStatement().getStatements().isEmpty()) {
+			error("Statement error: No reaction on timeout",
+					PoSTPackage.eINSTANCE.getTimeoutStatement_Statement());
 		}
 	}
 	
