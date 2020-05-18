@@ -42,6 +42,7 @@ import su.nsk.iae.post.poST.StopProcessStatement;
 import su.nsk.iae.post.poST.SymbolicVariable;
 import su.nsk.iae.post.poST.Task;
 import su.nsk.iae.post.poST.TempVarDeclaration;
+import su.nsk.iae.post.poST.TimeLiteral;
 import su.nsk.iae.post.poST.TimeoutStatement;
 import su.nsk.iae.post.poST.VarDeclaration;
 import su.nsk.iae.post.poST.VarInitDeclaration;
@@ -410,6 +411,35 @@ public class PoSTValidator extends AbstractPoSTValidator {
 		if (statement.getStatement().getStatements().isEmpty()) {
 			error("Statement error: No reaction on timeout",
 					PoSTPackage.eINSTANCE.getTimeoutStatement_Statement());
+		}
+	}
+	
+	@Check
+	public void checkTimeLiteral(TimeLiteral time) {
+		String str = time.getInterval().replaceAll("ms", "q");
+		long res = 0;
+		if (str.contains("d")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("d"))) * 86400000;
+			str = str.substring(str.indexOf("d") + 1);
+		}
+		if (str.contains("h")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("h"))) * 3600000;
+			str = str.substring(str.indexOf("h") + 1);
+		}
+		if (str.contains("m")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("m"))) * 60000;
+			str = str.substring(str.indexOf("m") + 1);
+		}
+		if (str.contains("s")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("s"))) * 1000;
+			str = str.substring(str.indexOf("s") + 1);
+		}
+		if (str.contains("q")) {
+			res += Integer.valueOf(str.substring(0, str.indexOf("q")));
+		}
+		if (res >= 0xFFFFFFFF) {
+			error("Time error: Max value of time is 4294967295 milliseconds or near 50 days",
+					PoSTPackage.eINSTANCE.getTimeLiteral_Interval());
 		}
 	}
 	
